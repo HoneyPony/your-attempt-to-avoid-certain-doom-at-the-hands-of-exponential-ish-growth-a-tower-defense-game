@@ -1,0 +1,41 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+float map_uv(float uv, float tps) {
+	float t0 = uv / tps;
+	float a = floor(t0);
+	float sps = fwidth(uv);
+	//float b = a + 1.0;
+	float scale = tps / sps;
+	
+	float t = t0 - a;
+	if(t < 0.5) {
+		t = clamp(t * scale, 0.0, 0.5);
+	}
+	else {
+		t = 1.0 - t;
+		t = clamp(t * scale, 0.0, 0.5);
+		t = 1.0 - t;
+	}
+	
+	return (a + t) * tps;
+}
+
+void fragment() {
+	vec2 uv = UV;
+	//float sps = length(SCREEN_PIXEL_SIZE);
+	//float sps = 2.0 * min(SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y);
+	//float sps = max(SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y);
+	//float sps = length(fwidth(UV));
+	//vec2 center = (floor(uv / TEXTURE_PIXEL_SIZE) + 0.5) * TEXTURE_PIXEL_SIZE;
+	uv.x = map_uv(UV.x, TEXTURE_PIXEL_SIZE.x);
+	uv.y = map_uv(UV.y, TEXTURE_PIXEL_SIZE.y);
+	
+	COLOR = texture(TEXTURE, uv);
+}
+"
+
+[resource]
+shader = SubResource( 1 )
