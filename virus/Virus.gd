@@ -58,6 +58,15 @@ func spawn(coord, dir):
 	# Grow in the same direction
 	v.direction_preference = dir
 	
+	var color: Color = $Energy.modulate
+	# Hue shift... shows child-parent relationships, as well, which might
+	# be cool
+	var hue = color.h
+	hue += rand_range(0.01, 0.04)
+	while hue > 1.0:
+		hue -= 1.0
+	v.get_node("Energy").modulate = Color.from_hsv(hue, color.s, color.v)
+	
 	parent_vc.add_child(v)
 	
 func try_spawn(direction):
