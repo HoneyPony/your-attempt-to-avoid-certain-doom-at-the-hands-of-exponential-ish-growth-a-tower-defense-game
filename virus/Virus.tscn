@@ -2,7 +2,7 @@
 
 [ext_resource path="res://virus/virus.png" type="Texture" id=1]
 [ext_resource path="res://virus/Virus.gd" type="Script" id=2]
-[ext_resource path="res://virus/virus_overlay1.png" type="Texture" id=3]
+[ext_resource path="res://virus/virus_overlay_sheet.png" type="Texture" id=3]
 [ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=4]
 
 [sub_resource type="Shader" id=1]
@@ -91,3 +91,4 @@ texture = ExtResource( 1 )
 material = ExtResource( 4 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
+hframes = 3

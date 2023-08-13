@@ -26,6 +26,9 @@ func _ready():
 
 	var overlay_rot_options = [0, TAU/4, TAU/2, 0.75 * TAU]
 	$Overlay.rotation = overlay_rot_options[randi() % 4]
+	
+	# Give the overlay a random appearance
+	$Overlay.frame = randi() % $Overlay.hframes
 
 func destroy():
 	parent_vc.free_coord(coord)
