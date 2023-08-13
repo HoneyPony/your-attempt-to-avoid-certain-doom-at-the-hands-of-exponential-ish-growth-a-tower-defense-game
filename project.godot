@@ -33,6 +33,8 @@ GS="*res://GS.gd"
 window/size/width=600
 window/size/height=1000
 window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gui]
 

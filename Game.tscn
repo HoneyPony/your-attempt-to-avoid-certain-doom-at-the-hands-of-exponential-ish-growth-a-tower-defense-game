@@ -12,3 +12,7 @@ current = true
 position = Vector2( 0, -207 )
 
 [node name="BasicGun" parent="." instance=ExtResource( 2 )]
+position = Vector2( 180, 331 )
+
+[node name="BasicGun2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -158, 328 )
