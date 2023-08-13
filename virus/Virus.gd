@@ -85,7 +85,8 @@ func spawn(coord, dir):
 	# Hue shift... shows child-parent relationships, as well, which might
 	# be cool
 	var hue = color.h
-	hue += rand_range(0.04, 0.08)
+	hue += rand_range(0.01, 0.015)
+	#hue += rand_range(0.04, 0.08)
 	while hue > 1.0:
 		hue -= 1.0
 	v.get_node("Energy").modulate = Color.from_hsv(hue, color.s, color.v)
@@ -140,3 +141,14 @@ func try_spawns():
 		#spawns_left -= 1
 		if try_spawn(dir):
 			return
+
+
+# Called when a physics body (i.e. a bullet) hits the area2d.
+func _on_Area2D_body_entered(body):
+	body.hit_something() # Tell the bullet to despawn if relevant, etc
+	
+	# This virus is now dead
+	queue_free()
+	# Disable any more collisions
+	$Area2D.collision_layer = 0
+	$Area2D.collision_mask = 0
