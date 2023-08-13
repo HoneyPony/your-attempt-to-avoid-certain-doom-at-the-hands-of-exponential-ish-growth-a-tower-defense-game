@@ -20,7 +20,7 @@ func _ready():
 		avoid_coordinates[a] = true
 
 # Controls the spawn timer of all child viruses.
-var spawn_timer_max = 2.0
+export var spawn_timer_max = 2.0
 
 func free_coord(coord):
 	used_coordinates.erase(coord)

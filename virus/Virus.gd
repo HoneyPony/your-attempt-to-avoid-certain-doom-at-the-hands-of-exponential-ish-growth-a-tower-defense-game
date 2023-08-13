@@ -30,8 +30,13 @@ func _ready():
 	# Give the overlay a random appearance
 	$Overlay.frame = randi() % $Overlay.hframes
 
+	reset_spawn_timer()
+
 func destroy():
 	parent_vc.free_coord(coord)
+
+func reset_spawn_timer():
+	spawn_timer = parent_vc.spawn_timer_max * rand_range(0.95, 1.05) * speed
 
 func _physics_process(delta):
 	# Each frame, we try to spawn, depending on the spawn speed
@@ -40,7 +45,7 @@ func _physics_process(delta):
 		try_spawns()
 		#if spawns_left > 0:
 		# Reset timer
-		spawn_timer = parent_vc.spawn_timer_max * rand_range(0.95, 1.05) * speed
+		reset_spawn_timer()
 	
 	# Animate the spawn/jitter effects
 	animate()
@@ -52,10 +57,10 @@ func animate():
 	var target_pos = coord * 32 # 4x pixels, plus 8 pixels wide
 	
 	# Jitter animation:
-	target_scale *= rand_range(0.9, 1.1)
-	target_rot += rand_range(-0.1 * TAU, 0.1 * TAU)
-	target_pos += polar2cartesian(rand_range(0, 4), rand_range(0, TAU))
-	
+#	target_scale *= rand_range(0.9, 1.1)
+#	target_rot += rand_range(-0.1 * TAU, 0.1 * TAU)
+#	target_pos += polar2cartesian(rand_range(0, 4), rand_range(0, TAU))
+
 	scale += (target_scale - scale) * 0.09
 	
 	rotation = lerp_angle(rotation, target_rot, 0.09)
