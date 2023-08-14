@@ -33,6 +33,10 @@ enum DragState {
 # mutually exclusive for simplicity.
 var drag_state = DragState.NOT_DRAGGING
 
+# The touch index associated with DragState.DRAG_TOUCH, if relevant.
+# This allows us to move different towers with different fingers.
+var drag_touch_index = 0
+
 # Only activate dragging states through inputs that occur on this Area2D.
 func _on_BasicGun_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
@@ -43,6 +47,7 @@ func _on_BasicGun_input_event(viewport, event, shape_idx):
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			drag_state = DragState.DRAG_TOUCH
+			drag_touch_index = event.index
 				
 				
 func _input(event):
@@ -54,11 +59,11 @@ func _input(event):
 	
 	if event is InputEventScreenTouch:
 		if drag_state == DragState.DRAG_TOUCH and not event.pressed:
-				drag_state = DragState.NOT_DRAGGING
+			drag_state = DragState.NOT_DRAGGING
 	
 	if drag_state == DragState.DRAG_MOUSE:
 		if event is InputEventMouseMotion:
 			position += event.relative
 	elif drag_state == DragState.DRAG_TOUCH:
-		if event is InputEventScreenDrag:
+		if event is InputEventScreenDrag and event.index == drag_touch_index:
 			position += event.relative
