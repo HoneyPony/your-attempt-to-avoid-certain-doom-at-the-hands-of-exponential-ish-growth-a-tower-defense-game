@@ -11,7 +11,29 @@ func fire():
 	bullet.position = position
 	get_parent().add_child(bullet)
 	
+const SCREEN_END_Y = 1280
 
+func limit_y_t(t: float) -> float:
+	if t < 0:
+		return t
+	
+	# What this does:
+	# It takes a value of t = 4 to actually reach 1
+	# But then we can't go past that.
+	t = 0.25 * t
+	#t = t * t
+	if t > 1:
+		return 1.0
+	return t
+
+func limit_y():
+	var y_limit_soft = SCREEN_END_Y - 900
+	var y_limit_hard = 0
+	
+	if position.y < y_limit_soft:
+		var t = (position.y - y_limit_soft) / (y_limit_hard - y_limit_soft)
+		t = limit_y_t(t)
+		position.y = lerp(y_limit_soft, y_limit_hard, t)
 
 func _physics_process(delta):
 	fire_timer -= delta
@@ -19,11 +41,16 @@ func _physics_process(delta):
 		fire_timer = fire_timer_max
 		fire()
 		
-	var y_range = (position.y - (512 - max_range))
-	#print(y_range)
-	if y_range < 0:
-		var force = -y_range * 10
-		position.y += force * delta
+	if drag_state != DragState.NOT_DRAGGING:
+		position = drag_target_position
+		
+	limit_y()
+		
+#	var y_range = (position.y - (512 - max_range))
+#	#print(y_range)
+#	if y_range < 0:
+#		var force = -y_range * 10
+#		position.y += force * delta
 		
 	#if Input.is_mouse_button_pressed(BUTTON_LEFT)
 
@@ -47,9 +74,9 @@ var drag_touch_index = 0
 # to implement dragging, which is more flexible.
 var drag_offset = Vector2.ZERO
 
-# The maximum distance the user can drag this from the bottom of
-# the screen. A springy force holds them back from dragging farther.
-var max_range = 300
+# Used to ensure that we get consistent results for our "springyness"
+# while still dragging.
+var drag_target_position: Vector2 = Vector2.ZERO
 
 func tform_drag_pos(pos: Vector2) -> Vector2:
 	return GS.game_camera.to_global(pos * GS.game_camera.zoom)
@@ -60,12 +87,14 @@ func _on_BasicGun_input_event(viewport, event, shape_idx):
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:
 				drag_state = DragState.DRAG_MOUSE
+				drag_target_position = position
 				drag_offset = position - tform_drag_pos(event.position)
 	
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			drag_state = DragState.DRAG_TOUCH
 			drag_touch_index = event.index
+			drag_target_position = position
 			drag_offset = position - tform_drag_pos(event.position)
 				
 				
@@ -83,7 +112,10 @@ func _input(event):
 	if drag_state == DragState.DRAG_MOUSE:
 		if event is InputEventMouseMotion:
 			position = tform_drag_pos(event.position) + drag_offset
+			drag_target_position = position
+			limit_y()
 	elif drag_state == DragState.DRAG_TOUCH:
 		if event is InputEventScreenDrag and event.index == drag_touch_index:
 			position = tform_drag_pos(event.position) + drag_offset
-			
+			drag_target_position = position
+			limit_y()
