@@ -32,13 +32,15 @@ GS="*res://GS.gd"
 
 window/size/width=576
 window/size/height=1024
+window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/use_hidpi=true
 
 [importer_defaults]
 
