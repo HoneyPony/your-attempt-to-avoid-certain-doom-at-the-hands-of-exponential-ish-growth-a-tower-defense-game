@@ -31,7 +31,7 @@ scale_amount_curve = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2.5, 2.5 )
+zoom = Vector2( 1.25, 1.25 )
 script = ExtResource( 5 )
 
 [node name="VirusCollection" parent="." instance=ExtResource( 1 )]
