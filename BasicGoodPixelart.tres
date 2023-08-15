@@ -33,7 +33,7 @@ void fragment() {
 	uv.x = map_uv(UV.x, TEXTURE_PIXEL_SIZE.x);
 	uv.y = map_uv(UV.y, TEXTURE_PIXEL_SIZE.y);
 	
-	COLOR = texture(TEXTURE, uv) * MODULATE;
+	COLOR = texture(TEXTURE, uv) * MODULATE * COLOR;
 }
 "
 
