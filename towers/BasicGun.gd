@@ -35,6 +35,10 @@ func limit_y():
 		t = limit_y_t(t)
 		position.y = lerp(y_limit_soft, y_limit_hard, t)
 
+onready var ship_sprite = $BasicGun
+func ship_fx():
+	ship_sprite.position.y = 8 * sin(Time.get_ticks_msec() / 1000.0)
+
 func _physics_process(delta):
 	fire_timer -= delta
 	if fire_timer <= 0:
@@ -45,6 +49,8 @@ func _physics_process(delta):
 		position = drag_target_position
 		
 	limit_y()
+	
+	ship_fx()
 		
 #	var y_range = (position.y - (512 - max_range))
 #	#print(y_range)
