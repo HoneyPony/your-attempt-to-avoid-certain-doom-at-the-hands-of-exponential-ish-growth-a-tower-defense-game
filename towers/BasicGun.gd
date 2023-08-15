@@ -19,6 +19,12 @@ func _physics_process(delta):
 		fire_timer = fire_timer_max
 		fire()
 		
+	var y_range = (position.y - (512 - max_range))
+	#print(y_range)
+	if y_range < 0:
+		var force = -y_range * 10
+		position.y += force * delta
+		
 	#if Input.is_mouse_button_pressed(BUTTON_LEFT)
 
 
@@ -36,6 +42,10 @@ var drag_state = DragState.NOT_DRAGGING
 # The touch index associated with DragState.DRAG_TOUCH, if relevant.
 # This allows us to move different towers with different fingers.
 var drag_touch_index = 0
+
+# The maximum distance the user can drag this from the bottom of
+# the screen. A springy force holds them back from dragging farther.
+var max_range = 300
 
 # Only activate dragging states through inputs that occur on this Area2D.
 func _on_BasicGun_input_event(viewport, event, shape_idx):

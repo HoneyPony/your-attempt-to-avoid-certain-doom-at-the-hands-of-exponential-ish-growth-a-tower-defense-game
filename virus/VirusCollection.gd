@@ -33,7 +33,10 @@ func free_coord(coord):
 var angular_drift = 0
 
 func _physics_process(delta):
+	var velocity = (260) / (4 + sqrt(get_child_count()))
+	#print(velocity)
+	
 	# The collection slowly moves down towards the bottom of the screen.
-	position.y += 10 * delta
+	position.y += velocity * delta
 	
 	rotation += angular_drift * delta
