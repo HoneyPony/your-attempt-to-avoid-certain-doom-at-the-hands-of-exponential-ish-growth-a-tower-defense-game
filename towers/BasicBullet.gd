@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var hits_left = 1
 
-var velocity = 300
+var velocity = 450
 var lifetime = 4
 
 func _ready():
@@ -13,7 +13,7 @@ func _ready():
 func _physics_process(delta):
 	position.y -= delta * velocity
 	# Bullets get faster over time
-	velocity += 160 * delta
+	velocity += 180 * delta
 	
 	var target_scale_x = 0.5
 	var target_scale_y = (0.5 + ((velocity - 240) / 400))

@@ -1,7 +1,7 @@
 extends Area2D
 
 var fire_timer = 0
-var fire_timer_max = 0.8
+var fire_timer_max = 0.7
 
 func _ready():
 	fire_timer = fire_timer_max
