@@ -9,8 +9,7 @@ var direction_preference = null
 var generation = 1
 
 # Only attempt to spawn a certain number of times before giving up forever.
-# (disabled for now)
-# var spawns_left = 15
+#var spawns_left = 7
 
 # "Inherited" traits:
 # Traits that intend to asymetrize the tree, by being inherited + mutated along the way.
@@ -34,6 +33,7 @@ func _ready():
 
 func destroy():
 	parent_vc.free_coord(coord)
+	queue_free()
 
 func reset_spawn_timer():
 	spawn_timer = parent_vc.spawn_timer_max * rand_range(0.95, 1.05) * speed
@@ -138,8 +138,8 @@ func try_spawns():
 	# Try a couple times before giving up.
 	for i in range(0, 3):
 		var dir = coord_deltas[randi() % 4]
-		#spawns_left -= 1
 		if try_spawn(dir):
+			#spawns_left -= 1
 			return
 
 
@@ -148,7 +148,7 @@ func _on_Area2D_body_entered(body):
 	body.hit_something() # Tell the bullet to despawn if relevant, etc
 	
 	# This virus is now dead
-	queue_free()
+	destroy()
 	# Disable any more collisions
 	$Area2D.collision_layer = 0
 	$Area2D.collision_mask = 0
