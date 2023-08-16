@@ -1,16 +1,14 @@
 extends "res://towers/TowerBase.gd"
 
-const SIDE_LASER_POSITION = 654
+const SIDE_LASER_POSITION = 656
 
 var fire_timer = 0
+#var fire_timer_max = 0.3
 var fire_timer_max = 0.3
 
 onready var bullet_spawn_point = $BulletSpawnPoint
 
-var prev_bullet = null
-
-# Where bullets will connect to with line drawing.
-onready var front = $Front
+var current_bullet = null
 
 func _ready():
 	fire_timer = fire_timer_max
@@ -25,18 +23,7 @@ func fire():
 	bullet.velocity = Vector2(-360, 0)
 	get_parent().add_child(bullet)
 	
-	# By default, the "next" bullet in the chain is just ourselves. We need to
-	# have a "front" member for this to work.
-	bullet.next = self
-	
-	# Link the bullets together so they can render
-	bullet.prev = prev_bullet
-	if is_instance_valid(prev_bullet):
-		# Turn off the straight tail that it had
-		prev_bullet.next = bullet
-	
-	# Update this var so we can use it next time
-	prev_bullet = bullet
+	current_bullet = bullet
 
 func _physics_process(delta):
 	# The side laser never moves from.. well.. the side.
@@ -46,4 +33,8 @@ func _physics_process(delta):
 	if fire_timer <= 0:
 		fire_timer = fire_timer_max
 		fire()
+		
+	if is_instance_valid(current_bullet):
+		if current_bullet.position.x >= (position.x - 4 * (28 + 16)):
+			current_bullet.position.y = bullet_spawn_point.global_position.y
 		

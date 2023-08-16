@@ -18,7 +18,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 acceleration_strength = 1200
-movement_speed = 600
+movement_speed = 50
 
 [node name="MovementDisplay" type="Line2D" parent="."]
 z_index = -1
@@ -44,9 +44,6 @@ position = Vector2( 23, 0 )
 shape = SubResource( 1 )
 
 [node name="BulletSpawnPoint" type="Position2D" parent="."]
-position = Vector2( -20, -10 )
-
-[node name="Front" type="Position2D" parent="."]
 position = Vector2( -20, -10 )
 
 [connection signal="input_event" from="." to="." method="_on_BasicGun_input_event"]
