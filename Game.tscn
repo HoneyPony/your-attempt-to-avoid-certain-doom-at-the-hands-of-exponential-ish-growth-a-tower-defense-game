@@ -1,15 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://virus/VirusCollection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://towers/BasicGun.tscn" type="PackedScene" id=2]
-[ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=3]
+[ext_resource path="res://ui/ShipBuyer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fx/star.png" type="Texture" id=4]
 [ext_resource path="res://GameCamera.gd" type="Script" id=5]
 [ext_resource path="res://MainTheme.tres" type="Theme" id=6]
 [ext_resource path="res://ui/heart_icon.svg" type="Texture" id=7]
 [ext_resource path="res://ui/GameUI.gd" type="Script" id=8]
-[ext_resource path="res://ui/Audiowide24Pt.tres" type="DynamicFont" id=9]
-[ext_resource path="res://ui/basic_gun_SHOP_ICON.png" type="Texture" id=10]
 [ext_resource path="res://fx/background_fx.png" type="Texture" id=11]
 [ext_resource path="res://fx/BackgroundFX.gd" type="Script" id=12]
 
@@ -19,6 +17,7 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.2805
 [node name="Node2D" type="Node2D"]
 
 [node name="BackgroundFX" type="Sprite" parent="."]
+visible = false
 position = Vector2( 3000, 0 )
 scale = Vector2( 1.25, 1.25 )
 z_index = -1000
@@ -90,7 +89,7 @@ script = ExtResource( 8 )
 
 [node name="Shop" type="Panel" parent="CanvasLayer/GameUI"]
 anchor_right = 1.0
-margin_bottom = 270.0
+margin_bottom = 285.0
 
 [node name="Money" type="Label" parent="CanvasLayer/GameUI/Shop"]
 anchor_left = 1.0
@@ -145,235 +144,8 @@ __meta__ = {
 [node name="ShipBuyers" type="HBoxContainer" parent="CanvasLayer/GameUI/Shop"]
 anchor_right = 1.0
 margin_left = 14.0
-margin_top = 47.0
-margin_bottom = 175.0
-custom_constants/separation = 119
+margin_top = 60.0
+margin_bottom = 188.0
+custom_constants/separation = 37
 
-[node name="ShipBuyer" type="TextureRect" parent="CanvasLayer/GameUI/Shop/ShipBuyers"]
-material = ExtResource( 3 )
-margin_right = 128.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 0 )
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Label" type="Label" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = 7.0
-margin_right = 65.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 9 )
-text = "Cost: $50"
-
-[node name="Button" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -67.5
-margin_top = -35.0
-margin_right = 67.5
-margin_bottom = 2.0
-custom_fonts/font = ExtResource( 9 )
-text = "Buy"
-
-[node name="Button2" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -66.5
-margin_top = 42.0
-margin_right = 66.5
-margin_bottom = 79.0
-custom_fonts/font = ExtResource( 9 )
-text = "Info"
-
-[node name="ShipBuyer2" type="TextureRect" parent="CanvasLayer/GameUI/Shop/ShipBuyers"]
-material = ExtResource( 3 )
-margin_left = 247.0
-margin_right = 375.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 0 )
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Label" type="Label" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer2"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = 7.0
-margin_right = 65.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 9 )
-text = "Cost: $50"
-
-[node name="Button" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer2"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -67.5
-margin_top = -35.0
-margin_right = 67.5
-margin_bottom = 2.0
-custom_fonts/font = ExtResource( 9 )
-text = "Buy"
-
-[node name="Button2" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer2"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -66.5
-margin_top = 42.0
-margin_right = 66.5
-margin_bottom = 79.0
-custom_fonts/font = ExtResource( 9 )
-text = "Info"
-
-[node name="ShipBuyer3" type="TextureRect" parent="CanvasLayer/GameUI/Shop/ShipBuyers"]
-material = ExtResource( 3 )
-margin_left = 494.0
-margin_right = 622.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 0 )
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Label" type="Label" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer3"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = 7.0
-margin_right = 65.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 9 )
-text = "Cost: $50"
-
-[node name="Button" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer3"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -67.5
-margin_top = -35.0
-margin_right = 67.5
-margin_bottom = 2.0
-custom_fonts/font = ExtResource( 9 )
-text = "Buy"
-
-[node name="Button2" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer3"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -66.5
-margin_top = 42.0
-margin_right = 66.5
-margin_bottom = 79.0
-custom_fonts/font = ExtResource( 9 )
-text = "Info"
-
-[node name="ShipBuyer4" type="TextureRect" parent="CanvasLayer/GameUI/Shop/ShipBuyers"]
-material = ExtResource( 3 )
-margin_left = 741.0
-margin_right = 869.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 0 )
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Label" type="Label" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer4"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = 7.0
-margin_right = 65.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 9 )
-text = "Cost: $50"
-
-[node name="Button" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer4"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -67.5
-margin_top = -35.0
-margin_right = 67.5
-margin_bottom = 2.0
-custom_fonts/font = ExtResource( 9 )
-text = "Buy"
-
-[node name="Button2" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer4"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -66.5
-margin_top = 42.0
-margin_right = 66.5
-margin_bottom = 79.0
-custom_fonts/font = ExtResource( 9 )
-text = "Info"
-
-[node name="ShipBuyer5" type="TextureRect" parent="CanvasLayer/GameUI/Shop/ShipBuyers"]
-material = ExtResource( 3 )
-margin_left = 988.0
-margin_right = 1116.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 128, 0 )
-texture = ExtResource( 10 )
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Label" type="Label" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer5"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = 7.0
-margin_right = 65.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 9 )
-text = "Cost: $50"
-
-[node name="Button" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer5"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -67.5
-margin_top = -35.0
-margin_right = 67.5
-margin_bottom = 2.0
-custom_fonts/font = ExtResource( 9 )
-text = "Buy"
-
-[node name="Button2" type="Button" parent="CanvasLayer/GameUI/Shop/ShipBuyers/ShipBuyer5"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -66.5
-margin_top = 42.0
-margin_right = 66.5
-margin_bottom = 79.0
-custom_fonts/font = ExtResource( 9 )
-text = "Info"
+[node name="ShipBuyer" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
