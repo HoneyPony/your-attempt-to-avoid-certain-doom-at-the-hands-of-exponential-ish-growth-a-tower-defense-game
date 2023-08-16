@@ -91,8 +91,9 @@ func spawn(coord, dir):
 		hue -= 1.0
 	v.get_node("Energy").modulate = Color.from_hsv(hue, color.s, color.v)
 	
-	# Keep track of generation
-	v.generation = generation + 1
+	# Keep track of generation -- either our generation + 1, or
+	# an even more aged value.
+	v.generation = parent_vc.get_generation(coord, generation + 1)
 	
 	# Genetic mutation
 	v.speed = speed * rand_range(0.95, 1 / 0.95)

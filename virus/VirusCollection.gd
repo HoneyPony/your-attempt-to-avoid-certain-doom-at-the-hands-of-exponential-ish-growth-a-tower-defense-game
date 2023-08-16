@@ -6,6 +6,10 @@ var used_coordinates = { Vector2(0, 0): true }
 # coordinates to be avoided - so that the shapes might be more interesting..?
 var avoid_coordinates = {}
 
+# Keeps track of generations that a given cell has taken on. That way, cells
+# that replace killed cells will age... this makes the game more winnable.
+var previous_generations = {}
+
 func random_avoid_value():
 	# Never generate 0
 	var v = 1 + (randi() % 15)
@@ -40,3 +44,12 @@ func _physics_process(delta):
 	position.y += velocity * delta
 	
 	rotation += angular_drift * delta
+	
+func get_generation(cell, from_parent_value):
+	var g = from_parent_value
+	
+	if previous_generations.has(cell):
+		g = max(g, previous_generations[cell] + 1)
+	
+	previous_generations[cell] = g
+	return g
