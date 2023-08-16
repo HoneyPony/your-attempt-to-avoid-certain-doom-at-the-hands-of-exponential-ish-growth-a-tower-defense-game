@@ -8,6 +8,29 @@ export var acceleration_strength = 1000
 export var movement_speed = 256
 
 onready var bullet_spawn_point = $BulletSpawnPoint
+onready var movement_display: Line2D = $MovementDisplay
+
+func update_movement_display():
+	var end = (drag_target_position - position)
+	
+	if end.length_squared() < 16 * 16 * 4 * 4:
+		movement_display.visible = false
+		# Don't even bother computing the points if it won't be visible
+		return
+		
+	var alpha = end.length() / (1024)
+	alpha = clamp(alpha, 0, 1)
+	
+	movement_display.modulate.a = alpha * 0.4
+		
+	movement_display.visible = true
+	
+	# We have more than 2 points so that we can use the width curve
+	var N = movement_display.points.size()
+	for i in range(0, N):
+		var t = (i / float(N - 1))
+		
+		movement_display.points[i] = end * t
 
 func _ready():
 	fire_timer = fire_timer_max
@@ -112,6 +135,7 @@ func _physics_process(delta):
 		
 	#limit_y()	
 	ship_fx()
+	update_movement_display()
 	
 		
 #	var y_range = (position.y - (512 - max_range))

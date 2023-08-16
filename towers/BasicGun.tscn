@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=1]
 [ext_resource path="res://towers/basic_gun.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://fx/flame_particle_smaller.png" type="Texture" id=4]
 [ext_resource path="res://towers/AlwaysPointUp.gd" type="Script" id=5]
 [ext_resource path="res://towers/basic_gun_cannon.png" type="Texture" id=6]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, -2.34486, 0, 0, Vector2( 1, 0 ), -0.119318, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.0458716, 1 )
@@ -20,6 +23,13 @@ collision_mask = 2
 script = ExtResource( 3 )
 acceleration_strength = 3000
 movement_speed = 1024
+
+[node name="MovementDisplay" type="Line2D" parent="."]
+z_index = -1
+points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+width = 50.0
+width_curve = SubResource( 3 )
+default_color = Color( 1, 1, 1, 0.501961 )
 
 [node name="BasicGun" type="Sprite" parent="."]
 material = ExtResource( 1 )
