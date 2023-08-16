@@ -4,6 +4,7 @@ var Virus = preload("res://virus/Virus.tscn")
 var VirusDebris = preload("res://virus/VirusDebris.tscn")
 
 var BasicBullet = preload("res://towers/BasicBullet.tscn")
+var SideLaserBullet = preload("res://towers/SideLaserBullet.tscn")
 
 var game_camera: Camera2D = null
 
