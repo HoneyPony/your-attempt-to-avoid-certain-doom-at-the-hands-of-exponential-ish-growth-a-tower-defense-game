@@ -3,8 +3,13 @@ extends Area2D
 var fire_timer = 0
 var fire_timer_max = 0.7
 
+var velocity: Vector2 = Vector2.ZERO
+export var acceleration_strength = 1000
+export var movement_speed = 256
+
 func _ready():
 	fire_timer = fire_timer_max
+	drag_target_position = position
 
 func fire():
 	var bullet = GS.BasicBullet.instance()
@@ -38,6 +43,59 @@ func limit_y():
 onready var ship_sprite = $BasicGun
 func ship_fx():
 	ship_sprite.position.y = 8 * sin(Time.get_ticks_msec() / 1000.0)
+	
+	var rot_target = (velocity.x / movement_speed) * (TAU / 16.0)
+	ship_sprite.rotation += (rot_target - ship_sprite.rotation) * 0.09
+
+func compute_acceleration(desired_velocity: Vector2, delta: float, zero_threshold: float = 0.0) -> Vector2:
+	var accel_direction = (desired_velocity - velocity).normalized()
+	
+	var delta_accel_strength = acceleration_strength * delta
+	
+#	if (desired_velocity - Vector2.ZERO).length_squared() <= zero_threshold * zero_threshold:
+#		delta_accel_strength *= drift_acceleration_multiplier
+#	elif desired_velocity.dot(velocity) < 0:
+#		# Don't apply back-accel at same time as drift.
+#		delta_accel_strength *= back_acceleration_multiplier
+	
+	var max_acceleration = (desired_velocity - velocity).length()
+	var actual_accel_amount = min(max_acceleration, delta_accel_strength)
+	
+	return accel_direction * actual_accel_amount
+	
+func perform_physics(delta):
+	var target_point = drag_target_position
+	
+	var direction_vector = (target_point - global_position)
+	var distance = direction_vector.length()
+	var desired_velocity: Vector2 = direction_vector.normalized() * movement_speed
+	
+	
+	
+	# This is a nice bit of physics to calculate when we should be decelerating
+	# based on our current velocity, in order to reach the target position right
+	# on time.
+	var position_boundary_for_deceleration = velocity.length_squared() / acceleration_strength
+	
+	var should_be_decelerating = distance < position_boundary_for_deceleration
+	
+	if should_be_decelerating:
+		var acceleration: Vector2 = -velocity.normalized() * acceleration_strength
+		acceleration *= delta
+		
+		var max_acceleration = velocity.length()
+		if acceleration.length() > max_acceleration:
+			acceleration = acceleration.normalized() * max_acceleration
+			
+		velocity += acceleration # already multiplied by delta
+		if velocity.length_squared() < 0.5 * 0.5:
+			velocity = Vector2.ZERO
+	else:
+		var acceleration: Vector2 = compute_acceleration(desired_velocity, delta)	
+		velocity += acceleration
+	
+	#move_and_slide(velocity)
+	position += velocity * delta
 
 func _physics_process(delta):
 	fire_timer -= delta
@@ -45,12 +103,13 @@ func _physics_process(delta):
 		fire_timer = fire_timer_max
 		fire()
 		
-	if drag_state != DragState.NOT_DRAGGING:
-		position = drag_target_position
+	#if drag_state != DragState.NOT_DRAGGING:
+	#	position = drag_target_position
 		
-	limit_y()
+	#limit_y()
 	
 	ship_fx()
+	perform_physics(delta)
 		
 #	var y_range = (position.y - (512 - max_range))
 #	#print(y_range)
@@ -93,14 +152,14 @@ func _on_BasicGun_input_event(viewport, event, shape_idx):
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:
 				drag_state = DragState.DRAG_MOUSE
-				drag_target_position = position
+				#drag_target_position = position
 				drag_offset = position - tform_drag_pos(event.position)
 	
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			drag_state = DragState.DRAG_TOUCH
 			drag_touch_index = event.index
-			drag_target_position = position
+			#drag_target_position = position
 			drag_offset = position - tform_drag_pos(event.position)
 				
 				
@@ -117,11 +176,11 @@ func _input(event):
 	
 	if drag_state == DragState.DRAG_MOUSE:
 		if event is InputEventMouseMotion:
-			position = tform_drag_pos(event.position) + drag_offset
-			drag_target_position = position
-			limit_y()
+			drag_target_position = tform_drag_pos(event.position) + drag_offset
+			#drag_target_position = position
+			#limit_y()
 	elif drag_state == DragState.DRAG_TOUCH:
 		if event is InputEventScreenDrag and event.index == drag_touch_index:
-			position = tform_drag_pos(event.position) + drag_offset
-			drag_target_position = position
-			limit_y()
+			drag_target_position = tform_drag_pos(event.position) + drag_offset
+			#drag_target_position = position
+			#limit_y()
