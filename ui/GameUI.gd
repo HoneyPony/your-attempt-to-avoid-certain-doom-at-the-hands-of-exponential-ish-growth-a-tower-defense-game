@@ -5,7 +5,7 @@ onready var lives_counter = $Shop/Lives
 
 onready var shop_anim = $Shop/AnimationPlayer
 
-var shop_open = true
+var shop_open = false
 
 func _process(delta):
 	money_counter.text = str("$ ", GS.money)

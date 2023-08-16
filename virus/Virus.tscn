@@ -84,6 +84,7 @@ shader_param/noise = SubResource( 4 )
 extents = Vector2( 20, 20 )
 
 [node name="Virus" type="Node2D"]
+z_index = -20
 script = ExtResource( 2 )
 
 [node name="Energy" type="Sprite" parent="."]
