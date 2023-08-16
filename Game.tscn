@@ -17,7 +17,6 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.2805
 [node name="Node2D" type="Node2D"]
 
 [node name="StarFX" type="CPUParticles2D" parent="."]
-material = ExtResource( 3 )
 position = Vector2( -790, 0 )
 amount = 300
 lifetime = 10.0
@@ -33,6 +32,25 @@ initial_velocity_random = 0.71
 scale_amount = 1.5
 scale_amount_random = 1.0
 scale_amount_curve = SubResource( 1 )
+color = Color( 0.305882, 0.305882, 0.305882, 1 )
+
+[node name="BrightStarFX" type="CPUParticles2D" parent="."]
+position = Vector2( -790, 0 )
+amount = 60
+lifetime = 10.0
+preprocess = 500.0
+speed_scale = 0.02
+texture = ExtResource( 4 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 1360 )
+spread = 3.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 500.0
+initial_velocity_random = 0.71
+scale_amount = 1.5
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 1 )
+color = Color( 0.470588, 0.470588, 0.470588, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
