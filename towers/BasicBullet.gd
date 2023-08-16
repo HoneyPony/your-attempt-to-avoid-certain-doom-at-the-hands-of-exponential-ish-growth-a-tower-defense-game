@@ -7,8 +7,8 @@ var lifetime = 4
 
 func _ready():
 	# Make bullets spawn in small then grow
-	scale.x = 0.05
-	scale.y = 0.05
+	scale.x = 0.2
+	scale.y = 0.2
 
 func _physics_process(delta):
 	position.y -= delta * velocity

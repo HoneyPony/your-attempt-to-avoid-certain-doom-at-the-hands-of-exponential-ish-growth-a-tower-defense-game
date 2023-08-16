@@ -7,13 +7,15 @@ var velocity: Vector2 = Vector2.ZERO
 export var acceleration_strength = 1000
 export var movement_speed = 256
 
+onready var bullet_spawn_point = $BulletSpawnPoint
+
 func _ready():
 	fire_timer = fire_timer_max
 	drag_target_position = position
 
-func fire():
+func fire(delta):
 	var bullet = GS.BasicBullet.instance()
-	bullet.position = position
+	bullet.position = position + bullet_spawn_point.position + velocity * delta
 	get_parent().add_child(bullet)
 	
 const SCREEN_END_Y = 1280
@@ -98,18 +100,19 @@ func perform_physics(delta):
 	position += velocity * delta
 
 func _physics_process(delta):
+	perform_physics(delta)
+	
 	fire_timer -= delta
 	if fire_timer <= 0:
 		fire_timer = fire_timer_max
-		fire()
+		fire(delta)
 		
 	#if drag_state != DragState.NOT_DRAGGING:
 	#	position = drag_target_position
 		
-	#limit_y()
-	
+	#limit_y()	
 	ship_fx()
-	perform_physics(delta)
+	
 		
 #	var y_range = (position.y - (512 - max_range))
 #	#print(y_range)

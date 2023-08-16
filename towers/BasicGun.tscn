@@ -18,7 +18,7 @@ extents = Vector2( 64, 64 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 3 )
-acceleration_strength = 1600
+acceleration_strength = 3000
 movement_speed = 1024
 
 [node name="BasicGun" type="Sprite" parent="."]
@@ -61,5 +61,8 @@ shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="BulletSpawnPoint" type="Position2D" parent="."]
+position = Vector2( 0, -28 )
 
 [connection signal="input_event" from="." to="." method="_on_BasicGun_input_event"]
