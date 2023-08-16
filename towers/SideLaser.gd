@@ -4,7 +4,7 @@ const SIDE_LASER_POSITION = 656
 
 var fire_timer = 0
 #var fire_timer_max = 0.3
-var fire_timer_max = 0.3
+var fire_timer_max = 0.16
 
 onready var bullet_spawn_point = $BulletSpawnPoint
 
