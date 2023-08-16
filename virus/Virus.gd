@@ -32,6 +32,12 @@ func _ready():
 	reset_spawn_timer()
 
 func destroy():
+	if is_queued_for_deletion():
+		return
+		
+	# We get money when a virus is destroyed
+	GS.money += 1
+	
 	parent_vc.free_coord(coord)
 	queue_free()
 	
