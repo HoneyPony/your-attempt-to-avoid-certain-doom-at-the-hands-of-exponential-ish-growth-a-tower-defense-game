@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933334"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="heart_icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="5.1241863"
+     inkscape:cx="21.076517"
+     inkscape:cy="52.691293"
+     inkscape:window-width="1620"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     units="px"
+     width="64px"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#505050" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#ffffff;stroke-width:1.05833;stroke-linejoin:round"
+       d="M 7.9000349,3.0464187 C 4.4405425,-0.7745132 0.30980529,2.8398817 0.3614395,6.0412031 0.41307373,9.2425245 4.6470793,13.47653 8.5196455,16.729486 12.527802,12.48084 16.97935,7.9254339 16.430271,4.8024 15.933221,1.975296 10.902965,-0.92955585 7.9000349,3.0464187 Z"
+       id="path309"
+       sodipodi:nodetypes="cscsc" />
+  </g>
+</svg>
