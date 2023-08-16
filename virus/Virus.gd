@@ -34,6 +34,11 @@ func _ready():
 func destroy():
 	parent_vc.free_coord(coord)
 	queue_free()
+	
+	var debris = GS.VirusDebris.instance()
+	debris.set_color($Energy.modulate)
+	debris.position = position
+	get_parent().add_child(debris)
 
 func reset_spawn_timer():
 	spawn_timer = parent_vc.spawn_timer_max * rand_range(0.95, 1.05) * speed

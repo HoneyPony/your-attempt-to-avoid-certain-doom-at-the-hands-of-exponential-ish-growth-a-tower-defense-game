@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=1]
+[ext_resource path="res://fx/virus_debris_1.png" type="Texture" id=2]
+[ext_resource path="res://fx/virus_depris_2.png" type="Texture" id=3]
+[ext_resource path="res://virus/VirusDebris.gd" type="Script" id=4]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0.916667, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -6.61876, 0.0, 0, 0 ]
+
+[node name="VirusDebris" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Particles1" type="CPUParticles2D" parent="."]
+scale = Vector2( 4, 4 )
+emitting = false
+amount = 30
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.95
+lifetime_randomness = 1.0
+texture = ExtResource( 2 )
+emission_shape = 2
+emission_rect_extents = Vector2( 2, 2 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 12.0
+initial_velocity_random = 0.64
+damping = 1.1
+scale_amount = 1.5
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 1 )
+color = Color( 1, 0, 0, 1 )
+
+[node name="Particles2" type="CPUParticles2D" parent="."]
+material = ExtResource( 1 )
+scale = Vector2( 4, 4 )
+emitting = false
+amount = 3
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 2, 2 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 12.0
+initial_velocity_random = 0.07
+angle = 720.0
+angle_random = 1.0
+scale_amount_curve = SubResource( 1 )

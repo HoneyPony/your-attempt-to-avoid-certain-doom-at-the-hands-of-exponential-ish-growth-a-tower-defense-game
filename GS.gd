@@ -1,6 +1,7 @@
 extends Node
 
 var Virus = preload("res://virus/Virus.tscn")
+var VirusDebris = preload("res://virus/VirusDebris.tscn")
 
 var BasicBullet = preload("res://towers/BasicBullet.tscn")
 
