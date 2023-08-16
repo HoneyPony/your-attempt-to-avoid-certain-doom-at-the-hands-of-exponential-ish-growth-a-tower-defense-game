@@ -10,6 +10,15 @@ onready var ship_sprite = $ShipSprite
 # All towers should have the movement display
 onready var movement_display: Line2D = $MovementDisplay
 
+# Bounds so that ships always stay on screen
+const MAX_X = 700
+const MAX_Y = 1250
+
+func bound_ship_position(pos: Vector2) -> Vector2:
+	pos.x = clamp(pos.x, -MAX_X, MAX_X)
+	pos.y = clamp(pos.y, -MAX_Y, MAX_Y)
+	return pos
+
 func update_movement_display():
 	var end = (drag_target_position - position)
 	
@@ -79,6 +88,9 @@ func perform_physics(delta):
 
 func _physics_process(delta):
 	perform_physics(delta)
+	
+	position = bound_ship_position(position)
+	
 	update_movement_display()
 
 enum DragState {
@@ -138,10 +150,12 @@ func _input(event):
 	if drag_state == DragState.DRAG_MOUSE:
 		if event is InputEventMouseMotion:
 			drag_target_position = tform_drag_pos(event.position) + drag_offset
+			drag_target_position = bound_ship_position(drag_target_position)
 			#drag_target_position = position
 			#limit_y()
 	elif drag_state == DragState.DRAG_TOUCH:
 		if event is InputEventScreenDrag and event.index == drag_touch_index:
 			drag_target_position = tform_drag_pos(event.position) + drag_offset
+			drag_target_position = bound_ship_position(drag_target_position)
 			#drag_target_position = position
 			#limit_y()

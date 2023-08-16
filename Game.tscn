@@ -214,7 +214,7 @@ spawn_timer_max = 0.3
 position = Vector2( 180, 331 )
 
 [node name="BasicGun2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 301, 449 )
+position = Vector2( 677, 1256 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
