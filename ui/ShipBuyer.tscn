@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=1]
 [ext_resource path="res://ui/Audiowide24Pt.tres" type="DynamicFont" id=2]
 [ext_resource path="res://ui/basic_gun_SHOP_ICON.png" type="Texture" id=3]
 [ext_resource path="res://MainTheme.tres" type="Theme" id=4]
+[ext_resource path="res://ui/ShipBuyer.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0313726, 0.027451, 0.0784314, 1 )
@@ -12,7 +13,6 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0.341176, 0.258824, 0.494118, 1 )
-border_blend = true
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -26,11 +26,12 @@ rect_min_size = Vector2( 128, 0 )
 theme = ExtResource( 4 )
 texture = ExtResource( 3 )
 expand = true
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="CostLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -42,7 +43,7 @@ margin_bottom = 44.0
 custom_fonts/font = ExtResource( 2 )
 text = "Cost: $50"
 
-[node name="Button" type="Button" parent="."]
+[node name="BuyButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -72.0
@@ -53,7 +54,7 @@ custom_fonts/font = ExtResource( 2 )
 disabled = true
 text = "Buy"
 
-[node name="Button2" type="Button" parent="."]
+[node name="InfoButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://towers/SideLaser.gd" type="Script" id=1]
+[ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=2]
+[ext_resource path="res://towers/side_laser.png" type="Texture" id=3]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, -2.34486, 0, 0, Vector2( 1, 0 ), -0.119318, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 48, 80 )
+
+[node name="SideLaser" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+acceleration_strength = 1200
+movement_speed = 600
+
+[node name="MovementDisplay" type="Line2D" parent="."]
+z_index = -1
+points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+width = 50.0
+width_curve = SubResource( 3 )
+default_color = Color( 1, 1, 1, 0.501961 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ShipSprite" type="Sprite" parent="."]
+material = ExtResource( 2 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 23, 0 )
+shape = SubResource( 1 )
+
+[node name="BulletSpawnPoint" type="Position2D" parent="."]
+position = Vector2( 0, -28 )
+
+[connection signal="input_event" from="." to="." method="_on_BasicGun_input_event"]
