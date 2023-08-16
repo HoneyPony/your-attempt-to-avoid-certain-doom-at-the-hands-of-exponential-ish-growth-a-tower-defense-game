@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://virus/VirusCollection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://towers/BasicGun.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://ui/heart_icon.svg" type="Texture" id=7]
 [ext_resource path="res://ui/GameUI.gd" type="Script" id=8]
 [ext_resource path="res://towers/side_laser.png" type="Texture" id=9]
-[ext_resource path="res://towers/SideLaser.tscn" type="PackedScene" id=10]
 [ext_resource path="res://fx/background_fx.png" type="Texture" id=11]
 [ext_resource path="res://fx/BackgroundFX.gd" type="Script" id=12]
 
@@ -75,10 +74,19 @@ script = ExtResource( 5 )
 
 [node name="VirusCollection" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -1250 )
-spawn_timer_max = 4.0
+spawn_timer_max = 0.5
 
 [node name="BasicGun" parent="." instance=ExtResource( 2 )]
 position = Vector2( 180, 331 )
+
+[node name="BasicGun2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 301, 449 )
+
+[node name="BasicGun3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 145, 653 )
+
+[node name="BasicGun4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 309, 802 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -88,6 +96,9 @@ anchor_bottom = 1.0
 mouse_filter = 2
 theme = ExtResource( 6 )
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Shop" type="Panel" parent="CanvasLayer/GameUI"]
 anchor_right = 1.0
@@ -156,6 +167,3 @@ custom_constants/separation = 37
 margin_left = 165.0
 margin_right = 293.0
 texture = ExtResource( 9 )
-
-[node name="SideLaser" parent="." instance=ExtResource( 10 )]
-position = Vector2( 654, 679 )
