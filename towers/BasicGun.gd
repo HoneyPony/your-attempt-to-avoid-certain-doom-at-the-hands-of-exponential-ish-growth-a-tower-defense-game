@@ -11,6 +11,7 @@ func _ready():
 func fire(delta):
 	var bullet = GS.BasicBullet.instance()
 	bullet.position = position + bullet_spawn_point.position + velocity * delta
+	bullet.hits_left = 1
 	get_parent().add_child(bullet)
 
 func ship_fx():

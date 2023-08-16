@@ -82,12 +82,6 @@ position = Vector2( 180, 331 )
 [node name="BasicGun2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 301, 449 )
 
-[node name="BasicGun3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 145, 653 )
-
-[node name="BasicGun4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 309, 802 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameUI" type="Control" parent="CanvasLayer"]
