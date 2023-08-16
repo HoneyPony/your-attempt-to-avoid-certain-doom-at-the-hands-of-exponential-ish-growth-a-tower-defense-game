@@ -69,6 +69,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0.0, 180.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("UpgradesTab:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShopTab:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -120,6 +144,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 278.0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("UpgradesTab:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ShopTab:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "ShowShop"
@@ -159,6 +207,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 180.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShopTab:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UpgradesTab:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="Node2D" type="Node2D"]
@@ -280,6 +352,7 @@ texture = ExtResource( 7 )
 expand = true
 
 [node name="ShopTab" type="Button" parent="CanvasLayer/GameUI/Shop"]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -183.0
@@ -300,6 +373,7 @@ pressed = true
 text = "Shop"
 
 [node name="UpgradesTab" type="Button" parent="CanvasLayer/GameUI/Shop"]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -18.0
