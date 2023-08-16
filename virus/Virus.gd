@@ -8,6 +8,8 @@ var direction_preference = null
 
 var generation = 1
 
+var armor_on = [true, true, true, true]
+
 # Only attempt to spawn a certain number of times before giving up forever.
 #var spawns_left = 7
 
@@ -18,6 +20,14 @@ var speed = 1.0
 
 # Strength: the highest generation allowed of this virus.
 var strength = 12
+
+enum State {
+	SPAWNING,
+	FLYING
+}
+
+var state = State.SPAWNING
+var flying_target_x = 0
 
 func _ready():
 	parent_vc = get_parent()
@@ -45,19 +55,55 @@ func destroy():
 	debris.set_color($Energy.modulate)
 	debris.position = position
 	get_parent().add_child(debris)
+	
+	# Disable any more collisions
+	$Area2D.collision_layer = 0
+	$Area2D.collision_mask = 0
 
 func reset_spawn_timer():
 	spawn_timer = parent_vc.spawn_timer_max * rand_range(0.95, 1.05) * speed
 
+const STATE_CHANGE_Y = 1280 - 400
+
 func _physics_process(delta):
 	# Each frame, we try to spawn, depending on the spawn speed
-	spawn_timer -= delta
-	if spawn_timer < 0:
-		try_spawns()
-		#if spawns_left > 0:
-		# Reset timer
-		reset_spawn_timer()
-	
+	if state == State.SPAWNING:
+		spawn_timer -= delta
+		if spawn_timer < 0:
+			try_spawns()
+			#if spawns_left > 0:
+			# Reset timer
+			reset_spawn_timer()
+			
+		if global_position.y >= STATE_CHANGE_Y:
+			state = State.FLYING
+			
+			var cur_pos = global_position
+			var cur_rot = global_rotation
+			
+			var np = get_parent().get_parent()
+			get_parent().remove_child(self)
+			np.add_child(self)
+			
+			global_position = cur_pos
+			global_rotation = cur_rot
+			
+			flying_target_x = 32 * ((randi() % 32) - 16)
+			
+			for i in range(0, 4):
+				get_node(str("Armor", (i + 1))).activate()
+	else:
+		# When we're in the flying state, we simply travel downwards at a relatively
+		# low speed.
+		position.y += 16 * delta
+		
+		var step_to_tar = flying_target_x - position.x
+		#print(step_to_tar)
+		var max_step = 80 * delta
+		step_to_tar = sign(step_to_tar) * min(abs(step_to_tar), max_step)
+		
+		position.x += step_to_tar
+		
 	# Animate the spawn/jitter effects
 	animate()
 	
@@ -75,7 +121,9 @@ func animate():
 	scale += (target_scale - scale) * 0.09
 	
 	rotation = lerp_angle(rotation, target_rot, 0.09)
-	position += (target_pos - position) * 0.09
+	
+	if state == State.SPAWNING:
+		position += (target_pos - position) * 0.09
 
 func spawn(coord, dir):
 	parent_vc.used_coordinates[coord] = true
@@ -155,12 +203,26 @@ func try_spawns():
 			return
 
 
+
 # Called when a physics body (i.e. a bullet) hits the area2d.
 func _on_Area2D_body_entered(body):
 	body.hit_something() # Tell the bullet to despawn if relevant, etc
 	
-	# This virus is now dead
-	destroy()
-	# Disable any more collisions
-	$Area2D.collision_layer = 0
-	$Area2D.collision_mask = 0
+	# Immediately die if spawning
+	if state == State.SPAWNING:
+		destroy()
+	else:
+		# Otherwise, we have to deal with health
+		
+		var active_armor = []
+		for i in range(0, 4):
+			if armor_on[i]:
+				active_armor.append(i)
+			
+		if active_armor.empty():
+			destroy()
+		else:
+			# If we still have armor, destroy one of it.
+			var a = active_armor[randi() % active_armor.size()]
+			armor_on[a] = false
+			get_node(str("Armor", (a + 1))).destroy()
