@@ -38,12 +38,10 @@ script = ExtResource( 5 )
 
 [node name="VirusCollection" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -1250 )
+spawn_timer_max = 4.0
 
 [node name="BasicGun" parent="." instance=ExtResource( 2 )]
 position = Vector2( 180, 331 )
-
-[node name="BasicGun2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -158, 328 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
