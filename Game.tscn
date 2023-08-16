@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://virus/VirusCollection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://towers/BasicGun.tscn" type="PackedScene" id=2]
@@ -12,9 +12,141 @@
 [ext_resource path="res://towers/SideLaser.tscn" type="PackedScene" id=10]
 [ext_resource path="res://fx/background_fx.png" type="Texture" id=11]
 [ext_resource path="res://fx/BackgroundFX.gd" type="Script" id=12]
+[ext_resource path="res://ui/shop_close_icon.svg" type="Texture" id=13]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.280571, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "HideShop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -285.0, -7.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:margin_bottom")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 278.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CloseButtonPivot:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -285.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CloseButtonPivot/CloseButton:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CloseButtonPivot:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "ShowShop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -7.0, -285.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:margin_bottom")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 278.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CloseButtonPivot:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 0.0 ]
+}
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,7 +160,6 @@ script = ExtResource( 12 )
 
 [node name="Helper" type="Sprite" parent="BackgroundFX"]
 position = Vector2( -3024, 0 )
-scale = Vector2( 1, 1 )
 z_index = -1000
 texture = ExtResource( 11 )
 
@@ -74,8 +205,8 @@ zoom = Vector2( 1.25, 1.25 )
 script = ExtResource( 5 )
 
 [node name="VirusCollection" parent="." instance=ExtResource( 1 )]
-position = Vector2( -32, -463 )
-spawn_timer_max = 1.0
+position = Vector2( -66, -1260 )
+spawn_timer_max = 0.3
 
 [node name="BasicGun" parent="." instance=ExtResource( 2 )]
 position = Vector2( 180, 331 )
@@ -96,31 +227,32 @@ __meta__ = {
 }
 
 [node name="Shop" type="Panel" parent="CanvasLayer/GameUI"]
-anchor_right = 1.0
-margin_bottom = 285.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -576.0
+margin_top = -285.0
+margin_right = 576.0
 
 [node name="Money" type="Label" parent="CanvasLayer/GameUI/Shop"]
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -297.0
-margin_top = 11.0
-margin_right = -10.0
-margin_bottom = 73.0
+margin_left = -299.0
+margin_top = -131.0
+margin_right = -12.0
+margin_bottom = -69.0
 theme = ExtResource( 6 )
 text = "$ 100000"
 align = 2
 
 [node name="Lives" type="Label" parent="CanvasLayer/GameUI/Shop"]
 anchor_left = 1.0
-anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -242.0
-margin_top = 75.0
-margin_right = -10.0
-margin_bottom = 137.0
+margin_left = -244.0
+margin_top = -76.0
+margin_right = -12.0
+margin_bottom = -14.0
 theme = ExtResource( 6 )
 text = "200"
 align = 2
@@ -135,19 +267,14 @@ expand = true
 
 [node name="ShopLabel" type="Label" parent="CanvasLayer/GameUI/Shop"]
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
 margin_left = -173.0
-margin_top = -3.0
+margin_top = -67.0
 margin_right = 173.0
-margin_bottom = 59.0
+margin_bottom = -5.0
 theme = ExtResource( 6 )
 text = "Shop"
 align = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="ShipBuyers" type="HBoxContainer" parent="CanvasLayer/GameUI/Shop"]
 anchor_right = 1.0
@@ -155,6 +282,9 @@ margin_left = 14.0
 margin_top = 60.0
 margin_bottom = 188.0
 custom_constants/separation = 37
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ShipBuyer" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 
@@ -162,8 +292,32 @@ custom_constants/separation = 37
 margin_left = 165.0
 margin_right = 293.0
 texture = ExtResource( 9 )
+cost = 2000
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameUI/Shop"]
+anims/HideShop = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+anims/ShowShop = SubResource( 4 )
+
+[node name="CloseButtonPivot" type="Control" parent="CanvasLayer/GameUI/Shop"]
+margin_left = 40.0
+margin_top = -41.0
+margin_right = 80.0
+margin_bottom = -1.0
+
+[node name="CloseButton" type="TextureButton" parent="CanvasLayer/GameUI/Shop/CloseButtonPivot"]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="SideLaser" parent="." instance=ExtResource( 10 )]
 
 [node name="SideLaser2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 19, -220 )
+
+[connection signal="pressed" from="CanvasLayer/GameUI/Shop/CloseButtonPivot/CloseButton" to="CanvasLayer/GameUI" method="_on_CloseButton_pressed"]
