@@ -119,33 +119,54 @@ var drag_target_position: Vector2 = Vector2.ZERO
 func tform_drag_pos(pos: Vector2) -> Vector2:
 	return GS.game_camera.to_global(pos * GS.game_camera.zoom)
 
+func try_to_grab_drag(touch_index: int, event_pos: Vector2) -> bool:
+	var distance = (position - tform_drag_pos(event_pos)).length_squared()
+	return GS.try_grab_selection(self, touch_index, distance)
+
+const MOUSE_TOUCH_INDEX = -1
+
 # Only activate dragging states through inputs that occur on this Area2D.
 func _on_BasicGun_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:
-				drag_state = DragState.DRAG_MOUSE
-				#drag_target_position = position
-				drag_offset = position - tform_drag_pos(event.position)
+				if try_to_grab_drag(MOUSE_TOUCH_INDEX, event.position):
+					# Must deselect in case we were already dragging
+					drag_state = DragState.DRAG_MOUSE
+					# This MUST be updated for deselect()
+					drag_touch_index = MOUSE_TOUCH_INDEX
+					#drag_target_position = position
+					drag_offset = position - tform_drag_pos(event.position)
 	
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			drag_state = DragState.DRAG_TOUCH
-			drag_touch_index = event.index
-			#drag_target_position = position
-			drag_offset = position - tform_drag_pos(event.position)
+			if try_to_grab_drag(event.index, event.position):
+				# Must deselect in case we were already dragging
+				deselect()
 				
+				drag_state = DragState.DRAG_TOUCH
+				drag_touch_index = event.index
+				#drag_target_position = position
+				drag_offset = position - tform_drag_pos(event.position)
+				
+		
+func deselect():
+	drag_state = DragState.NOT_DRAGGING
+	
+	# If we are currently owning this drag event, or whatever, give it up
+	if GS.selected_ship_map.get(drag_touch_index) == self:
+		GS.selected_ship_map[drag_touch_index] = null
 				
 func _input(event):
 	# Dragging states may be deactivated by any input event.
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and not event.pressed:
 			if drag_state == DragState.DRAG_MOUSE:
-				drag_state = DragState.NOT_DRAGGING
+				deselect()
 	
-	if event is InputEventScreenTouch:
+	if event is InputEventScreenTouch and event.index == drag_touch_index:
 		if drag_state == DragState.DRAG_TOUCH and not event.pressed:
-			drag_state = DragState.NOT_DRAGGING
+			deselect()
 	
 	if drag_state == DragState.DRAG_MOUSE:
 		if event is InputEventMouseMotion:
