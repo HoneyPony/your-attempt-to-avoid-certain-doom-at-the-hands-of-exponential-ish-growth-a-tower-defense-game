@@ -281,19 +281,41 @@ align = 1
 
 [node name="ShipBuyers" type="HBoxContainer" parent="CanvasLayer/GameUI/Shop"]
 anchor_right = 1.0
-margin_left = 14.0
-margin_top = 60.0
-margin_bottom = 188.0
-custom_constants/separation = 37
-__meta__ = {
-"_edit_lock_": true
-}
+margin_left = 36.0
+margin_top = 61.0
+margin_right = 22.0
+margin_bottom = 189.0
+custom_constants/separation = 63
 
 [node name="ShipBuyer" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 
 [node name="ShipBuyer2" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
-margin_left = 165.0
-margin_right = 293.0
+margin_left = 191.0
+margin_right = 319.0
+texture = ExtResource( 9 )
+cost = 2000
+
+[node name="ShipBuyer3" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
+margin_left = 382.0
+margin_right = 510.0
+texture = ExtResource( 9 )
+cost = 2000
+
+[node name="ShipBuyer4" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
+margin_left = 573.0
+margin_right = 701.0
+texture = ExtResource( 9 )
+cost = 2000
+
+[node name="ShipBuyer5" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
+margin_left = 764.0
+margin_right = 892.0
+texture = ExtResource( 9 )
+cost = 2000
+
+[node name="ShipBuyer6" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
+margin_left = 955.0
+margin_right = 1083.0
 texture = ExtResource( 9 )
 cost = 2000
 

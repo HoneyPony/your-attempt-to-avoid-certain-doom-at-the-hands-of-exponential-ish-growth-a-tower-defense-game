@@ -36,35 +36,36 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = 13.0
-margin_right = 65.0
-margin_bottom = 44.0
+margin_left = -97.5
+margin_top = 11.0
+margin_right = 97.5
+margin_bottom = 42.0
 custom_fonts/font = ExtResource( 2 )
-text = "Cost: $50"
-
-[node name="BuyButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -72.0
-margin_top = -50.0
-margin_right = 72.0
-margin_bottom = -13.0
-custom_fonts/font = ExtResource( 2 )
-disabled = true
-text = "Buy"
+text = "$20000"
+align = 1
 
 [node name="InfoButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -88.0
+margin_top = -52.0
+margin_right = 88.0
+margin_bottom = -15.0
+custom_fonts/font = ExtResource( 2 )
+text = "Info"
+
+[node name="BuyButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -72.0
-margin_top = 45.0
-margin_right = 72.0
-margin_bottom = 82.0
+margin_left = -88.0
+margin_top = 47.0
+margin_right = 88.0
+margin_bottom = 84.0
 custom_fonts/font = ExtResource( 2 )
-text = "Info"
+disabled = true
+text = "Buy"
 
 [node name="Panel" type="Panel" parent="."]
 show_behind_parent = true
