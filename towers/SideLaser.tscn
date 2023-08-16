@@ -33,6 +33,7 @@ __meta__ = {
 [node name="ShipSprite" type="Sprite" parent="."]
 material = ExtResource( 2 )
 scale = Vector2( 4, 4 )
+z_index = 2
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
@@ -43,6 +44,9 @@ position = Vector2( 23, 0 )
 shape = SubResource( 1 )
 
 [node name="BulletSpawnPoint" type="Position2D" parent="."]
+position = Vector2( -20, -10 )
+
+[node name="Front" type="Position2D" parent="."]
 position = Vector2( -20, -10 )
 
 [connection signal="input_event" from="." to="." method="_on_BasicGun_input_event"]

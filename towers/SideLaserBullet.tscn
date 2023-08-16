@@ -11,6 +11,20 @@ extents = Vector2( 56, 6 )
 collision_mask = 0
 script = ExtResource( 3 )
 
+[node name="Front" type="Line2D" parent="."]
+position = Vector2( 59, 0 )
+points = PoolVector2Array( 0, 0, -59, 0 )
+width = 4.0
+default_color = Color( 0.65098, 1, 0.65098, 1 )
+begin_cap_mode = 2
+
+[node name="End" type="Line2D" parent="."]
+position = Vector2( 59, 0 )
+points = PoolVector2Array( 0, 0, 53, 0 )
+width = 4.0
+default_color = Color( 0.65098, 1, 0.65098, 1 )
+begin_cap_mode = 2
+
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 2 )
 position = Vector2( 56, 0 )
