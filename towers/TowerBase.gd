@@ -138,6 +138,9 @@ func _on_BasicGun_input_event(viewport, event, shape_idx):
 					#drag_target_position = position
 					drag_offset = position - tform_drag_pos(event.position)
 	
+					# We are now the upgrade target
+					GS.upgrade_target_ship = self
+	
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			if try_to_grab_drag(event.index, event.position):
@@ -148,6 +151,9 @@ func _on_BasicGun_input_event(viewport, event, shape_idx):
 				drag_touch_index = event.index
 				#drag_target_position = position
 				drag_offset = position - tform_drag_pos(event.position)
+				
+				# We are now the upgrade target
+				GS.upgrade_target_ship = self
 				
 		
 func deselect():

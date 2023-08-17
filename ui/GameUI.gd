@@ -21,6 +21,9 @@ func _ready():
 func _process(delta):
 	money_counter.text = str("$ ", GS.money)
 	lives_counter.text = str(GS.lives)
+	
+	# Show the upgrade icon if the upgrade panel is visible.
+	GS.show_upgrade_icon = (shop_open and upgrade_panel.visible)
 
 
 func _on_CloseButton_pressed():

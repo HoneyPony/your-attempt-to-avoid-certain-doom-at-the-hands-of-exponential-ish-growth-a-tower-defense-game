@@ -13,6 +13,13 @@ var game_camera: Camera2D = null
 var selected_ship_map: Dictionary
 var selected_ship_distance: Dictionary
 
+# The upgrade target ship is always simply set to the previously
+# selected ship.
+var upgrade_target_ship: Node2D = null
+
+# Whether the upgrade icon should be shown. Based on the menu state.
+var show_upgrade_icon = false
+
 func get_selected_ship(touch_index: int) -> Node2D:
 	return selected_ship_map.get(touch_index, null)
 	
