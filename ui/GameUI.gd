@@ -37,7 +37,7 @@ func buy_left_upgrade():
 		
 	var upgrades = GS.upgrades[ship.ship_type]
 	
-	if ship.left_level > upgrades.left_path.size():
+	if ship.left_level >= upgrades.left_path.size():
 		# This shouldn't happen, but apparently does...?
 		print("warning: cannot buy another left upgrade!")
 		return
@@ -64,7 +64,7 @@ func buy_right_upgrade():
 		
 	var upgrades = GS.upgrades[ship.ship_type]
 	
-	if ship.right_level > upgrades.right_path.size():
+	if ship.right_level >= upgrades.right_path.size():
 		print("warning: cannot buy another left upgrade!")
 		return
 	
