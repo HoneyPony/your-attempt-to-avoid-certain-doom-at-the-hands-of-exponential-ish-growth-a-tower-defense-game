@@ -163,6 +163,9 @@ func reset_game_state():
 	money = 0
 	lives = 200
 	
+	# DEBUG MONEY:
+	money = 10000
+	
 	reset_timers()
 	
 func _ready():
