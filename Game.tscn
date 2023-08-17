@@ -236,7 +236,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
 
 [node name="BackgroundFX" type="Sprite" parent="."]
 visible = false
@@ -394,13 +394,14 @@ margin_right = 22.0
 margin_bottom = 189.0
 custom_constants/separation = 63
 
-[node name="ShipBuyer" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
+[node name="BasicGun" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 
-[node name="ShipBuyer2" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
+[node name="SideLaser" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 191.0
 margin_right = 319.0
 texture = ExtResource( 9 )
 cost = 2000
+ship_id = 1
 
 [node name="ShipBuyer3" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 382.0
@@ -450,6 +451,7 @@ __meta__ = {
 }
 
 [node name="Upgrades" type="Panel" parent="CanvasLayer/GameUI/Shop"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 

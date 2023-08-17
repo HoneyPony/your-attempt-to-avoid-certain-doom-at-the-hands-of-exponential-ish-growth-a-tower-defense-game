@@ -79,3 +79,5 @@ custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_BuyButton_pressed"]

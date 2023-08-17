@@ -25,6 +25,9 @@ func _ready():
 	left_upgrade_card.buy_button.connect("pressed", self, "buy_left_upgrade")
 	right_upgrade_card.buy_button.connect("pressed", self, "buy_right_upgrade")
 	
+	# Get the ship parent node for ShipBuyers to use.
+	GS.ship_parent_node = $"../../"
+	
 func buy_left_upgrade():
 	var ship: TowerBase = GS.upgrade_target_ship as TowerBase
 	if not is_instance_valid(ship):

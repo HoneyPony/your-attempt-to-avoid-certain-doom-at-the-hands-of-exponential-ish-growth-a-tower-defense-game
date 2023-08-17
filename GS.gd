@@ -79,6 +79,15 @@ class Upgrade:
 		self.cost = cost_
 		self.description = description_
 
+# An array of all the PackedScenes corresponding to the SHIP_
+# constants.
+var ship_scenes = [
+	preload("res://towers/BasicGun.tscn"),
+	preload("res://towers/SideLaser.tscn")
+]
+
+# An array of all upgrade information corresponding to the SHIP_
+# constants.
 var upgrades = [
 	# Basic gun
 	Upgrades.new(
@@ -152,6 +161,9 @@ func try_grab_selection(trying_ship: Node2D, touch_index: int, distance: float) 
 var money: int = 0
 var lives: int = 0
 
+# The node that newly bought ships should be parented to.
+var ship_parent_node: Node2D = null
+
 # Resets all the values in GS that are relevant to starting a game.
 # It's sort of like rebooting the game.
 #
@@ -162,6 +174,8 @@ func reset_game_state():
 	
 	money = 0
 	lives = 200
+	
+	ship_parent_node = null
 	
 	# DEBUG MONEY:
 	money = 30000
