@@ -14,9 +14,6 @@ extents = Vector2( 75, 90 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 acceleration_strength = 1200
 movement_speed = 50
 ship_type = 1
