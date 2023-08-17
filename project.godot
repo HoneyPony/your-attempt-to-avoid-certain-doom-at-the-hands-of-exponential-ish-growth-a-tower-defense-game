@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GWJ60"
+config/name="your attempt to avoid certain doom at the hands of exponential-ish growth: a tower defense game"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
