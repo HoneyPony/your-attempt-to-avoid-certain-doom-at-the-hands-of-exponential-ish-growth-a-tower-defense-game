@@ -63,7 +63,9 @@ func destroy():
 func reset_spawn_timer():
 	spawn_timer = parent_vc.spawn_timer_max * rand_range(0.95, 1.05) * speed
 
-const STATE_CHANGE_Y = 1280 - 400
+const STATE_CHANGE_Y = 1280 - 512
+# Not quite the bottom of the screen
+const LOSE_LIVE_Y = 1280 - 80
 
 func _physics_process(delta):
 	# Each frame, we try to spawn, depending on the spawn speed
@@ -103,6 +105,11 @@ func _physics_process(delta):
 		step_to_tar = sign(step_to_tar) * min(abs(step_to_tar), max_step)
 		
 		position.x += step_to_tar
+		
+		if position.y >= LOSE_LIVE_Y:
+			# Free without destroying, as this doesn't give you any money.
+			queue_free()
+			GS.lives -= 1
 		
 	# Animate the spawn/jitter effects
 	animate()
