@@ -93,6 +93,7 @@ func update_timers(delta):
 
 const SHIP_BASIC_GUN = 0
 const SHIP_SIDE_LASER = 1
+const SHIP_DRILL = 2
 
 class Upgrades:
 	var left_path

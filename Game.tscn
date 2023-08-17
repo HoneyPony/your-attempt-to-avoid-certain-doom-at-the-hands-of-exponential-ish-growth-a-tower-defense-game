@@ -411,6 +411,7 @@ margin_left = 382.0
 margin_right = 510.0
 texture = ExtResource( 2 )
 cost = 2000
+ship_id = 2
 
 [node name="ShipBuyer4" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 573.0
