@@ -141,3 +141,7 @@ func _on_ShopTab_toggled(button_pressed):
 
 func _on_UpgradesTab_toggled(button_pressed):
 	update_tabs(button_pressed)
+
+
+func _on_PauseButton_pressed():
+	get_tree().paused = not get_tree().paused
