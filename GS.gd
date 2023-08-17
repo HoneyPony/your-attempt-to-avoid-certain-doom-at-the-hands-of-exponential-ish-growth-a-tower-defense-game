@@ -13,16 +13,29 @@ const timer_basic_gun_level2_MAX = (0.7 / (1.2 * 1.2))
 var timer_side_laser = 0
 const timer_side_laser_MAX = (0.16)
 
+var timer_drill_level0 = 0
+const timer_drill_level0_MAX = 0.4
+var timer_drill_level1 = 0
+const timer_drill_level1_MAX = (0.4 / 1.2)
+var timer_drill_level2 = 0
+const timer_drill_level2_MAX = (0.4 / (1.2 * 1.2))
+
 const TIMER_BASIC_GUN_LEVEL_0 = 0
 const TIMER_BASIC_GUN_LEVEL_1 = 1
 const TIMER_BASIC_GUN_LEVEL_2 = 2 # These three should be in order
 const TIMER_SIDE_LASER = 3
+const TIMER_DRILL_LEVEL_0 = 4
+const TIMER_DRILL_LEVEL_1 = 5
+const TIMER_DRILL_LEVEL_2 = 6 # These three should be in order
 
 var timer_fires = [
 	false, # basic gun level 0
 	false, # basic gun level 1
 	false, # basic gun level 2
 	false, # side laser
+	false,
+	false,
+	false, # drill timers
 ]
 
 func reset_timers():
@@ -33,6 +46,9 @@ func reset_timers():
 	timer_basic_gun_level1 = timer_basic_gun_level1_MAX
 	timer_basic_gun_level2 = timer_basic_gun_level2_MAX
 	timer_side_laser = timer_side_laser_MAX
+	timer_drill_level0 = timer_drill_level0_MAX
+	timer_drill_level1 = timer_drill_level1_MAX
+	timer_drill_level2 = timer_drill_level2_MAX
 
 func update_timers(delta):
 	for i in range(0, timer_fires.size()):
@@ -59,6 +75,21 @@ func update_timers(delta):
 	if timer_side_laser <= 0:
 		timer_side_laser += timer_side_laser_MAX
 		timer_fires[TIMER_SIDE_LASER] = true
+		
+	timer_drill_level0 -= delta
+	if timer_drill_level0 <= 0:
+		timer_drill_level0 += timer_drill_level0_MAX
+		timer_fires[TIMER_DRILL_LEVEL_0] = true
+		
+	timer_drill_level1 -= delta
+	if timer_drill_level1 <= 0:
+		timer_drill_level1 += timer_drill_level1_MAX
+		timer_fires[TIMER_DRILL_LEVEL_1] = true
+		
+	timer_drill_level2 -= delta
+	if timer_drill_level2 <= 0:
+		timer_drill_level2 += timer_drill_level2_MAX
+		timer_fires[TIMER_DRILL_LEVEL_2] = true
 
 const SHIP_BASIC_GUN = 0
 const SHIP_SIDE_LASER = 1
@@ -83,7 +114,8 @@ class Upgrade:
 # constants.
 var ship_scenes = [
 	preload("res://towers/BasicGun.tscn"),
-	preload("res://towers/SideLaser.tscn")
+	preload("res://towers/SideLaser.tscn"),
+	preload("res://towers/Drill.tscn")
 ]
 
 # The number of each kind of ship (SHIP_) that exists right now.
@@ -114,6 +146,18 @@ var upgrades = [
 			Upgrade.new(2500, "Increase this ship's piercing ability to 2."),
 			Upgrade.new(4000, "Increase this ship's piercing ability to 3.")
 		]
+	),
+	
+	# Drill
+	Upgrades.new(
+		[
+			Upgrade.new(750, "The drill will attack 1.2x as often."),
+			Upgrade.new(1250, "The drill will attack another 1.2x as often.")
+		],
+		[
+			Upgrade.new(400, "Increase the drill's movement speed by 1.2x."),
+			Upgrade.new(650, "Increase the drill's movement speed by another 1.2x.")
+		]	
 	)
 ]
 
