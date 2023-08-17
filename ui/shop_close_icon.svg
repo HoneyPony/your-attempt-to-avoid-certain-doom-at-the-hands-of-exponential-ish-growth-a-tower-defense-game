@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="7.2466938"
-     inkscape:cx="17.801221"
-     inkscape:cy="34.498491"
+     inkscape:zoom="10.248373"
+     inkscape:cx="31.419623"
+     inkscape:cy="39.420893"
      inkscape:window-width="1620"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -43,14 +43,14 @@
      inkscape:groupmode="layer"
      id="layer1">
     <circle
-       style="fill:none;stroke:#ffffff;stroke-width:0.980672;stroke-linejoin:round;stroke-opacity:1"
+       style="fill:none;stroke:#ffffff;stroke-width:1.58750002;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
        id="path231"
        cx="8.3792515"
        cy="8.4157619"
        r="7.5783305" />
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:1.05833;stroke-linejoin:round;stroke-opacity:1"
-       d="M 13.141481,7.2359707 8.3585526,12.566562 3.6121353,7.3455033"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5875;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 13.115664,5.7643956 8.3327355,11.094987 3.5863182,5.8739282"
        id="path958"
        sodipodi:nodetypes="ccc" />
   </g>
