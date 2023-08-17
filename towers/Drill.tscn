@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=1]
 [ext_resource path="res://towers/Drill.gd" type="Script" id=2]
 [ext_resource path="res://towers/DrillDamager.gd" type="Script" id=3]
 [ext_resource path="res://fx/flame_particle_smaller.png" type="Texture" id=4]
 [ext_resource path="res://towers/drill_ship.png" type="Texture" id=5]
+[ext_resource path="res://towers/drill_ship_blaster.png" type="Texture" id=6]
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, -2.34486, 0, 0, Vector2( 1, 0 ), -0.119318, 0.0, 0, 0 ]
@@ -74,15 +75,16 @@ __meta__ = {
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ShipSprite"]
 material = ExtResource( 1 )
-position = Vector2( -2.25, 14.75 )
+position = Vector2( -2.25, 12 )
 scale = Vector2( 4, 4 )
 amount = 16
 preprocess = 1.0
 local_coords = false
 texture = ExtResource( 4 )
 direction = Vector2( 0, 1 )
+spread = 30.0
 gravity = Vector2( 0, 1 )
-initial_velocity = 4.0
+initial_velocity = 6.0
 initial_velocity_random = 0.5
 angle = 90.0
 angle_random = 0.57
@@ -98,6 +100,10 @@ autoplay = "Drill"
 playback_speed = 1.1
 anims/Drill = SubResource( 4 )
 anims/RESET = SubResource( 5 )
+
+[node name="BlasterTop" type="Sprite" parent="ShipSprite"]
+material = ExtResource( 1 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
