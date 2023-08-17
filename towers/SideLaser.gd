@@ -14,6 +14,9 @@ func fire():
 	# of 4. We can change the lifetime of course, but this seems reasonable
 	# for now.
 	bullet.velocity = Vector2(-360, 0)
+	
+	# Piercing upgrade
+	bullet.hits_left = 1 + right_level
 	get_parent().add_child(bullet)
 	
 	current_bullet = bullet
