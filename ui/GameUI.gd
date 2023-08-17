@@ -22,6 +22,50 @@ func _ready():
 	# Show the shop to begin
 	update_tabs(false)
 	
+	left_upgrade_card.buy_button.connect("pressed", self, "buy_left_upgrade")
+	right_upgrade_card.buy_button.connect("pressed", self, "buy_right_upgrade")
+	
+func buy_left_upgrade():
+	var ship: TowerBase = GS.upgrade_target_ship as TowerBase
+	if not is_instance_valid(ship):
+		# The theory is this shouldn't be called.
+		print("warning: trying to upgrade invalid ship")
+		return
+		
+	var upgrades = GS.upgrades[ship.ship_type]
+	var up = upgrades.left_path[ship.left_level]
+	
+	if up.cost > GS.money:
+		# This also shouldn't happen due to the disable
+		print("warning: trying to buy upgrade without enough money")
+		return
+		
+	# Pay the cost
+	GS.money -= up.cost
+	# Upgrade the ship
+	ship.left_level += 1
+	
+	
+func buy_right_upgrade():
+	var ship: TowerBase = GS.upgrade_target_ship as TowerBase
+	if not is_instance_valid(ship):
+		# The theory is this shouldn't be called.
+		print("warning: trying to upgrade invalid ship")
+		return
+		
+	var upgrades = GS.upgrades[ship.ship_type]
+	var up = upgrades.right_path[ship.right_level]
+	
+	if up.cost > GS.money:
+		# This also shouldn't happen due to the disable
+		print("warning: trying to buy upgrade without enough money")
+		return
+		
+	# Pay the cost
+	GS.money -= up.cost
+	# Upgrade the ship
+	ship.right_level += 1
+	
 func compute_upgrade_cards(ship: TowerBase):
 	var upgrades = GS.upgrades[ship.ship_type]
 	if ship.left_level >= upgrades.left_path.size():
@@ -33,8 +77,8 @@ func compute_upgrade_cards(ship: TowerBase):
 		
 		left_upgrade_card.desc.text = up.description
 		left_upgrade_card.cost.text = str("Cost: $", up.cost)
-		left_upgrade_card.buy_button.disabled = (up.cost < GS.money)
-		
+		left_upgrade_card.buy_button.disabled = (up.cost > GS.money)
+
 
 	if ship.right_level >= upgrades.right_path.size():
 		right_upgrade_card.full.show()
@@ -45,7 +89,7 @@ func compute_upgrade_cards(ship: TowerBase):
 		
 		right_upgrade_card.desc.text = up.description
 		right_upgrade_card.cost.text = str("Cost: $", up.cost)
-		right_upgrade_card.buy_button.disabled = (up.cost < GS.money)
+		right_upgrade_card.buy_button.disabled = (up.cost > GS.money)
 
 func _process(delta):
 	money_counter.text = str("$ ", GS.money)
