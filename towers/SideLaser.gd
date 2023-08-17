@@ -14,6 +14,12 @@ var base_speed = 0
 func _ready():
 	base_speed = movement_speed
 	
+	# Make sure that the drag thing doesn't point somewhere based
+	# on its previously computed value that wasn't properly clamped
+	# to the side
+	position.x = SIDE_LASER_POSITION
+	drag_target_position = position
+	
 func fire():
 	var bullet = GS.SideLaserBullet.instance()
 	bullet.position = bullet_spawn_point.global_position
