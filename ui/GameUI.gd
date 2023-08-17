@@ -9,6 +9,7 @@ onready var shop_tab_button = $Shop/ShopTab
 onready var upgrade_tab_button = $Shop/UpgradesTab
 
 onready var upgrade_panel = $Shop/Upgrades
+onready var upgrade_err_panel = $Shop/Upgrades/UpgradeErrPanel
 
 # This is really whether the bottom panel is open at all.
 # Should match the starting state of the shop_anim AnimationPlayer.
@@ -24,6 +25,8 @@ func _process(delta):
 	
 	# Show the upgrade icon if the upgrade panel is visible.
 	GS.show_upgrade_icon = (shop_open and upgrade_panel.visible)
+	# Show an error message if no ship is selected.
+	upgrade_err_panel.visible = not is_instance_valid(GS.upgrade_target_ship)
 
 
 func _on_CloseButton_pressed():

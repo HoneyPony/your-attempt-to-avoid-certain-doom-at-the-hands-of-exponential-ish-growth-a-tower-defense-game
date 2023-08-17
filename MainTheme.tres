@@ -38,6 +38,10 @@ corner_radius_bottom_right = 10
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.309804, 0.282353, 0.360784, 1 )
+border_width_left = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.247613, 0.220036, 0.298828, 1 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
