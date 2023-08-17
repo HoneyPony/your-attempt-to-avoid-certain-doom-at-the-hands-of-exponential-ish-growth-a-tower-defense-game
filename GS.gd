@@ -14,11 +14,11 @@ var timer_side_laser = 0
 const timer_side_laser_MAX = (0.16)
 
 var timer_drill_level0 = 0
-const timer_drill_level0_MAX = 0.4
+const timer_drill_level0_MAX = 1.0
 var timer_drill_level1 = 0
-const timer_drill_level1_MAX = (0.4 / 1.2)
+const timer_drill_level1_MAX = (1.0 / 1.5)
 var timer_drill_level2 = 0
-const timer_drill_level2_MAX = (0.4 / (1.2 * 1.2))
+const timer_drill_level2_MAX = (1.0 / (1.5 * 2))
 
 const TIMER_BASIC_GUN_LEVEL_0 = 0
 const TIMER_BASIC_GUN_LEVEL_1 = 1
@@ -152,8 +152,8 @@ var upgrades = [
 	# Drill
 	Upgrades.new(
 		[
-			Upgrade.new(750, "The drill will attack 1.2x as often."),
-			Upgrade.new(1250, "The drill will attack another 1.2x as often.")
+			Upgrade.new(1200, "The drill will attack 1.5x as often."),
+			Upgrade.new(1800, "The drill will attack another 2x as often.")
 		],
 		[
 			Upgrade.new(1400, "Increase the drill's movement speed by 2.5x."),
