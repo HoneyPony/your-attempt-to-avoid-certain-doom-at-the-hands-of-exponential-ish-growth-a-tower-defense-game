@@ -1,46 +1,40 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/Audiowide24Pt.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/AudiowideUpgrade.tres" type="DynamicFont" id=2]
 
 [node name="UpgradeCard" type="Panel"]
-margin_left = 32.0
-margin_top = 25.0
-margin_right = 453.0
-margin_bottom = 259.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Title" type="Label" parent="."]
-margin_left = 7.0
-margin_right = 415.0
-margin_bottom = 31.0
-custom_fonts/font = ExtResource( 1 )
-text = "Faster Firing"
-align = 1
+margin_left = 19.0
+margin_top = 15.0
+margin_right = 466.0
+margin_bottom = 269.0
 
 [node name="Desc" type="Label" parent="."]
-margin_left = 13.0
-margin_top = 37.0
-margin_right = 410.0
-margin_bottom = 105.0
-custom_fonts/font = ExtResource( 1 )
-text = "Increases the fire rate of this ship by 1.2x."
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 440.0
+margin_bottom = 97.0
+custom_fonts/font = ExtResource( 2 )
+text = "Increase the fire rate of this ship by 1.2x."
 autowrap = true
 
 [node name="Cost" type="Label" parent="."]
 margin_left = 6.0
 margin_top = 154.0
-margin_right = 400.0
-margin_bottom = 185.0
-custom_fonts/font = ExtResource( 1 )
+margin_right = 440.0
+margin_bottom = 196.0
+custom_fonts/font = ExtResource( 2 )
 text = "Cost: $250"
 align = 1
 
 [node name="BuyButton" type="Button" parent="."]
-margin_left = 138.0
-margin_top = 189.0
-margin_right = 268.0
-margin_bottom = 222.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -82.0
+margin_top = -53.0
+margin_right = 82.0
+margin_bottom = -10.0
 custom_fonts/font = ExtResource( 1 )
 text = "Buy"

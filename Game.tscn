@@ -480,12 +480,16 @@ this ship for
 align = 1
 
 [node name="UpgradeCard" parent="CanvasLayer/GameUI/Shop/Upgrades" instance=ExtResource( 18 )]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="UpgradeCard2" parent="CanvasLayer/GameUI/Shop/Upgrades" instance=ExtResource( 18 )]
-margin_left = 478.0
-margin_right = 899.0
+margin_left = 480.0
+margin_right = 927.0
 
 [node name="UpgradeErrPanel" type="Panel" parent="CanvasLayer/GameUI/Shop/Upgrades"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
