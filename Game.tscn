@@ -479,12 +479,12 @@ this ship for
  $10000"
 align = 1
 
-[node name="UpgradeCard" parent="CanvasLayer/GameUI/Shop/Upgrades" instance=ExtResource( 18 )]
+[node name="LeftUpgradeCard" parent="CanvasLayer/GameUI/Shop/Upgrades" instance=ExtResource( 18 )]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="UpgradeCard2" parent="CanvasLayer/GameUI/Shop/Upgrades" instance=ExtResource( 18 )]
+[node name="RightUpgradeCard" parent="CanvasLayer/GameUI/Shop/Upgrades" instance=ExtResource( 18 )]
 margin_left = 480.0
 margin_right = 927.0
 

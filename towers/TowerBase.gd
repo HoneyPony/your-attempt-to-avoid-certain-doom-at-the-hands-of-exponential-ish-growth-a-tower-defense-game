@@ -1,8 +1,16 @@
 extends Area2D
+class_name TowerBase
 
 var velocity: Vector2 = Vector2.ZERO
 export var acceleration_strength = 1000
 export var movement_speed = 256
+
+# Should correspond to one of the SHIP_ constants in GS
+export var ship_type = 0
+
+# Upgrade levels -- the ship has to compute what these mean.
+var left_level = 0
+var right_level = 0
 
 # I guess, most towers will have a ship sprite
 onready var ship_sprite = $ShipSprite

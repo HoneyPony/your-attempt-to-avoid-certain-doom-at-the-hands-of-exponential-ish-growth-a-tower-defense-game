@@ -19,6 +19,7 @@ __meta__ = {
 }
 acceleration_strength = 1200
 movement_speed = 50
+ship_type = 1
 
 [node name="MovementDisplay" type="Line2D" parent="."]
 z_index = -1

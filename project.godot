@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "TowerBase",
+"language": "GDScript",
+"path": "res://towers/TowerBase.gd"
+}, {
 "base": "Node2D",
 "class": "VirusCollection",
 "language": "GDScript",
 "path": "res://virus/VirusCollection.gd"
 } ]
 _global_script_class_icons={
+"TowerBase": "",
 "VirusCollection": ""
 }
 

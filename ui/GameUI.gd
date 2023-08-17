@@ -11,6 +11,9 @@ onready var upgrade_tab_button = $Shop/UpgradesTab
 onready var upgrade_panel = $Shop/Upgrades
 onready var upgrade_err_panel = $Shop/Upgrades/UpgradeErrPanel
 
+onready var left_upgrade_card = $Shop/Upgrades/LeftUpgradeCard
+onready var right_upgrade_card = $Shop/Upgrades/RightUpgradeCard
+
 # This is really whether the bottom panel is open at all.
 # Should match the starting state of the shop_anim AnimationPlayer.
 var shop_open = false
@@ -18,6 +21,31 @@ var shop_open = false
 func _ready():
 	# Show the shop to begin
 	update_tabs(false)
+	
+func compute_upgrade_cards(ship: TowerBase):
+	var upgrades = GS.upgrades[ship.ship_type]
+	if ship.left_level >= upgrades.left_path.size():
+		left_upgrade_card.full.show()
+	else:
+		left_upgrade_card.full.hide()
+		
+		var up = upgrades.left_path[ship.left_level]
+		
+		left_upgrade_card.desc.text = up.description
+		left_upgrade_card.cost.text = str("Cost: $", up.cost)
+		left_upgrade_card.buy_button.disabled = (up.cost < GS.money)
+		
+
+	if ship.right_level >= upgrades.right_path.size():
+		right_upgrade_card.full.show()
+	else:
+		right_upgrade_card.full.hide()
+		
+		var up = upgrades.right_path[ship.right_level]
+		
+		right_upgrade_card.desc.text = up.description
+		right_upgrade_card.cost.text = str("Cost: $", up.cost)
+		right_upgrade_card.buy_button.disabled = (up.cost < GS.money)
 
 func _process(delta):
 	money_counter.text = str("$ ", GS.money)
@@ -27,7 +55,11 @@ func _process(delta):
 	GS.show_upgrade_icon = (shop_open and upgrade_panel.visible)
 	# Show an error message if no ship is selected.
 	upgrade_err_panel.visible = not is_instance_valid(GS.upgrade_target_ship)
-
+	
+	# Right now this recomputes the upgrades every frame... should be fine
+	# hopefully
+	if is_instance_valid(GS.upgrade_target_ship) and GS.show_upgrade_icon:
+		compute_upgrade_cards(GS.upgrade_target_ship)
 
 func _on_CloseButton_pressed():
 	if shop_open:

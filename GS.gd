@@ -1,5 +1,49 @@
 extends Node
 
+const SHIP_BASIC_GUN = 0
+const SHIP_SIDE_LASER = 1
+
+class Upgrades:
+	var left_path
+	var right_path
+	
+	func _init(left_path_, right_path_):
+		self.left_path = left_path_
+		self.right_path = right_path_
+
+class Upgrade:
+	var cost
+	var description
+	
+	func _init(cost_, description_):
+		self.cost = cost_
+		self.description = description_
+
+var upgrades = [
+	# Basic gun
+	Upgrades.new(
+	[
+		Upgrade.new(200, "Increase the fire rate of this ship by 1.2x."),
+		Upgrade.new(300, "Increase the fire rate of this ship by another 1.2x.")
+	],
+	[
+		Upgrade.new(350, "Increase this ship's piercing ability to 2."),
+		Upgrade.new(500, "Increase this ship's piercing ability to 3.")
+	]),
+	
+	# Side laser
+	Upgrades.new(
+		[
+			Upgrade.new(250, "Increase this ship's movement speed by 1.2x."),
+			Upgrade.new(350, "Increase this ship's movement speed by another 1.2x.")
+		],
+		[
+			Upgrade.new(2500, "Increase this ship's piercing ability to 2."),
+			Upgrade.new(4000, "Increase this ship's piercing ability to 3.")
+		]
+	)
+]
+
 var Virus = preload("res://virus/Virus.tscn")
 var VirusDebris = preload("res://virus/VirusDebris.tscn")
 
