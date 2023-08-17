@@ -20,6 +20,13 @@ const timer_drill_level1_MAX = (1.0 / 1.5)
 var timer_drill_level2 = 0
 const timer_drill_level2_MAX = (1.0 / (1.5 * 2))
 
+var timer_cannon_level0 = 0
+const timer_cannon_level0_MAX = 1.2
+var timer_cannon_level1 = 0
+const timer_cannon_level1_MAX = (1.2 / 1.2)
+var timer_cannon_level2 = 0
+const timer_cannon_level2_MAX = (1.2 / (1.2 * 1.2))
+
 const TIMER_BASIC_GUN_LEVEL_0 = 0
 const TIMER_BASIC_GUN_LEVEL_1 = 1
 const TIMER_BASIC_GUN_LEVEL_2 = 2 # These three should be in order
@@ -27,6 +34,9 @@ const TIMER_SIDE_LASER = 3
 const TIMER_DRILL_LEVEL_0 = 4
 const TIMER_DRILL_LEVEL_1 = 5
 const TIMER_DRILL_LEVEL_2 = 6 # These three should be in order
+const TIMER_CANNON_LEVEL_0 = 7 
+const TIMER_CANNON_LEVEL_1 = 8
+const TIMER_CANNON_LEVEL_2 = 9 # These three should be in order
 
 var timer_fires = [
 	false, # basic gun level 0
@@ -36,6 +46,9 @@ var timer_fires = [
 	false,
 	false,
 	false, # drill timers
+	false,
+	false,
+	false, # cannon timers
 ]
 
 func reset_timers():
@@ -49,6 +62,9 @@ func reset_timers():
 	timer_drill_level0 = timer_drill_level0_MAX
 	timer_drill_level1 = timer_drill_level1_MAX
 	timer_drill_level2 = timer_drill_level2_MAX
+	timer_cannon_level0 = timer_cannon_level0_MAX
+	timer_cannon_level1 = timer_cannon_level1_MAX
+	timer_cannon_level2 = timer_cannon_level2_MAX
 
 func update_timers(delta):
 	for i in range(0, timer_fires.size()):
@@ -90,10 +106,26 @@ func update_timers(delta):
 	if timer_drill_level2 <= 0:
 		timer_drill_level2 += timer_drill_level2_MAX
 		timer_fires[TIMER_DRILL_LEVEL_2] = true
+		
+	timer_cannon_level0 -= delta
+	if timer_cannon_level0 <= 0:
+		timer_cannon_level0 += timer_cannon_level0_MAX
+		timer_fires[TIMER_CANNON_LEVEL_0] = true
+		
+	timer_cannon_level1 -= delta
+	if timer_cannon_level1 <= 0:
+		timer_cannon_level1 += timer_cannon_level1_MAX
+		timer_fires[TIMER_CANNON_LEVEL_1] = true
+		
+	timer_cannon_level2 -= delta
+	if timer_cannon_level2 <= 0:
+		timer_cannon_level2 += timer_cannon_level2_MAX
+		timer_fires[TIMER_CANNON_LEVEL_2] = true
 
 const SHIP_BASIC_GUN = 0
 const SHIP_SIDE_LASER = 1
 const SHIP_DRILL = 2
+const SHIP_CANNON = 3
 
 class Upgrades:
 	var left_path
@@ -116,7 +148,8 @@ class Upgrade:
 var ship_scenes = [
 	preload("res://towers/BasicGun.tscn"),
 	preload("res://towers/SideLaser.tscn"),
-	preload("res://towers/Drill.tscn")
+	preload("res://towers/Drill.tscn"),
+	preload("res://towers/Cannon.tscn"),
 ]
 
 # The number of each kind of ship (SHIP_) that exists right now.
@@ -159,6 +192,18 @@ var upgrades = [
 			Upgrade.new(1400, "Increase the drill's movement speed by 2.5x."),
 			Upgrade.new(1500, "Increase the drill's movement speed by another 1.5x.")
 		]	
+	),
+	
+	# Cannon
+	Upgrades.new(
+		[
+			Upgrade.new(600, "Increase the fire rate of the cannon by 1.2x"),
+			Upgrade.new(800, "Increase the fire rate of the cannon by another 1.2x")
+		],
+		[
+			Upgrade.new(1000, "Make this cannon's explosions 20% larger"),
+			Upgrade.new(1200, "Make this cannon's explosions another 20% larger")
+		]
 	)
 ]
 
@@ -167,6 +212,7 @@ var VirusDebris = preload("res://virus/VirusDebris.tscn")
 
 var BasicBullet = preload("res://towers/BasicBullet.tscn")
 var SideLaserBullet = preload("res://towers/SideLaserBullet.tscn")
+var Missile = preload("res://towers/Missile.tscn")
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")

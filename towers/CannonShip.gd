@@ -3,7 +3,7 @@ extends "res://towers/TowerBase.gd"
 onready var bullet_spawn_point = $BulletSpawnPoint
 
 func fire(delta):
-	var bullet = GS.BasicBullet.instance()
+	var bullet = GS.Missile.instance()
 	bullet.position = position + bullet_spawn_point.position + velocity * delta
 	bullet.hits_left = 1 + right_level
 	get_parent().add_child(bullet)
@@ -17,7 +17,7 @@ func ship_fx():
 func _physics_process(delta):
 	# These timers are SUPPOSED to be ordered in the array by left_level
 	# if not, that should be fixed or it will be a bug!
-	#if GS.timer_fires[GS.TIMER_BASIC_GUN_LEVEL_0 + left_level]:
-	#	fire(delta)
+	if GS.timer_fires[GS.TIMER_CANNON_LEVEL_0 + left_level]:
+		fire(delta)
 		
 	ship_fx()
