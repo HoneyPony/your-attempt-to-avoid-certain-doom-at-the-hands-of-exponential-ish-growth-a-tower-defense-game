@@ -129,23 +129,23 @@ var upgrades = [
 	# Basic gun
 	Upgrades.new(
 	[
-		Upgrade.new(200, "Increase the fire rate of this ship by 1.2x."),
-		Upgrade.new(300, "Increase the fire rate of this ship by another 1.2x.")
+		Upgrade.new(200, "Increase the fire rate of this gunner by 1.2x."),
+		Upgrade.new(300, "Increase the fire rate of this gunner by another 1.2x.")
 	],
 	[
-		Upgrade.new(350, "Increase this ship's piercing ability to 2."),
-		Upgrade.new(500, "Increase this ship's piercing ability to 3.")
+		Upgrade.new(350, "Increase this gunner's piercing ability to 2."),
+		Upgrade.new(500, "Increase this gunner's piercing ability to 3.")
 	]),
 	
 	# Side laser
 	Upgrades.new(
 		[
-			Upgrade.new(250, "Increase this ship's movement speed by 1.2x."),
-			Upgrade.new(350, "Increase this ship's movement speed by another 1.2x.")
+			Upgrade.new(250, "Increase this laser's movement speed by 1.2x."),
+			Upgrade.new(350, "Increase this laser's movement speed by another 1.2x.")
 		],
 		[
-			Upgrade.new(2500, "Increase this ship's piercing ability to 2."),
-			Upgrade.new(4000, "Increase this ship's piercing ability to 3.")
+			Upgrade.new(2500, "Increase this laser's piercing ability to 2."),
+			Upgrade.new(4000, "Increase this laser's piercing ability to 3.")
 		]
 	),
 	
