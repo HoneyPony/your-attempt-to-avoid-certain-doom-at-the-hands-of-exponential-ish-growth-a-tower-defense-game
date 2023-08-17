@@ -12,9 +12,9 @@ func _ready():
 func compute_movement_speed():
 	movement_speed = base_speed
 	if right_level > 0:
-		movement_speed *= 1.2
+		movement_speed *= 2.5
 	if right_level > 1:
-		movement_speed *= 1.2
+		movement_speed *= 1.5
 
 func _physics_process(delta):
 	compute_movement_speed()

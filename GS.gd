@@ -156,8 +156,8 @@ var upgrades = [
 			Upgrade.new(1250, "The drill will attack another 1.2x as often.")
 		],
 		[
-			Upgrade.new(400, "Increase the drill's movement speed by 1.2x."),
-			Upgrade.new(650, "Increase the drill's movement speed by another 1.2x.")
+			Upgrade.new(1400, "Increase the drill's movement speed by 2.5x."),
+			Upgrade.new(1500, "Increase the drill's movement speed by another 1.5x.")
 		]	
 	)
 ]

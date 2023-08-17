@@ -410,7 +410,7 @@ ship_id = 1
 margin_left = 382.0
 margin_right = 510.0
 texture = ExtResource( 2 )
-cost = 2000
+cost = 1200
 ship_id = 2
 
 [node name="ShipBuyer4" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
