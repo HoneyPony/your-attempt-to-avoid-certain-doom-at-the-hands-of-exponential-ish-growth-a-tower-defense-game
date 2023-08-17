@@ -168,6 +168,9 @@ var VirusDebris = preload("res://virus/VirusDebris.tscn")
 var BasicBullet = preload("res://towers/BasicBullet.tscn")
 var SideLaserBullet = preload("res://towers/SideLaserBullet.tscn")
 
+var Game = preload("res://Game.tscn")
+var MainMenu = preload("res://MainMenu.tscn")
+
 var game_camera: Camera2D = null
 
 # These variables are used so that ships can coordinate who should be selected,
