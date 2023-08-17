@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://virus/VirusCollection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/drill_ship_SHOP_ICON.png" type="Texture" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://ui/heart_icon.svg" type="Texture" id=7]
 [ext_resource path="res://ui/GameUI.gd" type="Script" id=8]
 [ext_resource path="res://towers/side_laser.png" type="Texture" id=9]
-[ext_resource path="res://towers/SideLaser.tscn" type="PackedScene" id=10]
+[ext_resource path="res://towers/Cannon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://fx/background_fx.png" type="Texture" id=11]
 [ext_resource path="res://fx/BackgroundFX.gd" type="Script" id=12]
 [ext_resource path="res://ui/shop_close_icon.svg" type="Texture" id=13]
@@ -19,9 +19,10 @@
 [ext_resource path="res://ui/UpgradeIcon.gd" type="Script" id=17]
 [ext_resource path="res://ui/UpgradeCard.tscn" type="PackedScene" id=18]
 [ext_resource path="res://ui/Audiowide24Pt.tres" type="DynamicFont" id=19]
-[ext_resource path="res://towers/Drill.tscn" type="PackedScene" id=20]
+[ext_resource path="res://towers/BasicGun.tscn" type="PackedScene" id=20]
 [ext_resource path="res://ui/pause_icon.svg" type="Texture" id=21]
 [ext_resource path="res://ui/PauseMenu.gd" type="Script" id=22]
+[ext_resource path="res://ui/bomb_ship_ICON.png" type="Texture" id=23]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.280571, 0.0, 0, 0 ]
@@ -297,7 +298,7 @@ zoom = Vector2( 1.25, 1.25 )
 script = ExtResource( 5 )
 
 [node name="VirusCollection" parent="." instance=ExtResource( 1 )]
-position = Vector2( -160, -421 )
+position = Vector2( 30, -1294 )
 spawn_timer_max = 0.3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -417,11 +418,12 @@ texture = ExtResource( 2 )
 cost = 1200
 ship_id = 2
 
-[node name="ShipBuyer4" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
+[node name="Cannon" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 573.0
 margin_right = 701.0
-texture = ExtResource( 9 )
+texture = ExtResource( 23 )
 cost = 2000
+ship_id = 3
 
 [node name="ShipBuyer5" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 764.0
@@ -516,15 +518,15 @@ margin_bottom = 78.0
 focus_mode = 0
 texture_normal = ExtResource( 21 )
 
-[node name="SideLaser" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 1078 )
-
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Planet" type="Sprite" parent="."]
 material = ExtResource( 14 )
 position = Vector2( 0, 1229 )
 scale = Vector2( 1, 2 )
 z_index = -10
 texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="UpgradeIconLayer" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
@@ -533,8 +535,6 @@ follow_viewport_enable = true
 position = Vector2( 182, 347 )
 texture = ExtResource( 16 )
 script = ExtResource( 17 )
-
-[node name="DrillShip" parent="." instance=ExtResource( 20 )]
 
 [node name="PauseLayer" type="CanvasLayer" parent="."]
 
@@ -579,6 +579,12 @@ margin_right = -15.0
 margin_bottom = 78.0
 focus_mode = 0
 texture_normal = ExtResource( 21 )
+
+[node name="CannonShip" parent="." instance=ExtResource( 10 )]
+position = Vector2( -295, 392 )
+
+[node name="BasicGun" parent="." instance=ExtResource( 20 )]
+position = Vector2( -124, 409 )
 
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/ShopTab" to="CanvasLayer/GameUI" method="_on_ShopTab_toggled"]
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/UpgradesTab" to="CanvasLayer/GameUI" method="_on_UpgradesTab_toggled"]
