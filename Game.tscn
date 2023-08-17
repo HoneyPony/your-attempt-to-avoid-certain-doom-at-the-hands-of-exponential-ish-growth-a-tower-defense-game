@@ -290,7 +290,7 @@ zoom = Vector2( 1.25, 1.25 )
 script = ExtResource( 5 )
 
 [node name="VirusCollection" parent="." instance=ExtResource( 1 )]
-position = Vector2( -248, 630 )
+position = Vector2( 20, -1277 )
 spawn_timer_max = 0.3
 
 [node name="BasicGun" parent="." instance=ExtResource( 2 )]

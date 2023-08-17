@@ -15,7 +15,7 @@ offsets = PoolRealArray( 0, 0.0458716, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 64 )
+extents = Vector2( 90, 90 )
 
 [node name="BasicGun" type="Area2D"]
 collision_layer = 2
