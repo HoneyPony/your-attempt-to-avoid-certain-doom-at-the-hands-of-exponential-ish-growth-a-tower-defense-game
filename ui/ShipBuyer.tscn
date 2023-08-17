@@ -41,7 +41,7 @@ margin_top = 11.0
 margin_right = 97.5
 margin_bottom = 42.0
 custom_fonts/font = ExtResource( 2 )
-text = "$20000"
+text = "$999999999"
 align = 1
 
 [node name="InfoButton" type="Button" parent="."]

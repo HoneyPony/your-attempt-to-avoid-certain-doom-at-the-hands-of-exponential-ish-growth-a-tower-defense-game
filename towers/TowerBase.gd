@@ -50,7 +50,17 @@ func update_movement_display():
 		movement_display.points[i] = end * t
 
 func _ready():
+	GS.ship_counts[ship_type] += 1
 	drag_target_position = position
+	
+# Should be called to remove the ship. Ensures that the count is updated
+# in GS.
+func destroy():
+	if is_queued_for_deletion():
+		return
+		
+	GS.ship_counts[ship_type] -= 1
+	queue_free()
 
 func compute_acceleration(desired_velocity: Vector2, delta: float, zero_threshold: float = 0.0) -> Vector2:
 	var accel_direction = (desired_velocity - velocity).normalized()

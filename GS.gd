@@ -86,6 +86,10 @@ var ship_scenes = [
 	preload("res://towers/SideLaser.tscn")
 ]
 
+# The number of each kind of ship (SHIP_) that exists right now.
+# Used to determine the price for more ships.
+var ship_counts = [0, 0, 0, 0, 0, 0]
+
 # An array of all upgrade information corresponding to the SHIP_
 # constants.
 var upgrades = [

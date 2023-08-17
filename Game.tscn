@@ -395,6 +395,9 @@ margin_bottom = 189.0
 custom_constants/separation = 63
 
 [node name="BasicGun" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
+cost = 50
+exponent = 4.0
+ship_id = 0
 
 [node name="SideLaser" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 191.0
@@ -408,24 +411,28 @@ margin_left = 382.0
 margin_right = 510.0
 texture = ExtResource( 9 )
 cost = 2000
+ship_id = 0
 
 [node name="ShipBuyer4" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 573.0
 margin_right = 701.0
 texture = ExtResource( 9 )
 cost = 2000
+ship_id = 0
 
 [node name="ShipBuyer5" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 764.0
 margin_right = 892.0
 texture = ExtResource( 9 )
 cost = 2000
+ship_id = 0
 
 [node name="ShipBuyer6" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 955.0
 margin_right = 1083.0
 texture = ExtResource( 9 )
 cost = 2000
+ship_id = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameUI/Shop"]
 autoplay = "RESET"
