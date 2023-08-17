@@ -2,16 +2,9 @@ extends "res://towers/TowerBase.gd"
 
 const SIDE_LASER_POSITION = 656
 
-var fire_timer = 0
-#var fire_timer_max = 0.3
-var fire_timer_max = 0.16
-
 onready var bullet_spawn_point = $BulletSpawnPoint
 
 var current_bullet = null
-
-func _ready():
-	fire_timer = fire_timer_max
 	
 func fire():
 	var bullet = GS.SideLaserBullet.instance()
@@ -29,9 +22,7 @@ func _physics_process(delta):
 	# The side laser never moves from.. well.. the side.
 	position.x = SIDE_LASER_POSITION
 	
-	fire_timer -= delta
-	if fire_timer <= 0:
-		fire_timer = fire_timer_max
+	if GS.timer_fires[GS.TIMER_SIDE_LASER]:
 		fire()
 		
 	if is_instance_valid(current_bullet):

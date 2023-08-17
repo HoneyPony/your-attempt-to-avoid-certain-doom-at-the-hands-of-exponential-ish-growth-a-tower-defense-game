@@ -1,12 +1,6 @@
 extends "res://towers/TowerBase.gd"
 
-var fire_timer = 0
-var fire_timer_max = 0.7
-
 onready var bullet_spawn_point = $BulletSpawnPoint
-
-func _ready():
-	fire_timer = fire_timer_max
 
 func fire(delta):
 	var bullet = GS.BasicBullet.instance()
@@ -21,9 +15,9 @@ func ship_fx():
 	ship_sprite.rotation += (rot_target - ship_sprite.rotation) * 0.09
 
 func _physics_process(delta):
-	fire_timer -= delta
-	if fire_timer <= 0:
-		fire_timer = fire_timer_max
+	# These timers are SUPPOSED to be ordered in the array by left_level
+	# if not, that should be fixed or it will be a bug!
+	if GS.timer_fires[GS.TIMER_BASIC_GUN_LEVEL_0 + left_level]:
 		fire(delta)
 		
 	ship_fx()

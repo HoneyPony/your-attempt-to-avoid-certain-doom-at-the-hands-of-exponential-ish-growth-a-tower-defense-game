@@ -1,5 +1,65 @@
 extends Node
 
+# The GS is responsible for several gameplay timers, so that the time that
+# the player buys a ship is not significant for synchronization.
+
+var timer_basic_gun_level0 = 0
+const timer_basic_gun_level0_MAX = 0.7
+var timer_basic_gun_level1 = 0
+const timer_basic_gun_level1_MAX = (0.7 / 1.2)
+var timer_basic_gun_level2 = 0
+const timer_basic_gun_level2_MAX = (0.7 / (1.2 * 1.2))
+
+var timer_side_laser = 0
+const timer_side_laser_MAX = (0.16)
+
+const TIMER_BASIC_GUN_LEVEL_0 = 0
+const TIMER_BASIC_GUN_LEVEL_1 = 1
+const TIMER_BASIC_GUN_LEVEL_2 = 2 # These three should be in order
+const TIMER_SIDE_LASER = 3
+
+var timer_fires = [
+	false, # basic gun level 0
+	false, # basic gun level 1
+	false, # basic gun level 2
+	false, # side laser
+]
+
+func reset_timers():
+	for i in range(0, timer_fires.size()):
+		timer_fires[i] = false
+	
+	timer_basic_gun_level0 = timer_basic_gun_level0_MAX
+	timer_basic_gun_level1 = timer_basic_gun_level1_MAX
+	timer_basic_gun_level2 = timer_basic_gun_level2_MAX
+	timer_side_laser = timer_side_laser_MAX
+
+func update_timers(delta):
+	for i in range(0, timer_fires.size()):
+		timer_fires[i] = false
+		
+	# This is where I wish Godot had macros...
+	# Although I guess we could use a class or the built-in timer or whatever
+	timer_basic_gun_level0 -= delta
+	if timer_basic_gun_level0 <= 0:
+		timer_basic_gun_level0 += timer_basic_gun_level0_MAX
+		timer_fires[TIMER_BASIC_GUN_LEVEL_0] = true
+		
+	timer_basic_gun_level1 -= delta
+	if timer_basic_gun_level1 <= 0:
+		timer_basic_gun_level1 += timer_basic_gun_level1_MAX
+		timer_fires[TIMER_BASIC_GUN_LEVEL_1] = true
+		
+	timer_basic_gun_level2 -= delta
+	if timer_basic_gun_level2 <= 0:
+		timer_basic_gun_level2 += timer_basic_gun_level2_MAX
+		timer_fires[TIMER_BASIC_GUN_LEVEL_2] = true
+		
+	timer_side_laser -= delta
+	if timer_side_laser <= 0:
+		timer_side_laser += timer_side_laser_MAX
+		timer_fires[TIMER_SIDE_LASER] = true
+
 const SHIP_BASIC_GUN = 0
 const SHIP_SIDE_LASER = 1
 
@@ -103,8 +163,15 @@ func reset_game_state():
 	money = 0
 	lives = 200
 	
+	reset_timers()
+	
 func _ready():
 	reset_game_state()
+	
+func _physics_process(delta):
+	# NOTE TO FUTURE SELF:
+	# ALL code that checks timers in Towers MUST be written in physics_process.
+	update_timers(delta)
 
 func _process(delta):
 	if Input.is_action_just_pressed("fullscreen"):
