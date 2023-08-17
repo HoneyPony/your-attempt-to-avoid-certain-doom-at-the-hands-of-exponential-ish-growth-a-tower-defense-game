@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://virus/VirusCollection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://towers/drill_ship.png" type="Texture" id=2]
@@ -22,7 +22,6 @@
 [ext_resource path="res://towers/Drill.tscn" type="PackedScene" id=20]
 [ext_resource path="res://ui/pause_icon.svg" type="Texture" id=21]
 [ext_resource path="res://ui/PauseMenu.gd" type="Script" id=22]
-[ext_resource path="res://TOOL_RemoveAllButtonFocus.gd" type="Script" id=23]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.280571, 0.0, 0, 0 ]
@@ -243,7 +242,6 @@ tracks/4/keys = {
 
 [node name="Game" type="Node2D"]
 pause_mode = 1
-script = ExtResource( 23 )
 
 [node name="BackgroundFX" type="Sprite" parent="."]
 visible = false
@@ -362,6 +360,7 @@ anchor_right = 0.5
 margin_left = -183.0
 margin_top = -66.0
 margin_right = -17.0
+focus_mode = 0
 theme = ExtResource( 6 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0.717647, 0.717647, 0.717647, 1 )
@@ -383,6 +382,7 @@ anchor_right = 0.5
 margin_left = -18.0
 margin_top = -66.0
 margin_right = 230.0
+focus_mode = 0
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 0.717647, 0.717647, 0.717647, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
@@ -454,6 +454,7 @@ margin_left = -32.0
 margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
+focus_mode = 0
 texture_normal = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true
@@ -469,6 +470,7 @@ margin_left = 987.0
 margin_top = 170.0
 margin_right = 1072.0
 margin_bottom = 217.0
+focus_mode = 0
 custom_fonts/font = ExtResource( 19 )
 text = "Sell"
 
@@ -512,6 +514,7 @@ margin_left = -79.0
 margin_top = 14.0
 margin_right = -15.0
 margin_bottom = 78.0
+focus_mode = 0
 texture_normal = ExtResource( 21 )
 
 [node name="SideLaser" parent="." instance=ExtResource( 10 )]
@@ -564,6 +567,7 @@ margin_left = -167.5
 margin_top = -61.0
 margin_right = 167.5
 margin_bottom = 61.0
+focus_mode = 0
 text = "RESUME"
 
 [node name="PauseButton2" type="TextureButton" parent="PauseLayer/PauseMenu"]
@@ -573,6 +577,7 @@ margin_left = -79.0
 margin_top = 14.0
 margin_right = -15.0
 margin_bottom = 78.0
+focus_mode = 0
 texture_normal = ExtResource( 21 )
 
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/ShopTab" to="CanvasLayer/GameUI" method="_on_ShopTab_toggled"]
