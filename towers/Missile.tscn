@@ -2,7 +2,7 @@
 
 [ext_resource path="res://towers/missile.png" type="Texture" id=1]
 [ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=2]
-[ext_resource path="res://towers/BasicBullet.gd" type="Script" id=3]
+[ext_resource path="res://towers/Missile.gd" type="Script" id=3]
 [ext_resource path="res://fx/flame_particle_smaller.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]

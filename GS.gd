@@ -217,6 +217,10 @@ var Missile = preload("res://towers/Missile.tscn")
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
 
+var Explosions = [
+	preload("res://towers/MissileExplosion0.tscn")
+]
+
 var game_camera: Camera2D = null
 
 # These variables are used so that ships can coordinate who should be selected,
