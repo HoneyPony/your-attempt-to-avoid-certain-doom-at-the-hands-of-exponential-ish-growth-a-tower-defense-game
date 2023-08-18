@@ -68,6 +68,9 @@ func _physics_process(delta):
 	# Virus collections go away when all their children are gone.
 	if get_child_count() == 0:
 		queue_free()
+		
+	if Input.is_action_just_pressed("test_spawn"):
+		queue_free()
 	
 func get_generation(cell, from_parent_value):
 	var g = from_parent_value

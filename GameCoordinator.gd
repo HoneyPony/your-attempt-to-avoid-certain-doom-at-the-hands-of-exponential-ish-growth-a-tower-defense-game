@@ -39,7 +39,7 @@ func try_to_spawn():
 	elif GS.total_money <= 9000:
 		spawn_somewhat_weak_vc()
 	else:
-		spawn_somewhat_weak_vc()
+		spawn_vc(0.3, 10)
 	
 # Spawns a virus collection that is "weak", i.e. the kind that you encounter
 # right at the beginning of the game.

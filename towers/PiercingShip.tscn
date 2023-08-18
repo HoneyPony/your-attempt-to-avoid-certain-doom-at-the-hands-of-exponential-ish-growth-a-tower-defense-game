@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://fx/flame_particle_smaller.png" type="Texture" id=1]
+[ext_resource path="res://towers/piercing_ship_blaster_top.png" type="Texture" id=2]
+[ext_resource path="res://towers/piercing_ship_blaster_bottom.png" type="Texture" id=3]
+[ext_resource path="res://towers/piercing_ship.png" type="Texture" id=4]
+[ext_resource path="res://towers/piercing_ship_blaster.png" type="Texture" id=5]
+[ext_resource path="res://towers/PiercingShip.gd" type="Script" id=6]
+[ext_resource path="res://towers/AlwaysPointUp.gd" type="Script" id=7]
+[ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=8]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, -2.34486, 0, 0, Vector2( 1, 0 ), -0.119318, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.0458716, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 90, 90 )
+
+[node name="PiercingShip" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 6 )
+ship_type = 5
+
+[node name="MovementDisplay" type="Line2D" parent="."]
+z_index = -1
+points = PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+width = 50.0
+width_curve = SubResource( 3 )
+default_color = Color( 1, 1, 1, 0.501961 )
+
+[node name="ShipSprite" type="Sprite" parent="."]
+material = ExtResource( 8 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlasterBottom" type="Sprite" parent="ShipSprite"]
+material = ExtResource( 8 )
+z_index = -1
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShipSprite"]
+material = ExtResource( 8 )
+position = Vector2( 0, 12.5 )
+scale = Vector2( 4, 4 )
+z_index = -1
+amount = 16
+preprocess = 1.0
+local_coords = false
+texture = ExtResource( 1 )
+direction = Vector2( 0, 1 )
+spread = 30.0
+gravity = Vector2( 0, 1 )
+initial_velocity = 4.0
+initial_velocity_random = 0.5
+angle = 90.0
+angle_random = 0.57
+scale_amount = 5.0
+scale_amount_random = 0.04
+color = Color( 1, 0.607843, 0, 1 )
+color_ramp = SubResource( 2 )
+hue_variation = -0.12
+hue_variation_random = 1.0
+
+[node name="BlasterTop" type="Sprite" parent="ShipSprite"]
+material = ExtResource( 8 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cannon" type="Sprite" parent="ShipSprite"]
+material = ExtResource( 8 )
+position = Vector2( 0, 1 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, -1 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BulletSpawnPoint" type="Position2D" parent="."]
+position = Vector2( 0, 4 )
+
+[connection signal="input_event" from="." to="." method="_on_BasicGun_input_event"]

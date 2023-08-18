@@ -27,6 +27,11 @@ const timer_cannon_level1_MAX = (1.4 / 1.1)
 var timer_cannon_level2 = 0
 const timer_cannon_level2_MAX = (1.4 / (1.1 * 1.2))
 
+var timer_piercing_level0 = 0
+const timer_piercing_level0_MAX = 1.2
+var timer_piercing_level2 = 0
+const timer_piercing_level2_MAX = (1.2 / 1.8)
+
 const TIMER_BASIC_GUN_LEVEL_0 = 0
 const TIMER_BASIC_GUN_LEVEL_1 = 1
 const TIMER_BASIC_GUN_LEVEL_2 = 2 # These three should be in order
@@ -37,6 +42,8 @@ const TIMER_DRILL_LEVEL_2 = 6 # These three should be in order
 const TIMER_CANNON_LEVEL_0 = 7 
 const TIMER_CANNON_LEVEL_1 = 8
 const TIMER_CANNON_LEVEL_2 = 9 # These three should be in order
+const TIMER_PIERCING_LEVEL_0 = 10
+const TIMER_PIERCING_LEVEL_2 = 11 # These two should be in order
 
 var timer_fires = [
 	false, # basic gun level 0
@@ -49,6 +56,8 @@ var timer_fires = [
 	false,
 	false,
 	false, # cannon timers
+	false,
+	false, # piercing timers
 ]
 
 func reset_timers():
@@ -65,6 +74,8 @@ func reset_timers():
 	timer_cannon_level0 = timer_cannon_level0_MAX
 	timer_cannon_level1 = timer_cannon_level1_MAX
 	timer_cannon_level2 = timer_cannon_level2_MAX
+	timer_piercing_level0 = timer_piercing_level0_MAX
+	timer_piercing_level2 = timer_piercing_level2_MAX
 
 func update_timers(delta):
 	for i in range(0, timer_fires.size()):
@@ -121,11 +132,23 @@ func update_timers(delta):
 	if timer_cannon_level2 <= 0:
 		timer_cannon_level2 += timer_cannon_level2_MAX
 		timer_fires[TIMER_CANNON_LEVEL_2] = true
+		
+	timer_piercing_level0 -= delta
+	if timer_piercing_level0 <= 0:
+		timer_piercing_level0 += timer_piercing_level0_MAX
+		timer_fires[TIMER_PIERCING_LEVEL_0] = true
+		
+	timer_piercing_level2 -= delta
+	if timer_piercing_level2 <= 0:
+		timer_piercing_level2 += timer_piercing_level2_MAX
+		timer_fires[TIMER_PIERCING_LEVEL_2] = true
 
 const SHIP_BASIC_GUN = 0
 const SHIP_SIDE_LASER = 1
 const SHIP_DRILL = 2
 const SHIP_CANNON = 3
+const SHIP_NANOBOT = 4
+const SHIP_PIERCING = 5
 
 class Upgrades:
 	var left_path
@@ -151,6 +174,7 @@ var ship_scenes = [
 	preload("res://towers/Drill.tscn"),
 	preload("res://towers/Cannon.tscn"),
 	preload("res://towers/NanobotShooter.tscn"),
+	preload("res://towers/PiercingShip.tscn")
 ]
 
 # The number of each kind of ship (SHIP_) that exists right now.
@@ -217,6 +241,18 @@ var upgrades = [
 			Upgrade.new(400, "This ship will impede virus growth by +1 more generation."),
 			Upgrade.new(3400, "This ship will impede virus growth by +3 more generations.")
 		]
+	),
+	
+	# Piercing
+	Upgrades.new(
+		[
+			Upgrade.new(300, "Make the ship's bullets much smaller."),
+			Upgrade.new(3000, "This ship will shoot 1.8x as fast.")
+		],
+		[
+			Upgrade.new(800, "Increase the piercing of this ship to 8."),
+			Upgrade.new(4000, "Increase the piercing of this ship to 17.")
+		]
 	)
 ]
 
@@ -236,6 +272,11 @@ var Explosions = [
 	preload("res://towers/MissileExplosion0.tscn"),
 	preload("res://towers/MissileExplosion1.tscn"),
 	preload("res://towers/MissileExplosion2.tscn"),
+]
+
+var KineticMissile = [
+	preload("res://towers/KineticMissile0.tscn"),
+	preload("res://towers/KineticMissile1.tscn")
 ]
 
 var game_camera: Camera2D = null
@@ -309,7 +350,8 @@ func reset_game_state():
 	ship_parent_node = null
 	
 	# DEBUG MONEY:
-	# money = 30000
+	money = 30000
+	total_money = 30000
 	
 	reset_timers()
 	
