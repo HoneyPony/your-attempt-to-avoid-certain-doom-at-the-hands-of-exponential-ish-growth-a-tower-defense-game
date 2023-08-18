@@ -349,6 +349,8 @@ var lives: int = 0
 # The node that newly bought ships should be parented to.
 var ship_parent_node: Node2D = null
 
+var ship_buyers = [null, null, null, null, null, null]
+
 # Resets all the values in GS that are relevant to starting a game.
 # It's sort of like rebooting the game.
 #
@@ -367,6 +369,9 @@ func reset_game_state():
 	lives = 200
 	
 	ship_parent_node = null
+	
+	current_shop_info_button = null
+	ship_buyers = [null, null, null, null, null, null]
 	
 	# DEBUG MONEY:
 	#money = 3400
