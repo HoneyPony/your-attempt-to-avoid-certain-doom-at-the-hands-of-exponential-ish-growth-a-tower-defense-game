@@ -3,6 +3,8 @@ extends ColorRect
 onready var quit_menu = $QuitMenu
 onready var quit_anim = $QuitMenu/AnimationPlayer
 
+onready var options = $OptionsMenu
+
 func _process(delta):
 	var was_visible = visible
 	visible = get_tree().paused
@@ -34,3 +36,9 @@ func _on_QuitButton_pressed():
 	# This will show the quit menu, and then disable the confirm button
 	# temporarily (and then enable it), so as to prevent accidental quits.
 	quit_anim.play("OpenQuitMenu")
+
+
+func _on_OptionsButton_pressed():
+	# We could just directly connect the button signal to this function...
+	# but this works too.
+	options.open()

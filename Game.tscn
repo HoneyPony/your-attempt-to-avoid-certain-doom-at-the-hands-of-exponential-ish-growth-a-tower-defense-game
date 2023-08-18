@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://ui/piercing_ship_ICON.png" type="Texture" id=1]
 [ext_resource path="res://ui/drill_ship_SHOP_ICON.png" type="Texture" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://ui/bomb_ship_ICON.png" type="Texture" id=23]
 [ext_resource path="res://fonts/audiowide/Audiowide-Regular.ttf" type="DynamicFontData" id=24]
 [ext_resource path="res://ui/Tutorial.gd" type="Script" id=25]
+[ext_resource path="res://ui/OptionsMenu.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.280571, 0.0, 0, 0 ]
@@ -1135,12 +1136,18 @@ You will lose all your progress!"
 anims/OpenQuitMenu = SubResource( 13 )
 anims/RESET = SubResource( 14 )
 
+[node name="OptionsMenu" parent="PauseLayer/PauseMenu" instance=ExtResource( 26 )]
+visible = false
+margin_left = 1162.0
+margin_right = 1162.0
+
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/ShopTab" to="CanvasLayer/GameUI" method="_on_ShopTab_toggled"]
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/UpgradesTab" to="CanvasLayer/GameUI" method="_on_UpgradesTab_toggled"]
 [connection signal="pressed" from="CanvasLayer/GameUI/Shop/CloseButtonPivot/CloseButton" to="CanvasLayer/GameUI" method="_on_CloseButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameUI/PauseButton" to="CanvasLayer/GameUI" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameUI/Tutorial/Dismiss" to="CanvasLayer/GameUI/Tutorial" method="_on_Dismiss_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/ResumeButton" to="PauseLayer/PauseMenu" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="PauseLayer/PauseMenu/OptionsButton" to="PauseLayer/PauseMenu" method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/QuitButton" to="PauseLayer/PauseMenu" method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/PauseButton2" to="CanvasLayer/GameUI" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/QuitMenu/ConfirmQuit" to="PauseLayer/PauseMenu" method="_on_ConfirmQuit_pressed"]
