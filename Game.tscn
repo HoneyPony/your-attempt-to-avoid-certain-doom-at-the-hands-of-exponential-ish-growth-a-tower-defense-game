@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://ui/piercing_ship_ICON.png" type="Texture" id=1]
 [ext_resource path="res://ui/drill_ship_SHOP_ICON.png" type="Texture" id=2]
@@ -867,6 +867,133 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="Animation" id=20]
+resource_name = "Open"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2081.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:margin_bottom")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2081.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FreePlay:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("QuitToMenu:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FreePlay:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("QuitToMenu:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
 [node name="Game" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 10 )
@@ -1627,6 +1754,117 @@ anims/RESET = SubResource( 14 )
 visible = false
 margin_left = 1162.0
 margin_right = 1162.0
+
+[node name="WinLose" type="CanvasLayer" parent="."]
+
+[node name="WinScreen" type="ColorRect" parent="WinLose"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+color = Color( 0.0627451, 0, 0.156863, 1 )
+
+[node name="Label" type="Label" parent="WinLose/WinScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -467.0
+margin_top = -574.0
+margin_right = 467.0
+margin_bottom = 508.0
+text = "Congratulations!
+
+You successfully defended against the malfunctioning probes.
+
+If you wish, you can see just how strong your defense is, and keep playing against waves of stronger and stronger enemies.
+
+Or, you can quit to the main menu, and relish in your tremendous victory against the forces of exponential (ish) growth."
+align = 1
+autowrap = true
+
+[node name="QuitToMenu" type="Button" parent="WinLose/WinScreen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -215.0
+margin_top = -199.0
+margin_right = 215.0
+margin_bottom = -51.0
+disabled = true
+text = "Quit To Menu"
+
+[node name="FreePlay" type="Button" parent="WinLose/WinScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -189.0
+margin_top = 407.0
+margin_right = 189.0
+margin_bottom = 533.0
+disabled = true
+text = "Free Play"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WinLose/WinScreen"]
+anims/Open = SubResource( 20 )
+anims/RESET = SubResource( 21 )
+
+[node name="LoseScreen" type="ColorRect" parent="WinLose"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+color = Color( 0.0627451, 0, 0.156863, 1 )
+
+[node name="Label" type="Label" parent="WinLose/LoseScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -467.0
+margin_top = -574.0
+margin_right = 467.0
+margin_bottom = 508.0
+text = "Oh no!
+
+You lost all your lives. Do you want to try again from the beginning?"
+align = 1
+autowrap = true
+
+[node name="QuitToMenu" type="Button" parent="WinLose/LoseScreen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -215.0
+margin_top = -199.0
+margin_right = 215.0
+margin_bottom = -51.0
+text = "Quit To Menu"
+
+[node name="StartOver" type="Button" parent="WinLose/LoseScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -189.0
+margin_top = -142.0
+margin_right = 189.0
+margin_bottom = -16.0
+text = "Start Over"
+
+[node name="SPECIAL_KeepGoing" type="Button" parent="WinLose/LoseScreen"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -385.0
+margin_top = 56.0
+margin_right = 385.0
+margin_bottom = 182.0
+text = "Free Play (With 0 Lives)"
 
 [connection signal="pressed" from="CanvasLayer/GameUI/Shop/ShopInfo/Dismiss" to="CanvasLayer/GameUI/Shop/ShopInfo" method="_on_Dismiss_pressed"]
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/ShopTab" to="CanvasLayer/GameUI" method="_on_ShopTab_toggled"]
