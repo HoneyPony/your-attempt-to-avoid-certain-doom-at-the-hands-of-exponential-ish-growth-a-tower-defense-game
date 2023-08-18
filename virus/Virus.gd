@@ -47,6 +47,7 @@ func destroy(aging_amount):
 		
 	# We get money when a virus is destroyed
 	GS.money += 1
+	GS.total_money += 1
 	
 	parent_vc.free_coord(coord, aging_amount)
 	queue_free()

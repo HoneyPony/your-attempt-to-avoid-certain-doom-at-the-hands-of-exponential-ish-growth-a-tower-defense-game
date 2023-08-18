@@ -278,6 +278,9 @@ func try_grab_selection(trying_ship: Node2D, touch_index: int, distance: float) 
 
 # Game stats
 var money: int = 0
+# Used to track how much money the player has earned. This is the main
+# thing used to determine game progression.
+var total_money: int = 0
 var lives: int = 0
 
 # The node that newly bought ships should be parented to.
@@ -294,6 +297,8 @@ func reset_game_state():
 	# Your starting money should be enough to purchase one basic tower,
 	# And then maybe also help you towards a second one.
 	money = 100
+	# I guess this is consistent...?
+	total_money = 100
 	lives = 200
 	
 	ship_parent_node = null
