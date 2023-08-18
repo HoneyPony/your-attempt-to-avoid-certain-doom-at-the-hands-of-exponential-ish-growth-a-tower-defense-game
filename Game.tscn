@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://ui/piercing_ship_ICON.png" type="Texture" id=1]
 [ext_resource path="res://ui/drill_ship_SHOP_ICON.png" type="Texture" id=2]
@@ -582,6 +582,61 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "OpenQuitMenu"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ConfirmQuit:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ConfirmQuit:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
 [node name="Game" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 10 )
@@ -974,7 +1029,6 @@ script = ExtResource( 17 )
 
 [node name="PauseMenu" type="ColorRect" parent="PauseLayer"]
 pause_mode = 2
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
@@ -1004,15 +1058,82 @@ margin_bottom = 61.0
 focus_mode = 0
 text = "RESUME"
 
+[node name="OptionsButton" type="Button" parent="PauseLayer/PauseMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.5
+margin_top = 89.0
+margin_right = 167.5
+margin_bottom = 211.0
+focus_mode = 0
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="PauseLayer/PauseMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -167.5
+margin_top = -177.0
+margin_right = 167.5
+margin_bottom = -55.0
+focus_mode = 0
+text = "QUIT"
+
 [node name="PauseButton2" type="TextureButton" parent="PauseLayer/PauseMenu"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -79.0
-margin_top = 14.0
-margin_right = -15.0
-margin_bottom = 78.0
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 75.0
+margin_bottom = 74.0
 focus_mode = 0
 texture_normal = ExtResource( 21 )
+
+[node name="QuitMenu" type="Panel" parent="PauseLayer/PauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ConfirmQuit" type="Button" parent="PauseLayer/PauseMenu/QuitMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -275.0
+margin_top = -9.0
+margin_right = 275.0
+margin_bottom = 153.0
+focus_mode = 0
+disabled = true
+text = "Confirm Quit"
+
+[node name="CancelQuit" type="Button" parent="PauseLayer/PauseMenu/QuitMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -275.0
+margin_top = 223.0
+margin_right = 275.0
+margin_bottom = 385.0
+focus_mode = 0
+text = "Cancel"
+
+[node name="Label" type="Label" parent="PauseLayer/PauseMenu/QuitMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -422.0
+margin_top = -209.0
+margin_right = 422.0
+margin_bottom = -79.0
+text = "Are you sure you want to quit?
+You will lose all your progress!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseLayer/PauseMenu/QuitMenu"]
+anims/OpenQuitMenu = SubResource( 13 )
+anims/RESET = SubResource( 14 )
 
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/ShopTab" to="CanvasLayer/GameUI" method="_on_ShopTab_toggled"]
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/UpgradesTab" to="CanvasLayer/GameUI" method="_on_UpgradesTab_toggled"]
@@ -1020,4 +1141,7 @@ texture_normal = ExtResource( 21 )
 [connection signal="pressed" from="CanvasLayer/GameUI/PauseButton" to="CanvasLayer/GameUI" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameUI/Tutorial/Dismiss" to="CanvasLayer/GameUI/Tutorial" method="_on_Dismiss_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/ResumeButton" to="PauseLayer/PauseMenu" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="PauseLayer/PauseMenu/QuitButton" to="PauseLayer/PauseMenu" method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/PauseButton2" to="CanvasLayer/GameUI" method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="PauseLayer/PauseMenu/QuitMenu/ConfirmQuit" to="PauseLayer/PauseMenu" method="_on_ConfirmQuit_pressed"]
+[connection signal="pressed" from="PauseLayer/PauseMenu/QuitMenu/CancelQuit" to="PauseLayer/PauseMenu" method="_on_CancelQuit_pressed"]
