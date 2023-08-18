@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://fx/star.png" type="Texture" id=2]
 [ext_resource path="res://ui/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://ui/OptionsMenu.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.280571, 0.0, 0, 0 ]
@@ -73,6 +74,24 @@ margin_left = -200.0
 margin_top = -59.0
 margin_right = 200.0
 margin_bottom = 59.0
+focus_mode = 0
 text = "Play!"
 
+[node name="Options" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = 187.0
+margin_right = 200.0
+margin_bottom = 305.0
+text = "Options"
+
+[node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = 1162.0
+margin_right = 1162.0
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
