@@ -1,5 +1,8 @@
 extends Node2D
 
+var message_welcome = \
+"Hello commander,\n\nHere's what we know so far: a space probe went bananas and began self-replicating. We need to stop the replicated descendants of that probe from reaching our planet.\n\nUse the arrow in the bottom-left corner of your screen to open the shop and buy a ship!"
+
 func y_minimum():
 	if GS.total_money <= 3000:
 		return 32
