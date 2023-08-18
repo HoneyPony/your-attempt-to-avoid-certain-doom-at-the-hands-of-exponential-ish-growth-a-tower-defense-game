@@ -17,6 +17,7 @@ script = ExtResource( 1 )
 acceleration_strength = 1200
 movement_speed = 50
 ship_type = 1
+do_not_move_x = true
 
 [node name="MovementDisplay" type="Line2D" parent="."]
 z_index = -1

@@ -22,8 +22,9 @@ func _physics_process(delta):
 	compute_movement_speed()
 	
 	if GS.timer_fires[GS.TIMER_DRILL_LEVEL_0 + left_level]:
-		damager.collision_layer = 1
-		damager.visible = true
+		if state == State.NORMAL:
+			damager.collision_layer = 1
+			damager.visible = true
 	else:
 		damager.collision_layer = 0
 		damager.visible = false

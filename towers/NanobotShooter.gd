@@ -17,6 +17,9 @@ func _ready():
 	reset_fire_timer()
 
 func fire(delta):
+	if state != State.NORMAL:
+		return
+	
 	var bullet = GS.Nanobot.instance()
 	bullet.position = position + bullet_spawn_point.position + velocity * delta
 	if right_level == 1:

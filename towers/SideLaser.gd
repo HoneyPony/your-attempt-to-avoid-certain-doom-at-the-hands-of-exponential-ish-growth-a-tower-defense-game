@@ -21,6 +21,9 @@ func _ready():
 	drag_target_position = position
 	
 func fire():
+	if state != State.NORMAL:
+		return
+	
 	var bullet = GS.SideLaserBullet.instance()
 	bullet.position = bullet_spawn_point.global_position
 	# May change when we add upgrades, etc

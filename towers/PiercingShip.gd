@@ -3,6 +3,9 @@ extends "res://towers/TowerBase.gd"
 onready var bullet_spawn_point = $BulletSpawnPoint
 
 func fire(delta):
+	if state != State.NORMAL:
+		return
+	
 	var missile = 1 if left_level >= 1 else 0
 	
 	var bullet = GS.KineticMissile[missile].instance()

@@ -3,6 +3,9 @@ extends "res://towers/TowerBase.gd"
 onready var bullet_spawn_point = $BulletSpawnPoint
 
 func fire(delta):
+	if state != State.NORMAL:
+		return
+	
 	var bullet = GS.BasicBullet.instance()
 	bullet.position = position + bullet_spawn_point.position + velocity * delta
 	bullet.hits_left = 1 + right_level

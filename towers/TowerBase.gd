@@ -53,14 +53,20 @@ func _ready():
 	GS.ship_counts[ship_type] += 1
 	drag_target_position = position
 	
+	position = Vector2(-800, 1400)
+	
 # Should be called to remove the ship. Ensures that the count is updated
 # in GS.
 func destroy():
-	if is_queued_for_deletion():
+	if state == State.DESTROYING:
 		return
+	#if is_queued_for_deletion():
+	#	return
+	deselect()
 		
 	GS.ship_counts[ship_type] -= 1
-	queue_free()
+	state = State.DESTROYING
+	#queue_free()
 
 func compute_acceleration(desired_velocity: Vector2, delta: float, zero_threshold: float = 0.0) -> Vector2:
 	var accel_direction = (desired_velocity - velocity).normalized()
@@ -106,12 +112,51 @@ func perform_physics(delta):
 	#move_and_slide(velocity)
 	position += velocity * delta
 
+enum State {
+	SPAWNING,
+	NORMAL,
+	DESTROYING
+}
+
+var state = State.SPAWNING
+
+# Special case for side laser
+export var do_not_move_x = false
+
+func lerp_as_anim(target, delta, dt) -> bool:
+	if do_not_move_x:
+		target.x = position.x
+		
+	var min_step = (target - position).normalized() * 256 * dt
+		
+	var dif = target - position
+	if dif.length() < min_step.length():
+		position = target
+		return true
+	
+	var step = dif * delta
+	if step.length() < min_step.length():
+		step = min_step
+		
+	position += step
+	return false
+
 func _physics_process(delta):
-	perform_physics(delta)
+	if state == State.SPAWNING:
+		if lerp_as_anim(Vector2.ZERO, 0.13, delta):
+			state = State.NORMAL
+		drag_target_position = position
+	elif state == State.NORMAL:
 	
-	position = bound_ship_position(position)
-	
-	update_movement_display()
+		perform_physics(delta)
+		
+		position = bound_ship_position(position)
+		
+		update_movement_display()
+	elif state == State.DESTROYING:
+		if lerp_as_anim(Vector2(3000, -2000), 0.13, delta):
+			queue_free()
+		drag_target_position = position
 
 enum DragState {
 	NOT_DRAGGING,
@@ -147,6 +192,11 @@ const MOUSE_TOUCH_INDEX = -1
 
 # Only activate dragging states through inputs that occur on this Area2D.
 func _on_BasicGun_input_event(viewport, event, shape_idx):
+	if state == State.DESTROYING:
+		# Can start dragging when we are spawning, but not when we
+		# are destroying.
+		return
+	
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:
@@ -160,6 +210,9 @@ func _on_BasicGun_input_event(viewport, event, shape_idx):
 	
 					# We are now the upgrade target
 					GS.upgrade_target_ship = self
+					
+					# When we start dragging, we cancel the start animation
+					state = State.NORMAL
 	
 	if event is InputEventScreenTouch:
 		if event.pressed:
@@ -175,6 +228,8 @@ func _on_BasicGun_input_event(viewport, event, shape_idx):
 				# We are now the upgrade target
 				GS.upgrade_target_ship = self
 				
+				state = State.NORMAL
+				
 		
 func deselect():
 	drag_state = DragState.NOT_DRAGGING
@@ -184,6 +239,7 @@ func deselect():
 		GS.selected_ship_map[drag_touch_index] = null
 				
 func _input(event):
+
 	# Dragging states may be deactivated by any input event.
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and not event.pressed:
