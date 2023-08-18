@@ -154,7 +154,7 @@ func _physics_process(delta):
 		
 		update_movement_display()
 	elif state == State.DESTROYING:
-		if lerp_as_anim(Vector2(3000, -2000), 0.13, delta):
+		if lerp_as_anim(Vector2(3000, -2000), 0.02, delta):
 			queue_free()
 		drag_target_position = position
 
