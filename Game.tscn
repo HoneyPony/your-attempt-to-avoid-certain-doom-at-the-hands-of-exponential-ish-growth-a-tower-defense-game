@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://virus/VirusCollection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/drill_ship_SHOP_ICON.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://ui/heart_icon.svg" type="Texture" id=7]
 [ext_resource path="res://ui/GameUI.gd" type="Script" id=8]
 [ext_resource path="res://towers/side_laser.png" type="Texture" id=9]
-[ext_resource path="res://towers/NanobotShooter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://fx/background_fx.png" type="Texture" id=11]
 [ext_resource path="res://fx/BackgroundFX.gd" type="Script" id=12]
 [ext_resource path="res://ui/shop_close_icon.svg" type="Texture" id=13]
@@ -431,6 +430,7 @@ margin_right = 892.0
 texture = ExtResource( 20 )
 cost = 300
 exponent = 1.2
+ship_id = 4
 
 [node name="ShipBuyer6" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 955.0
@@ -580,8 +580,6 @@ margin_right = -15.0
 margin_bottom = 78.0
 focus_mode = 0
 texture_normal = ExtResource( 21 )
-
-[node name="NanobotShooter" parent="." instance=ExtResource( 10 )]
 
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/ShopTab" to="CanvasLayer/GameUI" method="_on_ShopTab_toggled"]
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/UpgradesTab" to="CanvasLayer/GameUI" method="_on_UpgradesTab_toggled"]

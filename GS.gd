@@ -21,11 +21,11 @@ var timer_drill_level2 = 0
 const timer_drill_level2_MAX = (1.0 / (1.5 * 2))
 
 var timer_cannon_level0 = 0
-const timer_cannon_level0_MAX = 1.2
+const timer_cannon_level0_MAX = 1.4
 var timer_cannon_level1 = 0
-const timer_cannon_level1_MAX = (1.2 / 1.2)
+const timer_cannon_level1_MAX = (1.4 / 1.1)
 var timer_cannon_level2 = 0
-const timer_cannon_level2_MAX = (1.2 / (1.2 * 1.2))
+const timer_cannon_level2_MAX = (1.4 / (1.1 * 1.2))
 
 const TIMER_BASIC_GUN_LEVEL_0 = 0
 const TIMER_BASIC_GUN_LEVEL_1 = 1
@@ -150,6 +150,7 @@ var ship_scenes = [
 	preload("res://towers/SideLaser.tscn"),
 	preload("res://towers/Drill.tscn"),
 	preload("res://towers/Cannon.tscn"),
+	preload("res://towers/NanobotShooter.tscn"),
 ]
 
 # The number of each kind of ship (SHIP_) that exists right now.
@@ -197,7 +198,7 @@ var upgrades = [
 	# Cannon
 	Upgrades.new(
 		[
-			Upgrade.new(600, "Increase the fire rate of the cannon by 1.2x"),
+			Upgrade.new(600, "Increase the fire rate of the cannon by 1.1x"),
 			Upgrade.new(800, "Increase the fire rate of the cannon by another 1.2x")
 		],
 		[
