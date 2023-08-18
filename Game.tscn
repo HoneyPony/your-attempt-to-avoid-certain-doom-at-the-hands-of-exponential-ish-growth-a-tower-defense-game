@@ -1322,6 +1322,30 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="ShipIcon" type="TextureRect" parent="CanvasLayer/GameUI/Shop/Upgrades"]
+material = ExtResource( 14 )
+margin_left = 1005.0
+margin_top = 15.0
+margin_right = 1084.0
+margin_bottom = 94.0
+theme = ExtResource( 6 )
+texture = ExtResource( 27 )
+expand = true
+stretch_mode = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/GameUI/Shop/Upgrades/ShipIcon"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+custom_styles/panel = SubResource( 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="SellButton" type="Button" parent="CanvasLayer/GameUI/Shop/Upgrades"]
 margin_left = 1001.0
 margin_top = 220.0
@@ -1363,30 +1387,6 @@ margin_right = 1140.0
 margin_bottom = 176.0
 text = "you have no ship selected to upgrade!"
 align = 1
-
-[node name="ShipIcon" type="TextureRect" parent="CanvasLayer/GameUI/Shop/Upgrades"]
-material = ExtResource( 14 )
-margin_left = 1005.0
-margin_top = 15.0
-margin_right = 1084.0
-margin_bottom = 94.0
-theme = ExtResource( 6 )
-texture = ExtResource( 27 )
-expand = true
-stretch_mode = 1
-
-[node name="Panel" type="Panel" parent="CanvasLayer/GameUI/Shop/Upgrades/ShipIcon"]
-show_behind_parent = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -8.0
-margin_top = -8.0
-margin_right = 8.0
-margin_bottom = 8.0
-custom_styles/panel = SubResource( 16 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="PauseButton" type="TextureButton" parent="CanvasLayer/GameUI"]
 margin_left = 11.0
