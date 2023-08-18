@@ -181,6 +181,12 @@ var ship_scenes = [
 # Used to determine the price for more ships.
 var ship_counts = [0, 0, 0, 0, 0, 0]
 
+func has_any_ship() -> bool:
+	for s in ship_counts:
+		if s > 0:
+			return true
+	return false
+
 # An array of all upgrade information corresponding to the SHIP_
 # constants.
 var upgrades = [

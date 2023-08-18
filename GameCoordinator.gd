@@ -1,7 +1,7 @@
 extends Node2D
 
-var message_welcome = \
-"Hello commander,\n\nHere's what we know so far: a space probe went bananas and began self-replicating. We need to stop the replicated descendants of that probe from reaching our planet.\n\nUse the arrow in the bottom-left corner of your screen to open the shop and buy a ship!"
+onready var tutorial = $CanvasLayer/GameUI/Tutorial
+
 
 func y_minimum():
 	if GS.total_money <= 3000:
@@ -32,9 +32,22 @@ func try_to_spawn():
 	if get_tree().get_nodes_in_group("Scary").size() >= 1:
 		return
 		
+	# We can't spawn while the tutorial is open
+	if tutorial.visible:
+		return
+		
+	# At certain checkpoints, we want to open a tutorial screen -- at that time,
+	# no more probes are allowed to spawn.
+	if tutorial.wants_to_open():
+		return
+		
 	# Don't spawn much if there's already virus collections near the top of
 	# the screen.
 	if not check_y_prob():
+		return
+		
+	# If we haven't bought a ship, don't let anything spawn.
+	if not GS.has_any_ship():
 		return
 		
 	if GS.total_money <= 2700:
@@ -139,6 +152,9 @@ func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strengt
 	
 	return vc
 	
+func try_open_tutorial(index):
+	if tutorial.target_index < index:
+		tutorial.target_index = index
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -148,6 +164,10 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("test_spawn"):
 		pass
+		
+	# Shortly after we earn some real cash dollars
+	if GS.total_money >= 105:
+		try_open_tutorial(1)
 		
 	# Give player some big money even in somewhat_weka
 	if GS.total_money >= 3300:
