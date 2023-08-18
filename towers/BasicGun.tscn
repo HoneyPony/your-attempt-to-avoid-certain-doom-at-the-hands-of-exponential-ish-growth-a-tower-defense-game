@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=1]
 [ext_resource path="res://towers/basic_gun.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://fx/flame_particle_smaller.png" type="Texture" id=4]
 [ext_resource path="res://towers/AlwaysPointUp.gd" type="Script" id=5]
 [ext_resource path="res://towers/basic_gun_cannon.png" type="Texture" id=6]
+[ext_resource path="res://towers/basic_gun_blaster_top.png" type="Texture" id=7]
+[ext_resource path="res://towers/basic_gun_blaster_bottom.png" type="Texture" id=8]
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, -2.34486, 0, 0, Vector2( 1, 0 ), -0.119318, 0.0, 0, 0 ]
@@ -39,9 +41,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="BlasterBottom" type="Sprite" parent="ShipSprite"]
+material = ExtResource( 1 )
+z_index = -1
+texture = ExtResource( 8 )
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ShipSprite"]
 material = ExtResource( 1 )
-position = Vector2( 0, 14.25 )
+position = Vector2( 0, 12.75 )
 scale = Vector2( 4, 4 )
 z_index = -1
 amount = 16
@@ -49,17 +56,22 @@ preprocess = 1.0
 local_coords = false
 texture = ExtResource( 4 )
 direction = Vector2( 0, 1 )
+spread = 30.0
 gravity = Vector2( 0, 1 )
 initial_velocity = 4.0
 initial_velocity_random = 0.5
 angle = 90.0
 angle_random = 0.57
-scale_amount = 8.0
+scale_amount = 7.0
 scale_amount_random = 0.04
 color = Color( 1, 0.607843, 0, 1 )
 color_ramp = SubResource( 2 )
 hue_variation = -0.12
 hue_variation_random = 1.0
+
+[node name="BlasterTop" type="Sprite" parent="ShipSprite"]
+material = ExtResource( 1 )
+texture = ExtResource( 7 )
 
 [node name="Cannon" type="Sprite" parent="ShipSprite"]
 material = ExtResource( 1 )
