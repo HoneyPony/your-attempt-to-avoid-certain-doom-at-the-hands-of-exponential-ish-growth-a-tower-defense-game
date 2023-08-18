@@ -18,10 +18,27 @@ onready var shop_info: ShopInfo = get_node("../../ShopInfo")
 
 func _ready():
 	update_actual_cost()
+	GS.ship_buyers[ship_id] = self
 	
 func _process(delta):
 	update_actual_cost()
 	buy_button.disabled = (GS.money < actual_cost)
+	
+#func get_delta_cost():
+#	var cur_cost = int(pow(exponent, GS.ship_counts[ship_id]) * cost)
+#	var last_cost = 0
+#	if GS.ship_counts[ship_id] > 1:
+#		last_cost =  int(pow(exponent, GS.ship_counts[ship_id] - 1) * cost)
+#
+#	return cur_cost - last_cost
+	
+func get_last_ship_cost():
+	# This will only be called if we have at least 1 ship.
+	# If we have at least 1 ship,t hen GS.ship_counts[] will be 1.
+	# So, the lowest exponent is 0
+	# So the lowest cost (when we have 1 ship) is the base cost,
+	# as we would expect.
+	return int(pow(exponent, GS.ship_counts[ship_id] - 1) * cost)
 	
 func update_actual_cost():
 	# The actual cost is based on the exported base cost.

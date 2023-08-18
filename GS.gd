@@ -351,6 +351,20 @@ var ship_parent_node: Node2D = null
 
 var ship_buyers = [null, null, null, null, null, null]
 
+func compute_ship_cost(ship: TowerBase):
+	var id = ship.ship_type
+	
+	# The cost to buy this ship, basically
+	var cost = ship_buyers[id].get_last_ship_cost()
+	
+	for lvl in range(0, ship.left_level):
+		cost += upgrades[id].left_path[lvl].cost
+		
+	for lvl in range(0, ship.right_level):
+		cost += upgrades[id].right_path[lvl].cost
+		
+	return cost
+
 # Resets all the values in GS that are relevant to starting a game.
 # It's sort of like rebooting the game.
 #

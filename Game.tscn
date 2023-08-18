@@ -1339,7 +1339,7 @@ margin_bottom = 211.0
 custom_fonts/font = ExtResource( 19 )
 text = "You may sell
 this ship for
- $10000"
+$100000000"
 align = 1
 
 [node name="LeftUpgradeCard" parent="CanvasLayer/GameUI/Shop/Upgrades" instance=ExtResource( 18 )]

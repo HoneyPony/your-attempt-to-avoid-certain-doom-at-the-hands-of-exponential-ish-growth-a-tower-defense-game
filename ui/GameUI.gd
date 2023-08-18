@@ -16,6 +16,8 @@ onready var upgrade_ship_icon = $Shop/Upgrades/ShipIcon
 onready var left_upgrade_card = $Shop/Upgrades/LeftUpgradeCard
 onready var right_upgrade_card = $Shop/Upgrades/RightUpgradeCard
 
+onready var sell_cost_label = $Shop/Upgrades/SellCostLabel
+
 # This is really whether the bottom panel is open at all.
 # Should match the starting state of the shop_anim AnimationPlayer.
 var shop_open = false
@@ -84,6 +86,9 @@ func buy_right_upgrade():
 	
 func compute_upgrade_cards(ship: TowerBase):
 	upgrade_ship_icon.texture = GS.ship_icons[ship.ship_type]
+	
+	var ship_cost = GS.compute_ship_cost(ship)
+	sell_cost_label.text = str("You may sell\nthis ship for\n$", ship_cost)
 	
 	var upgrades = GS.upgrades[ship.ship_type]
 	if ship.left_level >= upgrades.left_path.size():
