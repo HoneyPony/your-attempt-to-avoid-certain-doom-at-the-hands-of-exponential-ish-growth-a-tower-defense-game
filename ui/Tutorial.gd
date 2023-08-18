@@ -12,8 +12,9 @@ var page_turn_delay = 0
 onready var msgs = [
 	$MSG_Welcome,
 	$MSG_Upgrade,
+	
+	$MSG_Intel2,
 	$MSG_Intel,
-	$MSG_Intel2
 ]
 
 func wants_to_open():

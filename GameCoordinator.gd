@@ -181,11 +181,11 @@ func _process(delta):
 	if GS.total_money >= 150:
 		try_open_tutorial(1)
 		
-	if GS.total_money >= 350:
-		try_open_tutorial(2)
+	if GS.total_money >= 1500:
+		try_open_tutorial(3)
 		
 	if GS.total_money >= 550:
-		try_open_tutorial(3)
+		try_open_tutorial(2)
 		flag_mandatory_scary = ScaryState.WANT_TO_SPAWN
 		
 	# Give player some big money even in somewhat_weka
