@@ -2,6 +2,14 @@ extends Node2D
 
 onready var tutorial = $CanvasLayer/GameUI/Tutorial
 
+# Used to help make sure we spawn at least one Scary guy.
+enum ScaryState {
+	NOT_YET,
+	WANT_TO_SPAWN,
+	DONE
+}
+
+var flag_mandatory_scary = ScaryState.NOT_YET
 
 func y_minimum():
 	if GS.total_money <= 3000:
@@ -62,11 +70,15 @@ func try_to_spawn():
 # Spawns a virus collection that is "weak", i.e. the kind that you encounter
 # right at the beginning of the game.
 func spawn_weak_vc():
-	if GS.total_money >= 600 and GS.total_money <= 2300:
+	if GS.total_money >= 550 and GS.total_money <= 2300:
 		# "Scare" virus collection -- fast moving and fast spawning,
 		# but has a very low cap.
-		if randf() < 0.5:
+		var may_spawn_rng = flag_mandatory_scary == ScaryState.DONE
+		var should_spawn = flag_mandatory_scary == ScaryState.WANT_TO_SPAWN
+		should_spawn = should_spawn or (randf() < 0.5 and may_spawn_rng)
+		if should_spawn:
 			#print("Scare!")
+			flag_mandatory_scary = ScaryState.DONE
 			var vc: Node2D = spawn_vc(rand_range(0.2, 0.4), 0, 9, 1.8, 13)
 			vc.add_to_group("Scary")
 			return
@@ -165,9 +177,16 @@ func _process(delta):
 	if Input.is_action_just_pressed("test_spawn"):
 		pass
 		
-	# Shortly after we earn some real cash dollars
-	if GS.total_money >= 105:
+	# This is *total_money*, so it includes the initial 100 we start out with.
+	if GS.total_money >= 150:
 		try_open_tutorial(1)
+		
+	if GS.total_money >= 350:
+		try_open_tutorial(2)
+		
+	if GS.total_money >= 550:
+		try_open_tutorial(3)
+		flag_mandatory_scary = ScaryState.WANT_TO_SPAWN
 		
 	# Give player some big money even in somewhat_weka
 	if GS.total_money >= 3300:

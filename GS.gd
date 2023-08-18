@@ -356,8 +356,8 @@ func reset_game_state():
 	ship_parent_node = null
 	
 	# DEBUG MONEY:
-	money = 3400
-	total_money = 3400
+	#money = 3400
+	#total_money = 3400
 	
 	reset_timers()
 	

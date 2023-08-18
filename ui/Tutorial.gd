@@ -34,9 +34,12 @@ func open():
 		msgs[next].visible = true
 		anim.play("Open")
 	
+func may_open():
+	return get_tree().get_nodes_in_group("VirusCollection").empty()
 	
 func _process(delta):
 	if page_turn_delay > 0:
 		page_turn_delay -= delta
 	elif wants_to_open():
-		open()
+		if may_open():
+			open()
