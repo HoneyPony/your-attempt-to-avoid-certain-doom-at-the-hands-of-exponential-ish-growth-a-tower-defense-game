@@ -405,7 +405,8 @@ exponent = 2.0
 margin_left = 191.0
 margin_right = 319.0
 texture = ExtResource( 9 )
-cost = 2000
+cost = 5000
+exponent = 1.8
 ship_id = 1
 
 [node name="DrillShip" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
@@ -433,7 +434,7 @@ ship_id = 4
 margin_left = 955.0
 margin_right = 1083.0
 texture = ExtResource( 1 )
-cost = 300
+cost = 600
 ship_id = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameUI/Shop"]

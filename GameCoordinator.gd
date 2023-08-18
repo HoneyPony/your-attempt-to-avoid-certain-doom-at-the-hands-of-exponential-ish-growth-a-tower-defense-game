@@ -36,8 +36,10 @@ func try_to_spawn():
 		
 	if GS.total_money <= 2700:
 		spawn_weak_vc()
-	elif GS.total_money <= 9000:
+	elif GS.total_money <= 6000:
 		spawn_somewhat_weak_vc()
+	elif GS.total_money <= 18000:
+		spawn_level_3_vc()
 	else:
 		spawn_vc(0.3, 10)
 	
@@ -100,6 +102,20 @@ func spawn_somewhat_weak_vc():
 	
 	spawn_vc(spawn_timer, prime, generation, speed_mul)
 	
+func spawn_level_3_vc():
+	var money_max = 12000.0
+	var money_min = 6000.0
+	
+	var t = (GS.total_money - money_min) / (money_max - money_min)
+	t = clamp(t, 0, 1)
+	t = sqrt(t)
+	
+	var spawn_timer = lerp(1.5, 0.8, t)
+	var generation = 0
+	var prime = round(rand_range(40, 60))
+	
+	spawn_vc(spawn_timer, prime, generation)
+	
 # Formula for bounds:
 # (1440 - (64 * generation)) / 2 gives approx bounds
 func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strength = 18):
@@ -133,3 +149,7 @@ func _process(delta):
 	# Give player some big money even in somewhat_weka
 	if GS.total_money >= 3300:
 		GS.earned_money = 5
+	if GS.total_money >= 7000:
+		GS.earned_money = 1
+		
+	#print(GS.total_money)

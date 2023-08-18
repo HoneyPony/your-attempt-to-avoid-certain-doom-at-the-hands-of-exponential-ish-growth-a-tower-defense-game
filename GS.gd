@@ -202,8 +202,8 @@ var upgrades = [
 			Upgrade.new(700, "Increase this laser's movement speed by another 1.2x.")
 		],
 		[
-			Upgrade.new(2500, "Increase this laser's piercing ability to 2."),
-			Upgrade.new(4000, "Increase this laser's piercing ability to 3.")
+			Upgrade.new(3000, "Increase this laser's piercing ability to 2."),
+			Upgrade.new(8000, "Increase this laser's piercing ability to 3.")
 		]
 	),
 	
@@ -350,8 +350,8 @@ func reset_game_state():
 	ship_parent_node = null
 	
 	# DEBUG MONEY:
-	money = 30000
-	total_money = 30000
+	money = 3400
+	total_money = 3400
 	
 	reset_timers()
 	

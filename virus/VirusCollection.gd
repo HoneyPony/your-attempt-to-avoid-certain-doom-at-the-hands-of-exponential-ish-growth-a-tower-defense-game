@@ -34,6 +34,9 @@ func _ready():
 	
 # Literally runs viruses until the given count is satisfied.
 func prime(prime_count):
+	# Don't go in an infinite loop if we can't prime
+	var fuel = prime_count * 4
+		
 	while true:
 		var ccount = get_child_count()
 		if ccount >= prime_count:
@@ -41,6 +44,10 @@ func prime(prime_count):
 			
 		var cindex = randi() % ccount
 		get_child(cindex).try_spawns()
+		
+		fuel -= 1
+		if fuel <= 0:
+			return
 
 # Controls the spawn timer of all child viruses.
 export var spawn_timer_max = 2.0
