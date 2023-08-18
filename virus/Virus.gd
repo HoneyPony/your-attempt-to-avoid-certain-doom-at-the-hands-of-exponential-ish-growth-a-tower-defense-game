@@ -49,7 +49,8 @@ func destroy(aging_amount):
 	GS.money += GS.earned_money
 	GS.total_money += GS.earned_money
 	
-	parent_vc.free_coord(coord, aging_amount)
+	if is_instance_valid(parent_vc):
+		parent_vc.free_coord(coord, aging_amount)
 	queue_free()
 	
 	var debris = GS.VirusDebris.instance()

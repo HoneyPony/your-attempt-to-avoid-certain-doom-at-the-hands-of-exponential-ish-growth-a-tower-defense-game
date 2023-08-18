@@ -95,7 +95,7 @@ func spawn_weak_vc():
 	print(t)
 	
 	var spawn_timer = lerp(4.0, 2.5, t)
-	var generation = ceil(lerp(9, 5, t))
+	var generation = 0#ceil(lerp(, t))
 	var prime = lerp(0, 7, t)
 	prime = round(prime + rand_range(0, 2.5))
 	
