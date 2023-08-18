@@ -320,7 +320,10 @@ func _physics_process(delta):
 	# NOTE TO FUTURE SELF:
 	# ALL code that checks timers in Towers MUST be written in physics_process.
 	update_timers(delta)
-
-func _process(delta):
+	
+func check_fullscreen_input():
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
+
+func _process(delta):
+	check_fullscreen_input()
