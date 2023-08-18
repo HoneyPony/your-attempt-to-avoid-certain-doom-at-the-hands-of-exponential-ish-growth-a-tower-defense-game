@@ -398,7 +398,7 @@ margin_bottom = 189.0
 custom_constants/separation = 63
 
 [node name="BasicGun" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
-exponent = 3.0
+exponent = 2.0
 
 [node name="SideLaser" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 191.0
@@ -411,22 +411,21 @@ ship_id = 1
 margin_left = 382.0
 margin_right = 510.0
 texture = ExtResource( 2 )
-cost = 1200
+cost = 400
 ship_id = 2
 
 [node name="Cannon" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 573.0
 margin_right = 701.0
 texture = ExtResource( 23 )
-cost = 2000
+cost = 900
 ship_id = 3
 
 [node name="Nanobot" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 764.0
 margin_right = 892.0
 texture = ExtResource( 20 )
-cost = 300
-exponent = 1.2
+cost = 120
 ship_id = 4
 
 [node name="ShipBuyer6" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]

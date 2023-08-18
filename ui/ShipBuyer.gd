@@ -17,9 +17,9 @@ func _ready():
 	update_actual_cost()
 	
 func _process(delta):
-	buy_button.disabled = (GS.money < cost)
 	update_actual_cost()
-
+	buy_button.disabled = (GS.money < actual_cost)
+	
 func update_actual_cost():
 	# The actual cost is based on the exported base cost.
 	actual_cost = int(pow(exponent, GS.ship_counts[ship_id]) * cost)

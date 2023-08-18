@@ -131,6 +131,15 @@ func animate():
 	
 	if state == State.SPAWNING:
 		position += (target_pos - position) * 0.09
+		
+func set_hue():
+	var hue = 0
+	hue += 0.015 * generation
+	#hue += rand_range(0.01, 0.015)
+	#hue += rand_range(0.04, 0.08)
+	while hue > 1.0:
+		hue -= 1.0
+	get_node("Energy").modulate = Color.from_hsv(hue, 1, 1)
 
 func spawn(coord, dir):
 	parent_vc.used_coordinates[coord] = true
@@ -147,17 +156,8 @@ func spawn(coord, dir):
 	# Grow in the same direction
 	v.direction_preference = dir
 	
-	var color: Color = $Energy.modulate
-	# Hue shift... shows child-parent relationships, as well, which might
-	# be cool
-	var hue = 0
 	v.generation = parent_vc.get_generation(coord, generation + 1)
-	hue += 0.015 * v.generation
-	#hue += rand_range(0.01, 0.015)
-	#hue += rand_range(0.04, 0.08)
-	while hue > 1.0:
-		hue -= 1.0
-	v.get_node("Energy").modulate = Color.from_hsv(hue, color.s, color.v)
+	v.set_hue()
 	
 	# Keep track of generation -- either our generation + 1, or
 	# an even more aged value.

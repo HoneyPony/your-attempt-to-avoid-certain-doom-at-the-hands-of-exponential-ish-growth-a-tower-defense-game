@@ -186,7 +186,7 @@ var upgrades = [
 	# Drill
 	Upgrades.new(
 		[
-			Upgrade.new(1200, "The drill will attack 1.5x as often."),
+			Upgrade.new(1700, "The drill will attack 1.5x as often."),
 			Upgrade.new(1800, "The drill will attack another 2x as often.")
 		],
 		[
@@ -202,8 +202,8 @@ var upgrades = [
 			Upgrade.new(800, "Increase the fire rate of the cannon by another 1.2x")
 		],
 		[
-			Upgrade.new(1000, "Make this cannon's explosions 20% larger"),
-			Upgrade.new(1200, "Make this cannon's explosions another 20% larger")
+			Upgrade.new(2000, "Make this cannon's explosions 20% larger"),
+			Upgrade.new(4000, "Make this cannon's explosions another 20% larger")
 		]
 	),
 	
@@ -291,13 +291,15 @@ var ship_parent_node: Node2D = null
 func reset_game_state():
 	game_camera = null
 	
-	money = 0
+	# Your starting money should be enough to purchase one basic tower,
+	# And then maybe also help you towards a second one.
+	money = 100
 	lives = 200
 	
 	ship_parent_node = null
 	
 	# DEBUG MONEY:
-	money = 30000
+	# money = 30000
 	
 	reset_timers()
 	
