@@ -1096,10 +1096,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -98.5
-margin_top = -85.0
-margin_right = 98.5
-margin_bottom = -21.0
+margin_left = -129.0
+margin_top = -119.0
+margin_right = 129.0
+margin_bottom = -25.0
 text = "Dismiss"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameUI/Tutorial"]
@@ -1130,6 +1130,7 @@ script = ExtResource( 17 )
 
 [node name="PauseMenu" type="ColorRect" parent="PauseLayer"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )

@@ -65,27 +65,38 @@ scale_amount_random = 1.0
 scale_amount_curve = SubResource( 1 )
 color = Color( 0.470588, 0.470588, 0.470588, 1 )
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="PlayNormal" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -59.0
-margin_right = 200.0
-margin_bottom = 59.0
+margin_left = -426.0
+margin_top = 74.0
+margin_right = 426.0
+margin_bottom = 212.0
 focus_mode = 0
-text = "Play!"
+text = "Play HARDER DIFFICULTY"
+
+[node name="PlayNormal2" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -426.0
+margin_top = -91.0
+margin_right = 426.0
+margin_bottom = 47.0
+text = "Play NORMAL DIFFICULTY"
 
 [node name="Options" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 margin_left = -200.0
-margin_top = 187.0
+margin_top = -166.0
 margin_right = 200.0
-margin_bottom = 305.0
+margin_bottom = -48.0
 text = "Options"
 
 [node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
@@ -93,5 +104,6 @@ visible = false
 margin_left = 1162.0
 margin_right = 1162.0
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="PlayNormal" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="PlayNormal2" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
