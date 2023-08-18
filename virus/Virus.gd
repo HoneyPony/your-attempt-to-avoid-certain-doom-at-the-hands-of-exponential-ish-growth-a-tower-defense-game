@@ -41,14 +41,14 @@ func _ready():
 
 	reset_spawn_timer()
 
-func destroy():
+func destroy(aging_amount):
 	if is_queued_for_deletion():
 		return
 		
 	# We get money when a virus is destroyed
 	GS.money += 1
 	
-	parent_vc.free_coord(coord)
+	parent_vc.free_coord(coord, aging_amount)
 	queue_free()
 	
 	var debris = GS.VirusDebris.instance()
@@ -150,8 +150,10 @@ func spawn(coord, dir):
 	var color: Color = $Energy.modulate
 	# Hue shift... shows child-parent relationships, as well, which might
 	# be cool
-	var hue = color.h
-	hue += rand_range(0.01, 0.015)
+	var hue = 0
+	v.generation = parent_vc.get_generation(coord, generation + 1)
+	hue += 0.015 * v.generation
+	#hue += rand_range(0.01, 0.015)
 	#hue += rand_range(0.04, 0.08)
 	while hue > 1.0:
 		hue -= 1.0
@@ -159,7 +161,7 @@ func spawn(coord, dir):
 	
 	# Keep track of generation -- either our generation + 1, or
 	# an even more aged value.
-	v.generation = parent_vc.get_generation(coord, generation + 1)
+	
 	
 	# Genetic mutation
 	v.speed = speed * rand_range(0.95, 1 / 0.95)
@@ -215,9 +217,13 @@ func try_spawns():
 func _on_Area2D_body_entered(body):
 	body.hit_something() # Tell the bullet to despawn if relevant, etc
 	
+	var aging = 0
+	if body.is_in_group("Aging"):
+		aging = body.aging
+	
 	# Immediately die if spawning
 	if state == State.SPAWNING:
-		destroy()
+		destroy(aging)
 	else:
 		# Otherwise, we have to deal with health
 		
@@ -227,7 +233,7 @@ func _on_Area2D_body_entered(body):
 				active_armor.append(i)
 			
 		if active_armor.empty():
-			destroy()
+			destroy(aging)
 		else:
 			# If we still have armor, destroy one of it.
 			var a = active_armor[randi() % active_armor.size()]

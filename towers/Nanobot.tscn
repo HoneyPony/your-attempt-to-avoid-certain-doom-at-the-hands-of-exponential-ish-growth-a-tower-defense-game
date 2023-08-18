@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=2]
+[ext_resource path="res://towers/nanobot.png" type="Texture" id=3]
+[ext_resource path="res://towers/Nanobot.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.12311
+
+[node name="Nanobot" type="KinematicBody2D" groups=["Aging"]]
+z_index = -1
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 2 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )

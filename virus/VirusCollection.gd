@@ -29,9 +29,9 @@ func _ready():
 # Controls the spawn timer of all child viruses.
 export var spawn_timer_max = 2.0
 
-func free_coord(coord):
+func free_coord(coord, aging_amount):
 	used_coordinates.erase(coord)
-	
+	previous_generations[coord] = previous_generations.get(coord, 0) + aging_amount
 	
 # Random amount of rotation
 var angular_drift = 0

@@ -204,6 +204,18 @@ var upgrades = [
 			Upgrade.new(1000, "Make this cannon's explosions 20% larger"),
 			Upgrade.new(1200, "Make this cannon's explosions another 20% larger")
 		]
+	),
+	
+	# Nanobot shooter
+	Upgrades.new(
+		[
+			Upgrade.new(200, "Make this ship shoot less sporadically."),
+			Upgrade.new(700, "Make this ship shoot even less sporadically.")
+		],
+		[
+			Upgrade.new(450, "This ship will impede virus growth by +1 more generation."),
+			Upgrade.new(3400, "This ship will impede virus growth by +3 more generations.")
+		]
 	)
 ]
 
@@ -213,6 +225,7 @@ var VirusDebris = preload("res://virus/VirusDebris.tscn")
 var BasicBullet = preload("res://towers/BasicBullet.tscn")
 var SideLaserBullet = preload("res://towers/SideLaserBullet.tscn")
 var Missile = preload("res://towers/Missile.tscn")
+var Nanobot = preload("res://towers/Nanobot.tscn")
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
