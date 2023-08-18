@@ -1,5 +1,12 @@
 extends Node2D
 
+func y_minimum():
+	if GS.total_money <= 3000:
+		return 32
+	if GS.total_money <= 6000:
+		return 300
+	return 700
+
 func check_y_prob():
 	var vc = get_tree().get_nodes_in_group("VirusCollection")
 	var y = 1280
@@ -7,7 +14,7 @@ func check_y_prob():
 		if v.position.y < y:
 			y = v.position.y
 			
-	var probability = (y - (-400.0)) / (1280.0 * 2)
+	var probability = (y - (-1280.0 + y_minimum())) / (1280.0 * 2)
 	#print(probability)
 	# We are more likely to spawn if the other virus collections are far
 	# down on screen. We can't even spawn at all if they're near the top.
@@ -16,6 +23,10 @@ func check_y_prob():
 func try_to_spawn():
 	# We can only have at most 2 virus collections at once.
 	if get_tree().get_nodes_in_group("VirusCollection").size() >= 2:
+		return
+		
+	# We can only have 1 scary virus collection.
+	if get_tree().get_nodes_in_group("Scary").size() >= 1:
 		return
 		
 	# Don't spawn much if there's already virus collections near the top of
@@ -33,11 +44,13 @@ func try_to_spawn():
 # Spawns a virus collection that is "weak", i.e. the kind that you encounter
 # right at the beginning of the game.
 func spawn_weak_vc():
-	if GS.total_money >= 800 and GS.total_money <= 1800:
+	if GS.total_money >= 600 and GS.total_money <= 2300:
 		# "Scare" virus collection -- fast moving and fast spawning,
 		# but has a very low cap.
-		if randf() < 0.4:
-			spawn_vc(rand_range(0.2, 0.4), 10, 13, 1.8)
+		if randf() < 0.5:
+			#print("Scare!")
+			var vc: Node2D = spawn_vc(rand_range(0.2, 0.4), 0, 9, 1.8, 13)
+			vc.add_to_group("Scary")
 			return
 	
 	# Maybe the maximum money that we would expect to be weak?
@@ -62,12 +75,21 @@ func spawn_weak_vc():
 	#print("Spanwed weak vC!")
 	
 func spawn_somewhat_weak_vc():
-	var money_max = 9000.0
+	var money_max = 6000.0
 	var money_min = 3000.0
+	
+	if GS.total_money >= 3400 and GS.total_money <= 5500:
+		# Scary
+		if randf() < 0.5:
+			#print("Scare!")
+			var vc: Node2D = spawn_vc(rand_range(0.2, 0.4), 0, 7, 1.1, 13)
+			vc.add_to_group("Scary")
+			return
 	
 	var t = (GS.total_money - money_min) / (money_max - money_min)
 	t = clamp(t, 0, 1)
 	t = sqrt(t)
+	#print("some: ", t)
 	
 	var spawn_timer = lerp(2.4, 1.5, t)
 	var generation = ceil(lerp(3, 1, t))
@@ -93,12 +115,15 @@ func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strengt
 	x = max(x, 0)
 	vc.position.x = rand_range(-x, x)
 	vc.priming_count = prime
+	vc.actual_max_strength = max_strength
 	add_child(vc)
+	
+	return vc
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if rand_range(0, 1) < 0.1:
+	if randf() < 0.5:
 		# We try to spawn randomly.
 		try_to_spawn()
 	

@@ -169,7 +169,7 @@ func spawn(coord, dir):
 	v.speed = clamp(v.speed, 0.7, 1.4)
 	
 	v.strength = strength + rand_range(-2.5, 2.5)
-	v.strength = clamp(v.strength, 8, 18)
+	v.strength = clamp(v.strength, 8, parent_vc.actual_max_strength)
 	
 	parent_vc.add_child(v)
 	

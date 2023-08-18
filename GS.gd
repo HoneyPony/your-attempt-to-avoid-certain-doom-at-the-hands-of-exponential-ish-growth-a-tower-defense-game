@@ -163,19 +163,19 @@ var upgrades = [
 	# Basic gun
 	Upgrades.new(
 	[
-		Upgrade.new(200, "Increase the fire rate of this gunner by 1.2x."),
-		Upgrade.new(300, "Increase the fire rate of this gunner by another 1.2x.")
+		Upgrade.new(180, "Increase the fire rate of this gunner by 1.2x."),
+		Upgrade.new(320, "Increase the fire rate of this gunner by another 1.2x.")
 	],
 	[
-		Upgrade.new(350, "Increase this gunner's piercing ability to 2."),
-		Upgrade.new(500, "Increase this gunner's piercing ability to 3.")
+		Upgrade.new(320, "Increase this gunner's piercing ability to 2."),
+		Upgrade.new(520, "Increase this gunner's piercing ability to 3.")
 	]),
 	
 	# Side laser
 	Upgrades.new(
 		[
-			Upgrade.new(250, "Increase this laser's movement speed by 1.2x."),
-			Upgrade.new(350, "Increase this laser's movement speed by another 1.2x.")
+			Upgrade.new(300, "Increase this laser's movement speed by 1.2x."),
+			Upgrade.new(700, "Increase this laser's movement speed by another 1.2x.")
 		],
 		[
 			Upgrade.new(2500, "Increase this laser's piercing ability to 2."),
@@ -198,7 +198,7 @@ var upgrades = [
 	# Cannon
 	Upgrades.new(
 		[
-			Upgrade.new(600, "Increase the fire rate of the cannon by 1.1x"),
+			Upgrade.new(650, "Increase the fire rate of the cannon by 1.1x"),
 			Upgrade.new(800, "Increase the fire rate of the cannon by another 1.2x")
 		],
 		[
@@ -210,11 +210,11 @@ var upgrades = [
 	# Nanobot shooter
 	Upgrades.new(
 		[
-			Upgrade.new(200, "Make this ship shoot less sporadically."),
-			Upgrade.new(700, "Make this ship shoot even less sporadically.")
+			Upgrade.new(230, "Make this ship shoot less sporadically."),
+			Upgrade.new(650, "Make this ship shoot even less sporadically.")
 		],
 		[
-			Upgrade.new(450, "This ship will impede virus growth by +1 more generation."),
+			Upgrade.new(400, "This ship will impede virus growth by +1 more generation."),
 			Upgrade.new(3400, "This ship will impede virus growth by +3 more generations.")
 		]
 	)

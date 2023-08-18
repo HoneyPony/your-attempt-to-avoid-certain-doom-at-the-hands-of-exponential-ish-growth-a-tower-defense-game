@@ -14,6 +14,8 @@ var priming_count = 0
 
 var speed_mul = 1.0
 
+var actual_max_strength = 18
+
 func random_avoid_value():
 	# Never generate 0
 	var v = 1 + (randi() % 15)
