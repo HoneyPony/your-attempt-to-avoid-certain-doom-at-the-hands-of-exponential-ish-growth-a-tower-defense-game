@@ -97,6 +97,8 @@ func perform_physics(delta):
 		velocity += acceleration # already multiplied by delta
 		if velocity.length_squared() < 0.5 * 0.5:
 			velocity = Vector2.ZERO
+			
+			global_position = target_point
 	else:
 		var acceleration: Vector2 = compute_acceleration(desired_velocity, delta)	
 		velocity += acceleration
