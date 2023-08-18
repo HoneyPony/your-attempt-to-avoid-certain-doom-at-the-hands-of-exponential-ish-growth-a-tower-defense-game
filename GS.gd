@@ -221,6 +221,7 @@ var upgrades = [
 ]
 
 var Virus = preload("res://virus/Virus.tscn")
+var VirusCollection = preload("res://virus/VirusCollection.tscn")
 var VirusDebris = preload("res://virus/VirusDebris.tscn")
 
 var BasicBullet = preload("res://towers/BasicBullet.tscn")

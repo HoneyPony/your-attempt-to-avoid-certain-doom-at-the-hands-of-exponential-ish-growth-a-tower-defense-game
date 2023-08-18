@@ -10,6 +10,8 @@ var avoid_coordinates = {}
 # that replace killed cells will age... this makes the game more winnable.
 var previous_generations = {}
 
+var priming_count = 0
+
 func random_avoid_value():
 	# Never generate 0
 	var v = 1 + (randi() % 15)
@@ -25,6 +27,16 @@ func _ready():
 		
 	# At most a 64th circle per second
 	angular_drift = rand_range(-TAU, TAU) / 64
+	
+# Literally runs viruses until the given count is satisfied.
+func prime(prime_count):
+	while true:
+		var ccount = get_child_count()
+		if ccount >= prime_count:
+			return
+			
+		var cindex = randi() % ccount
+		get_child(cindex).try_spawns()
 
 # Controls the spawn timer of all child viruses.
 export var spawn_timer_max = 2.0
@@ -37,6 +49,10 @@ func free_coord(coord, aging_amount):
 var angular_drift = 0
 
 func _physics_process(delta):
+	if priming_count > 0:
+		prime(priming_count)
+		priming_count = 0
+	
 	var velocity = (260) / (4 + sqrt(get_child_count()))
 	#print(velocity)
 	
