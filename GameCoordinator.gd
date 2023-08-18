@@ -70,18 +70,18 @@ func try_to_spawn():
 # Spawns a virus collection that is "weak", i.e. the kind that you encounter
 # right at the beginning of the game.
 func spawn_weak_vc():
-	if GS.total_money >= 550 and GS.total_money <= 2300:
-		# "Scare" virus collection -- fast moving and fast spawning,
-		# but has a very low cap.
-		var may_spawn_rng = flag_mandatory_scary == ScaryState.DONE
-		var should_spawn = flag_mandatory_scary == ScaryState.WANT_TO_SPAWN
-		should_spawn = should_spawn or (randf() < 0.5 and may_spawn_rng)
-		if should_spawn:
-			#print("Scare!")
-			flag_mandatory_scary = ScaryState.DONE
-			var vc: Node2D = spawn_vc(rand_range(0.2, 0.4), 0, 9, 1.8, 13)
-			vc.add_to_group("Scary")
-			return
+	# "Scare" virus collection -- fast moving and fast spawning,
+	# but has a very low cap.
+	var may_spawn_scary_rng = flag_mandatory_scary == ScaryState.DONE
+	may_spawn_scary_rng = may_spawn_scary_rng and (GS.total_money >= 550 and GS.total_money <= 2300)
+	var should_spawn = flag_mandatory_scary == ScaryState.WANT_TO_SPAWN
+	should_spawn = should_spawn or (randf() < 0.5 and may_spawn_scary_rng)
+	if should_spawn:
+		#print("Scare!")
+		flag_mandatory_scary = ScaryState.DONE
+		var vc: Node2D = spawn_vc(rand_range(0.2, 0.4), 0, 9, 1.8, 13)
+		vc.add_to_group("Scary")
+		return
 	
 	# Maybe the maximum money that we would expect to be weak?
 	var money_max = 3000.0
