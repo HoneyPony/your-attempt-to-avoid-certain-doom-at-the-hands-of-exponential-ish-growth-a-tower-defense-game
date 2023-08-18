@@ -276,6 +276,9 @@ func try_grab_selection(trying_ship: Node2D, touch_index: int, distance: float) 
 	
 	return false
 
+# How much money is earned per attack
+var earned_money: int = 0
+
 # Game stats
 var money: int = 0
 # Used to track how much money the player has earned. This is the main
@@ -299,6 +302,8 @@ func reset_game_state():
 	money = 100
 	# I guess this is consistent...?
 	total_money = 100
+	# Try to speed up the early game
+	earned_money = 5
 	lives = 200
 	
 	ship_parent_node = null

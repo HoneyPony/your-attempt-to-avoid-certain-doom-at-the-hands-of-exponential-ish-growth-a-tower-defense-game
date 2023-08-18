@@ -29,20 +29,23 @@ func try_to_spawn():
 # right at the beginning of the game.
 func spawn_weak_vc():
 	# Maybe the maximum money that we would expect to be weak?
-	var money_max = 3000
+	var money_max = 3000.0
 	# Where the weak things are completely weak.
-	var money_min = 120
+	var money_min = 120.0
 	
 	var t = (GS.total_money - money_min) / (money_max - money_min)
 	t = clamp(t, 0, 1)
+	t = sqrt(t)
 	
-	var spawn_timer = lerp(5.0, 2.5, t)
-	var generation = ceil(lerp(11, 5, t))
+	#print(t)
+	
+	var spawn_timer = lerp(4.0, 2.5, t)
+	var generation = ceil(lerp(9, 5, t))
 	var prime = lerp(0, 7, t)
-	prime = round(prime + rand_range(0, 1.5))
+	prime = round(prime + rand_range(0, 2.5))
 	
 	spawn_vc(spawn_timer, prime, generation)
-	print("Spanwed weak vC!")
+	#print("Spanwed weak vC!")
 	
 # Formula for bounds:
 # (1440 - (64 * generation)) / 2 gives approx bounds
@@ -70,3 +73,6 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("test_spawn"):
 		pass
+		
+	if GS.total_money >= 3000:
+		GS.earned_money = 1
