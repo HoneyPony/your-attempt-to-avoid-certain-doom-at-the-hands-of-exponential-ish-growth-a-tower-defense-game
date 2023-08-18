@@ -218,7 +218,9 @@ var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
 
 var Explosions = [
-	preload("res://towers/MissileExplosion0.tscn")
+	preload("res://towers/MissileExplosion0.tscn"),
+	preload("res://towers/MissileExplosion1.tscn"),
+	preload("res://towers/MissileExplosion2.tscn"),
 ]
 
 var game_camera: Camera2D = null

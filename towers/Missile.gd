@@ -1,6 +1,7 @@
 extends "res://towers/BulletBase.gd"
 
 var velocity = 450
+var explode = 0
 
 func _ready():
 	# Make bullets spawn in small then grow
@@ -21,6 +22,6 @@ func hit_something():
 	call_deferred("explode")
 
 func explode():
-	var explosion = GS.Explosions[0].instance()
+	var explosion = GS.Explosions[explode].instance()
 	explosion.position = position
 	get_parent().add_child(explosion)
