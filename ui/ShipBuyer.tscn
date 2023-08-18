@@ -6,7 +6,7 @@
 [ext_resource path="res://MainTheme.tres" type="Theme" id=4]
 [ext_resource path="res://ui/ShipBuyer.gd" type="Script" id=5]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0.0313726, 0.027451, 0.0784314, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -53,6 +53,7 @@ margin_right = 88.0
 margin_bottom = -15.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 2 )
+toggle_mode = true
 enabled_focus_mode = 0
 text = "Info"
 
@@ -79,9 +80,10 @@ margin_left = -8.0
 margin_top = -8.0
 margin_right = 8.0
 margin_bottom = 8.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 16 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[connection signal="toggled" from="InfoButton" to="." method="_on_InfoButton_toggled"]
 [connection signal="pressed" from="BuyButton" to="." method="_on_BuyButton_pressed"]

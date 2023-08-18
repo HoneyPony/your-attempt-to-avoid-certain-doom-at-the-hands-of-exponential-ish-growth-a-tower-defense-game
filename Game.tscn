@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://ui/piercing_ship_ICON.png" type="Texture" id=1]
 [ext_resource path="res://ui/drill_ship_SHOP_ICON.png" type="Texture" id=2]
@@ -23,12 +23,145 @@
 [ext_resource path="res://ui/pause_icon.svg" type="Texture" id=21]
 [ext_resource path="res://ui/PauseMenu.gd" type="Script" id=22]
 [ext_resource path="res://ui/bomb_ship_ICON.png" type="Texture" id=23]
-[ext_resource path="res://fonts/audiowide/Audiowide-Regular.ttf" type="DynamicFontData" id=24]
+[ext_resource path="res://ui/Audiowide32Pt.tres" type="DynamicFont" id=24]
 [ext_resource path="res://ui/Tutorial.gd" type="Script" id=25]
 [ext_resource path="res://ui/OptionsMenu.tscn" type="PackedScene" id=26]
+[ext_resource path="res://ui/basic_gun_SHOP_ICON.png" type="Texture" id=27]
+[ext_resource path="res://ui/ShopInfo.gd" type="Script" id=28]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.280571, 0.0, 0, 0 ]
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.0313726, 0.027451, 0.0784314, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.341176, 0.258824, 0.494118, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="Animation" id=19]
+resource_name = "Close"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/GameUI/Shop/ShopInfo:margin_top")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.535887, 1 ),
+"update": 0,
+"values": [ -818.0, 67.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/GameUI/Shop/ShopInfo:margin_bottom")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.535887, 1 ),
+"update": 0,
+"values": [ -133.0, 646.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/GameUI/Shop/ShopInfo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Open"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/GameUI/Shop/ShopInfo:margin_top")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.68302, 1 ),
+"update": 0,
+"values": [ 67.0, -818.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/GameUI/Shop/ShopInfo:margin_bottom")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.68302, 1 ),
+"update": 0,
+"values": [ 646.0, -133.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/GameUI/Shop/ShopInfo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/GameUI/Shop/ShopInfo:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 87.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/GameUI/Shop/ShopInfo:margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -146.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/GameUI/Shop/ShopInfo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.397849, 0.365982, 0.457031, 1 )
@@ -243,10 +376,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true ]
 }
-
-[sub_resource type="DynamicFont" id=9]
-size = 32
-font_data = ExtResource( 24 )
 
 [sub_resource type="Animation" id=12]
 resource_name = "Close"
@@ -817,6 +946,237 @@ margin_top = -7.0
 margin_right = 576.0
 margin_bottom = 278.0
 
+[node name="ShopInfo" type="Panel" parent="CanvasLayer/GameUI/Shop"]
+visible = false
+show_behind_parent = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -498.0
+margin_top = 87.0
+margin_right = 498.0
+margin_bottom = -146.0
+script = ExtResource( 28 )
+
+[node name="ShipIcon" type="TextureRect" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
+material = ExtResource( 14 )
+margin_left = 23.0
+margin_top = -60.0
+margin_right = 151.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 128, 0 )
+theme = ExtResource( 6 )
+texture = ExtResource( 27 )
+expand = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/GameUI/Shop/ShopInfo/ShipIcon"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+custom_styles/panel = SubResource( 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ship0" type="Control" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Name" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 168.0
+margin_top = 17.0
+margin_right = 952.0
+margin_bottom = 79.0
+text = "Nimble Gunship"
+align = 1
+
+[node name="Description" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_top = 86.0
+margin_right = 957.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 24 )
+text = "This ship moves quickly, allowing for easy repositioning across the whole screen. It shoots a simple laser weapon straight ahead. 
+
+It can be upgraded to shoot faster and to have a piercing attack.
+
+These ships are reasonably powerful in groups, especially when upgraded. Also, easy repositioning makes them perfect for handling stray probes."
+autowrap = true
+
+[node name="Ship1" type="Control" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Name" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 168.0
+margin_top = 17.0
+margin_right = 952.0
+margin_bottom = 79.0
+text = "Horizontal Superlaser"
+align = 1
+
+[node name="Description" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_top = 86.0
+margin_right = 957.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 24 )
+text = "This laser module stays attached to the right side of the screen and shoots a strong horizontal beam. It moves slowly but can be upgraded to move faster.
+
+It also features extremely powerful (but expensive) piercing upgrades.
+
+This is extremely destructive against less powerful probe clusters. Its only weakness is truly its slow movement."
+autowrap = true
+
+[node name="Ship2" type="Control" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Name" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 168.0
+margin_top = 17.0
+margin_right = 952.0
+margin_bottom = 79.0
+text = "Gigantic Mining Drill"
+align = 1
+
+[node name="Description" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_top = 86.0
+margin_right = 957.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 24 )
+text = "This drill has been repurposed from mining to combat operations. It quickly destroys probes near the tip of the drill.
+
+It moves extremely slowly and is best for attacking larger, slower groups of probes.
+
+Upgrades allow the drill to move significantly faster, and increase the spin speed of the drill--enhancing its destructive power."
+autowrap = true
+
+[node name="Ship3" type="Control" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Name" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 168.0
+margin_top = 17.0
+margin_right = 952.0
+margin_bottom = 79.0
+text = "Missile Launcher"
+align = 1
+
+[node name="Description" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_top = 86.0
+margin_right = 957.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 24 )
+text = "This ship regularly fires explosive missiles. The explosions damage all probes in a radius, and the explosion size may be upgraded ... for a price.
+
+Also features upgrades to the firing frequency, resulting in even more explosive potential.
+
+These ships are quite strong, especially when paired well with other ships. However, their upgrades are quite expensive."
+autowrap = true
+
+[node name="Ship4" type="Control" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Name" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship4"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 168.0
+margin_top = 17.0
+margin_right = 952.0
+margin_bottom = 79.0
+text = "Nanobot Space Station"
+align = 1
+
+[node name="Description" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship4"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_top = 86.0
+margin_right = 957.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 24 )
+text = "This space station sporadically fires nanobots that hack the enemy probes. Probes are hacked to be weakened -- helping prevent them from replicating.
+
+Can be upgraded to improve the hacking power further.
+
+This ship is a powerful asset when properly used,
+and can greatly limit the regrowth potential of probe clusters."
+autowrap = true
+
+[node name="Ship5" type="Control" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Name" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship5"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 168.0
+margin_top = 17.0
+margin_right = 952.0
+margin_bottom = 79.0
+text = "Kinetic Weapon Launcher"
+align = 1
+
+[node name="Description" type="Label" parent="CanvasLayer/GameUI/Shop/ShopInfo/Ship5"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -4.0
+margin_top = 86.0
+margin_right = 957.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 24 )
+text = "This ship launches projectiles with a very significant piercing ability. Can be upgraded to pierce 8 or even 17 ships, for a noninsignificant price.
+
+Other upgrades include reduced projectile size and faster firing speed, to help the projectiles dig deeper into enemy probe clusters."
+autowrap = true
+
+[node name="Dismiss" type="Button" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -129.0
+margin_top = -112.0
+margin_right = 129.0
+margin_bottom = -18.0
+text = "Dismiss"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
+root_node = NodePath("../../../../..")
+anims/Close = SubResource( 19 )
+anims/Open = SubResource( 17 )
+anims/RESET = SubResource( 18 )
+
 [node name="Money" type="Label" parent="CanvasLayer/GameUI/Shop"]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1039,7 +1399,7 @@ margin_left = 25.0
 margin_top = 48.0
 margin_right = 960.0
 margin_bottom = 314.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = ExtResource( 24 )
 text = "Hello commander,
 
 Here's what we know so far: a space probe went bananas and began self-replicating. We need to stop the replicated descendants of that probe from reaching our planet.
@@ -1053,7 +1413,7 @@ margin_left = 25.0
 margin_top = 48.0
 margin_right = 960.0
 margin_bottom = 314.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = ExtResource( 24 )
 text = "Hello commander,
 
 I've been ordered to communicate to you that you can upgrade your ships in order to make them more powerful.
@@ -1067,7 +1427,7 @@ margin_left = 25.0
 margin_top = 48.0
 margin_right = 960.0
 margin_bottom = 314.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = ExtResource( 24 )
 text = "Hello commander,
 
 We've gathered some intelligence on the probes. Once they reach the atmosphere, they stop self-replicating but they do armor themselves up, requiring 5 total hits to destroy!
@@ -1081,7 +1441,7 @@ margin_left = 25.0
 margin_top = 48.0
 margin_right = 960.0
 margin_bottom = 314.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = ExtResource( 24 )
 text = "Hello commander,
 
 We've collected some vital intelligence.
@@ -1245,6 +1605,7 @@ visible = false
 margin_left = 1162.0
 margin_right = 1162.0
 
+[connection signal="pressed" from="CanvasLayer/GameUI/Shop/ShopInfo/Dismiss" to="CanvasLayer/GameUI/Shop/ShopInfo" method="_on_Dismiss_pressed"]
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/ShopTab" to="CanvasLayer/GameUI" method="_on_ShopTab_toggled"]
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/UpgradesTab" to="CanvasLayer/GameUI" method="_on_UpgradesTab_toggled"]
 [connection signal="pressed" from="CanvasLayer/GameUI/Shop/CloseButtonPivot/CloseButton" to="CanvasLayer/GameUI" method="_on_CloseButton_pressed"]

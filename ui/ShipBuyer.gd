@@ -12,6 +12,9 @@ const MAX_COST = 999999999
 export var ship_id: int = 0
 
 onready var buy_button = $BuyButton
+onready var info_button = $InfoButton
+
+onready var shop_info: ShopInfo = get_node("../../ShopInfo")
 
 func _ready():
 	update_actual_cost()
@@ -44,3 +47,13 @@ func _on_BuyButton_pressed():
 	
 	ship.position = Vector2.ZERO
 	GS.ship_parent_node.add_child(ship)
+	
+
+
+
+func _on_InfoButton_toggled(button_pressed):
+	if button_pressed:
+		shop_info.open(info_button, ship_id, texture)
+	else:
+		if info_button == GS.current_shop_info_button:
+			shop_info.dismiss()

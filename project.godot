@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Panel",
+"class": "ShopInfo",
+"language": "GDScript",
+"path": "res://ui/ShopInfo.gd"
+}, {
 "base": "Area2D",
 "class": "TowerBase",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://virus/VirusCollection.gd"
 } ]
 _global_script_class_icons={
+"ShopInfo": "",
 "TowerBase": "",
 "VirusCollection": ""
 }

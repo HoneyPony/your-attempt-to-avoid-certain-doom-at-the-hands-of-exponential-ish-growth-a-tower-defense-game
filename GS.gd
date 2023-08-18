@@ -1,5 +1,9 @@
 extends Node
 
+# The current "Info" button that is pressed. Should be un-pressed when the
+# shop menu is dismissed, or when a different info is pressed.
+var current_shop_info_button: Button = null
+
 # The GS is responsible for several gameplay timers, so that the time that
 # the player buys a ship is not significant for synchronization.
 
