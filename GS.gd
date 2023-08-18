@@ -303,7 +303,7 @@ func reset_game_state():
 	# I guess this is consistent...?
 	total_money = 100
 	# Try to speed up the early game
-	earned_money = 5
+	earned_money = 10
 	lives = 200
 	
 	ship_parent_node = null

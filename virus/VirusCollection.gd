@@ -12,6 +12,8 @@ var previous_generations = {}
 
 var priming_count = 0
 
+var speed_mul = 1.0
+
 func random_avoid_value():
 	# Never generate 0
 	var v = 1 + (randi() % 15)
@@ -57,7 +59,7 @@ func _physics_process(delta):
 	#print(velocity)
 	
 	# The collection slowly moves down towards the bottom of the screen.
-	position.y += velocity * delta
+	position.y += velocity * delta * speed_mul
 	
 	rotation += angular_drift * delta
 	

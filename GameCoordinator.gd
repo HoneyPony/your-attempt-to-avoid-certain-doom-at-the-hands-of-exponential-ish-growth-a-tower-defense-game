@@ -23,11 +23,23 @@ func try_to_spawn():
 	if not check_y_prob():
 		return
 		
-	spawn_weak_vc()
+	if GS.total_money <= 2700:
+		spawn_weak_vc()
+	elif GS.total_money <= 9000:
+		spawn_somewhat_weak_vc()
+	else:
+		spawn_somewhat_weak_vc()
 	
 # Spawns a virus collection that is "weak", i.e. the kind that you encounter
 # right at the beginning of the game.
 func spawn_weak_vc():
+	if GS.total_money >= 800 and GS.total_money <= 1800:
+		# "Scare" virus collection -- fast moving and fast spawning,
+		# but has a very low cap.
+		if randf() < 0.4:
+			spawn_vc(rand_range(0.2, 0.4), 10, 13, 1.8)
+			return
+	
 	# Maybe the maximum money that we would expect to be weak?
 	var money_max = 3000.0
 	# Where the weak things are completely weak.
@@ -37,19 +49,38 @@ func spawn_weak_vc():
 	t = clamp(t, 0, 1)
 	t = sqrt(t)
 	
-	#print(t)
+	print(t)
 	
 	var spawn_timer = lerp(4.0, 2.5, t)
 	var generation = ceil(lerp(9, 5, t))
 	var prime = lerp(0, 7, t)
 	prime = round(prime + rand_range(0, 2.5))
 	
-	spawn_vc(spawn_timer, prime, generation)
+	var speed_mul = rand_range(0.9, 1.2)
+	
+	spawn_vc(spawn_timer, prime, generation, speed_mul)
 	#print("Spanwed weak vC!")
+	
+func spawn_somewhat_weak_vc():
+	var money_max = 9000.0
+	var money_min = 3000.0
+	
+	var t = (GS.total_money - money_min) / (money_max - money_min)
+	t = clamp(t, 0, 1)
+	t = sqrt(t)
+	
+	var spawn_timer = lerp(2.4, 1.5, t)
+	var generation = ceil(lerp(3, 1, t))
+	var prime = lerp(5, 15, t)
+	prime = round(prime + rand_range(0, 5))
+	
+	var speed_mul = rand_range(0.95, 1.05)
+	
+	spawn_vc(spawn_timer, prime, generation, speed_mul)
 	
 # Formula for bounds:
 # (1440 - (64 * generation)) / 2 gives approx bounds
-func spawn_vc(spawn_timer, prime = 0, generation = 0, max_strength = 18):
+func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strength = 18):
 	var vc = GS.VirusCollection.instance()
 	vc.spawn_timer_max = spawn_timer
 	vc.position.y = -1280 - 32
@@ -74,5 +105,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("test_spawn"):
 		pass
 		
-	if GS.total_money >= 3000:
-		GS.earned_money = 1
+	# Give player some big money even in somewhat_weka
+	if GS.total_money >= 3300:
+		GS.earned_money = 5
