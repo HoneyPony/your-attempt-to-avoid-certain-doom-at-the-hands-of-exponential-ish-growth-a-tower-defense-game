@@ -22,7 +22,7 @@ func fire(delta):
 	if right_level == 1:
 		bullet.aging = 2
 	if right_level == 2:
-		bullet.again = 5
+		bullet.aging = 5
 	get_parent().add_child(bullet)
 
 func ship_fx():
