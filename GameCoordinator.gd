@@ -12,10 +12,10 @@ enum ScaryState {
 var flag_mandatory_scary = ScaryState.NOT_YET
 
 func y_minimum():
-	if GS.total_money <= 3000:
-		return 32
-	if GS.total_money <= 6000:
-		return 300
+	if GS.get_total_money() <= 3000:
+		return 200
+	if GS.get_total_money() <= 6000:
+		return 500
 	return 700
 
 func check_y_prob():
@@ -32,8 +32,13 @@ func check_y_prob():
 	return randf() < probability
 
 func try_to_spawn():
-	# We can only have at most 2 virus collections at once.
-	if get_tree().get_nodes_in_group("VirusCollection").size() >= 2:
+	# Compute maximum number of living VirusCollections
+	var max_collects = 2
+	if GS.get_total_money() >= 12000:
+		max_collects = 1
+	
+	# We can only have at most 2 (or fewer...?) virus collections at once.
+	if get_tree().get_nodes_in_group("VirusCollection").size() >= max_collects:
 		return
 		
 	# We can only have 1 scary virus collection.
@@ -58,14 +63,15 @@ func try_to_spawn():
 	if not GS.has_any_ship():
 		return
 		
-	if GS.total_money <= 2700:
+	if GS.get_total_money() <= 2700:
 		spawn_weak_vc()
-	elif GS.total_money <= 6000:
+	elif GS.get_total_money() <= 6000:
 		spawn_somewhat_weak_vc()
-	elif GS.total_money <= 18000:
+	elif GS.get_total_money() <= 12000:
 		spawn_level_3_vc()
 	else:
-		spawn_vc(0.3, 10)
+		spawn_level_4_vc()
+		#spawn_vc(0.3, 10)
 	
 # Spawns a virus collection that is "weak", i.e. the kind that you encounter
 # right at the beginning of the game.
@@ -73,7 +79,7 @@ func spawn_weak_vc():
 	# "Scare" virus collection -- fast moving and fast spawning,
 	# but has a very low cap.
 	var may_spawn_scary_rng = flag_mandatory_scary == ScaryState.DONE
-	may_spawn_scary_rng = may_spawn_scary_rng and (GS.total_money >= 550 and GS.total_money <= 2300)
+	may_spawn_scary_rng = may_spawn_scary_rng and (GS.get_total_money() >= 550 and GS.get_total_money() <= 2300)
 	var should_spawn = flag_mandatory_scary == ScaryState.WANT_TO_SPAWN
 	should_spawn = should_spawn or (randf() < 0.5 and may_spawn_scary_rng)
 	if should_spawn:
@@ -88,7 +94,7 @@ func spawn_weak_vc():
 	# Where the weak things are completely weak.
 	var money_min = 120.0
 	
-	var t = (GS.total_money - money_min) / (money_max - money_min)
+	var t = (GS.get_total_money() - money_min) / (money_max - money_min)
 	t = clamp(t, 0, 1)
 	t = sqrt(t)
 	
@@ -108,7 +114,7 @@ func spawn_somewhat_weak_vc():
 	var money_max = 6000.0
 	var money_min = 3000.0
 	
-	if GS.total_money >= 3400 and GS.total_money <= 5500:
+	if GS.get_total_money() >= 3400 and GS.get_total_money() <= 5500:
 		# Scary
 		if randf() < 0.5:
 			#print("Scare!")
@@ -116,7 +122,7 @@ func spawn_somewhat_weak_vc():
 			vc.add_to_group("Scary")
 			return
 	
-	var t = (GS.total_money - money_min) / (money_max - money_min)
+	var t = (GS.get_total_money() - money_min) / (money_max - money_min)
 	t = clamp(t, 0, 1)
 	t = sqrt(t)
 	#print("some: ", t)
@@ -134,7 +140,7 @@ func spawn_level_3_vc():
 	var money_max = 12000.0
 	var money_min = 6000.0
 	
-	var t = (GS.total_money - money_min) / (money_max - money_min)
+	var t = (GS.get_total_money() - money_min) / (money_max - money_min)
 	t = clamp(t, 0, 1)
 	t = sqrt(t)
 	
@@ -144,9 +150,23 @@ func spawn_level_3_vc():
 	
 	spawn_vc(spawn_timer, prime, generation)
 	
+func spawn_level_4_vc():
+	var money_min = 12000.0
+	var money_max = 20000.0
+	
+	var t = (GS.get_total_money() - money_min) / (money_max - money_min)
+	t = clamp(t, 0, 1)
+	t = sqrt(t)
+	
+	var spawn_timer = lerp(0.7, 0.4, t)
+	var generation = 0
+	var prime = round(rand_range(40, 60))
+	
+	spawn_vc(spawn_timer, prime, generation, 1.08, 19)
+	
 # Formula for bounds:
 # (1440 - (64 * generation)) / 2 gives approx bounds
-func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strength = 18):
+func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strength = 18, back_y = 32):
 	var vc = GS.VirusCollection.instance()
 	vc.spawn_timer_max = spawn_timer
 	vc.position.y = -1280 - 32
@@ -155,7 +175,7 @@ func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strengt
 	vc.get_node("Virus").set_hue()
 	# absolute maximum bounds for srength = 18
 	#vc.position.x = rand_range(-144, 144)
-	var x = ((1440 - (64 * (max_strength - generation))) / 2 - 32)
+	var x = ((1440 - (64 * (max_strength - generation))) / 2 - back_y)
 	x = max(x, 0)
 	vc.position.x = rand_range(-x, x)
 	vc.priming_count = prime
@@ -178,24 +198,24 @@ func _process(delta):
 		pass
 		
 	# This is *total_money*, so it includes the initial 100 we start out with.
-	if GS.total_money >= 150:
+	if GS.get_total_money() >= 150:
 		try_open_tutorial(1)
 		
-	if GS.total_money >= 1500:
+	if GS.get_total_money() >= 1500:
 		try_open_tutorial(3)
 		
-	if GS.total_money >= 550:
+	if GS.get_total_money() >= 550:
 		try_open_tutorial(2)
 		flag_mandatory_scary = ScaryState.WANT_TO_SPAWN
 		
 	# Give player some big money even in somewhat_weka
-	if GS.total_money >= 3300:
+	if GS.get_total_money() >= 3300:
 		GS.earned_money = 5
-	if GS.total_money >= 7000:
+	if GS.get_total_money() >= 7000:
 		GS.earned_money = 1
 		
 	# Antisoftlock: we always need to be able to have at least 1 ship.
 	if not GS.has_any_ship() and GS.money < 50:
 		GS.money = 50
 		
-	#print(GS.total_money)
+	#print(GS.get_total_money())

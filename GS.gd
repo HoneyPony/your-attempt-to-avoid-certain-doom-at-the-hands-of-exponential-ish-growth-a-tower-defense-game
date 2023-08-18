@@ -346,10 +346,25 @@ var money: int = 0
 var total_money: int = 0
 var lives: int = 0
 
+# Should be used instead of total_money inside GameCoordinator.
+func get_total_money():
+	return total_money * difficulty_multiplier
+
 # The node that newly bought ships should be parented to.
 var ship_parent_node: Node2D = null
 
 var ship_buyers = [null, null, null, null, null, null]
+
+# A variable that should NOT be reset by reset_game_state(),
+# but we should be careful to properly set when pushing
+# a play game button.
+#
+# Represents the amount that the *total_money* variable
+# outpaces the actual value of the total amount of money
+# you collect. Basically, total_money is used as our
+# progress in the game, and so by increasing it faster
+# than you actually earn money, the game gets more difficult.
+var difficulty_multiplier = 1.0
 
 func compute_ship_cost(ship: TowerBase):
 	var id = ship.ship_type
