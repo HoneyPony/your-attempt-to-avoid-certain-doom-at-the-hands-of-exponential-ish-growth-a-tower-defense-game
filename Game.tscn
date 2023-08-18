@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://ui/piercing_ship_ICON.png" type="Texture" id=1]
 [ext_resource path="res://ui/drill_ship_SHOP_ICON.png" type="Texture" id=2]
@@ -583,8 +583,8 @@ tracks/8/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "OpenQuitMenu"
+[sub_resource type="Animation" id=15]
+resource_name = "CloseQuitMenu"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("ConfirmQuit:disabled")
@@ -593,7 +593,59 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( -0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:margin_left")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.615572, 1 ),
+"update": 0,
+"values": [ 0, -1162 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:margin_right")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.615572, 1 ),
+"update": 0,
+"values": [ 0, -1162 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "OpenQuitMenu"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("ConfirmQuit:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -609,6 +661,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:margin_left")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.615572, 1 ),
+"update": 0,
+"values": [ -1162.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:margin_right")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.615572, 1 ),
+"update": 0,
+"values": [ -1162.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -635,7 +711,31 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:margin_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:margin_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [node name="Game" type="Node2D"]
@@ -1057,7 +1157,7 @@ margin_top = -61.0
 margin_right = 167.5
 margin_bottom = 61.0
 focus_mode = 0
-text = "RESUME"
+text = "Resume"
 
 [node name="OptionsButton" type="Button" parent="PauseLayer/PauseMenu"]
 anchor_left = 0.5
@@ -1069,7 +1169,7 @@ margin_top = 89.0
 margin_right = 167.5
 margin_bottom = 211.0
 focus_mode = 0
-text = "OPTIONS"
+text = "Options"
 
 [node name="QuitButton" type="Button" parent="PauseLayer/PauseMenu"]
 anchor_left = 0.5
@@ -1081,7 +1181,7 @@ margin_top = -177.0
 margin_right = 167.5
 margin_bottom = -55.0
 focus_mode = 0
-text = "QUIT"
+text = "Quit"
 
 [node name="PauseButton2" type="TextureButton" parent="PauseLayer/PauseMenu"]
 margin_left = 11.0
@@ -1092,6 +1192,7 @@ focus_mode = 0
 texture_normal = ExtResource( 21 )
 
 [node name="QuitMenu" type="Panel" parent="PauseLayer/PauseMenu"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -1133,6 +1234,8 @@ text = "Are you sure you want to quit?
 You will lose all your progress!"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PauseLayer/PauseMenu/QuitMenu"]
+autoplay = "RESET"
+anims/CloseQuitMenu = SubResource( 15 )
 anims/OpenQuitMenu = SubResource( 13 )
 anims/RESET = SubResource( 14 )
 

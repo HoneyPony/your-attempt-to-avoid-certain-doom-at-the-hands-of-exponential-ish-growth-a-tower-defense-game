@@ -14,7 +14,8 @@ func _process(delta):
 		
 		# If we just opened, hide all the sub menus
 		if not was_visible:
-			hide_quit_menu()
+			quit_anim.play("RESET")
+			options.hide()
 
 func _on_ResumeButton_pressed():
 	get_tree().paused = false
@@ -24,9 +25,10 @@ func _on_ConfirmQuit_pressed():
 	SceneTransition.transition_to(GS.MainMenu)
 
 func hide_quit_menu():
-	quit_menu.hide()
+	quit_anim.play("CloseQuitMenu")
 	# Just in case: disable the actual quitting button
-	quit_menu.get_node("ConfirmQuit").disabled = true
+	# this is now accomplished by the CloseQuitMenu animation
+	# quit_menu.get_node("ConfirmQuit").disabled = true
 
 func _on_CancelQuit_pressed():
 	hide_quit_menu()
