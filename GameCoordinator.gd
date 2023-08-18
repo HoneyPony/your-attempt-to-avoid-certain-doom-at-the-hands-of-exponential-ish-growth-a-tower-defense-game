@@ -194,4 +194,8 @@ func _process(delta):
 	if GS.total_money >= 7000:
 		GS.earned_money = 1
 		
+	# Antisoftlock: we always need to be able to have at least 1 ship.
+	if not GS.has_any_ship() and GS.money < 50:
+		GS.money = 50
+		
 	#print(GS.total_money)

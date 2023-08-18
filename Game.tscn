@@ -1632,6 +1632,7 @@ margin_right = 1162.0
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/ShopTab" to="CanvasLayer/GameUI" method="_on_ShopTab_toggled"]
 [connection signal="toggled" from="CanvasLayer/GameUI/Shop/UpgradesTab" to="CanvasLayer/GameUI" method="_on_UpgradesTab_toggled"]
 [connection signal="pressed" from="CanvasLayer/GameUI/Shop/CloseButtonPivot/CloseButton" to="CanvasLayer/GameUI" method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameUI/Shop/Upgrades/SellButton" to="CanvasLayer/GameUI" method="_on_SellButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameUI/PauseButton" to="CanvasLayer/GameUI" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/GameUI/Tutorial/Dismiss" to="CanvasLayer/GameUI/Tutorial" method="_on_Dismiss_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/ResumeButton" to="PauseLayer/PauseMenu" method="_on_ResumeButton_pressed"]

@@ -84,11 +84,14 @@ func buy_right_upgrade():
 	# Upgrade the ship
 	ship.right_level += 1
 	
+func compute_sell_value(ship: TowerBase):
+	return int(GS.compute_ship_cost(ship) * 0.8)
+	
 func compute_upgrade_cards(ship: TowerBase):
 	upgrade_ship_icon.texture = GS.ship_icons[ship.ship_type]
 	
-	var ship_cost = GS.compute_ship_cost(ship)
-	sell_cost_label.text = str("You may sell\nthis ship for\n$", ship_cost)
+	var sell_value = compute_sell_value(ship)
+	sell_cost_label.text = str("You may sell\nthis ship for\n$", sell_value)	
 	
 	var upgrades = GS.upgrades[ship.ship_type]
 	if ship.left_level >= upgrades.left_path.size():
@@ -154,3 +157,25 @@ func _on_UpgradesTab_toggled(button_pressed):
 
 func _on_PauseButton_pressed():
 	get_tree().paused = not get_tree().paused
+
+
+func _on_SellButton_pressed():
+	if is_instance_valid(GS.upgrade_target_ship):
+		var total_value = GS.compute_ship_cost(GS.upgrade_target_ship)
+		var sell_value = compute_sell_value(GS.upgrade_target_ship)
+		
+		GS.upgrade_target_ship.destroy()
+		GS.money += sell_value
+		
+		# Also give back a tiny bit of the easyness, or whatever
+		#
+		# Basically -- if we do nothing, than the actual amount of money
+		# the user has access to after selling is LESS than the amount of
+		# money used for determining game progress.
+		#
+		# In particular, it is less by the exact amount (total_value - sell_value)
+		#
+		# So, we can refund a little bit of that to the game progress, to make the
+		# game more fair.
+		var refund = (total_value - sell_value) * 0.25
+		GS.total_money -= refund
