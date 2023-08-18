@@ -54,7 +54,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
 acceleration_strength = 700
-movement_speed = 30
+movement_speed = 50
 ship_type = 2
 
 [node name="MovementDisplay" type="Line2D" parent="."]
