@@ -11,6 +11,8 @@ onready var upgrade_tab_button = $Shop/UpgradesTab
 onready var upgrade_panel = $Shop/Upgrades
 onready var upgrade_err_panel = $Shop/Upgrades/UpgradeErrPanel
 
+onready var upgrade_ship_icon = $Shop/Upgrades/ShipIcon
+
 onready var left_upgrade_card = $Shop/Upgrades/LeftUpgradeCard
 onready var right_upgrade_card = $Shop/Upgrades/RightUpgradeCard
 
@@ -81,6 +83,8 @@ func buy_right_upgrade():
 	ship.right_level += 1
 	
 func compute_upgrade_cards(ship: TowerBase):
+	upgrade_ship_icon.texture = GS.ship_icons[ship.ship_type]
+	
 	var upgrades = GS.upgrades[ship.ship_type]
 	if ship.left_level >= upgrades.left_path.size():
 		left_upgrade_card.full.show()

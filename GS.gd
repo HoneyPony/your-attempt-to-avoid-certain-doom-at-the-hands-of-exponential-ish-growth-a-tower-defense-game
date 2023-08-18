@@ -289,6 +289,15 @@ var KineticMissile = [
 	preload("res://towers/KineticMissile1.tscn")
 ]
 
+var ship_icons = [
+	preload("res://ui/basic_gun_SHOP_ICON.png"),
+	preload("res://towers/side_laser.png"),
+	preload("res://ui/drill_ship_SHOP_ICON.png"),
+	preload("res://ui/bomb_ship_ICON.png"),
+	preload("res://ui/nanobot_gun_ICON.png"),
+	preload("res://ui/piercing_ship_ICON.png")
+]
+
 var game_camera: Camera2D = null
 
 # These variables are used so that ships can coordinate who should be selected,
