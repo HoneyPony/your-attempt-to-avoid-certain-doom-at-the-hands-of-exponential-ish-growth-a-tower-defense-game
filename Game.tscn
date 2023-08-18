@@ -509,12 +509,10 @@ text = "you have no ship selected to upgrade!"
 align = 1
 
 [node name="PauseButton" type="TextureButton" parent="CanvasLayer/GameUI"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -79.0
-margin_top = 14.0
-margin_right = -15.0
-margin_bottom = 78.0
+margin_left = 11.0
+margin_top = 11.0
+margin_right = 75.0
+margin_bottom = 75.0
 focus_mode = 0
 texture_normal = ExtResource( 21 )
 
