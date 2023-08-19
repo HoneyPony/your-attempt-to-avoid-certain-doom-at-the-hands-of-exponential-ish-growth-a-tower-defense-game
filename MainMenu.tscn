@@ -137,9 +137,6 @@ focus_mode = 0
 text = "Options"
 
 [node name="OptionsMenu" parent="CanvasLayer/MainMenu" instance=ExtResource( 4 )]
-visible = false
-margin_left = 1162.0
-margin_right = 1162.0
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/PlayNormal" to="CanvasLayer/MainMenu" method="_on_PlayNormal_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/PlayHarder" to="CanvasLayer/MainMenu" method="_on_PlayHarder_pressed"]

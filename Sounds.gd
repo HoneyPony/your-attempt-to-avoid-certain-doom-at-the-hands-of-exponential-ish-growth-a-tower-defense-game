@@ -81,6 +81,8 @@ func missile_explode():
 func _ready():
 	for d in destroys:
 		d.volume_db = -8
+		
+	$MUSIC.play()
 
 func update_playing(sound: AudioStreamPlayer, should_playing: bool):
 	if sound.playing != should_playing:
