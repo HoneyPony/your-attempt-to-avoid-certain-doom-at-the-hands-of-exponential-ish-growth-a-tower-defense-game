@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var tutorial = $CanvasLayer/GameUI/Tutorial
+onready var win_lose = $WinLose
 
 # Used to help make sure we spawn at least one Scary guy.
 enum ScaryState {
@@ -10,6 +11,7 @@ enum ScaryState {
 }
 
 var flag_mandatory_scary = ScaryState.NOT_YET
+var wants_to_win = false
 
 func y_minimum():
 	if GS.get_total_money() <= 3000:
@@ -32,6 +34,10 @@ func check_y_prob():
 	return randf() < probability
 
 func try_to_spawn():
+	# Can't spawn if we're trying to win.
+	if wants_to_win:
+		return
+	
 	# Compute maximum number of living VirusCollections
 	var max_collects = 2
 	if GS.get_total_money() >= 12000:
@@ -215,7 +221,13 @@ func _process(delta):
 		GS.earned_money = 5
 	if GS.get_total_money() >= 7000:
 		GS.earned_money = 1
+	if GS.get_total_money() >= 30000: # need to decide this of course ? 
+		wants_to_win = true
 		
+		# Wait for all viruses to be gone to win
+		if get_tree().get_nodes_in_group("VirusCollection").empty():
+			win_lose.win()
+			wants_to_win = false
 	# Antisoftlock: we always need to be able to have at least 1 ship.
 	if not GS.has_any_ship() and GS.money < 50:
 		GS.money = 50
