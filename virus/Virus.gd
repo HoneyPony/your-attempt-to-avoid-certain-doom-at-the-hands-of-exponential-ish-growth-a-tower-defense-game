@@ -129,7 +129,7 @@ func animate(delta):
 	var target_rot = 0
 	var target_pos = coord * 32 # 4x pixels, plus 8 pixels wide
 	
-	delta = clamp(delta * 0.09, 0, 1)
+	delta = clamp(delta * 0.09 * 6, 0, 1)
 	
 	# Jitter animation:
 #	target_scale *= rand_range(0.9, 1.1)
