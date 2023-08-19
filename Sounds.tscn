@@ -94,30 +94,24 @@ script = ExtResource( 18 )
 
 [node name="Basic1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+volume_db = -6.0
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
 
 [node name="Basic2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+volume_db = -6.0
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
 
 [node name="Basic3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+volume_db = -6.0
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
 
 [node name="SideLaser" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
-bus = "AllPlayerShipSFX"
-script = ExtResource( 18 )
-
-[node name="SideLaser2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 20 )
-bus = "AllPlayerShipSFX"
-script = ExtResource( 18 )
-
-[node name="SideLaser3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 20 )
+volume_db = -6.0
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )

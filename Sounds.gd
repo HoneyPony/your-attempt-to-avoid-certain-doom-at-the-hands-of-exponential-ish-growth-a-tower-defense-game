@@ -22,35 +22,26 @@ onready var basic_gun_shoots = [
 	$Basic3
 ]
 #var basic_gun_shoots_i = 0
-onready var side_laser_shoots = [
-	$SideLaser,
-	$SideLaser2,
-	$SideLaser3
-]
-var side_laser_shoots_i = 0
-# Only let this sound trigger once per frame, even though
-# we provide polyphony.
-var side_laser_per_frame = false
+
+onready var side_laser_shoot = $SideLaser
+
 
 func basic_shoot(left_level):
 	basic_gun_shoots[left_level].play_sfx()
 	#basic_gun_shoots_i = (basic_gun_shoots_i + 1) % basic_gun_shoots.size()
 
-func side_laser():
-	if side_laser_per_frame:
-		return
-	side_laser_shoots[side_laser_shoots_i].play_usual()
-	side_laser_shoots_i = (side_laser_shoots_i + 1) % side_laser_shoots.size()
-	side_laser_per_frame = true
-
 func _ready():
 	for d in destroys:
 		d.volume_db = -8
 
+func update_playing(sound: AudioStreamPlayer, should_playing: bool):
+	if sound.playing != should_playing:
+		sound.playing = should_playing
+
 # Physics process for frame resets because that's when the
 # sound effects are often triggered
 func _physics_process(delta):
-	side_laser_per_frame = false
+	update_playing(side_laser_shoot, GS.ship_counts[GS.SHIP_SIDE_LASER] > 0)
 
 func play_destroy():
 	var i = randi() % destroys.size()

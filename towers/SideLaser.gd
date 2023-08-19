@@ -37,8 +37,6 @@ func fire():
 	get_parent().add_child(bullet)
 	
 	current_bullet = bullet
-	
-	Sounds.side_laser()
 
 func compute_movement_speed():
 	# Compute our movement speed based on the literal description of the ugprade.
