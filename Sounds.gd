@@ -60,10 +60,19 @@ func update_playing(sound: AudioStreamPlayer, should_playing: bool):
 	if sound.playing != should_playing:
 		sound.playing = should_playing
 
+func does_there_exist_a_firing_side_laser():
+	var sl = get_tree().get_nodes_in_group("SideLaser")
+	for s in sl:
+		if s.state == TowerBase.State.NORMAL:
+			return true
+	return false
+
 # Physics process for frame resets because that's when the
 # sound effects are often triggered
 func _physics_process(delta):
-	update_playing(side_laser_shoot, GS.ship_counts[GS.SHIP_SIDE_LASER] > 0)
+	var should_side_laser_shoot: bool = does_there_exist_a_firing_side_laser()
+	should_side_laser_shoot = should_side_laser_shoot and not get_tree().paused
+	update_playing(side_laser_shoot, should_side_laser_shoot)
 
 func play_destroy():
 	var i = randi() % destroys.size()
