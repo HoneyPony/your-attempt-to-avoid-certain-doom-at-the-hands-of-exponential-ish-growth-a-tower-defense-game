@@ -50,7 +50,7 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 90, 90 )
 
-[node name="DrillShip" type="Area2D"]
+[node name="DrillShip" type="Area2D" groups=["Drill"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )

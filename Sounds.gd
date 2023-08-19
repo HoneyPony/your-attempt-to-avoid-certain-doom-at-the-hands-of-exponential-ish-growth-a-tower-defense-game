@@ -54,7 +54,7 @@ var missile_explode_i = 0
 #var basic_gun_shoots_i = 0
 
 onready var side_laser_shoot = $SideLaser
-
+onready var drill = $Drill
 
 func basic_shoot(left_level):
 	basic_gun_shoots[left_level].play_sfx()
@@ -89,12 +89,23 @@ func does_there_exist_a_firing_side_laser():
 			return true
 	return false
 
+func does_there_exist_an_active_drill():
+	var drills = get_tree().get_nodes_in_group("Drill")
+	for d in drills:
+		if d.state == TowerBase.State.NORMAL:
+			return true
+	return false
+
 # Physics process for frame resets because that's when the
 # sound effects are often triggered
 func _physics_process(delta):
 	var should_side_laser_shoot: bool = does_there_exist_a_firing_side_laser()
 	should_side_laser_shoot = should_side_laser_shoot and not get_tree().paused
 	update_playing(side_laser_shoot, should_side_laser_shoot)
+
+	var should_drill: bool = does_there_exist_an_active_drill()
+	should_drill = should_drill and not get_tree().paused
+	update_playing(drill, should_drill)
 
 func play_destroy():
 	var i = randi() % destroys.size()
