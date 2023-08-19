@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://ui/piercing_ship_ICON.png" type="Texture" id=1]
 [ext_resource path="res://ui/drill_ship_SHOP_ICON.png" type="Texture" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://ui/basic_gun_SHOP_ICON.png" type="Texture" id=27]
 [ext_resource path="res://ui/ShopInfo.gd" type="Script" id=28]
 [ext_resource path="res://ui/WinLose.gd" type="Script" id=29]
+[ext_resource path="res://fx/atmosphere.png" type="Texture" id=30]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.280571, 0.0, 0, 0 ]
@@ -1878,6 +1879,13 @@ autoplay = "RESET"
 anims/Close = SubResource( 12 )
 anims/Open = SubResource( 10 )
 anims/RESET = SubResource( 11 )
+
+[node name="Atmosphere" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.196078 )
+material = ExtResource( 14 )
+position = Vector2( 0, 961 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 30 )
 
 [node name="Planet" type="Sprite" parent="."]
 material = ExtResource( 14 )
