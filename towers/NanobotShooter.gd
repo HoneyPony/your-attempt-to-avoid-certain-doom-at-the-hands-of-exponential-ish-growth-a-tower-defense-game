@@ -27,6 +27,8 @@ func fire(delta):
 	if right_level == 2:
 		bullet.aging = 5
 	get_parent().add_child(bullet)
+	
+	Sounds.nano_shoot()
 
 func ship_fx():
 	ship_sprite.position.y = 8 * sin(Time.get_ticks_msec() / 1000.0)

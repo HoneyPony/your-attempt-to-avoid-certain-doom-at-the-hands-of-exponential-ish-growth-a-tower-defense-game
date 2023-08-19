@@ -21,6 +21,16 @@ onready var basic_gun_shoots = [
 	$Basic2,
 	$Basic3
 ]
+
+onready var nano_bot_shoots = [
+	$Nano1,
+	$Nano2,
+	$Nano3,
+	$Nano4,
+	$Nano5,
+	$Nano6,
+]
+var nano_bot_shoots_i = 0
 #var basic_gun_shoots_i = 0
 
 onready var side_laser_shoot = $SideLaser
@@ -29,6 +39,10 @@ onready var side_laser_shoot = $SideLaser
 func basic_shoot(left_level):
 	basic_gun_shoots[left_level].play_sfx()
 	#basic_gun_shoots_i = (basic_gun_shoots_i + 1) % basic_gun_shoots.size()
+
+func nano_shoot():
+	nano_bot_shoots[nano_bot_shoots_i].play_sfx()
+	nano_bot_shoots_i = (nano_bot_shoots_i + 1) % nano_bot_shoots.size()
 
 func _ready():
 	for d in destroys:

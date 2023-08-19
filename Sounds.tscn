@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Sounds.gd" type="Script" id=1]
 [ext_resource path="res://sounds/destroy_14.wav" type="AudioStream" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://SFXRand.gd" type="Script" id=18]
 [ext_resource path="res://sounds/basic_gun_shoot.wav" type="AudioStream" id=19]
 [ext_resource path="res://sounds/side_laser_shoot.wav" type="AudioStream" id=20]
+[ext_resource path="res://sounds/nanobot_shoot.wav" type="AudioStream" id=21]
 
 [node name="Sounds" type="Node"]
 pause_mode = 2
@@ -94,24 +95,60 @@ script = ExtResource( 18 )
 
 [node name="Basic1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
-volume_db = -6.0
+volume_db = -8.0
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
 
 [node name="Basic2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
-volume_db = -6.0
+volume_db = -8.0
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
 
 [node name="Basic3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
-volume_db = -6.0
+volume_db = -8.0
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
 
 [node name="SideLaser" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
 volume_db = -6.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Nano1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -12.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Nano2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -12.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Nano3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -12.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Nano4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -12.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Nano5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -12.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Nano6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -12.0
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
