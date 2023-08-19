@@ -202,7 +202,7 @@ func spawn_level_4_vc():
 	
 		
 func spawn_level_5_vc():
-	spawn_increment(2000)
+	spawn_increment(2500)
 	
 	var money_min = 12000.0
 	var money_max = 20000.0
