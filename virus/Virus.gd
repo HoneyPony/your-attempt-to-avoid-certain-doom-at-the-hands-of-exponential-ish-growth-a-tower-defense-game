@@ -23,6 +23,7 @@ var strength = 12
 
 enum State {
 	SPAWNING,
+	SPAWNED,
 	FLYING
 }
 
@@ -74,7 +75,7 @@ const LOSE_LIVE_Y = 1280 - 80
 
 func _physics_process(delta):
 	# Each frame, we try to spawn, depending on the spawn speed
-	if state == State.SPAWNING:
+	if state == State.SPAWNING or state == State.SPAWNED:
 		spawn_timer -= delta
 		if spawn_timer < 0:
 			try_spawns()
@@ -116,8 +117,9 @@ func _physics_process(delta):
 			queue_free()
 			GS.lose_a_life()
 		
-	# Animate the spawn/jitter effects
-	animate()
+	if state == State.SPAWNED:
+		# Animate the spawn/jitter effects
+		animate()
 	
 func animate():
 	# Basic lerp-animation for spawning
@@ -130,12 +132,19 @@ func animate():
 #	target_rot += rand_range(-0.1 * TAU, 0.1 * TAU)
 #	target_pos += polar2cartesian(rand_range(0, 4), rand_range(0, TAU))
 
-	scale += (target_scale - scale) * 0.09
+	var scale_dif = (target_scale - scale)
+	scale += scale_dif * 0.09
 	
 	rotation = lerp_angle(rotation, target_rot, 0.09)
 	
 	if state == State.SPAWNING:
 		position += (target_pos - position) * 0.09
+		
+	if scale_dif.length_squared() < 0.000001:
+		scale = target_scale
+		rotation = target_rot
+		position = target_pos
+		state = State.SPAWNED
 		
 func set_hue():
 	var hue = 0
@@ -223,6 +232,9 @@ func _on_Area2D_body_entered(body):
 	# Make viruses invincible while they are above screen
 	if position.y < -1280 - 6:
 		return
+		
+	if is_queued_for_deletion():
+		return
 	
 	body.hit_something() # Tell the bullet to despawn if relevant, etc
 	
@@ -231,7 +243,7 @@ func _on_Area2D_body_entered(body):
 		aging = body.aging
 	
 	# Immediately die if spawning
-	if state == State.SPAWNING:
+	if state == State.SPAWNING or state == State.SPAWNED:
 		destroy(aging)
 	else:
 		# Otherwise, we have to deal with health
