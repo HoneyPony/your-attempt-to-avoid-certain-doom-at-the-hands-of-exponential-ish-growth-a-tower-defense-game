@@ -109,6 +109,7 @@ margin_left = -426.0
 margin_top = -91.0
 margin_right = 426.0
 margin_bottom = 47.0
+focus_mode = 0
 text = "Play NORMAL DIFFICULTY"
 
 [node name="PlayHarder" type="Button" parent="CanvasLayer/MainMenu"]
@@ -132,6 +133,7 @@ margin_left = -200.0
 margin_top = -166.0
 margin_right = 200.0
 margin_bottom = -48.0
+focus_mode = 0
 text = "Options"
 
 [node name="OptionsMenu" parent="CanvasLayer/MainMenu" instance=ExtResource( 4 )]
