@@ -44,3 +44,4 @@ func dismiss():
 
 func _on_Dismiss_pressed():
 	dismiss()
+	Sounds.click1()

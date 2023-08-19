@@ -16,6 +16,16 @@ onready var destroys = [
 	$Destroy14,
 ]
 
+func _ready():
+	for d in destroys:
+		d.volume_db = -8
+
 func play_destroy():
 	var i = randi() % destroys.size()
 	destroys[i].play()
+
+func click1():
+	$UIClick1.play_sfx()
+
+func click2():
+	$UIClick2.play_sfx()

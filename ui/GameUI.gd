@@ -58,6 +58,8 @@ func buy_left_upgrade():
 	# Upgrade the ship
 	ship.left_level += 1
 	
+	Sounds.click1()
+	
 	
 func buy_right_upgrade():
 	var ship: TowerBase = GS.upgrade_target_ship as TowerBase
@@ -83,6 +85,8 @@ func buy_right_upgrade():
 	GS.money -= up.cost
 	# Upgrade the ship
 	ship.right_level += 1
+	
+	Sounds.click1()
 	
 func compute_sell_value(ship: TowerBase):
 	return int(GS.compute_ship_cost(ship) * 0.8)
@@ -138,6 +142,8 @@ func _on_CloseButton_pressed():
 		shop_anim.play("ShowShop")
 	shop_open = not shop_open
 	
+	Sounds.click2()
+	
 func update_tabs(show_upgrades: bool):
 	shop_tab_button.pressed = not show_upgrades
 	shop_tab_button.disabled = not show_upgrades
@@ -149,14 +155,17 @@ func update_tabs(show_upgrades: bool):
 
 func _on_ShopTab_toggled(button_pressed):
 	update_tabs(not button_pressed)
+	Sounds.click1()
 
 
 func _on_UpgradesTab_toggled(button_pressed):
 	update_tabs(button_pressed)
+	Sounds.click1()
 
 
 func _on_PauseButton_pressed():
 	get_tree().paused = not get_tree().paused
+	Sounds.click2()
 
 
 func _on_SellButton_pressed():
@@ -179,3 +188,5 @@ func _on_SellButton_pressed():
 		# game more fair.
 		var refund = (total_value - sell_value) * 0.25
 		GS.total_money -= refund
+		
+		Sounds.click1()

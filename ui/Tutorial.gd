@@ -27,6 +27,8 @@ func _on_Dismiss_pressed():
 	read_index += 1
 	page_turn_delay = 0.4
 	
+	Sounds.click1()
+	
 func open():
 	var next = read_index + 1
 	for m in msgs:

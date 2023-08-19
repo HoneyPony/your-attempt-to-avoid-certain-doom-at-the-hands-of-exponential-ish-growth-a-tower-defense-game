@@ -1883,7 +1883,7 @@ anims/RESET = SubResource( 11 )
 [node name="Atmosphere" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.196078 )
 material = ExtResource( 14 )
-position = Vector2( 0, 961 )
+position = Vector2( 0, 1090 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 30 )
 

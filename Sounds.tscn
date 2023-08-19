@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Sounds.gd" type="Script" id=1]
 [ext_resource path="res://sounds/destroy_14.wav" type="AudioStream" id=2]
@@ -15,6 +15,9 @@
 [ext_resource path="res://sounds/destroy_9.wav" type="AudioStream" id=13]
 [ext_resource path="res://sounds/destroy_10.wav" type="AudioStream" id=14]
 [ext_resource path="res://sounds/destroy_11.wav" type="AudioStream" id=15]
+[ext_resource path="res://sounds/ui_click.wav" type="AudioStream" id=16]
+[ext_resource path="res://sounds/ui_click_2.wav" type="AudioStream" id=17]
+[ext_resource path="res://SFXRand.gd" type="Script" id=18]
 
 [node name="Sounds" type="Node"]
 script = ExtResource( 1 )
@@ -74,3 +77,14 @@ bus = "SFX"
 [node name="Destroy14" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 bus = "SFX"
+
+[node name="UIClick1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -6.0
+bus = "SFX"
+script = ExtResource( 18 )
+
+[node name="UIClick2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+bus = "SFX"
+script = ExtResource( 18 )

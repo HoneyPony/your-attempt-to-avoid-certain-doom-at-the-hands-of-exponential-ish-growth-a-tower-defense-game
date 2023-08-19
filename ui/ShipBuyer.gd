@@ -65,12 +65,14 @@ func _on_BuyButton_pressed():
 	ship.position = Vector2.ZERO
 	GS.ship_parent_node.add_child(ship)
 	
-
+	Sounds.click1()
 
 
 func _on_InfoButton_toggled(button_pressed):
 	if button_pressed:
 		shop_info.open(info_button, ship_id, texture)
+		Sounds.click1()
 	else:
 		if info_button == GS.current_shop_info_button:
 			shop_info.dismiss()
+			Sounds.click1()
