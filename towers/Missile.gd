@@ -25,3 +25,6 @@ func explode():
 	var explosion = GS.Explosions[explode].instance()
 	explosion.position = position
 	get_parent().add_child(explosion)
+	
+	# We will be queu_freed due to super hit_something
+	Sounds.missile_explode()

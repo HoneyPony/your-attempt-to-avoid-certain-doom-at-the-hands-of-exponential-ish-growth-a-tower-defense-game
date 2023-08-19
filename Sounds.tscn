@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Sounds.gd" type="Script" id=1]
 [ext_resource path="res://sounds/destroy_14.wav" type="AudioStream" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://sounds/side_laser_shoot.wav" type="AudioStream" id=20]
 [ext_resource path="res://sounds/nanobot_shoot.wav" type="AudioStream" id=21]
 [ext_resource path="res://sounds/kinetic_shoot.wav" type="AudioStream" id=22]
+[ext_resource path="res://sounds/cannon_shoot.wav" type="AudioStream" id=23]
+[ext_resource path="res://sounds/cannon_explode.wav" type="AudioStream" id=24]
 
 [node name="Sounds" type="Node"]
 pause_mode = 2
@@ -169,3 +171,51 @@ bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
 range_min = 0.99
 range_max = 1.01
+
+[node name="Missile1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+volume_db = -9.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Missile2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+volume_db = -9.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Missile3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+volume_db = -9.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Explode1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -9.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Explode2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -9.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Explode3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -9.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Explode4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -9.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Explode5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -9.0
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )

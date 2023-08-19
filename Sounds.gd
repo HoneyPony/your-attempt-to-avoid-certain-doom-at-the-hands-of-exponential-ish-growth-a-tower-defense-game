@@ -36,6 +36,21 @@ onready var kinetic_shoots = [
 	$Kinetic1,
 	$Kinetic2
 ]
+
+onready var missile_shoots = [
+	$Missile1,
+	$Missile2,
+	$Missile3
+]
+
+onready var missile_explodes = [
+	$Explode1,
+	$Explode2,
+	$Explode3,
+	$Explode4,
+	$Explode5,
+]
+var missile_explode_i = 0
 #var basic_gun_shoots_i = 0
 
 onready var side_laser_shoot = $SideLaser
@@ -51,6 +66,13 @@ func kinetic_shoot(index_0_1):
 func nano_shoot():
 	nano_bot_shoots[nano_bot_shoots_i].play_sfx()
 	nano_bot_shoots_i = (nano_bot_shoots_i + 1) % nano_bot_shoots.size()
+
+func cannon_shoot(left_level):
+	missile_shoots[left_level].play_sfx()
+	
+func missile_explode():
+	missile_explodes[missile_explode_i].play_sfx()
+	missile_explode_i = (missile_explode_i + 1) % missile_explodes.size()
 
 func _ready():
 	for d in destroys:
