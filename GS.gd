@@ -421,8 +421,8 @@ func reset_game_state():
 	ship_buyers = [null, null, null, null, null, null]
 	
 	# DEBUG MONEY:
-	money = 30000
-	#total_money = 3400
+	money = 7000
+	total_money = 7000
 	
 	reset_timers()
 	

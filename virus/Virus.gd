@@ -62,6 +62,8 @@ func destroy(aging_amount):
 	# Disable any more collisions
 	$Area2D.collision_layer = 0
 	$Area2D.collision_mask = 0
+	
+	Sounds.play_destroy()
 
 func reset_spawn_timer():
 	spawn_timer = parent_vc.spawn_timer_max * rand_range(0.95, 1.05) * speed
