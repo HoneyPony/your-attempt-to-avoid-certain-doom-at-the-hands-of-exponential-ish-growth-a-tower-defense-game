@@ -18,6 +18,8 @@ onready var right_upgrade_card = $Shop/Upgrades/RightUpgradeCard
 
 onready var sell_cost_label = $Shop/Upgrades/SellCostLabel
 
+onready var shop_info = $Shop/ShopInfo
+
 # This is really whether the bottom panel is open at all.
 # Should match the starting state of the shop_anim AnimationPlayer.
 var shop_open = false
@@ -138,6 +140,7 @@ func _process(delta):
 func _on_CloseButton_pressed():
 	if shop_open:
 		shop_anim.play("HideShop")
+		shop_info.dismiss()
 	else:
 		shop_anim.play("ShowShop")
 	shop_open = not shop_open

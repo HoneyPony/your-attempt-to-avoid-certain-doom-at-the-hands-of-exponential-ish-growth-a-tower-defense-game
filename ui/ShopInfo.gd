@@ -33,6 +33,9 @@ func open(new_button: Button, index: int, icon: Texture):
 		anim.play("Open")
 		
 func dismiss():
+	if not visible:
+		return
+	
 	if GS.current_shop_info_button:
 		# Make sure the button doesn't try to re-dismiss.
 		var b = GS.current_shop_info_button
