@@ -421,18 +421,25 @@ func reset_game_state():
 	ship_buyers = [null, null, null, null, null, null]
 	
 	# DEBUG MONEY:
-	#money = 80000
-	#total_money = 7000
+	money = 21000
+	total_money = 21000
 	
 	reset_timers()
 	
 func _ready():
 	reset_game_state()
 	
+var physics_frame = 4
+	
 func _physics_process(delta):
 	# NOTE TO FUTURE SELF:
 	# ALL code that checks timers in Towers MUST be written in physics_process.
 	update_timers(delta)
+	
+	physics_frame -= 1
+	if physics_frame <= 0:
+		perform_custom_physics()
+		physics_frame = 1
 	
 func check_fullscreen_input():
 	if Input.is_action_just_pressed("fullscreen"):
@@ -440,3 +447,44 @@ func check_fullscreen_input():
 
 func _process(delta):
 	check_fullscreen_input()
+	
+# How the GDscript-based physics will work:
+# All physics objects will push points to this big array. Then, we will loop
+# over every virus, and every point, and check if any viruses are overlapping
+# any points. At that point, the virus will be destroyed.
+#
+# We may do this, say, every 4 frames so that it is not too slow...?
+var collision_points: PoolVector2Array
+
+func push_collision_point(p: Vector2) -> int:
+	# Possibilities for the future: using multiple vector2s for different
+	# quadrants, to speed up the other tests.
+	collision_points.push_back(p)
+	
+	# Bullets will have to keep track of whether they were hit, in which
+	# case their hit_something will be called... we do this by storing
+	# a set of all indices that were hit.
+	return collision_points.size() - 1
+	
+	# TODO: Also add a dictionary for aging information.
+	
+func perform_custom_physics():
+	var viruses: Array = get_tree().get_nodes_in_group("Virus")
+	var hit_indices = {}
+	
+	for v in viruses:
+		if not v.killable():
+			continue
+		
+		for pi in range(0, collision_points.size()):
+			if v.overlaps(collision_points[pi]):
+				hit_indices[pi] = true
+				v.kill()
+				break
+				
+	var resettable_colliders = get_tree().get_nodes_in_group("ResettableColliders")
+	for rc in resettable_colliders:
+		rc.reset_collision(hit_indices)
+		
+	collision_points = PoolVector2Array()
+	

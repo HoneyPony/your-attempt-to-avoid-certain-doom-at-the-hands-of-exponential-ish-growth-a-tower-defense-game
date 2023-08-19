@@ -8,7 +8,8 @@ func _ready():
 	scale.y = 0.2
 
 func _physics_process(delta):
-	move_and_slide(Vector2(0, -velocity))
+	position += Vector2(0, -velocity * delta)
+	#move_and_slide(Vector2(0, -velocity))
 	# Bullets get faster over time
 	velocity += 180 * delta
 	

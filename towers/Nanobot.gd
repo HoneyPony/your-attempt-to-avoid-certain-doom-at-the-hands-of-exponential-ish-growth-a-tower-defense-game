@@ -4,7 +4,7 @@ var velocity = 300
 var aging = 1
 
 func _physics_process(delta):
-	move_and_slide(Vector2(0, -velocity))
+	position += (Vector2(0, -velocity * delta))
 	$Sprite.rotation += TAU * delta * 0.25
 
 func hit_something():

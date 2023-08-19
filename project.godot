@@ -109,6 +109,7 @@ test_spawn={
 [physics]
 
 common/enable_pause_aware_picking=true
+2d/use_bvh=false
 
 [rendering]
 

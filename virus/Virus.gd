@@ -60,8 +60,8 @@ func destroy(aging_amount):
 	get_parent().get_parent().add_child(debris)
 	
 	# Disable any more collisions
-	$Area2D.collision_layer = 0
-	$Area2D.collision_mask = 0
+	#$Area2D.collision_layer = 0
+	#$Area2D.collision_mask = 0
 	
 	Sounds.play_destroy()
 
@@ -217,19 +217,24 @@ func try_spawns():
 			return
 
 
+func overlaps(point):
+	return (point - global_position).length_squared() < (16 * 16)
 
-# Called when a physics body (i.e. a bullet) hits the area2d.
-func _on_Area2D_body_entered(body):
+func killable():
 	# Make viruses invincible while they are above screen
 	if position.y < -1280 - 6:
-		return
+		return false
+	return true
+
+# Called when a physics body (i.e. a bullet) hits the area2d.
+func kill():
 	
-	body.hit_something() # Tell the bullet to despawn if relevant, etc
+	#body.hit_something() # Tell the bullet to despawn if relevant, etc
 	
 	var aging = 0
-	if body.is_in_group("Aging"):
-		aging = body.aging
-	
+#	if body.is_in_group("Aging"):
+#		aging = body.aging
+#
 	# Immediately die if spawning
 	if state == State.SPAWNING:
 		destroy(aging)

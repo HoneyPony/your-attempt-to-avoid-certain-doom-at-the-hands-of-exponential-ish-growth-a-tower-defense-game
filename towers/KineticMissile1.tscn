@@ -1,20 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://BasicGoodPixelart.tres" type="Material" id=1]
 [ext_resource path="res://towers/KineticMissile.gd" type="Script" id=2]
 [ext_resource path="res://towers/kinetic_missile_small.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3, 12 )
-
-[node name="KineticMissile0" type="KinematicBody2D"]
-collision_mask = 0
+[node name="KineticMissile0" type="Node2D"]
 script = ExtResource( 2 )
+point0 = Vector2( 0, -12 )
+point1 = Vector2( 0, 12 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 1 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )

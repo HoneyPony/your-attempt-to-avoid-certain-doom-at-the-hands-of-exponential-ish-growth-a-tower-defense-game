@@ -10,7 +10,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	move_and_slide(Vector2(0, -velocity))
+	position += (Vector2(0, -velocity * delta))
 	# Bullets get faster over time
 	velocity += 180 * delta
 
