@@ -21,11 +21,15 @@ onready var basic_gun_shoots = [
 	$Basic2,
 	$Basic3
 ]
+onready var side_laser_shoot = $SideLaser
 #var basic_gun_shoots_i = 0
 
 func basic_shoot(left_level):
 	basic_gun_shoots[left_level].play_sfx()
 	#basic_gun_shoots_i = (basic_gun_shoots_i + 1) % basic_gun_shoots.size()
+
+func side_laser():
+	side_laser_shoot.play_sfx()
 
 func _ready():
 	for d in destroys:

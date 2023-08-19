@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Sounds.gd" type="Script" id=1]
 [ext_resource path="res://sounds/destroy_14.wav" type="AudioStream" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://sounds/ui_click_2.wav" type="AudioStream" id=17]
 [ext_resource path="res://SFXRand.gd" type="Script" id=18]
 [ext_resource path="res://sounds/basic_gun_shoot.wav" type="AudioStream" id=19]
+[ext_resource path="res://sounds/side_laser_shoot.wav" type="AudioStream" id=20]
 
 [node name="Sounds" type="Node"]
 pause_mode = 2
@@ -103,5 +104,10 @@ script = ExtResource( 18 )
 
 [node name="Basic3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="SideLaser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
