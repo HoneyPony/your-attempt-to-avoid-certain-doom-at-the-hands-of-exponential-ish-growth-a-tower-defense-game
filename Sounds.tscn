@@ -111,3 +111,13 @@ script = ExtResource( 18 )
 stream = ExtResource( 20 )
 bus = "AllPlayerShipSFX"
 script = ExtResource( 18 )
+
+[node name="SideLaser2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="SideLaser3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
