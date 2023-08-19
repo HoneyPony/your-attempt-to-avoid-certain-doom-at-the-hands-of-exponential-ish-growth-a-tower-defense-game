@@ -34,6 +34,8 @@ _global_script_class_icons={
 
 config/name="your attempt to avoid certain doom at the hands of exponential-ish growth: a tower defense game"
 run/main_scene="res://Game.tscn"
+boot_splash/image="res://ui/splash.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -50,6 +52,7 @@ settings/stdout/print_fps=true
 
 window/size/width=1152
 window/size/height=2048
+window/size/fullscreen=true
 window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"

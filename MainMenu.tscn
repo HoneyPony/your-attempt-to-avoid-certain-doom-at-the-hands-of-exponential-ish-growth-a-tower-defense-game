@@ -50,6 +50,20 @@ a tower defense game"
 align = 1
 autowrap = true
 
+[node name="SPLASH_HELPER" type="Label" parent="CanvasLayer/MainMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -568.0
+margin_top = 330.0
+margin_right = 562.0
+margin_bottom = 664.0
+text = "[now loading]"
+align = 1
+autowrap = true
+
 [node name="StarFX" type="CPUParticles2D" parent="CanvasLayer/MainMenu"]
 position = Vector2( -151, 810 )
 amount = 300
