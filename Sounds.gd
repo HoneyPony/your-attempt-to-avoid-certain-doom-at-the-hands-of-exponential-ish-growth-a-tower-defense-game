@@ -16,6 +16,17 @@ onready var destroys = [
 	$Destroy14,
 ]
 
+onready var basic_gun_shoots = [
+	$Basic1,
+	$Basic2,
+	$Basic3
+]
+#var basic_gun_shoots_i = 0
+
+func basic_shoot(left_level):
+	basic_gun_shoots[left_level].play_sfx()
+	#basic_gun_shoots_i = (basic_gun_shoots_i + 1) % basic_gun_shoots.size()
+
 func _ready():
 	for d in destroys:
 		d.volume_db = -8

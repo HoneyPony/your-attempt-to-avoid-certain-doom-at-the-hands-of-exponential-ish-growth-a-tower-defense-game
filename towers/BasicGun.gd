@@ -10,6 +10,9 @@ func fire(delta):
 	bullet.position = position + bullet_spawn_point.position + velocity * delta
 	bullet.hits_left = 1 + right_level
 	get_parent().add_child(bullet)
+	
+	# One sound effect per timer speed
+	Sounds.basic_shoot(left_level)
 
 func ship_fx():
 	ship_sprite.position.y = 8 * sin(Time.get_ticks_msec() / 1000.0)
