@@ -13,6 +13,31 @@ enum ScaryState {
 var flag_mandatory_scary = ScaryState.NOT_YET
 var wants_to_win = false
 
+# In later stages of the game, this is used to make sure the game is moving
+# forward at a reasonable pace.
+var spawn_counter = 0
+# This tracks the value of GS.total_money that we did have, that we will
+# increment if it hasn't reached a checkpoint.
+var next_spawn_base_value = 0
+
+func spawn_increment(value_amount):
+	# This is done to prevent harder games from moving too much more quickly
+	# than normal games
+	value_amount /= GS.difficulty_multiplier
+	
+	# The first time this is called, nothing has happened; just prepare for
+	# the next invocation.
+	if spawn_counter == 0:
+		next_spawn_base_value = GS.total_money
+		return
+		
+	var needed = (next_spawn_base_value + value_amount)
+	if GS.total_money < needed:
+		GS.total_money = needed
+	
+	next_spawn_base_value = GS.total_money
+	spawn_counter += 1
+
 func y_minimum():
 	if GS.get_total_money() <= 3000:
 		return 200
@@ -40,7 +65,7 @@ func try_to_spawn():
 	
 	# Compute maximum number of living VirusCollections
 	var max_collects = 2
-	if GS.get_total_money() >= 12000:
+	if GS.get_total_money() > 12000 and GS.get_total_money() <= 18000:
 		max_collects = 1
 	
 	# We can only have at most 2 (or fewer...?) virus collections at once.
@@ -75,8 +100,11 @@ func try_to_spawn():
 		spawn_somewhat_weak_vc()
 	elif GS.get_total_money() <= 12000:
 		spawn_level_3_vc()
-	else:
+	elif GS.get_total_money() <= 18000:
+		# There should be only ~three of these thanks to spawn_increment
 		spawn_level_4_vc()
+	elif GS.get_total_money() <= 24000:
+		spawn_level_5_vc()
 		#spawn_vc(0.3, 10)
 	
 # Spawns a virus collection that is "weak", i.e. the kind that you encounter
@@ -157,6 +185,8 @@ func spawn_level_3_vc():
 	spawn_vc(spawn_timer, prime, generation)
 	
 func spawn_level_4_vc():
+	spawn_increment(2000)
+	
 	var money_min = 12000.0
 	var money_max = 20000.0
 	
@@ -168,7 +198,24 @@ func spawn_level_4_vc():
 	var generation = 0
 	var prime = round(rand_range(40, 60))
 	
-	spawn_vc(spawn_timer, prime, generation, 1.08, 19)
+	spawn_vc(spawn_timer, prime, generation, 1.08, 19, 150)
+	
+		
+func spawn_level_5_vc():
+	spawn_increment(2000)
+	
+	var money_min = 12000.0
+	var money_max = 20000.0
+	
+	var t = (GS.get_total_money() - money_min) / (money_max - money_min)
+	t = clamp(t, 0, 1)
+	t = sqrt(t)
+	
+	var spawn_timer = lerp(0.4, 0.2, t)
+	var generation = 0
+	var prime = round(rand_range(40, 60))
+	
+	spawn_vc(spawn_timer, prime, generation, 1.16, 20, 180)
 	
 # Formula for bounds:
 # (1440 - (64 * generation)) / 2 gives approx bounds

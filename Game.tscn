@@ -1659,21 +1659,21 @@ ship_id = 1
 margin_left = 382.0
 margin_right = 510.0
 texture = ExtResource( 2 )
-cost = 400
+cost = 600
 ship_id = 2
 
 [node name="Cannon" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 573.0
 margin_right = 701.0
 texture = ExtResource( 23 )
-cost = 1300
+cost = 1100
 ship_id = 3
 
 [node name="Nanobot" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
 margin_left = 764.0
 margin_right = 892.0
 texture = ExtResource( 20 )
-cost = 120
+cost = 300
 ship_id = 4
 
 [node name="Piercing" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]
