@@ -23,6 +23,7 @@ var strength = 12
 
 enum State {
 	SPAWNING,
+	SPAWNED,
 	FLYING
 }
 
@@ -72,9 +73,9 @@ const STATE_CHANGE_Y = 1280 - 512
 # Not quite the bottom of the screen
 const LOSE_LIVE_Y = 1280 - 80
 
-func _physics_process(delta):
+func _process(delta):
 	# Each frame, we try to spawn, depending on the spawn speed
-	if state == State.SPAWNING:
+	if state == State.SPAWNING or state == State.SPAWNED:
 		spawn_timer -= delta
 		if spawn_timer < 0:
 			try_spawns()
@@ -111,31 +112,43 @@ func _physics_process(delta):
 		
 		position.x += step_to_tar
 		
+		rotation -= rotation * 0.3
+		
 		if position.y >= LOSE_LIVE_Y:
 			# Free without destroying, as this doesn't give you any money.
 			queue_free()
 			GS.lose_a_life()
 		
-	# Animate the spawn/jitter effects
-	animate()
+	if state == State.SPAWNING:
+		# Animate the spawn/jitter effects
+		animate(delta)
 	
-func animate():
+func animate(delta):
 	# Basic lerp-animation for spawning
 	var target_scale = Vector2(1, 1)
 	var target_rot = 0
 	var target_pos = coord * 32 # 4x pixels, plus 8 pixels wide
+	
+	delta = clamp(delta * 0.09 * 6, 0, 1)
 	
 	# Jitter animation:
 #	target_scale *= rand_range(0.9, 1.1)
 #	target_rot += rand_range(-0.1 * TAU, 0.1 * TAU)
 #	target_pos += polar2cartesian(rand_range(0, 4), rand_range(0, TAU))
 
-	scale += (target_scale - scale) * 0.09
+	var scale_dif = (target_scale - scale)
+	scale += scale_dif * delta
 	
-	rotation = lerp_angle(rotation, target_rot, 0.09)
+	rotation = lerp_angle(rotation, target_rot, delta)
 	
 	if state == State.SPAWNING:
-		position += (target_pos - position) * 0.09
+		position += (target_pos - position) * delta
+		
+	if scale_dif.length_squared() < 0.000001:
+		scale = target_scale
+		rotation = target_rot
+		position = target_pos
+		state = State.SPAWNED
 		
 func set_hue():
 	var hue = 0
@@ -224,11 +237,12 @@ func killable():
 	# Make viruses invincible while they are above screen
 	if position.y < -1280 - 6:
 		return false
+	if is_queued_for_deletion():
+		return false
 	return true
 
 # Called when a physics body (i.e. a bullet) hits the area2d.
 func kill():
-	
 	#body.hit_something() # Tell the bullet to despawn if relevant, etc
 	
 	var aging = 0
@@ -236,7 +250,7 @@ func kill():
 #		aging = body.aging
 #
 	# Immediately die if spawning
-	if state == State.SPAWNING:
+	if state == State.SPAWNING or state == State.SPAWNED:
 		destroy(aging)
 	else:
 		# Otherwise, we have to deal with health

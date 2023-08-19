@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://virus/virus.png" type="Texture" id=1]
 [ext_resource path="res://virus/Virus.gd" type="Script" id=2]
@@ -7,78 +7,8 @@
 [ext_resource path="res://virus/virus_armor.png" type="Texture" id=5]
 [ext_resource path="res://virus/VirusArmor.gd" type="Script" id=6]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-uniform sampler2D noise;
-uniform vec2 rng_source;
-
-float map_uv(float uv, float tps) {
-	float t0 = uv / tps;
-	float a = floor(t0);
-	float sps = fwidth(uv);
-	//float b = a + 1.0;
-	float scale = tps / sps;
-	
-	float t = t0 - a;
-	if(t < 0.5) {
-		t = clamp(t * scale, 0.0, 0.5);
-	}
-	else {
-		t = 1.0 - t;
-		t = clamp(t * scale, 0.0, 0.5);
-		t = 1.0 - t;
-	}
-	
-	return (a + t) * tps;
-}
-
-float random (vec2 uv) {
-	return texture(noise, uv + rng_source).r;
-    //return fract(sin(dot(uv.xy,
-    //    vec2(12.9898,78.233))) * 43758.5453123);
-}
-
-float energy_f(vec2 uv, vec2 tps) {
-	vec2 uv_offset = vec2(0);
-	uv_offset.x += mix(1.7, 2.0, random(uv)) * sin(0.2 * TIME + random(uv + vec2(0.2, 0.3)));
-	uv_offset.y += mix(1.7, 2.0, random(uv + vec2(1.1))) * sin(0.15 * TIME + random(uv + vec2(0.4, 0.5)));
-	return texture(noise, uv + uv_offset).r;
-}
-
-void fragment() {
-	vec2 uv = UV;
-	//float sps = length(SCREEN_PIXEL_SIZE);
-	//float sps = 2.0 * min(SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y);
-	//float sps = max(SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y);
-	//float sps = length(fwidth(UV));
-	//vec2 center = (floor(uv / TEXTURE_PIXEL_SIZE) + 0.5) * TEXTURE_PIXEL_SIZE;
-	uv.x = map_uv(UV.x, TEXTURE_PIXEL_SIZE.x);
-	uv.y = map_uv(UV.y, TEXTURE_PIXEL_SIZE.y);
-	
-	float e = energy_f(uv, TEXTURE_PIXEL_SIZE);
-	e = e * e;
-	
-	COLOR = texture(TEXTURE, uv) * MODULATE;
-	COLOR = mix(COLOR, vec4(1.0, 1.0, 1.0, COLOR.a), e);
-	//COLOR = vec4(e, e, e, COLOR.a);
-}
-"
-
-[sub_resource type="OpenSimplexNoise" id=3]
-period = 0.1
-persistence = 0.0
-
-[sub_resource type="NoiseTexture" id=4]
-width = 8
-height = 8
-seamless = true
-noise = SubResource( 3 )
-
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
-shader = SubResource( 1 )
-shader_param/rng_source = Vector2( 0, 0 )
-shader_param/noise = SubResource( 4 )
 
 [node name="Virus" type="Node2D" groups=["Virus"]]
 z_index = -20
