@@ -111,7 +111,7 @@ func _physics_process(delta):
 		if position.y >= LOSE_LIVE_Y:
 			# Free without destroying, as this doesn't give you any money.
 			queue_free()
-			GS.lives -= 1
+			GS.lose_a_life()
 		
 	# Animate the spawn/jitter effects
 	animate()

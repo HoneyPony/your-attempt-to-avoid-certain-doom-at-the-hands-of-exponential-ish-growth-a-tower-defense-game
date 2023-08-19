@@ -356,6 +356,12 @@ var money: int = 0
 var total_money: int = 0
 var lives: int = 0
 
+func lose_a_life():
+	if lives > 0:
+		lives -= 1
+		if lives <= 0:
+			get_node("/root/Game/WinLose").lose()
+
 # Should be used instead of total_money inside GameCoordinator.
 func get_total_money():
 	return total_money * difficulty_multiplier

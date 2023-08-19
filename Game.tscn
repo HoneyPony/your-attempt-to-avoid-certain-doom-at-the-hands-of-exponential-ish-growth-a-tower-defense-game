@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://ui/piercing_ship_ICON.png" type="Texture" id=1]
 [ext_resource path="res://ui/drill_ship_SHOP_ICON.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://ui/OptionsMenu.tscn" type="PackedScene" id=26]
 [ext_resource path="res://ui/basic_gun_SHOP_ICON.png" type="Texture" id=27]
 [ext_resource path="res://ui/ShopInfo.gd" type="Script" id=28]
+[ext_resource path="res://ui/WinLose.gd" type="Script" id=29]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.280571, 0.0, 0, 0 ]
@@ -1988,6 +1989,7 @@ margin_left = 1162.0
 margin_right = 1162.0
 
 [node name="WinLose" type="CanvasLayer" parent="."]
+script = ExtResource( 29 )
 
 [node name="WinScreen" type="ColorRect" parent="WinLose"]
 visible = false
@@ -2122,3 +2124,7 @@ anims/RESET = SubResource( 25 )
 [connection signal="pressed" from="PauseLayer/PauseMenu/PauseButton2" to="CanvasLayer/GameUI" method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/QuitMenu/ConfirmQuit" to="PauseLayer/PauseMenu" method="_on_ConfirmQuit_pressed"]
 [connection signal="pressed" from="PauseLayer/PauseMenu/QuitMenu/CancelQuit" to="PauseLayer/PauseMenu" method="_on_CancelQuit_pressed"]
+[connection signal="pressed" from="WinLose/WinScreen/QuitToMenu" to="WinLose" method="_on_QuitToMenu_pressed"]
+[connection signal="pressed" from="WinLose/WinScreen/FreePlay" to="WinLose" method="_on_FreePlay_pressed"]
+[connection signal="pressed" from="WinLose/LoseScreen/QuitToMenu" to="WinLose" method="_on_QuitToMenu_pressed"]
+[connection signal="pressed" from="WinLose/LoseScreen/StartOver" to="WinLose" method="_on_StartOver_pressed"]
