@@ -1113,8 +1113,45 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("QuitToMenu:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("StartOver:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SPECIAL_KeepGoing:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=25]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:margin_top")
@@ -1151,6 +1188,42 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("QuitToMenu:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("StartOver:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SPECIAL_KeepGoing:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [node name="Game" type="Node2D"]
@@ -1985,9 +2058,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -467.0
-margin_top = -574.0
+margin_top = -315.0
 margin_right = 467.0
-margin_bottom = 508.0
+margin_bottom = 767.0
 text = "Oh no!
 
 You lost all your lives. Do you want to try again from the beginning?"
@@ -2000,9 +2073,10 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -215.0
-margin_top = -199.0
+margin_top = -205.0
 margin_right = 215.0
-margin_bottom = -51.0
+margin_bottom = -57.0
+disabled = true
 text = "Quit To Menu"
 
 [node name="StartOver" type="Button" parent="WinLose/LoseScreen"]
@@ -2011,9 +2085,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -189.0
-margin_top = -142.0
+margin_top = 117.0
 margin_right = 189.0
-margin_bottom = -16.0
+margin_bottom = 243.0
+disabled = true
 text = "Start Over"
 
 [node name="SPECIAL_KeepGoing" type="Button" parent="WinLose/LoseScreen"]
@@ -2023,13 +2098,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -385.0
-margin_top = 56.0
+margin_top = 746.17
 margin_right = 385.0
-margin_bottom = 182.0
+margin_bottom = 872.17
+disabled = true
 text = "Free Play (With 0 Lives)"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WinLose/LoseScreen"]
-autoplay = "RESET"
 anims/Close = SubResource( 23 )
 anims/Open = SubResource( 24 )
 anims/RESET = SubResource( 25 )
