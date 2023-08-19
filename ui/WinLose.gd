@@ -17,17 +17,22 @@ func _on_StartOver_pressed():
 	# We MUST reset game state.
 	GS.reset_game_state()
 	SceneTransition.transition_to(GS.Game)
+	
+	Sounds.click1()
 
 
 func _on_QuitToMenu_pressed():
 	get_tree().paused = false
 	SceneTransition.transition_to(GS.MainMenu)
 
+	Sounds.click1()
 
 func _on_FreePlay_pressed():
 	get_tree().paused = false
 	GS.game_state = GS.GameState.FREEPLAY
 	$WinScreen/AnimationPlayer.play("Close")
+	
+	Sounds.click1()
 	
 func pause():
 	# Make sure nothing funny happens while the menu is open.

@@ -142,7 +142,7 @@ func _on_CloseButton_pressed():
 		shop_anim.play("ShowShop")
 	shop_open = not shop_open
 	
-	Sounds.click2()
+	Sounds.click1()
 	
 func update_tabs(show_upgrades: bool):
 	shop_tab_button.pressed = not show_upgrades
@@ -165,7 +165,7 @@ func _on_UpgradesTab_toggled(button_pressed):
 
 func _on_PauseButton_pressed():
 	get_tree().paused = not get_tree().paused
-	Sounds.click2()
+	Sounds.click1()
 
 
 func _on_SellButton_pressed():

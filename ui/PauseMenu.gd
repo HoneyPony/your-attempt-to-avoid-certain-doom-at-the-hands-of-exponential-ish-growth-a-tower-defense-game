@@ -19,10 +19,11 @@ func _process(delta):
 
 func _on_ResumeButton_pressed():
 	get_tree().paused = false
-
+	Sounds.click1()
 
 func _on_ConfirmQuit_pressed():
 	SceneTransition.transition_to(GS.MainMenu)
+	Sounds.click1()
 
 func hide_quit_menu():
 	quit_anim.play("CloseQuitMenu")
@@ -32,15 +33,17 @@ func hide_quit_menu():
 
 func _on_CancelQuit_pressed():
 	hide_quit_menu()
-
+	Sounds.click1()
 
 func _on_QuitButton_pressed():
 	# This will show the quit menu, and then disable the confirm button
 	# temporarily (and then enable it), so as to prevent accidental quits.
 	quit_anim.play("OpenQuitMenu")
+	Sounds.click1()
 
 
 func _on_OptionsButton_pressed():
 	# We could just directly connect the button signal to this function...
 	# but this works too.
 	options.open()
+	Sounds.click1()

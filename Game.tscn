@@ -2020,9 +2020,6 @@ anims/OpenQuitMenu = SubResource( 13 )
 anims/RESET = SubResource( 14 )
 
 [node name="OptionsMenu" parent="PauseLayer/PauseMenu" instance=ExtResource( 26 )]
-visible = false
-margin_left = 1162.0
-margin_right = 1162.0
 
 [node name="WinLose" type="CanvasLayer" parent="."]
 pause_mode = 2

@@ -13,13 +13,15 @@ func play_difficulty(difficulty):
 # Note that when we restart the game through the quit menu, the
 # GS.difficulty_multiplier variable is not changed.
 func _on_PlayNormal_pressed():
-	play_difficulty(1)
+	play_difficulty(1)	
+	Sounds.click1()
 
 func _on_PlayHarder_pressed():
 	play_difficulty(1.2)
+	Sounds.click1()
 
 func _on_Options_pressed():
 	option_menu.open()
-
+	Sounds.click1()
 
 
