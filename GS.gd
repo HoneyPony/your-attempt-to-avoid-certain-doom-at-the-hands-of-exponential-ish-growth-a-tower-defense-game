@@ -4,6 +4,16 @@ extends Node
 # shop menu is dismissed, or when a different info is pressed.
 var current_shop_info_button: Button = null
 
+# Used to keep track of whether we've won, lost, etc
+enum GameState {
+	PLAYING,
+	WON,
+	FREEPLAY,
+	LOST
+}
+
+var game_state = GameState.PLAYING
+
 # The GS is responsible for several gameplay timers, so that the time that
 # the player buys a ship is not significant for synchronization.
 
@@ -386,6 +396,8 @@ func compute_ship_cost(ship: TowerBase):
 # In fact, most values should only be written here, so that they can't get out
 # of sync. E.g. lives is set to 0 above, but 200 in here, as it should be.
 func reset_game_state():
+	game_state = GameState.PLAYING
+	
 	game_camera = null
 	
 	# Your starting money should be enough to purchase one basic tower,
