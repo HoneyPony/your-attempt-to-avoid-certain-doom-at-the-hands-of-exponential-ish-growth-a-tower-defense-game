@@ -55,6 +55,10 @@ var missile_explode_i = 0
 
 onready var side_laser_shoot = $SideLaser
 onready var drill = $Drill
+onready var blip1_fx = $Blip1
+
+func blip1():
+	blip1_fx.play_sfx()
 
 func basic_shoot(left_level):
 	basic_gun_shoots[left_level].play_sfx()

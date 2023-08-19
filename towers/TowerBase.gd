@@ -201,6 +201,10 @@ func _on_BasicGun_input_event(viewport, event, shape_idx):
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:
 				if try_to_grab_drag(MOUSE_TOUCH_INDEX, event.position):
+					# Play sound FX, only if we weren't dragging.
+					if drag_state == DragState.NOT_DRAGGING:
+						Sounds.blip1()
+					
 					# Must deselect in case we were already dragging
 					drag_state = DragState.DRAG_MOUSE
 					# This MUST be updated for deselect()
@@ -217,6 +221,10 @@ func _on_BasicGun_input_event(viewport, event, shape_idx):
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			if try_to_grab_drag(event.index, event.position):
+				# Play sound FX, only if we weren't dragging.
+				if drag_state == DragState.NOT_DRAGGING:
+					Sounds.blip1()
+				
 				# Must deselect in case we were already dragging
 				deselect()
 				
