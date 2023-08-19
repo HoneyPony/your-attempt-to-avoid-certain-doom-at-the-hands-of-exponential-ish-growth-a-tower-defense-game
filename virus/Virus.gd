@@ -55,8 +55,9 @@ func destroy(aging_amount):
 	
 	var debris = GS.VirusDebris.instance()
 	debris.set_color($Energy.modulate)
-	debris.position = position
-	get_parent().add_child(debris)
+	debris.rotation = global_rotation
+	debris.global_position = global_position
+	get_parent().get_parent().add_child(debris)
 	
 	# Disable any more collisions
 	$Area2D.collision_layer = 0
