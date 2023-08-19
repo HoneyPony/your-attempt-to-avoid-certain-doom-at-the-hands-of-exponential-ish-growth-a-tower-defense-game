@@ -73,7 +73,7 @@ const STATE_CHANGE_Y = 1280 - 512
 # Not quite the bottom of the screen
 const LOSE_LIVE_Y = 1280 - 80
 
-func _physics_process(delta):
+func _process(delta):
 	# Each frame, we try to spawn, depending on the spawn speed
 	if state == State.SPAWNING or state == State.SPAWNED:
 		spawn_timer -= delta
@@ -112,20 +112,24 @@ func _physics_process(delta):
 		
 		position.x += step_to_tar
 		
+		rotation -= rotation * 0.3
+		
 		if position.y >= LOSE_LIVE_Y:
 			# Free without destroying, as this doesn't give you any money.
 			queue_free()
 			GS.lose_a_life()
 		
-	if state == State.SPAWNED:
+	if state == State.SPAWNING:
 		# Animate the spawn/jitter effects
-		animate()
+		animate(delta)
 	
-func animate():
+func animate(delta):
 	# Basic lerp-animation for spawning
 	var target_scale = Vector2(1, 1)
 	var target_rot = 0
 	var target_pos = coord * 32 # 4x pixels, plus 8 pixels wide
+	
+	delta = clamp(delta * 0.09, 0, 1)
 	
 	# Jitter animation:
 #	target_scale *= rand_range(0.9, 1.1)
@@ -133,12 +137,12 @@ func animate():
 #	target_pos += polar2cartesian(rand_range(0, 4), rand_range(0, TAU))
 
 	var scale_dif = (target_scale - scale)
-	scale += scale_dif * 0.09
+	scale += scale_dif * delta
 	
-	rotation = lerp_angle(rotation, target_rot, 0.09)
+	rotation = lerp_angle(rotation, target_rot, delta)
 	
 	if state == State.SPAWNING:
-		position += (target_pos - position) * 0.09
+		position += (target_pos - position) * delta
 		
 	if scale_dif.length_squared() < 0.000001:
 		scale = target_scale
