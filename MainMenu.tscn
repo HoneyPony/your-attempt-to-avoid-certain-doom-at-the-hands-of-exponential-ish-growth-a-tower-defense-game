@@ -1,20 +1,41 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://fx/star.png" type="Texture" id=2]
 [ext_resource path="res://ui/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://ui/OptionsMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fx/BackgroundFX.gd" type="Script" id=5]
+[ext_resource path="res://fx/background_fx.png" type="Texture" id=6]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.234571, 0, 0, Vector2( 1, 0.727273 ), -0.280571, 0.0, 0, 0 ]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.25, 1.25 )
+
+[node name="BackgroundFX" type="Sprite" parent="."]
+scale = Vector2( 1.25, 1.25 )
+z_index = -1000
+texture = ExtResource( 6 )
+script = ExtResource( 5 )
+
+[node name="Helper" type="Sprite" parent="BackgroundFX"]
+position = Vector2( -3024, 0 )
+z_index = -1000
+texture = ExtResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -29,7 +50,7 @@ a tower defense game"
 align = 1
 autowrap = true
 
-[node name="StarFX" type="CPUParticles2D" parent="."]
+[node name="StarFX" type="CPUParticles2D" parent="CanvasLayer/MainMenu"]
 position = Vector2( -151, 810 )
 amount = 300
 lifetime = 10.0
@@ -47,7 +68,7 @@ scale_amount_random = 1.0
 scale_amount_curve = SubResource( 1 )
 color = Color( 0.305882, 0.305882, 0.305882, 1 )
 
-[node name="BrightStarFX" type="CPUParticles2D" parent="."]
+[node name="BrightStarFX" type="CPUParticles2D" parent="CanvasLayer/MainMenu"]
 position = Vector2( -151, 810 )
 amount = 60
 lifetime = 10.0
@@ -65,7 +86,7 @@ scale_amount_random = 1.0
 scale_amount_curve = SubResource( 1 )
 color = Color( 0.470588, 0.470588, 0.470588, 1 )
 
-[node name="PlayNormal" type="Button" parent="."]
+[node name="PlayNormal" type="Button" parent="CanvasLayer/MainMenu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -76,7 +97,7 @@ margin_right = 426.0
 margin_bottom = 47.0
 text = "Play NORMAL DIFFICULTY"
 
-[node name="PlayHarder" type="Button" parent="."]
+[node name="PlayHarder" type="Button" parent="CanvasLayer/MainMenu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -88,7 +109,7 @@ margin_bottom = 212.0
 focus_mode = 0
 text = "Play HARDER DIFFICULTY"
 
-[node name="Options" type="Button" parent="."]
+[node name="Options" type="Button" parent="CanvasLayer/MainMenu"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -99,11 +120,11 @@ margin_right = 200.0
 margin_bottom = -48.0
 text = "Options"
 
-[node name="OptionsMenu" parent="." instance=ExtResource( 4 )]
+[node name="OptionsMenu" parent="CanvasLayer/MainMenu" instance=ExtResource( 4 )]
 visible = false
 margin_left = 1162.0
 margin_right = 1162.0
 
-[connection signal="pressed" from="PlayNormal" to="." method="_on_PlayNormal_pressed"]
-[connection signal="pressed" from="PlayHarder" to="." method="_on_PlayHarder_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/PlayNormal" to="CanvasLayer/MainMenu" method="_on_PlayNormal_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/PlayHarder" to="CanvasLayer/MainMenu" method="_on_PlayHarder_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/Options" to="CanvasLayer/MainMenu" method="_on_Options_pressed"]
