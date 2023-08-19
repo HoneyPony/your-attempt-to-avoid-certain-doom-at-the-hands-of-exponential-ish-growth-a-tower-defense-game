@@ -218,6 +218,10 @@ func try_spawns():
 
 # Called when a physics body (i.e. a bullet) hits the area2d.
 func _on_Area2D_body_entered(body):
+	# Make viruses invincible while they are above screen
+	if position.y < -1280 - 6:
+		return
+	
 	body.hit_something() # Tell the bullet to despawn if relevant, etc
 	
 	var aging = 0
