@@ -15,6 +15,8 @@ func fire(delta):
 	bullet.hits_left = piercing[right_level]
 	
 	get_parent().add_child(bullet)
+	
+	Sounds.kinetic_shoot(1 if left_level >= 2 else 0)
 
 func ship_fx():
 	ship_sprite.position.y = 8 * sin(Time.get_ticks_msec() / 1000.0)
