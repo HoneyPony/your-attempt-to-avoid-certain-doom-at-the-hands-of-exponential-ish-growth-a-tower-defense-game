@@ -170,6 +170,8 @@ func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strengt
 	var vc = GS.VirusCollection.instance()
 	vc.spawn_timer_max = spawn_timer
 	vc.position.y = -1280 - 32
+	
+	vc.speed_mul = speed_mul
 	# Weaker cluster
 	vc.get_node("Virus").generation = generation
 	vc.get_node("Virus").set_hue()
