@@ -136,8 +136,43 @@ margin_bottom = -48.0
 focus_mode = 0
 text = "Options"
 
+[node name="WithQuitButton" type="Control" parent="CanvasLayer/MainMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+
+[node name="Options" type="Button" parent="CanvasLayer/MainMenu/WithQuitButton"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -510.0
+margin_top = -166.0
+margin_right = -110.0
+margin_bottom = -48.0
+focus_mode = 0
+text = "Options"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MainMenu/WithQuitButton"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 106.0
+margin_top = -166.0
+margin_right = 506.0
+margin_bottom = -48.0
+focus_mode = 0
+text = "Quit"
+
 [node name="OptionsMenu" parent="CanvasLayer/MainMenu" instance=ExtResource( 4 )]
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/PlayNormal" to="CanvasLayer/MainMenu" method="_on_PlayNormal_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/PlayHarder" to="CanvasLayer/MainMenu" method="_on_PlayHarder_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/Options" to="CanvasLayer/MainMenu" method="_on_Options_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/WithQuitButton/Options" to="CanvasLayer/MainMenu" method="_on_Options_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/WithQuitButton/Quit" to="CanvasLayer/MainMenu" method="_on_Quit_pressed"]

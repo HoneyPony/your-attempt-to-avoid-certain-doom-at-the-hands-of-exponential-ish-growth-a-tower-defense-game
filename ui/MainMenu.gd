@@ -2,6 +2,21 @@ extends Control
 
 onready var option_menu = $OptionsMenu
 
+func _ready():
+	var options = $Options
+	var wqb = $WithQuitButton
+	
+	var show_quit = true
+	if OS.get_name() == "Web":
+		show_quit = false
+	if OS.get_name() == "Android":
+		show_quit = false
+	if OS.get_name() == "iOS":
+		show_quit = false
+		
+	options.visible = not show_quit
+	wqb.visible = show_quit
+
 func play_difficulty(difficulty):
 	GS.reset_game_state()
 	GS.difficulty_multiplier = difficulty
@@ -24,4 +39,5 @@ func _on_Options_pressed():
 	option_menu.open()
 	Sounds.click1()
 
-
+func _on_Quit_pressed():
+	get_tree().quit()
