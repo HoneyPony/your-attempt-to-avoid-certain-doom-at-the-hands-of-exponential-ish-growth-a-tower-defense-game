@@ -225,7 +225,7 @@ func spawn_level_5_vc():
 	var generation = 0
 	var prime = round(rand_range(40, 60))
 	
-	spawn_vc(spawn_timer, prime, generation, 1.4, 20, 250)
+	spawn_vc(spawn_timer, prime, generation, 1.4, 20, 170)
 	
 func spawn_level_6_vc():
 	spawn_increment(2500)
@@ -241,7 +241,7 @@ func spawn_level_6_vc():
 	var generation = 0
 	var prime = round(rand_range(40, 60))
 	
-	spawn_vc(spawn_timer, prime, generation, 1.8, 20, 250)
+	spawn_vc(spawn_timer, prime, generation, 1.8, 20, 170)
 	
 func spawn_level_7_vc():
 	spawn_increment(3000)
@@ -257,7 +257,7 @@ func spawn_level_7_vc():
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
-	spawn_vc(spawn_timer, prime, generation, 2.0, 20, 250)
+	spawn_vc(spawn_timer, prime, generation, 2.0, 20, 170)
 	
 func spawn_level_8_vc():
 	spawn_increment(3000)
@@ -273,7 +273,7 @@ func spawn_level_8_vc():
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
-	spawn_vc(spawn_timer, prime, generation, 2.5, 20, 250)
+	spawn_vc(spawn_timer, prime, generation, 2.5, 20, 170)
 	
 	
 func spawn_level_9_vc():
@@ -293,6 +293,11 @@ func spawn_level_9_vc():
 	# Very strong & annoying
 	spawn_vc(spawn_timer, prime, generation, 4.0, 21, 64, 1)
 	
+func money_end_goal():
+	# Make the end goal harder on the hard difficulty so that you have to
+	# fight more guys
+	return 54000 * GS.difficulty_multiplier
+	
 func spawn_freeplay_vc():
 	spawn_increment(3000)
 	
@@ -303,7 +308,7 @@ func spawn_freeplay_vc():
 	#t = clamp(t, 0, 1)
 	#t = sqrt(t)
 	
-	var t = GS.total_money - 54000
+	var t = GS.total_money - money_end_goal()
 	var speed = 4 + (t / 2000.0) * 0.4
 	#print(speed)
 	
@@ -312,7 +317,7 @@ func spawn_freeplay_vc():
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
-	spawn_vc(spawn_timer, prime, generation, speed, 24, 250)
+	spawn_vc(spawn_timer, prime, generation, speed, 24, 170)
 	
 	
 # Formula for bounds:
@@ -373,7 +378,7 @@ func _process(delta):
 		GS.earned_money = 5
 	if GS.get_total_money() >= 7000:
 		GS.earned_money = 1
-	if GS.get_total_money() >= 54000: # need to decide this of course ? 
+	if GS.get_total_money() >= money_end_goal(): # need to decide this of course ? 
 		wants_to_win = true
 		
 		# Wait for all viruses to be gone to win

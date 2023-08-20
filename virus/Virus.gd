@@ -103,6 +103,10 @@ func _physics_process(delta):
 			state = State.FLYING
 			GS.armored_virus_count += 1
 			
+			# Note to self:
+			# This means viruses will speed up in the following scenarios:
+			# - Freeplay
+			# - Hard mode, because the end goal is multiplied
 			if GS.get_total_money() > 54000:
 				var t = GS.get_total_money() - 54000
 				armored_speed = 16 + (t / 2000)
