@@ -225,7 +225,7 @@ func spawn_level_5_vc():
 	var generation = 0
 	var prime = round(rand_range(40, 60))
 	
-	spawn_vc(spawn_timer, prime, generation, 1.4, 20, 500)
+	spawn_vc(spawn_timer, prime, generation, 1.4, 20, 250)
 	
 func spawn_level_6_vc():
 	spawn_increment(2500)
@@ -241,7 +241,7 @@ func spawn_level_6_vc():
 	var generation = 0
 	var prime = round(rand_range(40, 60))
 	
-	spawn_vc(spawn_timer, prime, generation, 1.8, 20, 500)
+	spawn_vc(spawn_timer, prime, generation, 1.8, 20, 250)
 	
 func spawn_level_7_vc():
 	spawn_increment(3000)
@@ -257,7 +257,7 @@ func spawn_level_7_vc():
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
-	spawn_vc(spawn_timer, prime, generation, 2.0, 20, 500)
+	spawn_vc(spawn_timer, prime, generation, 2.0, 20, 250)
 	
 func spawn_level_8_vc():
 	spawn_increment(3000)
@@ -273,7 +273,7 @@ func spawn_level_8_vc():
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
-	spawn_vc(spawn_timer, prime, generation, 2.5, 20, 500)
+	spawn_vc(spawn_timer, prime, generation, 2.5, 20, 250)
 	
 	
 func spawn_level_9_vc():
@@ -290,7 +290,8 @@ func spawn_level_9_vc():
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
-	spawn_vc(spawn_timer, prime, generation, 4.0, 20, 500)
+	# Very strong & annoying
+	spawn_vc(spawn_timer, prime, generation, 4.0, 21, 64, 1)
 	
 func spawn_freeplay_vc():
 	spawn_increment(3000)
@@ -311,12 +312,12 @@ func spawn_freeplay_vc():
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
-	spawn_vc(spawn_timer, prime, generation, speed, 24, 500)
+	spawn_vc(spawn_timer, prime, generation, speed, 24, 250)
 	
 	
 # Formula for bounds:
 # (1440 - (64 * generation)) / 2 gives approx bounds
-func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strength = 18, back_y = 32):
+func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strength = 18, back_y = 32, special_rot = 0):
 	var vc = GS.VirusCollection.instance()
 	vc.spawn_timer_max = spawn_timer
 	vc.position.y = -1280 - back_y

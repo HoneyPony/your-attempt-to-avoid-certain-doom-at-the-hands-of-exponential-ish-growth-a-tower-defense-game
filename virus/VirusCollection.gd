@@ -16,6 +16,8 @@ var speed_mul = 1.0
 
 var actual_max_strength = 18
 
+var special_rot = 0
+
 func random_avoid_value():
 	# Never generate 0
 	var v = 1 + (randi() % 15)
@@ -31,6 +33,9 @@ func _ready():
 		
 	# At most a 64th circle per second
 	angular_drift = rand_range(-TAU, TAU) / 64
+	
+	if special_rot == 1:
+		angular_drift = TAU / 64.0
 	
 # Literally runs viruses until the given count is satisfied.
 func prime(prime_count):
