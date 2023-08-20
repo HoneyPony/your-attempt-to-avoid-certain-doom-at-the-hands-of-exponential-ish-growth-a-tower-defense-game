@@ -84,6 +84,8 @@ const STATE_CHANGE_Y = 1280 - 512
 # Not quite the bottom of the screen
 const LOSE_LIVE_Y = 1280 - 80
 
+var armored_speed = 16
+
 func _physics_process(delta):
 	# Each frame, we try to spawn, depending on the spawn speed
 	if state == State.SPAWNING:
@@ -100,6 +102,10 @@ func _physics_process(delta):
 			
 			state = State.FLYING
 			GS.armored_virus_count += 1
+			
+			if GS.get_total_money() > 54000:
+				var t = GS.get_total_money() - 54000
+				armored_speed = 16 + (t / 2000)
 			
 			var cur_pos = global_position
 			var cur_rot = global_rotation
@@ -118,7 +124,7 @@ func _physics_process(delta):
 	else:
 		# When we're in the flying state, we simply travel downwards at a relatively
 		# low speed.
-		position.y += 16 * delta
+		position.y += armored_speed * delta
 		
 		var step_to_tar = flying_target_x - position.x
 		#print(step_to_tar)

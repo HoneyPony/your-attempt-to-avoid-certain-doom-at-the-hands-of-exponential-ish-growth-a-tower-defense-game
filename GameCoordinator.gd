@@ -286,14 +286,11 @@ func spawn_level_9_vc():
 	#t = clamp(t, 0, 1)
 	#t = sqrt(t)
 	
-	var t = GS.total_money - 54000
-	var speed = 4 + (t / 2000.0) * 0.05
-	
 	var spawn_timer = 0.1 #lerp(0.2, 0.1, t)
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
-	spawn_vc(spawn_timer, prime, generation, speed, 20, 500)
+	spawn_vc(spawn_timer, prime, generation, 4.0, 20, 500)
 	
 func spawn_freeplay_vc():
 	spawn_increment(3000)
@@ -305,11 +302,16 @@ func spawn_freeplay_vc():
 	#t = clamp(t, 0, 1)
 	#t = sqrt(t)
 	
-	var spawn_timer = 0.1 #lerp(0.2, 0.1, t)
+	var t = GS.total_money - 54000
+	var speed = 4 + (t / 2000.0) * 0.4
+	#print(speed)
+	
+	var spawn_timer = 0.1 - (t / 4000.0) #lerp(0.2, 0.1, t)
+	spawn_timer = clamp(spawn_timer, 0.01666 * 2, 1.0)
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
-	spawn_vc(spawn_timer, prime, generation, 4.0, 20, 500)
+	spawn_vc(spawn_timer, prime, generation, speed, 24, 500)
 	
 	
 # Formula for bounds:
