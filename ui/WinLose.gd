@@ -6,6 +6,9 @@ func win():
 		GS.game_state = GS.GameState.WON
 	
 func lose():
+	var fs = $LoseScreen/FinalScore
+	fs.text = str("Your final score:\n", GS.total_money)
+	
 	# Basically any state can transition into LOST.
 	if GS.game_state != GS.GameState.LOST:
 		$LoseScreen/AnimationPlayer.play("Open")

@@ -2102,6 +2102,20 @@ You lost all your lives. Do you want to try again from the beginning?"
 align = 1
 autowrap = true
 
+[node name="FinalScore" type="Label" parent="WinLose/LoseScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -467.0
+margin_top = 321.0
+margin_right = 467.0
+margin_bottom = 655.0
+text = "Your final score:
+100000000000000000"
+align = 1
+autowrap = true
+
 [node name="QuitToMenu" type="Button" parent="WinLose/LoseScreen"]
 anchor_left = 0.5
 anchor_top = 1.0
