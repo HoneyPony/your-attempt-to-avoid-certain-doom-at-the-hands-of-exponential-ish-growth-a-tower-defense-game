@@ -1696,15 +1696,14 @@ margin_bottom = -1.0
 rect_rotation = 180.0
 
 [node name="CloseButton" type="TextureButton" parent="CanvasLayer/GameUI/Shop/CloseButtonPivot"]
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
+margin_left = -41.0
+margin_top = -41.0
+margin_right = 41.0
+margin_bottom = 41.0
 focus_mode = 0
 texture_normal = ExtResource( 13 )
-__meta__ = {
-"_edit_lock_": true
-}
+expand = true
+stretch_mode = 3
 
 [node name="Upgrades" type="Panel" parent="CanvasLayer/GameUI/Shop"]
 anchor_right = 1.0
@@ -1777,12 +1776,13 @@ text = "you have no ship selected to upgrade!"
 align = 1
 
 [node name="PauseButton" type="TextureButton" parent="CanvasLayer/GameUI"]
-margin_left = 11.0
-margin_top = 11.0
-margin_right = 75.0
-margin_bottom = 75.0
+margin_top = 1.0
+margin_right = 96.0
+margin_bottom = 99.0
 focus_mode = 0
 texture_normal = ExtResource( 21 )
+expand = true
+stretch_mode = 3
 
 [node name="Tutorial" type="Panel" parent="CanvasLayer/GameUI"]
 visible = false
@@ -1963,12 +1963,12 @@ focus_mode = 0
 text = "Quit"
 
 [node name="PauseButton2" type="TextureButton" parent="PauseLayer/PauseMenu"]
-margin_left = 11.0
-margin_top = 10.0
-margin_right = 75.0
-margin_bottom = 74.0
+margin_right = 96.0
+margin_bottom = 100.0
 focus_mode = 0
 texture_normal = ExtResource( 21 )
+expand = true
+stretch_mode = 3
 
 [node name="QuitMenu" type="Panel" parent="PauseLayer/PauseMenu"]
 visible = false
