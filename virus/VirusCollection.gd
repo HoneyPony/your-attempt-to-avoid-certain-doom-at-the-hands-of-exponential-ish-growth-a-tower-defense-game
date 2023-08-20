@@ -32,7 +32,11 @@ func _ready():
 		avoid_coordinates[a] = true
 		
 	# At most a 64th circle per second
-	angular_drift = rand_range(-TAU, TAU) / 64
+	angular_drift = rand_range(-TAU, TAU) / 64.0
+	
+	var min_d = TAU / 32.0
+	if abs(angular_drift) < min_d:
+		angular_drift = sign(angular_drift) * min_d
 	
 	if special_rot == 1:
 		angular_drift = TAU / 64.0

@@ -7,9 +7,9 @@ var fire_timer = 0
 func reset_fire_timer():
 	# The nano bot shooter is sporadic.
 	if left_level == 0:
-		fire_timer = rand_range(0.3, 1.2)
+		fire_timer = rand_range(0.3, 1.4)
 	elif left_level == 1:
-		fire_timer = rand_range(0.35, 0.9)
+		fire_timer = rand_range(0.35, 1.0)
 	elif left_level == 2:
 		fire_timer = rand_range(0.4, 0.7)
 	

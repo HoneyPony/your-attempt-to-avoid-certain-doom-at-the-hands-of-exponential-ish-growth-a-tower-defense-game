@@ -1666,7 +1666,7 @@ ship_id = 2
 margin_left = 573.0
 margin_right = 701.0
 texture = ExtResource( 23 )
-cost = 1100
+cost = 1300
 ship_id = 3
 
 [node name="Nanobot" parent="CanvasLayer/GameUI/Shop/ShipBuyers" instance=ExtResource( 3 )]

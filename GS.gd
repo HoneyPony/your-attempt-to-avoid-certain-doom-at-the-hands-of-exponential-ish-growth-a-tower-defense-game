@@ -244,8 +244,8 @@ var upgrades = [
 	# Cannon
 	Upgrades.new(
 		[
-			Upgrade.new(700, "Increase the fire rate of the cannon by 1.1x"),
-			Upgrade.new(800, "Increase the fire rate of the cannon by another 1.2x")
+			Upgrade.new(800, "Increase the fire rate of the cannon by 1.1x"),
+			Upgrade.new(900, "Increase the fire rate of the cannon by another 1.2x")
 		],
 		[
 			Upgrade.new(1600, "Make this cannon's explosions 20% larger"),
@@ -257,7 +257,7 @@ var upgrades = [
 	Upgrades.new(
 		[
 			Upgrade.new(230, "Make this ship shoot less sporadically."),
-			Upgrade.new(650, "Make this ship shoot even less sporadically.")
+			Upgrade.new(750, "Make this ship shoot even less sporadically.")
 		],
 		[
 			Upgrade.new(450, "This ship will impede virus growth by +1 more."),
