@@ -1397,7 +1397,7 @@ text = "This ship moves quickly, allowing for easy repositioning across the whol
 
 It can be upgraded to shoot faster and to have a piercing attack.
 
-These ships are reasonably powerful in groups, especially when upgraded. Also, easy repositioning makes them perfect for handling stray probes."
+These ships are strong in groups, especially when upgraded. Also, easy repositioning makes them perfect for handling stray probes."
 autowrap = true
 
 [node name="Ship1" type="Control" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
@@ -1483,11 +1483,11 @@ margin_top = 86.0
 margin_right = 957.0
 margin_bottom = 368.0
 custom_fonts/font = ExtResource( 24 )
-text = "This ship regularly fires explosive missiles. The explosions damage all probes in a radius, and the explosion size may be upgraded ... for a price.
+text = "This ship fires explosive missiles. The explosions damage all probes in a radius, and the explosion size may be upgraded ... for a price.
 
-Also features upgrades to the firing frequency, resulting in even more explosive potential.
+It also features upgrades to its firing frequency, resulting in even more explosive potential.
 
-These ships are quite strong, especially when paired well with other ships. However, their upgrades are quite expensive."
+These ships are quite strong, especially when paired well with other ships. Their upgrades are not the cheapest on the market."
 autowrap = true
 
 [node name="Ship4" type="Control" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
@@ -1513,12 +1513,11 @@ margin_top = 86.0
 margin_right = 957.0
 margin_bottom = 368.0
 custom_fonts/font = ExtResource( 24 )
-text = "This space station sporadically fires nanobots that hack the enemy probes. Probes are hacked to be weakened -- helping prevent them from replicating.
+text = "This space station sporadically fires nanobots that weaken the enemy probes. Once weak enough, probes can no longer replicate.
 
-Can be upgraded to improve the hacking power further.
+This ship can be upgraded to improve the weakening capability further.
 
-This ship is a powerful asset when properly used,
-and can greatly limit the regrowth potential of probe clusters."
+This is a powerful asset when properly used, and can greatly limit the regrowth potential of probe clusters."
 autowrap = true
 
 [node name="Ship5" type="Control" parent="CanvasLayer/GameUI/Shop/ShopInfo"]
@@ -1544,7 +1543,7 @@ margin_top = 86.0
 margin_right = 957.0
 margin_bottom = 368.0
 custom_fonts/font = ExtResource( 24 )
-text = "This ship launches projectiles with a very significant piercing ability. Can be upgraded to pierce 8 or even 17 ships, for a noninsignificant price.
+text = "This ship launches projectiles with a very significant piercing ability (five by default). Can be upgraded to pierce 8 or even 17 probes, for a noninsignificant price.
 
 Other upgrades include reduced projectile size and faster firing speed, to help the projectiles dig deeper into enemy probe clusters."
 autowrap = true

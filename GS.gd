@@ -244,11 +244,11 @@ var upgrades = [
 	# Cannon
 	Upgrades.new(
 		[
-			Upgrade.new(650, "Increase the fire rate of the cannon by 1.1x"),
+			Upgrade.new(700, "Increase the fire rate of the cannon by 1.1x"),
 			Upgrade.new(800, "Increase the fire rate of the cannon by another 1.2x")
 		],
 		[
-			Upgrade.new(1500, "Make this cannon's explosions 20% larger"),
+			Upgrade.new(1600, "Make this cannon's explosions 20% larger"),
 			Upgrade.new(3200, "Make this cannon's explosions another 20% larger")
 		]
 	),
