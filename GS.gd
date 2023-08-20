@@ -260,8 +260,8 @@ var upgrades = [
 			Upgrade.new(750, "Make this ship shoot even less sporadically.")
 		],
 		[
-			Upgrade.new(450, "This ship will impede virus growth by +1 more."),
-			Upgrade.new(2000, "This ship will impede virus growth by +3 more.")
+			Upgrade.new(450, "This ship will weaken probes by +1 more."),
+			Upgrade.new(2000, "This ship will weaken probes by +3 more.")
 		]
 	),
 	

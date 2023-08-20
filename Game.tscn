@@ -1807,6 +1807,7 @@ text = "INCOMING TRANSMISSION"
 align = 1
 
 [node name="MSG_Welcome" type="Label" parent="CanvasLayer/GameUI/Tutorial"]
+visible = false
 margin_left = 25.0
 margin_top = 48.0
 margin_right = 960.0
@@ -1858,7 +1859,7 @@ text = "Hello commander,
 
 We've collected some vital intelligence.
 
-Each time you destroy a probe, it is weakened (the next time it comes back). Probes that are weak enough cannot self-replicate. This is why all the colonies of probes we've seen so far are finite.
+Each time you destroy a probe, it is weakened (that is, if that probe comes back to life). Probes that are weak enough cannot self-replicate. This is why all the colonies of probes we've seen so far are finite.
 
 So even very resilient probe structures can be destroyed through repeated application of gunfire."
 autowrap = true
@@ -1910,6 +1911,7 @@ script = ExtResource( 17 )
 
 [node name="PauseMenu" type="ColorRect" parent="PauseLayer"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -1330.0
