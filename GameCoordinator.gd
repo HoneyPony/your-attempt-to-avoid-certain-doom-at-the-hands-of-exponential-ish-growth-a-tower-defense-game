@@ -319,7 +319,7 @@ func spawn_freeplay_vc():
 func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strength = 18, back_y = 32):
 	var vc = GS.VirusCollection.instance()
 	vc.spawn_timer_max = spawn_timer
-	vc.position.y = -1280 - 32
+	vc.position.y = -1280 - back_y
 	
 	vc.speed_mul = speed_mul
 	# Weaker cluster
@@ -327,7 +327,7 @@ func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strengt
 	vc.get_node("Virus").set_hue()
 	# absolute maximum bounds for srength = 18
 	#vc.position.x = rand_range(-144, 144)
-	var x = ((1440 - (64 * (max_strength - generation))) / 2 - back_y)
+	var x = ((1440 - (64 * (max_strength - generation))) / 2 - 32)
 	x = max(x, 0)
 	vc.position.x = rand_range(-x, x)
 	vc.priming_count = prime
