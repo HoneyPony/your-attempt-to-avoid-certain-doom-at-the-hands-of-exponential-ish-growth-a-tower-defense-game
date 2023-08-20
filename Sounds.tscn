@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Sounds.gd" type="Script" id=1]
 [ext_resource path="res://sounds/destroy_14.wav" type="AudioStream" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://sounds/music.ogg" type="AudioStream" id=27]
 [ext_resource path="res://sounds/lose.wav" type="AudioStream" id=28]
 [ext_resource path="res://sounds/win.wav" type="AudioStream" id=29]
+[ext_resource path="res://sounds/lose_armor.wav" type="AudioStream" id=30]
 
 [node name="Sounds" type="Node"]
 pause_mode = 2
@@ -244,6 +245,36 @@ script = ExtResource( 18 )
 
 [node name="Win" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 29 )
+bus = "SFX"
+script = ExtResource( 18 )
+
+[node name="LoseArmor1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+volume_db = -6.0
+bus = "SFX"
+script = ExtResource( 18 )
+
+[node name="LoseArmor2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+volume_db = -6.0
+bus = "SFX"
+script = ExtResource( 18 )
+
+[node name="LoseArmor3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+volume_db = -6.0
+bus = "SFX"
+script = ExtResource( 18 )
+
+[node name="LoseArmor4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+volume_db = -6.0
+bus = "SFX"
+script = ExtResource( 18 )
+
+[node name="LoseArmor5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+volume_db = -6.0
 bus = "SFX"
 script = ExtResource( 18 )
 

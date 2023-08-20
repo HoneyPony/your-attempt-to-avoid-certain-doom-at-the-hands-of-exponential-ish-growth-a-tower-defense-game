@@ -271,6 +271,8 @@ func _on_Area2D_body_entered(body):
 			var a = active_armor[randi() % active_armor.size()]
 			armor_on[a] = false
 			get_node(str("Armor", (a + 1))).destroy()
+			
+			Sounds.lose_armor()
 
 func is_armored():
 	return state == State.FLYING

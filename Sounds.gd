@@ -51,6 +51,15 @@ onready var missile_explodes = [
 	$Explode5,
 ]
 var missile_explode_i = 0
+
+onready var lose_armors = [
+	$LoseArmor1,
+	$LoseArmor2,
+	$LoseArmor3,
+	$LoseArmor4,
+	$LoseArmor5,
+]
+var lose_armor_i = 0
 #var basic_gun_shoots_i = 0
 
 onready var side_laser_shoot = $SideLaser
@@ -82,6 +91,10 @@ func cannon_shoot(left_level):
 func missile_explode():
 	missile_explodes[missile_explode_i].play_sfx()
 	missile_explode_i = (missile_explode_i + 1) % missile_explodes.size()
+
+func lose_armor():
+	lose_armors[lose_armor_i].play_sfx()
+	lose_armor_i = (lose_armor_i + 1) % lose_armors.size()
 
 func _ready():
 	for d in destroys:
