@@ -24,6 +24,9 @@ func _process(delta):
 	update_actual_cost()
 	buy_button.disabled = (GS.money < actual_cost)
 	
+	if get_tree().paused:
+		buy_button.disabled = true
+	
 #func get_delta_cost():
 #	var cur_cost = int(pow(exponent, GS.ship_counts[ship_id]) * cost)
 #	var last_cost = 0

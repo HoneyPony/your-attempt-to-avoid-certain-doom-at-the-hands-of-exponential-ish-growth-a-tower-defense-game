@@ -17,6 +17,7 @@ onready var left_upgrade_card = $Shop/Upgrades/LeftUpgradeCard
 onready var right_upgrade_card = $Shop/Upgrades/RightUpgradeCard
 
 onready var sell_cost_label = $Shop/Upgrades/SellCostLabel
+onready var sell_button = $Shop/Upgrades/SellButton
 
 onready var shop_info = $Shop/ShopInfo
 
@@ -122,6 +123,13 @@ func compute_upgrade_cards(ship: TowerBase):
 		right_upgrade_card.desc.text = up.description
 		right_upgrade_card.cost.text = str("Cost: $", up.cost)
 		right_upgrade_card.buy_button.disabled = (up.cost > GS.money)
+
+	if get_tree().paused:
+		left_upgrade_card.buy_button.disabled = true
+		right_upgrade_card.buy_button.disabled = true
+		sell_button.disabled = true
+	else:
+		sell_button.disabled = false
 
 func _process(delta):
 	money_counter.text = str("$ ", GS.money)

@@ -55,6 +55,8 @@ func _ready():
 	
 	position = Vector2(-800, 1400)
 	
+	set_pause_mode(Node.PAUSE_MODE_PROCESS)
+	
 # Should be called to remove the ship. Ensures that the count is updated
 # in GS.
 func destroy():
@@ -79,6 +81,12 @@ func compute_acceleration(desired_velocity: Vector2, delta: float, zero_threshol
 	return accel_direction * actual_accel_amount
 	
 func perform_physics(delta):
+	if get_tree().paused:
+		# Deselect because even though we can be pressed, we can't
+		# be dragged.
+		deselect()
+		return
+	
 	var target_point = drag_target_position
 	
 	var direction_vector = (target_point - global_position)
@@ -247,6 +255,8 @@ func deselect():
 		GS.selected_ship_map[drag_touch_index] = null
 				
 func _input(event):
+	if get_tree().paused:
+		return
 
 	# Dragging states may be deactivated by any input event.
 	if event is InputEventMouseButton:
