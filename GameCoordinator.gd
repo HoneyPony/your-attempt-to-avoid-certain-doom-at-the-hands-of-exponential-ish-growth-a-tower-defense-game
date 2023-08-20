@@ -361,8 +361,8 @@ func _process(delta):
 		# We try to spawn randomly.
 		try_to_spawn()
 	
-	if Input.is_action_just_pressed("test_spawn"):
-		pass
+	#if Input.is_action_just_pressed("test_spawn"):
+	#	pass
 		
 	# This is *total_money*, so it includes the initial 100 we start out with.
 	if GS.get_total_money() >= 150:
