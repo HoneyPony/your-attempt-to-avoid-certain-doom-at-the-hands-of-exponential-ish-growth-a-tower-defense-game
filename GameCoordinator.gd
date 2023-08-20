@@ -291,7 +291,7 @@ func spawn_level_9_vc():
 	var prime = round(rand_range(120, 180))
 	
 	# Very strong & annoying
-	spawn_vc(spawn_timer, prime, generation, 4.0, 21, 64, 1)
+	spawn_vc(spawn_timer, prime, generation, 4.0, 21, 170, 1)
 	
 func money_end_goal():
 	# Make the end goal harder on the hard difficulty so that you have to
