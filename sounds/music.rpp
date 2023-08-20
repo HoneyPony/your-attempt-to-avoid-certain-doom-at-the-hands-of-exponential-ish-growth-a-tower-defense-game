@@ -1,9 +1,9 @@
-<REAPER_PROJECT 0.1 "6.67/win64" 1692505138
+<REAPER_PROJECT 0.1 "6.67/win64" 1692542444
   <NOTES 0 2
   >
   RIPPLE 0
   GROUPOVERRIDE 0 0 0
-  AUTOXFADE 1
+  AUTOXFADE 129
   ENVATTACH 3
   POOLEDENVATTACH 0
   MIXERUIFLAGS 11 48
@@ -16,9 +16,9 @@
   TIMEMODE 1 5 -1 30 0 0 -1
   VIDEO_CONFIG 0 0 256
   PANMODE 3
-  CURSOR 415.13297872340428
-  ZOOM 0.83462673347694 0 0
-  VZOOMEX 4 0
+  CURSOR 0
+  ZOOM 1.54429048880849 0 0
+  VZOOMEX 3 0
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -103,7 +103,7 @@
     ISBUS 0 0
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 -1 0
-    SEL 1
+    SEL 0
     REC 1 5088 1 0 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 0 0
@@ -115,9 +115,9 @@
     MIDIOUT -1
     MAINSEND 1 0
     <FXCHAIN
-      WNDRECT 137 40 1379 965
+      WNDRECT 79 75 728 566
       SHOW 0
-      LASTSEL 0
+      LASTSEL 1
       DOCKED 0
       BYPASS 0 0 0
       <VST "VSTi: Helm (Matt Tytel)" helm64.dll 0 "" 1214606445<56535448656C6D68656C6D0000000000> ""
@@ -127,7 +127,7 @@
         ZiBub3QsIHNlZSA8aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnkvNC4wLz4uIiwNCiAgInN5bnRoX3ZlcnNpb24iOiAiMC45LjAiLA0KICAicGF0
         Y2hfbmFtZSI6ICIiLA0KICAiZm9sZGVyX25hbWUiOiAiIiwNCiAgImF1dGhvciI6ICIiLA0KICAic2V0dGluZ3MiOiB7DQogICAgImFtcF9hdHRhY2siOiAwLjE1MTg5
         ODczNDE3NzIxNTE5NDQ0LA0KICAgICJhbXBfZGVjYXkiOiAwLjA1MDYzMjkxMTM5MjQwNTA2MjUwMSwNCiAgICAiYW1wX3JlbGVhc2UiOiAwLjIwMjUzMTY0NTU2OTYy
-        MDI1LA0KICAgICJhbXBfc3VzdGFpbiI6IDAuNzk3NDY4MzU0NDMwMzc5Nzc3NzUsDQogICAgImFycF9mcmVxdWVuY3kiOiAyLA0KICAgICJhcnBfZ2F0ZSI6IDAuNSwN
+        MDI1LA0KICAgICJhbXBfc3VzdGFpbiI6IDAuNzk3NDY4MzU0NDMwMzc5ODg4NzgsDQogICAgImFycF9mcmVxdWVuY3kiOiAyLA0KICAgICJhcnBfZ2F0ZSI6IDAuNSwN
         CiAgICAiYXJwX29jdGF2ZXMiOiAxLA0KICAgICJhcnBfb24iOiAwLA0KICAgICJhcnBfcGF0dGVybiI6IDAsDQogICAgImFycF9zeW5jIjogMSwNCiAgICAiYXJwX3Rl
         bXBvIjogOSwNCiAgICAiYmVhdHNfcGVyX21pbnV0ZSI6IDEuNTY2NjY2NjY2NjY2NjY2NjUxOSwNCiAgICAiY3Jvc3NfbW9kdWxhdGlvbiI6IDAsDQogICAgImN1dG9m
         ZiI6IDEwNi43NzQxOTM1NDgzODcwODg5OCwNCiAgICAiZGVsYXlfZHJ5X3dldCI6IDAuNSwNCiAgICAiZGVsYXlfZmVlZGJhY2siOiAwLjQwMDAwMDAwMDAwMDAwMDAy
@@ -150,8 +150,8 @@
         MiwNCiAgICAicG9seV9sZm9fYW1wbGl0dWRlIjogMSwNCiAgICAicG9seV9sZm9fZnJlcXVlbmN5IjogMSwNCiAgICAicG9seV9sZm9fc3luYyI6IDEsDQogICAgInBv
         bHlfbGZvX3RlbXBvIjogNywNCiAgICAicG9seV9sZm9fd2F2ZWZvcm0iOiAwLA0KICAgICJwb2x5cGhvbnkiOiAxMiwNCiAgICAicG9ydGFtZW50byI6IC03LA0KICAg
         ICJwb3J0YW1lbnRvX3R5cGUiOiAwLA0KICAgICJyZXNvbmFuY2UiOiAwLjAxNzE0Mjg1NzE0Mjg1NzEyNjM2MiwNCiAgICAicmV2ZXJiX2RhbXBpbmciOiAwLjYzNjAw
-        MDAwMDAwMDAwMDAwOTc3LA0KICAgICJyZXZlcmJfZHJ5X3dldCI6IDAuMjQwMDAwMDAwMDAwMDAwMDQ2NjMsDQogICAgInJldmVyYl9mZWVkYmFjayI6IDAuOTYzMjAw
-        MDAwMDAwMDAwMDU2MTMsDQogICAgInJldmVyYl9vbiI6IDEsDQogICAgInN0ZXBfZnJlcXVlbmN5IjogMiwNCiAgICAic3RlcF9zZXFfMDAiOiAwLA0KICAgICJzdGVw
+        MDAwMDAwMDAwMDAwOTc3LA0KICAgICJyZXZlcmJfZHJ5X3dldCI6IDAuMjQwMDAwMDAwMDAwMDAwMDQ2NjMsDQogICAgInJldmVyYl9mZWVkYmFjayI6IDAuOTYzMTk5
+        OTk5OTk5OTk5OTQ1MTEsDQogICAgInJldmVyYl9vbiI6IDAsDQogICAgInN0ZXBfZnJlcXVlbmN5IjogMiwNCiAgICAic3RlcF9zZXFfMDAiOiAwLA0KICAgICJzdGVw
         X3NlcV8wMSI6IDAsDQogICAgInN0ZXBfc2VxXzAyIjogMCwNCiAgICAic3RlcF9zZXFfMDMiOiAwLA0KICAgICJzdGVwX3NlcV8wNCI6IDAsDQogICAgInN0ZXBfc2Vx
         XzA1IjogMCwNCiAgICAic3RlcF9zZXFfMDYiOiAwLA0KICAgICJzdGVwX3NlcV8wNyI6IDAsDQogICAgInN0ZXBfc2VxXzA4IjogMCwNCiAgICAic3RlcF9zZXFfMDki
         OiAwLA0KICAgICJzdGVwX3NlcV8xMCI6IDAsDQogICAgInN0ZXBfc2VxXzExIjogMCwNCiAgICAic3RlcF9zZXFfMTIiOiAwLA0KICAgICJzdGVwX3NlcV8xMyI6IDAs
@@ -171,6 +171,34 @@
       PRESETNAME "CM Kleer Arp"
       FLOATPOS 0 0 0 0
       FXID {E915A127-DFDE-40E3-918F-3B7285527F01}
+      WAK 0 0
+      BYPASS 0 0 0
+      <VST "VST: ReaVerb (Cockos)" reaverb.dll 0 "" 1919252066<56535472657662726561766572620000> ""
+        YnZlcu5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAdAAAAAEAAAAAABAA
+        AAAQwZJ3HT8aTnA9AAAAAAAAgD8AAIA/AAAAPwAAgD8AAIA/AAAAQFZFUkJHRU4AGAAAAAAAAAAAQBxGBp/hP1Fqv0LEQrU/AACAP0VDSE9HRU4AHAAAAAAAAAAAAMhC
+        AAAgQQAAAD8AAIA+AAAAAAAAAD8=
+        AFByb2dyYW0gMQAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {AA8CC090-EC69-4A80-A0BC-627A9A0DA143}
+      WAK 0 0
+      BYPASS 0 0 0
+      <JS ReJJ/ReEQ/ReEQ.jsfx ""
+        0 1 0 0 0 100 3 0 0 0 3 1 2 0 0 0 2 2 0 4 72.216716 -18 16.646473 0 2 0 4 69.057377 -18 23.846473 0 2 0 0 27.254098 2.341748 1.446474 1 0 0 0 70 0 32.647 0 0 0 0 70 0 32.647 0 0 0 0 0 1 - - - - - - - 
+      >
+      JS_DIMS 976 716
+      <JS_SER
+        AADaQgAAgEEAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEAAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAACsUiJF4Y3+RJkFo0JQ2whFUNsIRQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQwQAAkMEx3xVAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGXPij7KrtU+P1ffPfcFNT/3BTU/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABtypT3d7Zk9muF8PzNmmT0zZpk96OdnP+jnZz/o52c/6OdnP+jnZz/o52c/6OdnP+jnZz/o52c/
+        6OdnP+jnZz8COCc/hf4dP8nISD7VOyI/1TsiP5eWlj6XlpY+l5aWPpeWlj6XlpY+l5aWPpeWlj6XlpY+l5aWPpeWlj6XlpY+/4zxPvkmAD9Coj8/ymP9Pspj/T6FhAQ+
+        hYQEPoWEBD6FhAQ+hYQEPoWEBD6FhAQ+hYQEPoWEBD6FhAQ+hYQEPg==
+      >
+      FLOATPOS 0 0 0 0
+      FXID {225B4E05-E848-43AC-BB1D-458D950F7582}
       WAK 0 0
     >
     <ITEM
@@ -339,26 +367,26 @@
         E 0 95 4b 2d -124
         E 7680 85 4b 27 -123
         E 0 95 48 3d -195
-        E 1920 85 48 2d -78
-        E 0 95 4b 22 -158
-        E 1920 85 4b 2f -62
-        E 0 95 48 2a -154
-        E 1920 85 48 2e -172
-        E 0 95 4b 2c -262
-        E 1920 85 4b 2c -250
-        E 0 95 48 3d -280
-        E 1920 85 48 26 -145
-        E 0 95 4b 24 -228
-        E 1920 85 4b 24 -31
-        E 0 95 48 2f -100
-        E 1920 85 48 3e 76
-        E 0 95 4b 2b 12
-        E 1920 85 4b 34 12
-        E 0 95 4f 33 -50
-        E 1920 85 4f 37 -12
-        E 0 95 52 2b -76
-        E 1920 85 52 1a -129
-        E 0 95 54 21 -131
+        E 1320 85 48 2d
+        E 600 95 4b 22 -158
+        E 1320 85 4b 2f
+        E 600 95 48 2a -154
+        E 1320 85 48 2e
+        E 600 95 4b 2c -262
+        E 1320 85 4b 2c
+        E 600 95 48 3d -280
+        E 1320 85 48 26
+        E 600 95 4b 24 -228
+        E 1320 85 4b 24
+        E 600 95 48 2f -100
+        E 1320 85 48 3e
+        E 600 95 4b 2b 12
+        E 1320 85 4b 34
+        e 600 95 4f 33 -50
+        e 1320 85 4f 37
+        e 600 95 52 2b -76
+        e 1320 85 52 1a
+        E 600 95 54 21 -131
         E 7680 85 54 22 568
         E 0 95 48 31 -72
         E 960 85 48 2b 70
@@ -469,11 +497,11 @@
         IGNTEMPO 0 120 4 4
         SRCCOLOR 11
         VELLANE -1 100 0
-        CFGEDITVIEW 9772.243575 0.003413 26 15 0 -1 0 0 0 0.5
+        CFGEDITVIEW 118389.49205 0.010736 26 15 0 -1 0 0 0 0.5
         KEYSNAP 0
         TRACKSEL 0
         EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
-        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 493 218 1525 907 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 524 669 1556 1358 0 0 0 0 0 0 0 0 0 0.5 0 0 1 64
       >
     >
     <ITEM
@@ -891,11 +919,11 @@
         E 138 85 4b 26
         E 466 85 48 01
         E 118 85 43 27
-        e 242 95 3c 33
-        e 49 95 48 42
+        E 242 95 3c 33
+        E 49 95 48 42
         E 278 85 4a 4d
-        e 14975 85 3c 3a
-        e 58 85 48 20
+        E 14975 85 3c 3a
+        E 58 85 48 20
         E 15241 95 46 28
         E 231 85 46 33
         E 711 95 52 29
@@ -987,24 +1015,24 @@
         E 37 85 44 35
         E 25 85 4a 4c
         E 7561 95 52 25
-        E 7815 85 52 1d
+        E 7815 85 4b 14 95
+        E 0 85 52 1d
         E 0 95 4b 39
         E 39 95 52 44
-        E 56 85 4b 14
-        E 25 85 3c 40
+        E 81 85 3c 40
         E 1748 85 52 23
-        E 22 95 4b 17
+        E 22 85 4b 0e 30
+        E 0 95 4b 17
         E 2 95 51 44
-        E 28 85 4b 0e
-        E 1920 85 4b 0f
+        E 1948 85 4b 0f
         E 0 85 51 2b
         E 0 95 50 2f
         E 0 95 4b 01
         E 3840 85 50 3b
+        E 0 85 4b 12 61
         E 0 95 52 34
         E 0 95 4b 1d
-        E 61 85 4b 12
-        E 1859 85 52 30
+        E 1920 85 52 30
         E 35 85 4b 01
         E 3 95 50 40
         E 10 95 4b 1f
@@ -1013,9 +1041,9 @@
         E 0 85 4b 09
         E 0 95 4b 15
         E 3877 95 4a 44
-        E 21 95 4f 3e
-        E 62 85 4f 2a
-        E 0 85 4b 1e
+        E 21 85 4f 2a 62
+        E 0 95 4f 3e
+        E 62 85 4b 1e
         E 3720 95 4b 20
         E 0 95 48 43
         E 120 85 4a 2a
@@ -1143,10 +1171,10 @@
         E 720 95 5e 45
         E 240 85 5e 32
         E 3287 b5 01 1f
-        E 16545 95 3c 3e
-        E 8 95 41 29
-        E 7610 95 38 15
-        E 7701 95 55 17
+        e 16633 95 3c 3e -88
+        e 0 95 41 29 -80
+        e 7440 95 38 15 90
+        E 7791 95 55 17
         E 1925 95 54 31
         E 100 85 55 2d
         E 1850 95 52 25
@@ -1155,24 +1183,1982 @@
         E 81 85 52 2f
         E 1845 95 4f 2a
         E 115 85 50 1e
-        E 3708 95 4d 2d
-        E 114 85 4f 40
-        E 10588 85 38 1d
-        E 11 85 4d 3f
-        E 17 85 41 24
-        E 62 85 3c 2a
-        E 3536 b0 7b 00
+        e 3680 95 4d 2d 28
+        E 142 85 4f 40
+        e 10658 85 3c 2a 20
+        e 0 85 41 24 -42
+        e 0 85 38 1d -70
+        e 0 85 4d 3f -59
+        E 3556 b0 7b 00
         CCINTERP 32
         CHASE_CC_TAKEOFFS 1
         GUID {2CDE9739-4FEB-4A13-B969-EBBB20FB8A63}
         IGNTEMPO 0 120 4 4
         SRCCOLOR 23
         VELLANE -1 100 0
-        CFGEDITVIEW 153502.321698 0.009859 21 12 0 -1 0 0 0 0.5
+        CFGEDITVIEW 455129.90276 0.01296 0 5 0 -1 0 0 0 0.5
         KEYSNAP 0
         TRACKSEL 0
         EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
         CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 84 331 1100 1004 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 607.02127083333335
+      SNAPOFFS 0
+      LENGTH 43.40426108156032
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4654612F-B7F6-4DE7-BE18-21A96C61E725}
+      IID 17
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B69EFD96-5DBB-4F9C-A61B-502ABAA444D4}
+      RECPASS 11
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {11FD8472-6B7D-4F37-BF40-C66FACBBB8FA}
+        E 4608 95 48 38
+        E 276 95 4b 37
+        E 94 85 48 44
+        E 297 95 4f 43
+        E 107 85 4b 21
+        E 216 95 52 31
+        E 86 85 4f 37
+        E 239 95 4f 40
+        E 120 85 52 26
+        E 144 95 4b 26
+        E 70 85 4f 2d
+        E 268 95 48 44
+        E 72 85 4b 2c
+        E 228 95 4b 3e
+        E 100 85 48 41
+        E 275 95 4f 4c
+        E 122 85 4b 1f
+        E 217 95 52 36
+        E 7 85 4f 36
+        E 376 95 4f 35
+        E 38 85 52 27
+        E 203 95 4b 2f
+        E 119 85 4f 24
+        E 228 95 48 51
+        E 65 85 4b 2d
+        E 277 95 4b 3e
+        E 95 85 48 40
+        E 234 95 4f 51
+        E 45 85 4b 27
+        E 304 95 52 31
+        E 33 85 4f 3e
+        E 284 95 4f 3a
+        E 71 85 52 2f
+        E 173 95 4b 2d
+        E 118 85 4f 29
+        E 205 95 48 47
+        E 71 85 4b 24
+        E 227 95 4b 4b
+        E 109 85 48 3a
+        E 230 95 4f 32
+        E 114 85 4b 29
+        E 159 95 52 28
+        E 37 85 4f 2d
+        E 289 95 4f 44
+        E 93 85 52 2d
+        E 150 95 4b 32
+        E 109 85 4f 2b
+        E 249 95 48 4d
+        E 38 85 4b 28
+        E 240 95 4b 4e
+        E 138 85 48 34
+        E 225 95 4f 43
+        E 84 85 4b 29
+        E 202 95 52 31
+        E 144 85 4f 30
+        E 226 95 4f 43
+        E 47 85 52 2a
+        E 212 95 4b 2a
+        E 92 85 4f 2d
+        E 286 95 48 3f
+        E 62 85 4b 25
+        E 289 95 4b 26
+        E 121 85 48 3a
+        E 244 95 4f 43
+        E 126 85 4b 22
+        E 203 95 52 29
+        E 19 85 4f 36
+        E 260 95 4f 42
+        E 114 85 52 25
+        E 187 95 4b 35
+        E 113 85 4f 2f
+        E 186 95 48 3e
+        E 62 85 4b 2e
+        E 210 95 4b 40
+        E 179 85 48 3b
+        E 146 95 4f 47
+        E 120 85 4b 2f
+        E 174 95 52 2b
+        E 81 85 4f 3a
+        E 226 95 4f 43
+        E 87 85 52 2e
+        E 154 95 4b 32
+        E 140 85 4f 38
+        E 209 95 48 3f
+        E 61 85 4b 53
+        E 254 95 4b 3e
+        E 111 85 48 3b
+        E 218 95 4f 45
+        E 99 85 4b 2d
+        E 213 95 52 2e
+        E 127 85 4f 2f
+        E 139 95 4f 33
+        E 92 85 52 31
+        E 98 95 4b 51
+        E 114 85 4f 28
+        E 282 95 48 3b
+        E 63 85 4b 2a
+        E 346 95 4b 38
+        E 87 85 48 40
+        E 252 95 4f 43
+        E 136 85 4b 2f
+        E 238 95 56 46
+        E 80 85 4f 37
+        E 190 95 4f 45
+        E 61 85 56 2e
+        E 254 95 4b 32
+        E 133 85 4f 30
+        E 198 95 48 42
+        E 80 85 4b 24
+        E 248 95 4b 3a
+        E 86 85 48 33
+        E 204 95 4f 3b
+        E 121 85 4b 22
+        E 133 95 56 48
+        E 167 85 4f 34
+        E 139 95 4f 4b
+        E 22 85 56 46
+        E 239 95 4b 2c
+        E 119 85 4f 38
+        E 203 95 48 3b
+        E 34 85 4b 2c
+        E 267 95 4b 42
+        E 129 85 48 39
+        E 123 95 4f 48
+        E 96 85 4b 23
+        E 252 95 56 48
+        E 84 85 4f 37
+        E 242 95 4f 3a
+        E 36 85 56 3a
+        E 245 95 4b 37
+        E 111 85 4f 2c
+        E 192 95 48 3d
+        E 42 85 4b 28
+        E 246 95 4b 3c
+        E 127 85 48 32
+        E 240 95 4f 47
+        E 81 85 4b 20
+        E 196 95 56 45
+        E 63 85 4f 3b
+        E 307 85 56 36
+        E 24 95 4f 42
+        E 249 95 4b 47
+        E 81 85 4f 33
+        E 184 95 48 48
+        E 40 85 4b 2f
+        E 292 95 4b 2f
+        E 110 85 48 38
+        E 231 95 4f 49
+        E 77 85 4b 27
+        E 231 95 57 36
+        E 67 85 4f 27
+        E 239 95 4f 3c
+        E 62 85 57 24
+        E 192 95 4b 33
+        E 105 85 4f 29
+        E 122 95 48 38
+        E 61 85 4b 28
+        E 309 95 4b 44
+        E 79 85 48 3c
+        E 260 95 4f 44
+        E 105 85 4b 1c
+        E 127 95 57 3a
+        E 97 85 4f 3d
+        E 196 95 4f 2f
+        E 16 85 57 29
+        E 214 95 4b 51
+        E 117 85 4f 2c
+        E 203 95 48 38
+        E 41 85 4b 2a
+        E 282 95 4b 2f
+        E 134 85 48 38
+        E 114 95 4f 39
+        E 96 85 4b 24
+        E 234 95 57 3b
+        E 105 85 4f 35
+        E 227 95 4f 3e
+        E 3 85 57 2a
+        E 260 95 4b 31
+        E 123 85 4f 29
+        E 144 95 48 38
+        E 48 85 4b 28
+        E 277 95 4b 47
+        E 215 85 48 21
+        E 167 95 4f 4d
+        E 97 85 4b 16
+        E 168 95 57 32
+        E 162 85 4f 30
+        E 133 95 4f 40
+        E 74 85 57 1d
+        E 248 95 4b 31
+        E 104 85 4f 25
+        E 170 95 48 40
+        E 60 85 4b 27
+        E 274 95 4b 51
+        E 178 85 48 37
+        E 169 95 4f 41
+        E 101 85 4b 2f
+        E 178 95 5b 42
+        E 54 85 4f 32
+        E 301 95 4f 3b
+        E 38 85 5b 3f
+        E 315 95 4b 22
+        E 130 85 4f 29
+        E 167 95 48 41
+        E 53 85 4b 22
+        E 293 95 4b 2a
+        E 158 85 48 2c
+        E 153 95 4f 3b
+        E 244 95 5b 48
+        E 28 85 4b 0e
+        E 53 85 4f 3f
+        E 276 95 4f 2c
+        E 97 85 5b 2b
+        E 293 95 4b 1e
+        E 142 85 4f 1f
+        E 155 95 48 45
+        E 49 85 4b 1f
+        E 282 95 4b 2d
+        E 149 85 48 3b
+        E 169 95 4f 33
+        E 163 85 4b 27
+        E 123 95 5e 34
+        E 40 85 4f 34
+        E 372 85 5e 2b
+        E 50 95 4f 40
+        E 296 95 4b 22
+        E 186 85 4f 0b
+        E 104 95 48 43
+        E 98 85 4b 22
+        E 252 95 4b 12
+        E 146 85 48 37
+        E 239 95 4f 4b
+        E 118 85 4b 2e
+        E 154 95 5e 30
+        E 128 85 4f 3f
+        E 216 95 4f 4d
+        E 66 85 5e 19
+        E 230 95 4b 51
+        E 125 85 4f 35
+        E 95 95 48 39
+        E 77 85 4b 2a
+        E 265 95 4b 32
+        E 139 85 48 34
+        E 212 95 4f 4f
+        E 107 85 4b 27
+        E 218 95 60 43
+        E 146 85 4f 1c
+        E 134 95 4f 4a
+        E 105 85 60 2d
+        E 217 95 4b 43
+        E 93 85 4f 31
+        E 167 95 48 4a
+        E 49 85 4b 24
+        E 257 95 4b 3d
+        E 221 85 48 28
+        E 72 95 4f 50
+        E 132 85 4b 25
+        E 223 95 60 40
+        E 122 85 4f 33
+        E 163 95 4f 41
+        E 102 85 60 25
+        E 246 95 4b 3e
+        E 173 85 4f 2b
+        E 67 95 48 46
+        E 81 85 4b 29
+        E 253 95 4b 36
+        E 153 85 48 2f
+        E 138 95 4f 5d
+        E 73 85 4b 2a
+        E 316 95 60 47
+        E 39 85 4f 4a
+        E 1733 85 60 21
+        E 1965 95 5e 3c
+        E 684 85 5e 1a
+        E 1446 95 57 36
+        E 689 85 57 20
+        E 1394 95 56 3d
+        E 698 85 56 27
+        E 1265 95 52 29
+        E 727 85 52 2d
+        E 1295 95 4f 36
+        E 679 85 4f 33
+        E 1231 95 48 40
+        E 813 85 48 19
+        E 1076 95 4b 22
+        E 1816 85 4b 16
+        E 10120 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {03AC6278-EB8F-4AD9-ADC1-A853F00B4BE2}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 43
+        VELLANE -1 100 0
+        CFGEDITVIEW 17793.677121 0.021691 17 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 0
+        EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 142 145 1158 818 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 651.06383333333338
+      SNAPOFFS 0
+      LENGTH 32.5531879432624
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {635191F7-D308-49B8-B949-688BC03907CC}
+      IID 18
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {84E5CDA6-0808-4C62-93D0-240CDA167EEC}
+      RECPASS 12
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {AC4C5D68-95E1-4FD7-A5C5-FC13F3315318}
+        E 7652 95 48 38
+        E 997 85 48 6a
+        E 7 95 4a 36
+        E 993 95 4b 31
+        E 16 85 4a 3b
+        E 5620 85 4b 1c
+        E 137 95 4f 20
+        E 3167 85 4f 1c
+        E 575 95 52 2a
+        E 325 85 52 20
+        E 632 95 54 2c
+        E 877 95 57 2b
+        E 89 85 54 2e
+        E 1933 95 5b 41
+        E 60 85 57 1c
+        E 1704 95 59 49
+        E 104 85 5b 47
+        E 1820 95 56 41
+        E 38 85 59 31
+        E 953 95 57 32
+        E 113 85 56 22
+        E 832 95 54 26
+        E 126 85 57 19
+        E 3754 95 52 22
+        E 177 85 54 2a
+        E 749 95 50 15
+        E 69 85 52 1c
+        E 915 95 4f 31
+        E 11 85 50 2b
+        E 3305 85 4f 2d
+        E 570 95 52 35
+        E 925 95 4f 2a
+        E 23 85 52 2d
+        E 1031 95 4a 3f
+        E 126 85 4f 30
+        E 1749 95 48 25
+        E 52 85 4a 34
+        E 3196 85 48 37
+        E 429 95 48 1b
+        E 460 85 48 2b
+        E 575 95 48 1c
+        E 361 85 48 2c
+        E 577 95 48 1b
+        E 326 85 48 30
+        E 8559 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {77D181DD-DDA6-4139-A4CA-397DA21EF345}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 46
+        VELLANE -1 100 0
+      >
+    >
+    <ITEM
+      POSITION 684.25529166666672
+      SNAPOFFS 0
+      LENGTH 28.72343173758861
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {00D35CB1-E11C-40D1-874D-645A1F417A25}
+      IID 19
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {26778F12-969C-438D-BF97-F43AE02B7B66}
+      RECPASS 13
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {8AE142FB-B4A3-4432-A435-5A0238513A20}
+        E 7495 95 3f 2f
+        E 34 95 4b 20
+        E 2852 95 48 3c
+        E 142 85 4b 22
+        E 960 95 4b 17
+        E 89 85 48 27
+        E 2999 85 4b 2b
+        E 7 85 3f 37
+        E 684 95 3f 30
+        E 20 95 4b 30
+        E 2807 95 48 21
+        E 110 85 4b 24
+        E 958 95 4b 2c
+        E 96 85 48 31
+        E 3088 85 3f 27
+        E 8 85 4b 18
+        E 580 95 4b 29
+        E 3 95 3f 30
+        E 2828 95 48 38
+        E 181 85 4b 0f
+        E 871 85 48 65
+        E 0 95 43 34
+        E 11 95 4f 28
+        E 120 85 3f 29
+        E 2777 95 52 1f
+        E 190 85 4f 48
+        E 3561 95 56 3f
+        E 18 95 3e 42
+        E 33 85 52 1d
+        E 40 85 43 46
+        E 3657 95 57 2f
+        E 163 85 56 5d
+        E 37 85 3e 4c
+        e 61 95 3c 11
+        E 3680 85 57 2b
+        e 240 85 3c 2a
+        E 10624 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {C469FAFE-4303-41B3-9642-E2FA5AED951A}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 49
+        VELLANE -1 100 0
+        CFGEDITVIEW -10190.787074 0.01751 27 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 0
+        EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 216 -8 1232 665 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 713.6170208333333
+      SNAPOFFS 0
+      LENGTH 45.0970744680851
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {060D851E-4E18-4569-9BE6-ACDC33EC49F3}
+      IID 20
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {AD7D8ABE-62E1-4BBD-B583-B0A7F8C9F6B8}
+      RECPASS 14
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {FBD495DA-AAFC-4906-BBB9-90BFBCFF95E6}
+        E 5804 95 5c 3d
+        E 3770 95 60 32
+        E 17 85 5c 1c
+        E 3651 95 5e 38
+        E 112 85 60 4c
+        E 3750 95 5b 2c
+        E 67 85 5e 2e
+        E 1836 95 57 2c
+        E 127 85 5b 4e
+        E 1844 95 54 2d
+        E 12 85 57 38
+        E 2818 95 57 1b
+        E 66 85 54 2e
+        E 344 95 54 34
+        E 89 85 57 1f
+        E 465 95 52 20
+        E 71 85 54 2b
+        E 2781 95 54 31
+        E 46 85 52 36
+        E 342 95 52 0d
+        E 116 85 54 29
+        E 447 95 50 0d
+        E 61 85 52 1c
+        E 1924 95 4f 18
+        E 60 85 50 31
+        E 1890 95 4d 01
+        E 167 85 4f 1a
+        E 2764 95 41 0e
+        E 912 95 3e 2b
+        E 6586 85 41 2b
+        E 42 85 3e 2b
+        E 50 95 4b 32
+        E 122 85 4d 2a
+        E 365 95 3f 2b
+        E 484 95 3c 29
+        E 6146 85 4b 34
+        E 417 95 46 2b
+        E 5023 95 43 34
+        E 24 85 46 23
+        E 826 95 46 2f
+        E 289 85 43 20
+        E 751 95 48 23
+        E 63 85 46 36
+        E 838 95 4b 2a
+        E 101 85 48 2b
+        E 6977 85 4b 12
+        E 113 85 3f 28
+        E 5 85 3c 3f
+        E 2251 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {741B1850-5CBB-4BB9-80D3-B8AD58B916BB}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 52
+        VELLANE -1 100 0
+      >
+    >
+    <ITEM
+      POSITION 759.57445833333338
+      SNAPOFFS 0
+      LENGTH 26.80852039007084
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {75325F70-37F8-49D9-9843-79DCFFD0B1E1}
+      IID 21
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {ACE7D775-8CC3-4742-A40B-F1BAA0AB8CF8}
+      RECPASS 15
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {DAF322B3-418E-419C-8C2E-42DF0B85F423}
+        E 5633 95 60 34
+        E 224 85 60 33
+        E 650 95 57 35
+        E 219 85 57 15
+        E 707 95 54 43
+        E 218 85 54 3c
+        E 728 95 60 41
+        E 174 85 60 38
+        E 3909 95 5e 3d
+        E 241 85 5e 2f
+        E 611 95 55 33
+        E 211 85 55 21
+        E 617 95 53 40
+        E 283 85 53 27
+        E 571 95 52 37
+        E 266 85 52 22
+        E 722 95 50 3d
+        E 191 85 50 4b
+        E 2820 95 54 4a
+        E 220 85 54 3c
+        E 226 95 57 35
+        E 297 85 57 15
+        E 163 95 54 48
+        E 231 85 54 3c
+        E 694 95 50 38
+        E 253 85 50 26
+        E 769 95 4c 21
+        E 240 85 4c 3e
+        E 618 95 4b 2c
+        E 260 85 4b 22
+        E 645 95 48 32
+        E 377 85 48 2a
+        E 2691 95 4b 36
+        E 272 85 4b 1d
+        E 251 95 48 4b
+        E 225 85 48 3f
+        E 344 95 46 33
+        E 242 85 46 1e
+        E 704 95 44 2d
+        E 232 85 44 15
+        E 777 95 42 2e
+        E 272 85 42 14
+        E 1734 95 41 40
+        E 221 85 41 3e
+        E 3406 95 3f 2b
+        E 326 85 3f 16
+        E 7516 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {669B75DE-40F7-4F57-A0A6-F7A9F9536F08}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 55
+        VELLANE -1 100 0
+      >
+    >
+    <ITEM
+      POSITION 786.3829791666667
+      SNAPOFFS 0
+      LENGTH 71.35702083332001
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {50FB95A2-DBA6-43C3-9127-DC6A1F80C8C6}
+      IID 25
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {BE074ED0-D2EC-44A4-9CD4-AEB8C6A394CE}
+      RECPASS 18
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {2E25F896-0D7E-409B-94DB-DC157ADF2D3F}
+        E 7427 95 48 2f
+        E 6 95 4f 2b
+        E 27 95 3c 42
+        E 22 95 43 3d
+        E 3005 85 3c 40
+        E 30 85 48 33
+        E 39 85 4f 4b
+        E 0 85 43 36
+        E 791 95 3e 2d
+        E 43 95 44 36
+        E 4 95 50 28
+        E 4 95 4a 24
+        E 2898 85 3e 2d
+        E 58 85 4a 3d
+        E 68 85 50 26
+        E 1 85 44 17
+        E 779 95 46 2e
+        E 1 95 4b 35
+        E 3 95 3f 33
+        E 8 95 52 3b
+        E 6903 85 4b 20
+        E 14 85 52 0b
+        E 598 95 54 28
+        E 1971 95 52 2a
+        E 124 85 54 5b
+        E 1983 95 50 27
+        E 72 85 52 2d
+        E 1839 95 4d 23
+        E 89 85 50 35
+        E 1792 95 4b 24
+        E 108 85 4d 36
+        E 3853 95 48 33
+        E 11 85 4b 2e
+        E 3207 85 46 1d
+        E 565 95 43 36
+        E 3823 95 46 2c
+        E 71 85 3f 2d
+        E 1830 95 4b 08
+        E 356 85 48 31
+        E 1568 95 4a 20
+        E 67 85 4b 32
+        E 6672 95 4b 2e
+        E 132 85 4a 42
+        E 100 85 46 23
+        E 690 95 48 26
+        E 103 85 4b 2d
+        E 146 85 43 19
+        E 6538 95 4b 2c
+        E 94 85 48 3e
+        E 878 95 43 2c
+        E 147 85 4b 2d
+        E 1611 95 44 2a
+        E 64 85 43 34
+        E 1914 95 46 19
+        E 162 85 44 15
+        E 3721 95 43 2b
+        E 73 85 46 26
+        E 1761 95 44 1c
+        E 279 85 43 2d
+        E 1737 95 46 20
+        E 108 85 44 29
+        E 3667 95 43 33
+        E 103 85 46 1d
+        E 1831 95 46 12
+        E 216 85 43 33
+        E 1645 95 41 36
+        E 179 85 46 27
+        E 1663 85 41 2d
+        E 4 95 46 07
+        E 2000 95 3f 17
+        E 105 85 46 2d
+        E 1779 95 46 01
+        E 176 85 3f 12
+        E 1720 95 3e 31
+        E 167 85 46 22
+        E 1748 95 46 0f
+        E 233 85 3e 1a
+        E 1816 95 3c 3f
+        E 275 85 46 22
+        E 14598 85 3c 51
+        E 699 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {611013E3-5314-4A4C-B53B-27F7F6348BB4}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 66
+        VELLANE -1 100 0
+      >
+    >
+    <ITEM
+      POSITION 857.87233333333336
+      SNAPOFFS 0
+      LENGTH 52.34043262411342
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {CA466990-E586-4B29-B1ED-386CE1E4FF0C}
+      IID 26
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {6B21065B-7540-4070-8122-69F653673B5D}
+      RECPASS 19
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {832E044F-6690-4E02-B938-D1B3C1A77B4E}
+        E 7436 95 3f 69
+        E 129 85 3f 43
+        E 1505 95 3f 6e
+        E 111 85 3f 38
+        E 1003 95 3f 72
+        E 92 85 3f 3d
+        E 466 95 3f 66
+        E 101 85 3f 37
+        E 917 95 3f 72
+        E 26 95 4b 70
+        E 100 85 3f 3f
+        E 13 85 4b 3f
+        E 1319 95 3f 6b
+        E 121 85 3f 33
+        E 852 95 4b 6e
+        E 84 85 4b 36
+        E 427 95 3f 72
+        E 90 85 3f 3d
+        E 71 95 4b 4e
+        E 116 85 4b 36
+        E 600 95 3f 79
+        E 17 95 4b 6b
+        E 123 85 4b 46
+        E 1 85 3f 39
+        E 1294 95 3f 72
+        E 143 85 3f 2d
+        E 854 95 4b 66
+        E 103 85 4b 3d
+        E 409 95 3f 72
+        E 99 85 3f 3b
+        E 25 95 4b 70
+        E 112 85 4b 43
+        E 570 95 3f 74
+        E 9 95 4b 70
+        E 90 85 3f 3e
+        E 20 85 4b 3c
+        E 1366 95 3f 70
+        E 153 85 3f 3c
+        E 735 95 4a 66
+        E 124 85 4a 4c
+        E 423 95 3f 74
+        E 121 85 3f 39
+        E 145 95 4b 70
+        E 114 85 4b 55
+        E 480 95 3f 76
+        E 8 95 4a 75
+        E 102 85 3f 3f
+        E 1 85 4a 4e
+        E 1044 95 4b 69
+        E 146 85 4b 3a
+        E 399 95 3f 72
+        E 112 85 3f 41
+        E 789 95 4a 43
+        E 152 85 4a 48
+        E 364 95 4b 58
+        E 156 85 4b 2d
+        E 67 95 3f 6b
+        E 88 85 3f 2d
+        E 101 95 4a 69
+        E 150 85 4a 4a
+        E 425 95 4b 4b
+        E 163 85 4b 34
+        E 554 95 3e 6c
+        E 114 85 3e 5c
+        E 392 95 4a 44
+        E 134 85 4a 4a
+        E 630 95 3f 61
+        E 123 85 3f 2e
+        E 113 95 4b 61
+        E 143 85 4b 36
+        E 327 95 3e 5e
+        E 83 85 3e 4c
+        E 397 95 4a 34
+        E 158 85 4a 44
+        E 392 95 3f 6b
+        E 159 85 3f 33
+        E 560 95 4b 66
+        E 155 85 4b 35
+        E 533 95 3e 48
+        E 164 85 3e 57
+        E 600 95 4a 40
+        E 151 85 4a 4e
+        E 44 95 3f 69
+        E 135 85 3f 38
+        E 83 95 4b 56
+        E 117 85 4b 3b
+        E 371 95 3c 6e
+        E 147 85 3c 4c
+        E 296 95 4a 47
+        E 170 85 4a 46
+        E 501 95 3f 69
+        E 143 85 3f 39
+        E 146 95 4b 69
+        E 113 85 4b 47
+        E 155 95 3e 5e
+        E 140 85 3e 4e
+        E 114 95 4a 69
+        E 150 85 4a 49
+        E 514 95 3c 3f
+        E 149 85 3c 4e
+        E 138 95 48 5b
+        E 135 85 48 4f
+        E 366 95 3f 1c
+        E 54 85 3f 1e
+        E 391 95 3f 6b
+        E 125 85 3f 3a
+        E 321 95 4b 64
+        E 100 85 4b 3c
+        E 506 95 3e 53
+        E 120 85 3e 47
+        E 126 95 4a 6b
+        E 141 85 4a 4e
+        E 33 95 3c 5d
+        E 129 85 3c 55
+        E 85 95 48 6a
+        E 119 85 48 4f
+        E 584 95 3f 51
+        E 116 85 3f 35
+        E 170 95 4a 60
+        E 126 85 4a 46
+        E 251 95 3e 66
+        E 104 85 3e 4a
+        E 85 95 4b 64
+        E 135 85 4b 3a
+        E 76 95 3c 55
+        E 127 85 3c 48
+        E 106 95 4a 64
+        E 140 85 4a 49
+        E 419 95 3f 66
+        E 115 85 3f 5b
+        E 687 95 48 43
+        E 150 85 48 4c
+        E 3 95 3e 5e
+        E 123 85 3e 52
+        E 92 95 4a 5e
+        E 143 85 4a 4d
+        E 111 95 3c 69
+        E 134 85 3c 4f
+        E 470 95 4b 4a
+        E 107 85 4b 31
+        E 176 95 3f 56
+        E 142 85 3f 2b
+        E 219 95 4a 51
+        E 121 95 3e 6a
+        E 3 85 4a 55
+        E 141 85 3e 50
+        E 96 95 4b 61
+        E 142 85 4b 36
+        E 376 95 3c 52
+        E 153 85 3c 4f
+        E 525 95 4a 4a
+        E 160 85 4a 43
+        E 147 95 3f 66
+        E 149 85 3f 3d
+        E 118 95 48 40
+        E 172 85 48 47
+        E 46 95 3e 63
+        E 115 85 3e 53
+        E 554 95 4a 4e
+        E 184 85 4a 48
+        E 186 95 3c 47
+        E 111 85 3c 58
+        E 118 95 4b 64
+        E 143 85 4b 30
+        E 224 95 3f 5d
+        E 122 85 3f 45
+        E 95 95 4a 5c
+        E 175 85 4a 4a
+        E 347 95 3e 5b
+        E 119 85 3e 52
+        E 541 95 48 5c
+        E 151 85 48 44
+        E 26 95 3c 64
+        E 116 85 3c 54
+        E 38 95 4a 4c
+        E 20 95 48 3d
+        E 104 85 48 36
+        E 17 85 4a 40
+        E 218 95 3f 61
+        E 150 85 3f 37
+        E 527 95 4b 37
+        E 142 85 4b 35
+        E 117 95 3e 66
+        E 125 85 3e 4e
+        E 35 95 4a 65
+        E 156 85 4a 4c
+        E 61 95 3c 5d
+        E 141 85 3c 4f
+        E 34 95 48 69
+        E 139 85 48 4d
+        E 340 95 3e 56
+        E 166 85 3e 48
+        E 314 95 4a 65
+        E 168 85 4a 45
+        E 58 95 3c 63
+        E 132 85 3c 55
+        E 393 95 4b 53
+        E 155 85 4b 36
+        E 52 95 3f 5f
+        E 143 85 3f 3d
+        E 280 95 4a 66
+        E 139 85 4a 48
+        E 52 95 3e 67
+        E 115 85 3e 54
+        E 562 95 48 67
+        E 141 95 3c 6a
+        E 3 85 48 47
+        E 120 85 3c 52
+        E 105 95 4a 5e
+        E 129 85 4a 46
+        E 90 95 3f 69
+        E 115 85 3f 3b
+        E 54 95 4b 64
+        E 143 85 4b 38
+        E 71 95 3e 58
+        E 125 85 3e 4f
+        E 22 95 4a 5d
+        E 167 85 4a 4e
+        E 25 95 3c 5c
+        E 144 85 3c 4e
+        E 434 95 4b 46
+        E 167 85 4b 2d
+        E 187 95 3f 58
+        E 164 85 3f 37
+        E 272 95 4a 54
+        E 169 85 4a 40
+        E 34 95 3e 60
+        E 156 85 3e 47
+        E 454 95 4b 69
+        E 89 95 3c 66
+        E 49 85 4b 32
+        E 83 85 3c 4f
+        E 115 95 4a 60
+        E 161 85 4a 4e
+        E 4 95 3e 6b
+        E 123 85 3e 52
+        E 37 95 48 69
+        E 146 85 48 4f
+        E 56 95 3f 5f
+        E 130 85 3f 32
+        E 80 95 4b 64
+        E 154 85 4b 35
+        E 215 95 3e 53
+        E 168 85 3e 4b
+        E 322 95 4a 50
+        E 187 85 4a 41
+        E 18 95 3c 65
+        E 142 85 3c 41
+        E 264 95 48 6a
+        E 132 85 48 4c
+        E 52 95 3f 6b
+        E 140 85 3f 4c
+        E 495 95 4b 43
+        E 141 85 4b 2f
+        E 105 95 3e 64
+        E 89 85 3e 45
+        E 70 95 4a 60
+        E 141 85 4a 4c
+        E 33 95 3c 6e
+        E 135 85 3c 47
+        E 43 95 48 6e
+        E 139 85 48 4c
+        E 146 95 3f 61
+        E 138 85 3f 3d
+        E 38 95 4b 6b
+        E 141 85 4b 36
+        E 42 95 3e 69
+        E 111 85 3e 50
+        E 59 95 4a 64
+        E 152 85 4a 4e
+        E 387 95 3c 5c
+        E 150 85 3c 4e
+        E 135 95 4b 66
+        E 139 85 4b 34
+        E 92 95 3f 56
+        E 142 85 3f 3a
+        E 153 95 4a 63
+        E 140 95 3e 5b
+        E 12 85 4a 4b
+        E 116 85 3e 53
+        E 447 95 4b 5b
+        E 127 85 4b 36
+        E 54 95 3c 6a
+        E 126 85 3c 4c
+        E 85 95 4a 5c
+        E 130 85 4a 48
+        E 247 95 3f 6b
+        E 152 85 3f 3a
+        E 214 95 48 5c
+        E 140 85 48 48
+        E 117 95 3e 6b
+        E 124 85 3e 4f
+        E 143 95 4b 61
+        E 120 85 4b 33
+        E 217 95 3c 6a
+        E 151 85 3c 53
+        E 41 95 4a 66
+        E 187 85 4a 48
+        E 103 95 3f 5f
+        E 151 85 3f 3a
+        E 27 95 48 65
+        E 134 85 48 4c
+        E 62 95 3e 5d
+        E 130 85 3e 4d
+        E 64 95 4b 5f
+        E 135 85 4b 35
+        E 64 95 3c 6a
+        E 133 85 3c 45
+        E 46 95 4a 61
+        E 185 85 4a 43
+        E 85 95 3f 55
+        E 139 85 3f 3c
+        E 566 95 4b 4a
+        E 110 95 3e 6b
+        E 31 85 4b 37
+        E 76 85 3e 4c
+        E 374 95 4a 65
+        E 148 85 4a 4f
+        E 77 95 3f 5f
+        E 138 85 3f 47
+        E 30 95 4b 64
+        E 134 85 4b 36
+        E 22 95 3e 61
+        E 138 85 3e 4a
+        E 24 95 4a 60
+        E 130 85 4a 4d
+        E 27 95 3c 6a
+        E 135 85 3c 4f
+        E 32 95 4b 58
+        E 132 85 4b 38
+        E 100 95 3f 5f
+        E 8 95 3e 6c
+        E 46 85 3f 15
+        E 38 85 3e 3b
+        E 471 95 4a 50
+        E 142 85 4a 35
+        E 239 95 3e 60
+        E 163 85 3e 52
+        E 78 95 4b 5f
+        E 119 85 4b 32
+        E 95 95 3c 5d
+        E 128 85 3c 53
+        E 58 95 4a 63
+        E 142 85 4a 46
+        E 158 95 3f 58
+        E 136 85 3f 37
+        E 1126 95 3c 6a
+        E 37 95 48 70
+        E 1714 85 3c 53
+        E 21 85 48 43
+        E 6175 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {12DFC7A3-4125-4E17-9623-54BEBF8C99D2}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 69
+        VELLANE -1 100 0
+      >
+    >
+    <ITEM
+      POSITION 911.48935416666666
+      SNAPOFFS 0
+      LENGTH 47.50797872340426
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {065F2BD7-EFE2-4A1D-B10B-BCE4F9E14DEE}
+      IID 27
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {0A7F6499-BC73-4D7D-AFCE-273C601F0F5C}
+      RECPASS 20
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {765E99CC-DF24-45F0-8429-2975C0473F74}
+        E 7578 95 5b 3a
+        E 200 85 5b 45
+        E 2532 95 60 24
+        E 912 95 5b 27
+        E 55 85 60 29
+        E 878 95 5e 1d
+        E 92 85 5b 10
+        E 313 85 5e 29
+        E 1651 95 60 2d
+        E 903 95 5b 32
+        E 18 85 60 32
+        E 1062 95 5c 14
+        E 52 85 5b 21
+        E 103 85 5c 55
+        E 1365 95 60 34
+        E 513 95 5b 3d
+        E 79 85 60 21
+        E 785 95 5c 25
+        E 49 85 5b 2b
+        E 1085 85 5c 27
+        E 41 95 57 30
+        E 703 85 57 12
+        E 1068 95 54 25
+        E 694 85 54 1c
+        E 1271 95 52 0d
+        E 485 85 52 11
+        E 2229 95 57 3a
+        E 222 85 57 20
+        E 211 95 54 4c
+        E 190 85 54 37
+        E 339 95 52 2a
+        E 160 85 52 25
+        E 247 95 50 19
+        E 153 85 50 12
+        E 314 95 4f 3c
+        E 317 85 4f 2b
+        E 644 95 50 2c
+        E 279 85 50 1e
+        E 606 95 4f 33
+        E 320 85 4f 27
+        E 729 95 4b 0f
+        E 431 85 4b 13
+        E 2503 95 57 33
+        E 202 85 57 1c
+        E 271 95 54 4d
+        E 188 85 54 3d
+        E 278 95 52 45
+        E 170 85 52 29
+        E 738 95 50 31
+        E 160 85 50 27
+        E 284 95 4f 41
+        E 210 85 4f 32
+        E 1311 95 50 37
+        E 146 85 50 22
+        E 868 95 52 31
+        E 1297 85 52 2e
+        E 1608 95 57 3c
+        E 189 85 57 22
+        E 218 95 54 55
+        E 197 85 54 41
+        E 215 95 52 38
+        E 194 85 52 23
+        E 268 95 54 45
+        E 198 85 54 35
+        E 283 95 57 1f
+        E 180 85 57 24
+        E 904 95 5c 34
+        E 150 85 5c 23
+        E 735 95 5e 2a
+        E 218 85 5e 20
+        E 847 95 60 22
+        E 378 85 60 2b
+        E 987 95 5b 3b
+        E 173 85 5b 2b
+        E 339 95 60 40
+        E 173 85 60 30
+        E 230 95 5e 45
+        E 164 85 5e 2d
+        E 297 95 5c 2f
+        E 165 85 5c 21
+        E 794 95 60 39
+        E 278 85 60 2c
+        E 1153 95 5b 37
+        E 160 85 5b 3d
+        E 296 95 5e 33
+        E 210 85 5e 1f
+        E 161 95 5c 33
+        E 182 85 5c 22
+        E 283 95 5b 47
+        E 210 85 5b 36
+        E 671 95 57 36
+        E 250 85 57 22
+        E 1182 95 60 43
+        E 161 85 60 43
+        E 756 95 5c 2e
+        E 194 85 5c 16
+        E 202 95 5b 47
+        E 208 85 5b 36
+        E 839 95 54 4e
+        E 237 85 54 36
+        E 1171 95 5e 3e
+        E 194 85 5e 24
+        E 673 95 5c 38
+        E 216 85 5c 2c
+        E 224 95 5b 46
+        E 197 85 5b 43
+        E 744 95 56 37
+        e 21 95 54 36
+        e 149 85 54 1f
+        E 1513 85 56 01
+        E 948 95 56 6b
+        E 209 85 56 40
+        E 697 95 57 47
+        E 2024 85 57 1f
+        E 4231 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {36838C9D-5739-4D96-8228-DDD3B7C0A2C0}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 72
+        VELLANE -1 100 0
+        CFGEDITVIEW -23285.02882 0.009573 18 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 0
+        EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 182 -13 1198 660 0 0 0 0 0 0 0 1 0 0.5 0 0 1 64
+      >
+    >
+    <ITEM
+      POSITION 960
+      SNAPOFFS 0
+      LENGTH 37.65957446808511
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {5820F86A-4F5D-4DD5-8633-807F83CD7D1A}
+      IID 28
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5118AC4D-FAC9-4D01-AA9B-7A243C9AD28A}
+      RECPASS 21
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {C6F9E14C-BAB8-4FA3-AE9E-7C4E094A67E3}
+        E 7526 95 3c 30
+        E 935 85 3c 3b
+        E 11 95 43 36
+        E 312 85 43 2f
+        E 227 95 3f 35
+        E 242 85 3f 19
+        E 86 95 48 24
+        E 260 95 4b 2d
+        E 84 85 48 19
+        E 173 85 4b 24
+        E 1222 95 3c 40
+        E 880 95 43 40
+        E 64 85 3c 44
+        E 142 85 43 3c
+        E 350 95 3f 2f
+        E 199 95 43 41
+        E 99 85 3f 22
+        E 156 95 48 2b
+        E 29 85 43 33
+        E 506 95 4b 37
+        E 4 85 48 33
+        E 138 85 4b 3d
+        E 365 95 4a 4a
+        E 163 85 4a 34
+        E 713 95 3c 42
+        E 875 85 3c 01
+        E 15 95 43 4a
+        E 261 85 43 41
+        E 403 95 3f 28
+        E 166 95 43 4c
+        E 107 85 3f 2d
+        E 99 85 43 42
+        E 10 95 48 35
+        E 231 85 48 29
+        E 10 95 4b 2c
+        E 247 85 4b 16
+        E 2 95 4a 40
+        E 174 85 4a 28
+        E 378 95 4b 3f
+        E 278 85 4b 15
+        E 952 95 3c 47
+        E 1067 95 43 50
+        E 69 85 3c 45
+        E 155 85 43 43
+        E 454 95 3f 2c
+        E 206 95 43 48
+        E 104 85 3f 29
+        E 107 95 48 39
+        E 30 85 43 3c
+        E 211 95 4b 31
+        E 30 85 48 23
+        E 229 95 4a 3f
+        E 46 85 4b 20
+        E 135 85 4a 31
+        E 1115 95 4a 55
+        E 309 85 4a 24
+        E 3437 95 4f 41
+        E 193 85 4f 3b
+        E 3763 95 4f 46
+        E 191 85 4f 47
+        E 1310 95 57 39
+        E 201 85 57 18
+        E 187 95 54 41
+        E 194 85 54 39
+        E 675 95 4f 36
+        E 115 85 4f 35
+        E 699 95 4a 37
+        E 173 85 4a 42
+        E 804 95 57 3d
+        E 193 85 57 25
+        E 209 95 56 40
+        E 202 85 56 3e
+        E 292 95 54 43
+        E 178 85 54 43
+        E 665 95 4f 43
+        E 131 85 4f 45
+        E 758 95 4a 43
+        E 173 85 4a 48
+        E 769 95 57 33
+        E 168 85 57 16
+        E 288 95 56 2c
+        E 175 85 56 24
+        E 239 95 54 48
+        E 165 85 54 40
+        E 629 95 4f 42
+        E 187 85 4f 42
+        E 677 95 48 3e
+        E 158 85 48 55
+        E 793 95 57 24
+        E 138 85 57 28
+        E 234 95 56 3a
+        E 186 85 56 28
+        E 168 95 54 44
+        E 156 85 54 46
+        E 687 95 4f 44
+        E 188 85 4f 46
+        E 632 95 48 3c
+        E 237 85 48 34
+        E 652 95 43 3d
+        E 201 85 43 3e
+        E 208 95 48 36
+        E 199 85 48 42
+        E 123 95 43 2e
+        E 205 85 43 32
+        E 238 95 4a 2a
+        E 184 85 4a 25
+        E 287 95 48 2e
+        E 205 85 48 33
+        E 645 95 43 3d
+        E 230 85 43 28
+        E 457 95 48 3e
+        E 222 95 4a 3b
+        E 5 85 48 31
+        E 179 85 4a 3e
+        E 34 95 48 45
+        E 150 85 48 3b
+        E 138 95 43 45
+        E 184 85 43 3c
+        E 347 95 4a 46
+        E 213 85 4a 39
+        E 266 95 4b 2a
+        E 179 85 4b 26
+        E 279 95 48 41
+        E 223 85 48 3a
+        E 791 95 43 43
+        E 230 85 43 3a
+        E 449 95 48 39
+        E 230 95 4a 3b
+        E 14 85 48 25
+        E 189 95 4b 3e
+        E 6 85 4a 3c
+        E 197 85 4b 15
+        E 52 95 4a 43
+        E 164 85 4a 42
+        E 321 95 48 48
+        E 177 85 48 40
+        E 357 95 43 44
+        E 232 85 43 37
+        E 230 95 48 42
+        E 173 85 48 47
+        E 901 95 4f 4e
+        E 246 85 4f 36
+        E 6952 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {2E5EB8C9-C358-4AEC-B159-18A3BB6EFCC5}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 75
+        VELLANE -1 100 0
+      >
+    >
+    <ITEM
+      POSITION 998.297875
+      SNAPOFFS 0
+      LENGTH 43.40425265957447
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {71823AD3-AA71-4845-A73C-D923FDE65C82}
+      IID 30
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {EDA12BAE-42BE-4222-8E72-ADDEB112C987}
+      RECPASS 23
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {1333E270-61B9-4655-80C1-6F9723FCE5DF}
+        E 7522 95 46 2f
+        E 277 85 46 33
+        E 718 95 4a 48
+        E 203 85 4a 40
+        E 298 95 4d 44
+        E 108 85 4d 45
+        E 842 95 52 38
+        E 102 85 52 2e
+        E 1006 95 46 3c
+        E 239 85 46 31
+        E 667 95 4a 3a
+        E 177 85 4a 43
+        E 178 95 4d 36
+        E 193 85 4d 36
+        E 1069 95 52 3c
+        E 143 85 52 33
+        E 672 95 46 3e
+        E 242 85 46 2b
+        E 696 95 4a 3e
+        E 148 85 4a 40
+        E 302 95 4d 3f
+        E 121 85 4d 39
+        E 1132 95 52 44
+        E 86 85 52 3d
+        E 871 95 4b 28
+        E 5 95 48 41
+        E 12 95 4f 25
+        E 245 85 4b 2e
+        E 22 85 4f 35
+        E 1 85 48 44
+        E 3670 95 46 3f
+        E 222 85 46 2b
+        E 683 95 4a 43
+        E 167 85 4a 45
+        E 337 95 4d 45
+        E 135 85 4d 4f
+        E 1099 95 52 2e
+        E 88 85 52 30
+        E 682 95 46 36
+        E 245 85 46 2c
+        E 671 95 4a 43
+        E 184 85 4a 42
+        E 268 95 4d 3f
+        E 118 85 4d 48
+        E 1023 95 52 38
+        E 96 85 52 33
+        E 826 95 46 38
+        E 152 85 46 28
+        E 632 95 4a 4b
+        E 168 85 4a 3f
+        E 272 95 4d 40
+        E 113 85 4d 3f
+        E 996 95 52 3d
+        E 138 85 52 35
+        E 934 95 4f 4c
+        E 0 95 48 52
+        E 8 95 4b 36
+        E 182 85 4b 2f
+        E 20 85 48 54
+        E 8 85 4f 53
+        E 3866 95 46 3b
+        E 241 85 46 2a
+        E 711 95 4a 31
+        E 183 85 4a 35
+        E 278 95 4d 47
+        E 116 85 4d 47
+        E 1034 95 52 39
+        E 164 85 52 2c
+        E 690 95 46 3a
+        E 242 85 46 24
+        E 560 95 4a 38
+        E 182 85 4a 34
+        E 297 95 4d 48
+        E 143 85 4d 48
+        E 952 95 52 3d
+        E 111 85 52 30
+        E 680 95 46 42
+        E 197 85 46 21
+        E 614 95 4a 45
+        E 199 85 4a 35
+        E 232 95 4d 51
+        E 133 85 4d 4f
+        E 964 95 52 3a
+        E 144 85 52 36
+        E 806 95 4b 2f
+        E 4 95 48 4e
+        E 7 95 4f 3d
+        E 236 85 4f 43
+        E 1 85 4b 34
+        E 4 85 48 4f
+        E 3289 95 46 2f
+        E 201 85 46 2c
+        E 638 95 4a 43
+        E 203 85 4a 3d
+        E 245 95 4d 41
+        E 135 85 4d 3d
+        E 1028 95 52 3c
+        E 125 85 52 34
+        E 696 95 46 3a
+        E 204 85 46 27
+        E 517 95 4a 3d
+        E 212 85 4a 3b
+        E 277 95 4d 44
+        E 156 85 4d 44
+        E 928 95 50 37
+        E 108 85 50 36
+        E 726 95 46 33
+        E 208 85 46 25
+        E 461 95 4a 43
+        E 231 85 4a 3e
+        E 323 95 4d 54
+        E 138 85 4d 4f
+        E 1223 95 4b 51
+        E 138 85 4b 3c
+        E 721 95 48 43
+        E 1219 85 48 34
+        E 7131 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {29C7E4F9-6A63-49F2-BFAE-1BE34D0799A9}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 81
+        VELLANE -1 100 0
+      >
+    >
+    <ITEM
+      POSITION 1041.702125
+      SNAPOFFS 0
+      LENGTH 82.97872606382975
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {EA970E84-FA98-4F8E-9D0C-A00839F492C7}
+      IID 31
+      NAME "01-Helm-Recorded MIDI"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {1EC04E9A-1B71-458E-9476-ED1DDA8D2F96}
+      RECPASS 24
+      <SOURCE MIDI
+        HASDATA 1 960 QN
+        CCINTERP 32
+        POOLEDEVTS {981918B2-F184-4FD3-9CA5-793199095B09}
+        E 7451 95 3c 23
+        E 103 95 3f 44
+        E 160 85 3c 2f
+        E 18 95 43 52
+        E 40 95 48 45
+        E 61 85 3f 2c
+        E 68 95 4b 3b
+        E 47 85 43 49
+        E 34 85 48 47
+        E 56 85 4b 69
+        E 3126 95 3c 28
+        E 93 95 3f 43
+        E 181 95 48 3a
+        E 4 95 43 43
+        E 19 85 3c 39
+        E 62 95 4b 39
+        E 26 85 3f 2b
+        E 70 85 48 4c
+        E 24 85 43 45
+        E 94 85 4b 3a
+        E 3323 95 3c 36
+        E 103 95 3f 3c
+        E 122 95 48 3c
+        E 18 95 43 4d
+        E 35 85 3c 3c
+        E 58 95 4b 3b
+        E 29 85 3f 28
+        E 66 85 48 49
+        E 29 85 43 41
+        E 41 85 4b 47
+        E 652 95 52 39
+        E 127 85 52 3a
+        E 671 95 3c 2e
+        E 163 95 3f 3f
+        E 136 85 3c 3f
+        E 19 95 43 52
+        E 32 95 48 31
+        E 71 85 3f 2a
+        E 39 95 4b 3a
+        E 75 85 43 40
+        E 29 85 48 45
+        E 32 85 4b 3a
+        E 607 95 52 3d
+        E 142 85 52 31
+        E 558 95 3c 46
+        E 124 95 3f 4a
+        E 177 85 3c 3b
+        E 0 95 43 58
+        E 86 95 48 39
+        E 15 85 3f 25
+        E 70 95 4b 33
+        E 11 85 43 46
+        E 101 85 48 45
+        E 38 85 4b 2e
+        E 588 95 52 3e
+        E 127 85 52 3a
+        E 528 95 3c 2e
+        E 170 95 3f 33
+        E 136 95 43 4a
+        E 4 95 48 43
+        E 34 85 3c 31
+        E 59 95 4b 32
+        E 6 85 3f 26
+        E 38 85 43 43
+        E 78 85 48 48
+        E 23 85 4b 23
+        E 642 95 52 38
+        E 158 85 52 2a
+        E 448 95 3c 3f
+        E 202 95 3f 0f
+        E 121 95 43 4e
+        E 29 85 3c 35
+        E 35 95 48 38
+        E 108 85 3f 24
+        E 37 85 43 42
+        E 3 95 4b 37
+        E 80 85 48 47
+        E 96 85 4b 1a
+        E 627 95 52 30
+        E 164 85 52 31
+        E 482 95 3c 44
+        E 143 95 3f 2f
+        E 119 95 43 3b
+        E 60 85 3c 38
+        E 36 95 48 40
+        E 71 85 3f 1f
+        E 17 95 4b 40
+        E 26 85 43 2c
+        E 80 85 48 43
+        E 81 85 4b 28
+        E 611 95 52 3b
+        E 149 85 52 35
+        E 365 95 3c 45
+        E 143 95 3f 47
+        E 159 85 3c 43
+        E 0 95 43 4c
+        E 2 95 48 43
+        E 103 95 4b 3d
+        E 28 85 3f 1a
+        E 55 85 48 4b
+        E 3 85 43 39
+        E 91 85 4b 32
+        E 583 95 52 22
+        E 119 85 52 26
+        E 446 95 3c 45
+        E 165 95 3f 30
+        E 111 95 43 4a
+        E 46 85 3c 34
+        E 34 95 48 20
+        E 61 85 3f 1f
+        E 94 95 4b 2b
+        E 23 85 43 30
+        E 71 85 48 27
+        E 85 85 4b 38
+        E 582 95 52 22
+        E 142 85 52 32
+        E 390 95 3c 3d
+        E 198 95 3f 2d
+        E 116 95 43 3e
+        E 82 85 3c 2a
+        E 58 85 3f 2c
+        E 31 95 48 3d
+        E 80 95 4b 36
+        E 43 85 43 46
+        E 57 85 48 4f
+        E 71 85 4b 2e
+        E 407 95 52 43
+        E 138 85 52 3f
+        E 349 95 3c 49
+        E 191 95 3f 4e
+        E 104 95 43 4f
+        E 14 85 3c 39
+        E 33 95 48 34
+        E 92 85 3f 25
+        E 16 95 4b 36
+        E 61 85 43 3c
+        E 21 85 48 40
+        E 72 85 4b 2c
+        E 392 95 52 38
+        E 156 85 52 26
+        E 165 95 3c 30
+        E 181 95 3f 2f
+        E 114 95 43 55
+        E 11 95 48 42
+        E 63 85 3c 33
+        E 6 95 4b 3d
+        E 47 85 3f 26
+        E 57 85 48 48
+        E 2 85 43 43
+        E 73 85 4b 35
+        E 299 95 52 3e
+        E 129 85 52 3d
+        E 166 95 3c 4a
+        E 189 95 3f 29
+        E 33 95 43 51
+        E 42 95 48 33
+        E 47 85 3c 40
+        E 31 95 4b 50
+        E 34 85 3f 23
+        E 51 85 43 44
+        E 17 85 48 43
+        E 48 85 4b 38
+        E 292 95 52 51
+        E 161 85 52 34
+        E 77 95 3c 3a
+        E 183 95 3f 4c
+        E 30 95 43 61
+        E 84 85 3c 40
+        E 12 95 48 33
+        E 61 95 4b 45
+        E 12 85 3f 23
+        E 35 85 43 46
+        E 63 85 48 40
+        E 33 85 4b 3d
+        E 315 95 52 2e
+        E 124 85 52 2d
+        E 144 95 3c 47
+        E 169 95 43 51
+        E 63 95 3f 32
+        E 52 95 48 3a
+        E 31 85 3c 47
+        E 23 95 4b 3d
+        E 43 85 43 4e
+        E 41 85 3f 12
+        E 10 85 48 46
+        E 23 85 4b 66
+        E 310 95 52 50
+        E 116 85 52 3c
+        E 241 95 3c 4b
+        E 118 95 3f 4c
+        E 6 95 48 4c
+        E 0 95 43 53
+        E 31 95 4b 32
+        E 102 85 48 43
+        E 3 85 3c 46
+        E 17 85 43 4d
+        E 21 85 3f 34
+        E 41 85 4b 47
+        E 3142 95 52 37
+        E 188 85 52 32
+        E 3039 95 52 3a
+        E 249 85 52 2f
+        E 791 95 59 40
+        E 7 95 56 46
+        E 143 85 59 4c
+        E 60 85 56 44
+        E 2676 95 52 3c
+        E 187 85 52 2a
+        E 832 95 56 40
+        E 22 95 59 48
+        E 204 85 56 42
+        E 37 85 59 37
+        E 1250 95 54 3e
+        E 14 95 58 42
+        E 1483 85 54 3d
+        E 27 85 58 30
+        E 757 95 59 3c
+        E 11 95 56 20
+        E 1407 85 56 18
+        E 147 85 59 0a
+        E 1316 95 52 38
+        E 164 85 52 23
+        E 809 95 56 4a
+        E 24 95 59 42
+        E 1911 85 59 2f
+        E 4 85 56 2e
+        E 828 95 52 2f
+        E 199 85 52 1f
+        E 725 95 56 06
+        E 24 95 59 2d
+        E 1901 85 59 40
+        E 10 85 56 40
+        E 901 95 52 33
+        E 212 85 52 29
+        E 766 95 56 2d
+        E 30 95 59 2c
+        E 1175 85 56 2a
+        E 163 85 59 25
+        E 254 95 54 40
+        E 15 95 58 46
+        E 1716 85 54 38
+        E 11 85 58 42
+        E 633 95 56 24
+        E 16 95 59 21
+        E 2683 85 59 09
+        E 20 85 56 01
+        E 1218 95 4c 39
+        E 0 95 4f 3e
+        E 9 95 48 40
+        E 2006 85 4f 48
+        E 29 85 48 43
+        E 16 85 4c 4e
+        E 1807 95 4d 2a
+        E 12 95 4a 3b
+        E 35 95 46 37
+        E 2737 85 4a 4c
+        E 21 85 46 44
+        E 3 85 4d 2c
+        E 1878 95 4c 33
+        E 4 95 48 48
+        E 13 95 4f 44
+        E 215 85 48 44
+        E 7 85 4c 46
+        E 21 85 4f 42
+        E 1203 95 48 4a
+        E 0 95 4f 46
+        E 3 95 4c 42
+        E 206 85 48 3e
+        E 12 85 4c 40
+        E 14 85 4f 32
+        E 736 95 4c 4c
+        E 3 95 4f 42
+        E 12 95 48 43
+        E 187 85 48 38
+        E 27 85 4c 3d
+        E 3 85 4f 35
+        E 1138 95 48 43
+        E 0 95 4f 3d
+        E 10 95 4c 2f
+        E 184 85 48 3a
+        E 14 85 4c 40
+        E 11 85 4f 3a
+        E 2705 95 4f 47
+        E 0 95 4c 43
+        E 1 95 48 38
+        E 183 85 4c 44
+        E 7 85 48 4a
+        E 12 85 4f 45
+        e 788 95 4d 41
+        e 0 95 46 21
+        e 110 85 46 33
+        e 10 85 4d 36
+        E 7581 95 4c 42
+        E 238 85 4c 32
+        E 1234 95 4c 3a
+        E 232 85 4c 35
+        E 694 95 4c 3c
+        E 241 85 4c 2e
+        E 1206 95 48 4c
+        E 273 85 48 42
+        E 3553 95 4a 42
+        E 236 85 4a 40
+        E 1230 95 4a 48
+        E 230 85 4a 3d
+        E 625 95 4a 31
+        E 264 85 4a 43
+        E 1179 95 46 6e
+        E 229 85 46 1f
+        E 3749 95 4c 47
+        E 243 85 4c 40
+        E 1082 95 4c 37
+        E 224 85 4c 3a
+        E 800 95 4c 43
+        E 188 85 4c 3c
+        E 1113 95 48 48
+        E 272 85 48 41
+        E 3745 95 4a 47
+        E 222 85 4a 3c
+        E 1207 95 4a 4c
+        E 173 85 4a 44
+        E 711 95 4a 48
+        E 182 85 4a 40
+        E 1305 95 46 48
+        E 291 85 46 23
+        E 27871 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {FB98DC65-B565-4CE0-AA4D-7A0456F36FD8}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 84
+        VELLANE -1 100 0
+        CFGEDITVIEW 73989.366418 0.010704 39 12 0 -1 0 0 0 0.5
+        KEYSNAP 0
+        TRACKSEL 0
+        EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1
+        CFGEDIT 1 1 0 1 0 0 1 1 1 1 1 0.125 191 237 1207 910 0 0 0 0 0 0 0 0 0 0.5 0 0 1 64
       >
     >
   >
@@ -1280,6 +3266,7 @@
         GUID {2A87CE55-56CD-4572-8BE0-0D1A90C3F638}
         IGNTEMPO 0 120 4 4
         SRCCOLOR 8
+        VELLANE -1 100 0
       >
     >
   >
