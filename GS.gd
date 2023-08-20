@@ -440,5 +440,19 @@ func check_fullscreen_input():
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 
+func resynchronize_armored_virus_count():
+	var vs = get_tree().get_nodes_in_group("Virus")
+	var count = 0
+	
+	for v in vs:
+		if v.is_armored():
+			count += 1
+			
+	armored_virus_count = count
+
 func _process(delta):
 	check_fullscreen_input()
+	
+	# Antisoftlock measure
+	if randf() < (1 / 180.0):
+		resynchronize_armored_virus_count()

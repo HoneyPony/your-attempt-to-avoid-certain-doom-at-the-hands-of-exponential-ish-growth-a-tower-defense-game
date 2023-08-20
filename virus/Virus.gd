@@ -95,6 +95,9 @@ func _physics_process(delta):
 			reset_spawn_timer()
 			
 		if global_position.y >= STATE_CHANGE_Y:
+			if is_queued_for_deletion():
+				return
+			
 			state = State.FLYING
 			GS.armored_virus_count += 1
 			
@@ -262,3 +265,6 @@ func _on_Area2D_body_entered(body):
 			var a = active_armor[randi() % active_armor.size()]
 			armor_on[a] = false
 			get_node(str("Armor", (a + 1))).destroy()
+
+func is_armored():
+	return state == State.FLYING

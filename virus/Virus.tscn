@@ -83,7 +83,7 @@ shader_param/noise = SubResource( 4 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 20, 20 )
 
-[node name="Virus" type="Node2D"]
+[node name="Virus" type="Node2D" groups=["Virus"]]
 z_index = -20
 script = ExtResource( 2 )
 
