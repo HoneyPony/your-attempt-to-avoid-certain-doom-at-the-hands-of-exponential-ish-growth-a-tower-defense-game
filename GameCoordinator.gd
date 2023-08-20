@@ -314,7 +314,7 @@ func spawn_freeplay_vc():
 	#print(speed)
 	
 	var spawn_timer = 0.1 - (t / 4000.0) #lerp(0.2, 0.1, t)
-	spawn_timer = clamp(spawn_timer, 0.01666 * 2, 1.0)
+	spawn_timer = clamp(spawn_timer, 0.01666 * 2, 0.1)
 	var generation = 0
 	var prime = round(rand_range(120, 180))
 	
