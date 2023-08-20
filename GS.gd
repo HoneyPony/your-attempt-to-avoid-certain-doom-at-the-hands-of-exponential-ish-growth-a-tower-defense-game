@@ -421,8 +421,8 @@ func reset_game_state():
 	ship_buyers = [null, null, null, null, null, null]
 	
 	# DEBUG MONEY:
-	#money = 21000
-	#total_money = 21000
+	money = 21000
+	total_money = 21000
 	
 	reset_timers()
 	
@@ -440,7 +440,7 @@ func _physics_process(delta):
 	physics_frame -= 1
 	if physics_frame <= 0:
 		perform_custom_physics()
-		physics_frame = 1
+		physics_frame = 2
 	
 func check_fullscreen_input():
 	if Input.is_action_just_pressed("fullscreen"):
