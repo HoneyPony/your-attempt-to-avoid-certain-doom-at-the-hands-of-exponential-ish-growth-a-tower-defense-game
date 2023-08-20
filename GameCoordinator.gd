@@ -310,6 +310,7 @@ func spawn_freeplay_vc():
 	
 	var t = GS.total_money - money_end_goal()
 	var speed = 4 + (t / 2000.0) * 0.4
+	speed = clamp(speed, 4, 10000)
 	#print(speed)
 	
 	var spawn_timer = 0.1 - (t / 4000.0) #lerp(0.2, 0.1, t)
@@ -338,6 +339,7 @@ func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strengt
 	vc.position.x = rand_range(-x, x)
 	vc.priming_count = prime
 	vc.actual_max_strength = max_strength
+	vc.special_rot = special_rot
 	add_child(vc)
 	
 	return vc
