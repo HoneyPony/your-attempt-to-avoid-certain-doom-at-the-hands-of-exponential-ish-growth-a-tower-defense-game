@@ -195,6 +195,8 @@ var ship_scenes = [
 # Used to determine the price for more ships.
 var ship_counts = [0, 0, 0, 0, 0, 0]
 
+var armored_virus_count = 0
+
 func has_any_ship() -> bool:
 	for s in ship_counts:
 		if s > 0:
@@ -223,7 +225,7 @@ var upgrades = [
 		],
 		[
 			Upgrade.new(2700, "Increase this laser's piercing ability to 2."),
-			Upgrade.new(8000, "Increase this laser's piercing ability to 3.")
+			Upgrade.new(7500, "Increase this laser's piercing ability to 3.")
 		]
 	),
 	
@@ -231,11 +233,11 @@ var upgrades = [
 	Upgrades.new(
 		[
 			Upgrade.new(900, "The drill will attack 1.5x as often."),
-			Upgrade.new(1600, "The drill will attack another 2x as often.")
+			Upgrade.new(1400, "The drill will attack another 2x as often.")
 		],
 		[
 			Upgrade.new(700, "Increase the drill's movement speed by 1.5x."),
-			Upgrade.new(1500, "Increase the drill's movement speed by another 1.5x.")
+			Upgrade.new(1300, "Increase the drill's movement speed by another 1.5x.")
 		]	
 	),
 	
@@ -247,7 +249,7 @@ var upgrades = [
 		],
 		[
 			Upgrade.new(1500, "Make this cannon's explosions 20% larger"),
-			Upgrade.new(4200, "Make this cannon's explosions another 20% larger")
+			Upgrade.new(3200, "Make this cannon's explosions another 20% larger")
 		]
 	),
 	
@@ -259,7 +261,7 @@ var upgrades = [
 		],
 		[
 			Upgrade.new(450, "This ship will impede virus growth by +1 more."),
-			Upgrade.new(2800, "This ship will impede virus growth by +3 more.")
+			Upgrade.new(2000, "This ship will impede virus growth by +3 more.")
 		]
 	),
 	
@@ -267,11 +269,11 @@ var upgrades = [
 	Upgrades.new(
 		[
 			Upgrade.new(150, "Make the ship's bullets much smaller."),
-			Upgrade.new(2900, "This ship will shoot 1.8x as fast.")
+			Upgrade.new(2200, "This ship will shoot 1.8x as fast.")
 		],
 		[
 			Upgrade.new(800, "Increase the piercing of this ship to 8."),
-			Upgrade.new(3500, "Increase the piercing of this ship to 17.")
+			Upgrade.new(3300, "Increase the piercing of this ship to 17.")
 		]
 	)
 ]

@@ -46,8 +46,17 @@ func destroy(aging_amount):
 		return
 		
 	# We get money when a virus is destroyed
-	GS.money += GS.earned_money
-	GS.total_money += GS.earned_money
+	if GS.earned_money == 1:
+		# Gameplay tweak: add ~1.5 money per virus in late game
+		if randf() < 0.5:
+			GS.money += 2
+			GS.total_money += 2
+		else:
+			GS.money += 1
+			GS.total_money += 1
+	else:
+		GS.money += GS.earned_money
+		GS.total_money += GS.earned_money
 	
 	if is_instance_valid(parent_vc):
 		parent_vc.free_coord(coord, aging_amount)
@@ -64,6 +73,9 @@ func destroy(aging_amount):
 	$Area2D.collision_mask = 0
 	
 	Sounds.play_destroy()
+	
+	if state == State.FLYING:
+		GS.armored_virus_count -= 1
 
 func reset_spawn_timer():
 	spawn_timer = parent_vc.spawn_timer_max * rand_range(0.95, 1.05) * speed
@@ -84,6 +96,7 @@ func _physics_process(delta):
 			
 		if global_position.y >= STATE_CHANGE_Y:
 			state = State.FLYING
+			GS.armored_virus_count += 1
 			
 			var cur_pos = global_position
 			var cur_rot = global_rotation
@@ -111,9 +124,10 @@ func _physics_process(delta):
 		
 		position.x += step_to_tar
 		
-		if position.y >= LOSE_LIVE_Y:
+		if position.y >= LOSE_LIVE_Y and not is_queued_for_deletion():
 			# Free without destroying, as this doesn't give you any money.
 			queue_free()
+			GS.armored_virus_count -= 1
 			GS.lose_a_life()
 		
 	# Animate the spawn/jitter effects

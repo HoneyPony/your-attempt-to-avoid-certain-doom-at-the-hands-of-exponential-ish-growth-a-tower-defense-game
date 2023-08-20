@@ -65,11 +65,11 @@ func try_to_spawn():
 	
 	# Compute maximum number of living VirusCollections
 	var max_collects = 2
-	if GS.get_total_money() > 12000 and GS.get_total_money() <= 18000:
+	if GS.get_total_money() > 12000:
 		max_collects = 1
 	
 	# We can only have at most 2 (or fewer...?) virus collections at once.
-	if get_tree().get_nodes_in_group("VirusCollection").size() >= max_collects:
+	if not vc_count_is_this_or_fewer(max_collects - 1):
 		return
 		
 	# We can only have 1 scary virus collection.
@@ -105,6 +105,16 @@ func try_to_spawn():
 		spawn_level_4_vc()
 	elif GS.get_total_money() <= 24000:
 		spawn_level_5_vc()
+	elif GS.get_total_money() < 30000:
+		spawn_level_6_vc()
+	elif GS.get_total_money() < 36000:
+		spawn_level_7_vc()
+	elif GS.get_total_money() < 42000:
+		spawn_level_8_vc()
+	elif GS.get_total_money() < 48000:
+		spawn_level_9_vc()
+	else:
+		spawn_freeplay_vc()
 		#spawn_vc(0.3, 10)
 	
 # Spawns a virus collection that is "weak", i.e. the kind that you encounter
@@ -132,7 +142,7 @@ func spawn_weak_vc():
 	t = clamp(t, 0, 1)
 	t = sqrt(t)
 	
-	print(t)
+	#print(t)
 	
 	var spawn_timer = lerp(4.0, 2.5, t)
 	var generation = 0#ceil(lerp(, t))
@@ -198,14 +208,14 @@ func spawn_level_4_vc():
 	var generation = 0
 	var prime = round(rand_range(40, 60))
 	
-	spawn_vc(spawn_timer, prime, generation, 1.08, 19, 150)
+	spawn_vc(spawn_timer, prime, generation, 1.2, 19, 150)
 	
 		
 func spawn_level_5_vc():
 	spawn_increment(2500)
 	
-	var money_min = 12000.0
-	var money_max = 20000.0
+	var money_min = 18000.0
+	var money_max = 24000.0
 	
 	var t = (GS.get_total_money() - money_min) / (money_max - money_min)
 	t = clamp(t, 0, 1)
@@ -215,7 +225,92 @@ func spawn_level_5_vc():
 	var generation = 0
 	var prime = round(rand_range(40, 60))
 	
-	spawn_vc(spawn_timer, prime, generation, 1.16, 20, 180)
+	spawn_vc(spawn_timer, prime, generation, 1.4, 20, 500)
+	
+func spawn_level_6_vc():
+	spawn_increment(2500)
+	
+	var money_min = 24000.0
+	var money_max = 30000.0
+	
+	var t = (GS.get_total_money() - money_min) / (money_max - money_min)
+	t = clamp(t, 0, 1)
+	t = sqrt(t)
+	
+	var spawn_timer = lerp(0.2, 0.1, t)
+	var generation = 0
+	var prime = round(rand_range(40, 60))
+	
+	spawn_vc(spawn_timer, prime, generation, 1.8, 20, 500)
+	
+func spawn_level_7_vc():
+	spawn_increment(3000)
+	
+	var money_min = 30000.0
+	var money_max = 36000.0
+	
+	#var t = (GS.get_total_money() - money_min) / (money_max - money_min)
+	#t = clamp(t, 0, 1)
+	#t = sqrt(t)
+	
+	var spawn_timer = 0.1 #lerp(0.2, 0.1, t)
+	var generation = 0
+	var prime = round(rand_range(120, 180))
+	
+	spawn_vc(spawn_timer, prime, generation, 2.0, 20, 500)
+	
+func spawn_level_8_vc():
+	spawn_increment(3000)
+	
+	#var money_min = 30000.0
+	#var money_max = 36000.0
+	
+	#var t = (GS.get_total_money() - money_min) / (money_max - money_min)
+	#t = clamp(t, 0, 1)
+	#t = sqrt(t)
+	
+	var spawn_timer = 0.1 #lerp(0.2, 0.1, t)
+	var generation = 0
+	var prime = round(rand_range(120, 180))
+	
+	spawn_vc(spawn_timer, prime, generation, 2.5, 20, 500)
+	
+	
+func spawn_level_9_vc():
+	spawn_increment(2500)
+	
+	#var money_min = 30000.0
+	#var money_max = 36000.0
+	
+	#var t = (GS.get_total_money() - money_min) / (money_max - money_min)
+	#t = clamp(t, 0, 1)
+	#t = sqrt(t)
+	
+	var t = GS.total_money - 54000
+	var speed = 4 + (t / 2000.0) * 0.05
+	
+	var spawn_timer = 0.1 #lerp(0.2, 0.1, t)
+	var generation = 0
+	var prime = round(rand_range(120, 180))
+	
+	spawn_vc(spawn_timer, prime, generation, speed, 20, 500)
+	
+func spawn_freeplay_vc():
+	spawn_increment(3000)
+	
+	#var money_min = 30000.0
+	#var money_max = 36000.0
+	
+	#var t = (GS.get_total_money() - money_min) / (money_max - money_min)
+	#t = clamp(t, 0, 1)
+	#t = sqrt(t)
+	
+	var spawn_timer = 0.1 #lerp(0.2, 0.1, t)
+	var generation = 0
+	var prime = round(rand_range(120, 180))
+	
+	spawn_vc(spawn_timer, prime, generation, 4.0, 20, 500)
+	
 	
 # Formula for bounds:
 # (1440 - (64 * generation)) / 2 gives approx bounds
@@ -242,6 +337,13 @@ func spawn_vc(spawn_timer, prime = 0, generation = 0, speed_mul = 1, max_strengt
 func try_open_tutorial(index):
 	if tutorial.target_index < index:
 		tutorial.target_index = index
+		
+func vc_count_is_this_or_fewer(count):
+	var c = get_tree().get_nodes_in_group("VirusCollection").size()
+	if GS.armored_virus_count > 0:
+		c += 1
+		
+	return c <= count
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -268,11 +370,11 @@ func _process(delta):
 		GS.earned_money = 5
 	if GS.get_total_money() >= 7000:
 		GS.earned_money = 1
-	if GS.get_total_money() >= 30000: # need to decide this of course ? 
+	if GS.get_total_money() >= 54000: # need to decide this of course ? 
 		wants_to_win = true
 		
 		# Wait for all viruses to be gone to win
-		if get_tree().get_nodes_in_group("VirusCollection").empty():
+		if vc_count_is_this_or_fewer(0):
 			win_lose.win()
 			wants_to_win = false
 	# Antisoftlock: we always need to be able to have at least 1 ship.
