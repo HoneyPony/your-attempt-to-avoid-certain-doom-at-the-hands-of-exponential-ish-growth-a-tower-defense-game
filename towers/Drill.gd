@@ -19,6 +19,9 @@ func compute_movement_speed():
 		movement_speed *= 1.5
 
 func _physics_process(delta):
+	if get_tree().paused:
+		return
+	
 	compute_movement_speed()
 	
 	if GS.timer_fires[GS.TIMER_DRILL_LEVEL_0 + left_level]:

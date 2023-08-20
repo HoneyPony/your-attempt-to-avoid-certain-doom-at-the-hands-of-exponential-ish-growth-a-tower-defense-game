@@ -25,6 +25,9 @@ func ship_fx():
 	ship_sprite.rotation += (rot_target - ship_sprite.rotation) * 0.09
 
 func _physics_process(delta):
+	if get_tree().paused:
+		return
+	
 	var timer_index = 0
 	if left_level >= 2:
 		timer_index = 1

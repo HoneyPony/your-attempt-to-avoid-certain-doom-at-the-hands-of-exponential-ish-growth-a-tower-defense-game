@@ -47,6 +47,9 @@ func compute_movement_speed():
 		movement_speed *= 1.2
 
 func _physics_process(delta):
+	if get_tree().paused:
+		return
+	
 	# One of our upgrades is movement speed
 	compute_movement_speed()
 	

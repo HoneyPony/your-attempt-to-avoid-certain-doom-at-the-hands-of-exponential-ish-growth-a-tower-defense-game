@@ -21,6 +21,9 @@ func ship_fx():
 	ship_sprite.rotation += (rot_target - ship_sprite.rotation) * 0.09
 
 func _physics_process(delta):
+	if get_tree().paused:
+		return
+	
 	# These timers are SUPPOSED to be ordered in the array by left_level
 	# if not, that should be fixed or it will be a bug!
 	if GS.timer_fires[GS.TIMER_BASIC_GUN_LEVEL_0 + left_level]:
