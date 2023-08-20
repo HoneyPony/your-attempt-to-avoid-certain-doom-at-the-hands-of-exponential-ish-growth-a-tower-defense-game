@@ -421,13 +421,14 @@ func reset_game_state():
 	ship_buyers = [null, null, null, null, null, null]
 	
 	# DEBUG MONEY:
-	money = 21000
-	total_money = 21000
+	#money = 21000
+	#total_money = 21000
 	
 	reset_timers()
 	
 func _ready():
 	reset_game_state()
+	init_physics()
 	
 var physics_frame = 4
 	
@@ -456,17 +457,84 @@ func _process(delta):
 # We may do this, say, every 4 frames so that it is not too slow...?
 var collision_points: PoolVector2Array
 
+# PoolVector2Arrays corresponding to a bunch of cells. Each PoolVector2Array stores
+# points in the cell.
+var cells = []
+# PoolIntArrays corresponding to bullet-point IDs for each cell.
+var cell_lists = []
+
+var bullet_id: int = 0
+
+func push_to_bucket(p: Vector2, id: int, cx: int, cy: int):
+	if cx < 0 or cx >= 18:
+		return
+	if cy < 0 or cy >= 32:
+		return
+	var index = cx * 18 + cy
+	
+	var c = cells[index]
+	c.append(p)
+	cells[index] = c
+	
+	var cl = cell_lists[index]
+	cl.append(id)
+	cell_lists[index] = cl
+
 func push_collision_point(p: Vector2) -> int:
-	# Possibilities for the future: using multiple vector2s for different
-	# quadrants, to speed up the other tests.
-	collision_points.push_back(p)
+	var id = bullet_id
+	bullet_id += 1
 	
-	# Bullets will have to keep track of whether they were hit, in which
-	# case their hit_something will be called... we do this by storing
-	# a set of all indices that were hit.
-	return collision_points.size() - 1
+	var cx = round(p.x / 80)
+	var cy = round(p.y / 80)
 	
-	# TODO: Also add a dictionary for aging information.
+	var ix = p.x - (cx * 80)
+	var iy = p.y - (cy * 80)
+	
+	cx += 9
+	cy += 16
+	
+	var left: bool = (ix < 16)
+	var right: bool = (ix > (80 - 16))
+	var top: bool = (iy < 16)
+	var bottom: bool = (iy > (80 - 16))
+	
+	push_to_bucket(p, id, cx, cy)
+	if left:
+		push_to_bucket(p, id, cx - 1, cy)
+	elif right: # mutually exclusive
+		push_to_bucket(p, id, cx + 1, cy)
+		
+	if top:
+		push_to_bucket(p, id, cx, cy - 1)
+	elif bottom: # mutually exclusive
+		push_to_bucket(p, id, cx, cy + 1)
+		
+	if top and left:
+		push_to_bucket(p, id, cx - 1, cy - 1)
+	elif top and right: # all of these are mutually exclusive
+		push_to_bucket(p, id, cx + 1, cy - 1)
+	elif bottom and left:
+		push_to_bucket(p, id, cx - 1, cy + 1)
+	elif bottom and right:
+		push_to_bucket(p, id, cx + 1, cy + 1)
+		
+	# Identify the bullet-point
+	return id
+#	# Possibilities for the future: using multiple vector2s for different
+#	# quadrants, to speed up the other tests.
+#	collision_points.push_back(p)
+#
+#	# Bullets will have to keep track of whether they were hit, in which
+#	# case their hit_something will be called... we do this by storing
+#	# a set of all indices that were hit.
+#	return collision_points.size() - 1
+#
+#	# TODO: Also add a dictionary for aging information.
+
+func init_physics():
+	for i in range(0, 576):
+		cells.push_back(PoolVector2Array())
+		cell_lists.push_back(PoolIntArray())
 	
 func perform_custom_physics():
 	var viruses: Array = get_tree().get_nodes_in_group("Virus")
@@ -475,16 +543,30 @@ func perform_custom_physics():
 	for v in viruses:
 		if not v.killable():
 			continue
+			
+		var vp = v.global_position
+		var cx = round((vp.x + 720) / 80)
+		var cy = round((vp.y + 1280) / 80)
 		
-		for pi in range(0, collision_points.size()):
-			if v.overlaps(collision_points[pi]):
-				hit_indices[pi] = true
+		if cx < 0 or cx >= 18:
+			continue
+		if cy < 0 or cy >= 32:
+			continue
+			
+		var bucket = cx * 18 + cy
+		
+		for index in cells[bucket].size():
+			if v.overlaps(cells[bucket][index]):
 				v.kill()
+				hit_indices[cell_lists[bucket][index]] = true
 				break
 				
 	var resettable_colliders = get_tree().get_nodes_in_group("ResettableColliders")
 	for rc in resettable_colliders:
 		rc.reset_collision(hit_indices)
 		
-	collision_points = PoolVector2Array()
+	for i in range(0, 576):
+		cells[i] = PoolVector2Array()
+		cell_lists[i] = PoolIntArray()
+	
 	
