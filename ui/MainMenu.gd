@@ -32,7 +32,7 @@ func _on_PlayNormal_pressed():
 	Sounds.click1()
 
 func _on_PlayHarder_pressed():
-	play_difficulty(1.2)
+	play_difficulty(1.4)
 	Sounds.click1()
 
 func _on_Options_pressed():

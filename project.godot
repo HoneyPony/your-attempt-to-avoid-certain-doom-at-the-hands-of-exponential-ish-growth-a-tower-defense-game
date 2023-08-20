@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="your attempt to avoid certain doom at the hands of exponential-ish growth: a tower defense game"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://MainMenu.tscn"
 boot_splash/image="res://ui/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
