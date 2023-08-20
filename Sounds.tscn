@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Sounds.gd" type="Script" id=1]
 [ext_resource path="res://sounds/destroy_14.wav" type="AudioStream" id=2]
@@ -27,6 +27,8 @@
 [ext_resource path="res://sounds/drill.wav" type="AudioStream" id=25]
 [ext_resource path="res://sounds/blip1.wav" type="AudioStream" id=26]
 [ext_resource path="res://sounds/music.ogg" type="AudioStream" id=27]
+[ext_resource path="res://sounds/lose.wav" type="AudioStream" id=28]
+[ext_resource path="res://sounds/win.wav" type="AudioStream" id=29]
 
 [node name="Sounds" type="Node"]
 pause_mode = 2
@@ -233,6 +235,16 @@ script = ExtResource( 18 )
 stream = ExtResource( 26 )
 volume_db = -11.0
 bus = "AllPlayerShipSFX"
+script = ExtResource( 18 )
+
+[node name="Lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+bus = "SFX"
+script = ExtResource( 18 )
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+bus = "SFX"
 script = ExtResource( 18 )
 
 [node name="MUSIC" type="AudioStreamPlayer" parent="."]

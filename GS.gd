@@ -425,7 +425,7 @@ func reset_game_state():
 	# DEBUG MONEY:
 	#money = 7000
 	#total_money = 7000
-	
+	lives = 3
 	reset_timers()
 	
 	ship_counts = [0, 0, 0, 0, 0, 0]

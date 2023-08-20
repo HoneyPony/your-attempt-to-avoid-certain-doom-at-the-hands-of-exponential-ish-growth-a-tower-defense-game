@@ -57,6 +57,11 @@ onready var side_laser_shoot = $SideLaser
 onready var drill = $Drill
 onready var blip1_fx = $Blip1
 
+func win():
+	$Win.play()
+func lose():
+	$Lose.play()
+
 func blip1():
 	blip1_fx.play_sfx()
 

@@ -4,6 +4,8 @@ func win():
 	if GS.game_state == GS.GameState.PLAYING:
 		$WinScreen/AnimationPlayer.play("Open")
 		GS.game_state = GS.GameState.WON
+		
+		Sounds.win()
 	
 func lose():
 	var fs = $LoseScreen/FinalScore
@@ -13,6 +15,8 @@ func lose():
 	if GS.game_state != GS.GameState.LOST:
 		$LoseScreen/AnimationPlayer.play("Open")
 		GS.game_state = GS.GameState.LOST
+		
+		Sounds.lose()
 
 
 func _on_StartOver_pressed():
