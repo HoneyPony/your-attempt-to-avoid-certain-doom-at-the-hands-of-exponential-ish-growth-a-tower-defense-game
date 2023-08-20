@@ -24,7 +24,9 @@ var strength = 12
 enum State {
 	SPAWNING,
 	SPAWNED,
-	FLYING
+	FLYING,
+	
+	DEAD
 }
 
 var state = State.SPAWNING
@@ -32,19 +34,31 @@ var flying_target_x = 0
 
 func _ready():
 	parent_vc = get_parent()
+	spawn_in()
+
+func spawn_in():
 	$Energy.material.set_shader_param("rng_source", Vector2(rand_range(0, 16), rand_range(0, 16)))
 
 	var overlay_rot_options = [0, TAU/4, TAU/2, 0.75 * TAU]
-	$Overlay.rotation = overlay_rot_options[randi() % 4]
+	#$Overlay.rotation = overlay_rot_options[randi() % 4]
 	
 	# Give the overlay a random appearance
 	$Overlay.frame = randi() % $Overlay.hframes
+	
+	# Reset armor in case we were resurrected. Just kidding, that kind of virus
+	# can't be resurrected.
+	# armor_on = [true, true, true, true]
 
 	reset_spawn_timer()
+	
+	# Make sure we're findable by the physics algorithm
+	add_to_group("Virus")
 
 func destroy(aging_amount):
-	if is_queued_for_deletion():
+	if state == State.DEAD:
 		return
+	#if is_queued_for_deletion():
+	#	return
 		
 	# We get money when a virus is destroyed
 	GS.money += GS.earned_money
@@ -52,7 +66,21 @@ func destroy(aging_amount):
 	
 	if is_instance_valid(parent_vc):
 		parent_vc.free_coord(coord, aging_amount)
-	queue_free()
+		
+		if state == State.FLYING:
+			# We may have destroyed some armor.
+			queue_free()
+		else:
+		
+			parent_vc.dead_viruses.append(self)
+			
+			# Don't be findable by the physics algorithm
+			remove_from_group("Virus")
+	else:
+		# Queue free if we have no parent VirusCollection
+		queue_free()
+	#queue_free()
+	state = State.DEAD
 	
 	var debris = GS.VirusDebris.instance()
 	debris.set_color($Energy.modulate)
@@ -162,7 +190,7 @@ func set_hue():
 func spawn(coord, dir):
 	parent_vc.used_coordinates[coord] = true
 	
-	var v = GS.Virus.instance()
+	var v = parent_vc.resurrect() #GS.Virus.instance()
 	v.coord = coord
 	v.rotation = rand_range(-PI, PI)
 	v.scale.x = rand_range(0, 0.1)
@@ -188,7 +216,10 @@ func spawn(coord, dir):
 	v.strength = strength + rand_range(-2.5, 2.5)
 	v.strength = clamp(v.strength, 8, parent_vc.actual_max_strength)
 	
-	parent_vc.add_child(v)
+	if v.state == State.DEAD:
+		v.state = State.SPAWNING
+	else:
+		parent_vc.add_child(v)
 	
 func try_spawn(direction):
 	var new_coord = coord + direction
@@ -238,6 +269,8 @@ func killable():
 	if position.y < -1280 - 6:
 		return false
 	if is_queued_for_deletion():
+		return false
+	if state == State.DEAD:
 		return false
 	return true
 

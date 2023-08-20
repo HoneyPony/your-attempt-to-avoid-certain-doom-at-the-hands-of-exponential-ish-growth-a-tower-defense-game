@@ -10,6 +10,10 @@ var avoid_coordinates = {}
 # that replace killed cells will age... this makes the game more winnable.
 var previous_generations = {}
 
+# A collection of killed viruses. This saves time for calling queue_free(),
+# as well as for spawning in new viruses.
+var dead_viruses = []
+
 var priming_count = 0
 
 var speed_mul = 1.0
@@ -22,6 +26,17 @@ func random_avoid_value():
 	if randf() < 0.5:
 		v = -v
 	return v
+	
+# Either returns a new instance of Virus, or a killed virus that can be
+# re-purposed.
+func resurrect():
+	if dead_viruses.empty():
+		return GS.Virus.instance()
+	var last = dead_viruses.pop_back()
+	
+	# Subtly different from how it should work, but whatever
+	last.spawn_in()
+	return last
 	
 
 func _ready():
@@ -76,8 +91,14 @@ func _physics_process(delta):
 	if get_child_count() == 0:
 		queue_free()
 		
-	if Input.is_action_just_pressed("test_spawn"):
-		queue_free()
+	#if Input.is_action_just_pressed("test_spawn"):
+	#	queue_free()
+		
+	if not dead_viruses.empty():
+		# Slowly garbage collect dead viruses
+		if randf() < 0.5:
+			var last = dead_viruses.pop_back()
+			last.queue_free()
 	
 func get_generation(cell, from_parent_value):
 	var g = from_parent_value
