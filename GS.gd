@@ -463,6 +463,8 @@ var cells = []
 # PoolIntArrays corresponding to bullet-point IDs for each cell.
 var cell_lists = []
 
+var cell_sizes = PoolIntArray()
+
 var bullet_id: int = 0
 
 func push_to_bucket(p: Vector2, id: int, cx: int, cy: int):
@@ -472,13 +474,19 @@ func push_to_bucket(p: Vector2, id: int, cx: int, cy: int):
 		return
 	var index = cx * 18 + cy
 	
-	var c = cells[index]
-	c.append(p)
-	cells[index] = c
+	#var c = cells[index]
+	#c.append(p)
+	#cells[index] = c
 	
-	var cl = cell_lists[index]
-	cl.append(id)
-	cell_lists[index] = cl
+	#var cl = cell_lists[index]
+	#cl.append(id)
+	#cell_lists[index] = cl
+	if cell_sizes[index] >= 200:
+		return
+	var cs = cell_sizes[index]
+	cell_sizes[index] += 1
+	cells[index][cs] = p
+	cell_lists[index][cs] = id
 
 func push_collision_point(p: Vector2) -> int:
 	var id = bullet_id
@@ -533,8 +541,16 @@ func push_collision_point(p: Vector2) -> int:
 
 func init_physics():
 	for i in range(0, 576):
-		cells.push_back(PoolVector2Array())
-		cell_lists.push_back(PoolIntArray())
+		var arr1 = PoolVector2Array()
+		var arr2 = PoolIntArray()
+		
+		for j in range(0, 200):
+			arr1.append(Vector2.ZERO)
+			arr2.append(0)
+		
+		cells.push_back(arr1)
+		cell_lists.push_back(arr2)
+		cell_sizes.append(0)
 	
 func perform_custom_physics():
 	var viruses: Array = get_tree().get_nodes_in_group("Virus")
@@ -555,8 +571,9 @@ func perform_custom_physics():
 			
 		var bucket = cx * 18 + cy
 		
-		for index in cells[bucket].size():
-			if v.overlaps(cells[bucket][index]):
+		for index in cell_sizes[bucket]:
+			var cls = cells[bucket]
+			if v.overlaps(cls[index]):
 				v.kill()
 				hit_indices[cell_lists[bucket][index]] = true
 				break
@@ -566,7 +583,10 @@ func perform_custom_physics():
 		rc.reset_collision(hit_indices)
 		
 	for i in range(0, 576):
-		cells[i] = PoolVector2Array()
-		cell_lists[i] = PoolIntArray()
+		cell_sizes[i] = 0
+		#cells[i].clear()
+		#cell_lists[i].clear()
+		#cells[i] = PoolVector2Array()
+		#cell_lists[i] = PoolIntArray()
 	
 	
